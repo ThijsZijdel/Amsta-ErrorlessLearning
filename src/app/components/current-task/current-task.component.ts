@@ -21,8 +21,8 @@ import { TaskService} from '../../services/task.service';
 export class CurrentTaskComponent implements OnInit {
 
   /**
-   * Set current task based on the input
-   * in html by: <input [(ngModel)]="task.name" placeholder="name"/>
+   * Set current task based on the routers constructor
+   * *ngIf="task"
    */
   @Input() task: Task;
 
@@ -46,21 +46,41 @@ export class CurrentTaskComponent implements OnInit {
     this.getTask();
   }
 
+  /**
+   * Getter for the current task
+   * note:  this will be setted to @input() task
+   *        and used in *ngIf="task"
+   */
   getTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.taskService.getTask(id)
       .subscribe(task => this.task = task);
   }
 
+  /**
+   * Back button
+   */
   goBack(): void {
     this.location.back();
   }
 
+
+
+  /**   save & delete will be placed in: EDIT TASK COMPONENT       **/
+
+
+  /**
+   * Save changes made to the current task
+   */
   save(): void {
     this.taskService.updateTask(this.task)
       .subscribe(() => this.goBack());
   }
 
+  /**
+   * Delete the current task
+   * @param {Task} task (this)
+   */
   delete(task: Task): void {
     // this.heroes = this.heroes.filter(h => h !== hero);
     // this.heroService.deleteHero(hero).subscribe();

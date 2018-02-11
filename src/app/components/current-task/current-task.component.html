@@ -3,23 +3,39 @@
 -->
 
 
-<div *ngIf="task"><!-- link to the current-task.component.ts object -->
+<div class="container" *ngIf="task"><!-- link to the current-task.component.ts object -->
 
-  <h2>Current: {{ task.name | uppercase }}</h2>
-  <div><span>id: </span>{{task.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="task.name" placeholder="name"/>
-    </label>
+  <div class="row">
+    <div class="col-12 align-center">
+      <h2>{{ task.name | uppercase }}</h2>
+      <img  src="./../assets/images{{task.imgLink}}" width="750px" height="auto">
+      <h3>Description for this part of the task goes here.</h3>
+    </div>
+
+    <div class="col-12">
+      <hr class="space">
+    </div>
+
+
+
+
+
+    <div class="col-3">
+      <button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>
+    </div>
+
+    <div class="col-9">
+      <span>id: </span>{{task.id}}
+
+      <label>name:
+        <input [(ngModel)]="task.name" placeholder="name"/>
+      </label>
+
+      <button class="btn btn-success btn-sm" (click)="save()">save</button>
+      <button class="delete btn btn-danger btn-sm" title="delete task"(click)="delete(task)">delete</button>
+    </div>
+
+
+
   </div>
-
 </div>
-<button class="btn btn-success btn-sm" (click)="save()">save</button>
-
-<button class="delete btn btn-danger btn-sm" title="delete task"
-        (click)="delete(task)">
-    delete
-</button>
-
-
-<button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>

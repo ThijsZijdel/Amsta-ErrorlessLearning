@@ -1,3 +1,11 @@
 /**
  * Current task's private CSS styles
  */
+.align-center {
+  align-content: center;
+  text-align: center;
+}
+
+hr.space {
+  margin: 100px 200px;
+}

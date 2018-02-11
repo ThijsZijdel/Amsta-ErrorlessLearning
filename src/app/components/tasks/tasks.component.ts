@@ -40,32 +40,12 @@ export class TasksComponent implements OnInit {
   }
 
   /**
-   * On select, that is set in the .html as a listener  [old way]
-   * In html:                  (click)="onSelect(task)"
-   *
-   * @param {Task} task, the selected task
-   */
-  onSelect(task: Task) {
-    // this.currentTask = task;
-  }
-
-  /**
    * Called by ngOnInit
    * get from the constructors task connection (service) the tasks
    * and add (subscribe) each task to the tasks array
    */
   getTasks(): void {
     this.tasksService.getTasks().subscribe(tasks => this.tasks = tasks);
-  }
-
-
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.tasksService.addTask({ name } as Task)
-      .subscribe(hero => {
-        this.tasks.push(hero);
-      });
   }
 }
 

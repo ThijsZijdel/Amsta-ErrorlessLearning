@@ -1,7 +1,8 @@
 <!--
    Markup for the tasks component
 -->
-<h2>Tasks</h2>
+<br>
+<h2>All the available tasks</h2>
 
 
 <ul class="list-group tasks">
@@ -20,22 +21,3 @@
   </li>
 
 </ul>
-
-
-
-<div>
-  <label>Task name:
-    <input #taskName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)=" add(taskName.value); taskName.value='' ">
-    add
-  </button>
-</div>
-
-
-<!--
-  call for current task component
-  set the current task based on the currentTask object.
--->
-<!--<app-current-task [task]="currentTask"></app-current-task>-->
