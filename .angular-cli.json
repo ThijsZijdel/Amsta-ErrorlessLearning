@@ -48,6 +48,16 @@
       "exclude": "**/node_modules/**"
     }
   ],
+  "styles": [
+    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "styles.css"
+  ],
+  "scripts": [
+
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+    "../node_modules/popper.js/dist/umd/popper.min.js"
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"

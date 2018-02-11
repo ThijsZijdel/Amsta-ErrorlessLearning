@@ -1,0 +1,25 @@
+<!--
+   Markup for the current task component
+-->
+
+
+<div *ngIf="task"><!-- link to the current-task.component.ts object -->
+
+  <h2>Current: {{ task.name | uppercase }}</h2>
+  <div><span>id: </span>{{task.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="task.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
+<button class="btn btn-success btn-sm" (click)="save()">save</button>
+
+<button class="delete btn btn-danger btn-sm" title="delete task"
+        (click)="delete(task)">
+    delete
+</button>
+
+
+<button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>

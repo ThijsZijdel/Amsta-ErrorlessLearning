@@ -1,0 +1,41 @@
+<!--
+   Markup for the tasks component
+-->
+<h2>Tasks</h2>
+
+
+<ul class="list-group tasks">
+
+  <!--
+    for: all the tasks -> tasks: Task[];
+    set selected listener on the task
+    set click to onSelect method, with the clicked task
+  -->
+  <li *ngFor="let task of tasks" class ="list-group-item">
+
+    <a routerLink="/current/{{task.id}}">
+      <!-- badge display for the tasks -->
+      <span class="badge">{{task.id}}</span> {{task.name}}
+    </a>
+  </li>
+
+</ul>
+
+
+
+<div>
+  <label>Task name:
+    <input #taskName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)=" add(taskName.value); taskName.value='' ">
+    add
+  </button>
+</div>
+
+
+<!--
+  call for current task component
+  set the current task based on the currentTask object.
+-->
+<!--<app-current-task [task]="currentTask"></app-current-task>-->

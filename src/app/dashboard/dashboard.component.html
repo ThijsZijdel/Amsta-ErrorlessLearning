@@ -1,0 +1,37 @@
+<br>
+<h3>Some available tasks</h3>
+
+<div class="container">
+
+  <div class="row">
+    <div *ngFor="let task of tasks" class="col-md-4">
+
+        <div class="card" style="width: 100%;">
+          <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">{{task.name}}</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a routerLink="/current/{{task.id}}" class="btn btn-primary">Start task</a>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-9" style="margin-top:75px;">
+      <!-- component task search -->
+      <app-task-search></app-task-search>
+    </div>
+
+    <div class="col-3 center-this">
+      <a routerLink="/tasks/">
+        <button class="btn btn-dark">Go to all tasks</button>
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
