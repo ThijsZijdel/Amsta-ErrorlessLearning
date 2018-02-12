@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CurrentTaskComponent } from './components/current-task/current-task.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 /**
  * Declaration of the routes (array)
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'current/:id', component: CurrentTaskComponent },
-  { path: 'tasks', component: TasksComponent }
+  { path: 'tasks', component: TasksComponent },
+  { path: 'console', component: MessagesComponent},
+  { path: 'employee/add-task', component: AddTaskComponent}
 ];
 
 /**

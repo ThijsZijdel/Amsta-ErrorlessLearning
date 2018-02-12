@@ -34,6 +34,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-date.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskSearchComponent } from './components/task-search/task-search.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 /**
  * Initialize the modules and application
@@ -46,7 +48,9 @@ import { TaskSearchComponent } from './components/task-search/task-search.compon
     MessagesComponent,
     TopNavComponent,
     DashboardComponent,
-    TaskSearchComponent
+    TaskSearchComponent,
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
