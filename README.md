@@ -1,7 +1,7 @@
 # Amsta
 HvA Project PAD - AMS5
 
-Java Application for the company Amsta Amsterdam.
+Web Application for the company Amsta Amsterdam.
 
 
 
