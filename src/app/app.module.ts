@@ -44,6 +44,7 @@ import { TaskSearchComponent } from './components/task-search/task-search.compon
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { LoginComponent } from './login/login.component';
+import { SelectUserComponent } from './components/select-user/select-user.component';
 
 /**
  * Initialize the modules and application
@@ -59,7 +60,8 @@ import { LoginComponent } from './login/login.component';
     TaskSearchComponent,
     AddTaskComponent,
     EditTaskComponent,
-    LoginComponent
+    LoginComponent,
+    SelectUserComponent
   ],
   imports: [
     BrowserModule,
