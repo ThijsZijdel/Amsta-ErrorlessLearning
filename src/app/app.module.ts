@@ -27,6 +27,11 @@ import { MessagesComponent } from './components/messages/messages.component';
 
 import { AppRoutingModule } from './/app-routing.module';
 
+/**
+ * Material design modules and components
+ **/
+import {MatStepperModule} from '@angular/material/stepper';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -61,13 +66,14 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    BrowserAnimationsModule,
+    MatStepperModule
   ],
   providers: [
     TaskService,

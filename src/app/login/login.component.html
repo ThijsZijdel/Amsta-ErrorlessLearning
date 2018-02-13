@@ -6,16 +6,19 @@
       <h4 class="card-title">Login voor werknemers:</h4>
 
       <label>Username:
-        <input #username />
+        <input #username type="text" placeholder="username..."/>
       </label>
 
       <br>
 
       <label>Password:
-        <input #password />
+        <input #password type="password" placeholder="password..."/>
       </label>
 
-      <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">login</button>
+      <button class="btn btn-outline-primary btn-sm"
+              (click)="login(username.value, password.value)">
+        login
+      </button>
     </div>
   </div>
 

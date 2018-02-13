@@ -31,8 +31,8 @@ export class TaskSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks$ = this.searchTerms.pipe(
-      // wait 100ms after each keystroke before considering the term
-      debounceTime(100),
+      // wait 1ms after each keystroke before considering the term
+      debounceTime(1),
 
       // ignore new term if same as previous term
       distinctUntilChanged(),

@@ -7,9 +7,47 @@
 
   <div class="row">
     <div class="col-12 align-center">
-      <h2>{{ task.name | uppercase }}</h2>
-      <img  src="./../assets/images{{task.imgLink}}" width="750px" height="auto">
-      <h3>{{ task.mainDescription }}</h3>
+      <h2>{{ task.name | uppercase }}</h2><br>
+
+
+        <div class="task-container container-fluid">
+          <div class="task-content row">
+
+
+            <div class="col-md-2 back arrow">
+              <img src="../../../assets/images/icons/ic_back.png" height="144" width="144"/>
+            </div>
+
+
+            <div class="col-md-8">
+
+              <mat-horizontal-stepper>
+                <mat-step label="Step 1">
+                  <img  src="./../assets/images{{task.imgLink}}" width="100%" height="auto"><br><br>
+                </mat-step>
+                <mat-step label="Step 2">
+                  <img  src="./../assets/images/tasks/step2.jpg" width="100%" height="auto"><br><br>
+                </mat-step>
+                <mat-step label="Step 3">
+                  <img  src="./../assets/images/tasks/step3.png" width="100%" height="auto"><br><br>
+                </mat-step>
+              </mat-horizontal-stepper>
+
+              <h3>{{ task.mainDescription }}</h3>
+
+            </div>
+
+
+            <div class="col-md-2 forward arrow">
+              <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144"/>
+            </div>
+
+
+          </div>
+        </div>
+
+
+
     </div>
 
     <div class="col-12">
@@ -29,3 +67,44 @@
 
   </div>
 </div>
+
+
+
+
+<!--<button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button>-->
+
+<!--<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">-->
+  <!--<mat-step [stepControl]="firstFormGroup">-->
+    <!--<form [formGroup]="firstFormGroup">-->
+      <!--<ng-template matStepLabel>Fill out your name</ng-template>-->
+      <!--<mat-form-field>-->
+        <!--<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
+      <!--</mat-form-field>-->
+      <!--<div>-->
+        <!--<button mat-button matStepperNext>Next</button>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</mat-step>-->
+  <!--<mat-step [stepControl]="secondFormGroup">-->
+    <!--<form [formGroup]="secondFormGroup">-->
+      <!--<ng-template matStepLabel>Fill out your address</ng-template>-->
+      <!--<mat-form-field>-->
+        <!--<input matInput placeholder="Address" formControlName="secondCtrl" required>-->
+      <!--</mat-form-field>-->
+      <!--<div>-->
+        <!--<button mat-button matStepperPrevious>Back</button>-->
+        <!--<button mat-button matStepperNext>Next</button>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</mat-step>-->
+  <!--<mat-step>-->
+    <!--<ng-template matStepLabel>Done</ng-template>-->
+    <!--You are now done.-->
+    <!--<div>-->
+      <!--<button mat-button matStepperPrevious>Back</button>-->
+      <!--<button mat-button (click)="stepper.reset()">Reset</button>-->
+    <!--</div>-->
+  <!--</mat-step>-->
+<!--</mat-horizontal-stepper>-->
+
+
