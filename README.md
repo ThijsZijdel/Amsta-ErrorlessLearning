@@ -17,6 +17,42 @@ Web Application for the company Amsta Amsterdam.
     declare function greet(setting: GreetingTeam): void;
 ```
 
+### Development
+Before developing the application you'll need some things installed.
+
+The easiest way of installing the needed libaries, compilers etc etc is by node.js package manager. Download link:
+[Node.js](https://nodejs.org/en/) 
+
+>(Link to [npm](https://www.npmjs.com)) for documentation
+
+
+Than you will need to install [Angular Cli](https://github.com/angular/angular-cli).
+ > See the readme for install process 
+ 
+ > Note: it IS NOT needed to create a new Project !
+
+After you have installed angular Cli you're almost done.
+
+Get this repository to your local drive (preferred with git access)
+
+And type the following command:
+
+```text
+  cd ROUTE_TO_YOUR/Amsta
+  ng serve --open
+```
+
+Now the application is running and you can start developing.
+
+
+
+
+### Usage
+Currently the application isn't public available.
+
+
+
+
 
 ## Built with 
 * [HTML 5](https://www.w3schools.com/html/) - To get some basic markup and text done
