@@ -9,6 +9,9 @@ import {Task} from '../../models/Task';
 })
 export class AddTaskComponent implements OnInit {
 
+  /**
+   * The tasks from taskService
+   */
   tasks: Task[];
 
   constructor(
@@ -26,14 +29,25 @@ export class AddTaskComponent implements OnInit {
    * Called by ngOnInit
    * get from the constructors task connection (service) the tasks
    * and add (subscribe) each task to the tasks array
+   * @author Thijs Zijdel
    */
   getTasks(): void {
     this.tasksService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
+  /**
+   * Add a new task to the tasks by validating the input and add it to the taskService
+   *
+   *        Task data:
+   * @param {string} name
+   * @param {string} imgLink
+   * @param {string} mainDescription
+   * @param {string} steps
+   * @author Thijs Zijdel
+   */
   add(name: string, imgLink: string, mainDescription: string, steps: string): void {
     name = name.trim();
-    if (!name || !imgLink || !mainDescription) { return; }
+    if (!name || !imgLink || !mainDescription) { return; } // note: steps not required, YET!
 
     this.tasksService.addTask({ name, imgLink, mainDescription, steps  } as Task)
       .subscribe(task => {

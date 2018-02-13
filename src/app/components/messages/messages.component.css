@@ -2,24 +2,22 @@
  * Messages private CSS styles
  */
 h2 {
-  color: #777;
+  color: #888;
   font-weight: lighter;
 }
 body {
-  margin: 2em;
+  margin: 10px;
 }
 body, input[text], button {
   color: crimson;
 }
 
 button.clear {
-  font-family: Arial;
   background-color: #eee;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
 }
 button:hover {
   background-color: #cfd8dc;
@@ -31,5 +29,5 @@ button:disabled {
 }
 button.clear {
   color: #888;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }

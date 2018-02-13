@@ -50,6 +50,7 @@ export class CurrentTaskComponent implements OnInit {
    * Getter for the current task
    * note:  this will be setted to @input() task
    *        and used in *ngIf="task"
+   * @author Thijs Zijdel
    */
   getTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');

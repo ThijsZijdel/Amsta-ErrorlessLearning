@@ -38,6 +38,7 @@ export class TasksComponent implements OnInit {
    * Called by ngOnInit
    * get from the constructors task connection (service) the tasks
    * and add (subscribe) each task to the tasks array
+   * @author Thijs Zijdel
    */
   getTasks(): void {
     this.tasksService.getTasks().subscribe(tasks => this.tasks = tasks);

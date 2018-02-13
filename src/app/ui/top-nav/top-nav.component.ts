@@ -18,6 +18,11 @@ export class TopNavComponent implements OnInit {
     this.data.actualStatus.subscribe(loggedInStatus => this.isLoggedIn = loggedInStatus);
   }
 
+  /**
+   * Method for logging out of the application
+   * By setting the logged in status to false
+   * @author: Thijs Zijdel
+   */
   logout() {
     this.data.changeLoggedInStatus(false);
   }

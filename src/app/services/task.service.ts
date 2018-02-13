@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
 import { Task } from '../models/Task';
-// import { task
+
 import { MessageService } from './message.service';
 
 import { catchError, map, tap } from 'rxjs/operators';
@@ -24,20 +24,20 @@ export class TaskService {
     private messageService: MessageService) { }
 
   /**
-   * GET tasks from the server
+   * get tasks from the server
+   * @author Thijs Zijdel
    */
   getTasks (): Observable<Task[]> {
     return this.http.get<Task[]>(this.tasksUrl)
       .pipe(
-        tap(heroes => this.log(`fetched tasks`)),
+        tap(tasks => this.log(`fetched tasks`)),
         catchError(this.handleError('getTask', []))
       );
   }
 
   /**
-   * GET task by id.
-   *
-   * Will 404 if id not found
+   * get task by id.
+   * @author Thijs Zijdel
    */
   getTask(id: number): Observable<Task> {
     const url = `${this.tasksUrl}/${id}`;
@@ -50,16 +50,11 @@ export class TaskService {
 
   /**
    * Log a TaskService message with the MessageService
+   * @author Thijs Zijdel
    */
   private log(message: string) {
     this.messageService.add('TaskService: ' + message);
   }
-
-
-
-
-
-
 
 
   /**
@@ -68,24 +63,25 @@ export class TaskService {
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
+   * @author Thijs Zijdel
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error); // log to console
 
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
+      // Prevent crashing the application
       return of(result as T);
     };
   }
 
 
   /**
-   * PUT: update the task on the server
+   * update the task on the server
+   * note: PUT
+   * @author Thijs Zijdel
    */
   updateTask (task: Task): Observable<any> {
     return this.http.put(this.tasksUrl, task, httpOptions).pipe(
@@ -95,7 +91,8 @@ export class TaskService {
   }
 
   /**
-   * POST: add a new task to the server
+   * add a new task to the server
+   * note: POST
    */
   addTask (task: Task): Observable<Task> {
     return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
@@ -105,7 +102,9 @@ export class TaskService {
   }
 
   /**
-   * DELETE: delete the task from the server
+   * delete the task from the server
+   * note: DELETE
+   * @author Thijs Zijdel
    */
   deleteTask (task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
@@ -118,7 +117,9 @@ export class TaskService {
   }
 
   /**
-   * GET tasks whose name contains search term
+   * get tasks whose name contains search term
+   * note: GET
+   * @author Thijs Zijdel
    */
   searchTasks(term: string): Observable<Task[]> {
     if (!term.trim()) {

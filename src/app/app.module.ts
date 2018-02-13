@@ -48,6 +48,7 @@ import { SelectUserComponent } from './components/select-user/select-user.compon
 
 /**
  * Initialize the modules and application
+ * @author Thijs Zijdel -  configured the application for the start
  */
 @NgModule({
   declarations: [

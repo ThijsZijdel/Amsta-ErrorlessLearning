@@ -24,11 +24,18 @@ export class TaskSearchComponent implements OnInit {
 
   constructor(private taskService: TaskService) {}
 
-  // Push a search term into the observable stream.
+  /**
+   * Push a search term into the observable stream.
+   */
   search(term: string): void {
     this.searchTerms.next(term);
   }
 
+  /**
+   * Initialize the search pipe.
+   *
+   * @Author Angular
+   */
   ngOnInit(): void {
     this.tasks$ = this.searchTerms.pipe(
       // wait 1ms after each keystroke before considering the term
