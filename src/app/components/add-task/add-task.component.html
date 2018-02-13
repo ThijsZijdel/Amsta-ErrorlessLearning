@@ -9,9 +9,21 @@
     <input #taskImgLink />
   </label>
 
+  <br>
 
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)=" add(taskName.value); taskName.value='' ">
+  <label>Task mainDescription:
+    <input #mainDesc />
+  </label>
+
+  <br>
+
+  <label>Task steps:
+    <input #steps />
+  </label>
+
+
+  <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
+  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value, steps.value)">
     add
   </button>
 </div>
