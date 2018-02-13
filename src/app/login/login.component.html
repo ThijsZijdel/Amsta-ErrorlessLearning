@@ -1,0 +1,22 @@
+<br><br><br>
+<div class="col-md-4">
+
+  <div class="card" style="width: 100%;">
+    <div class="card-block">
+      <h4 class="card-title">Login voor werknemers:</h4>
+
+      <label>Username:
+        <input #username />
+      </label>
+
+      <br>
+
+      <label>Password:
+        <input #password />
+      </label>
+
+      <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">login</button>
+    </div>
+  </div>
+
+</div>

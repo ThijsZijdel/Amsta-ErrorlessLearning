@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
  */
 import { TaskService } from './services/task.service';
 import { MessageService } from './services/message.service';
+import { EmployeeService } from './services/employee.service';
+import { StatusService } from './login/status.service';
 
 import { MessagesComponent } from './components/messages/messages.component';
 
@@ -36,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskSearchComponent } from './components/task-search/task-search.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { LoginComponent } from './login/login.component';
 
 /**
  * Initialize the modules and application
@@ -50,7 +53,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     DashboardComponent,
     TaskSearchComponent,
     AddTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
   ],
   providers: [
     TaskService,
-    MessageService
+    MessageService,
+    EmployeeService,
+    StatusService
   ],
   bootstrap: [AppComponent]
 })

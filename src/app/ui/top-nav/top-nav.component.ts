@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatusService} from '../../login/status.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -9,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
  * Nav bar component class
  */
 export class TopNavComponent implements OnInit {
-  /**
-   * Called on initializing
-   */
-  ngOnInit(): void {
+  isLoggedIn = false;
+
+  constructor(private data: StatusService) { }
+
+  ngOnInit() {
+    this.data.actualStatus.subscribe(loggedInStatus => this.isLoggedIn = loggedInStatus);
+  }
+
+  logout() {
+    this.data.changeLoggedInStatus(false);
   }
 }

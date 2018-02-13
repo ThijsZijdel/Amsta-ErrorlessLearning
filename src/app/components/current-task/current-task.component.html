@@ -9,7 +9,7 @@
     <div class="col-12 align-center">
       <h2>{{ task.name | uppercase }}</h2>
       <img  src="./../assets/images{{task.imgLink}}" width="750px" height="auto">
-      <h3>Description for this part of the task goes here.</h3>
+      <h3>{{ task.mainDescription }}</h3>
     </div>
 
     <div class="col-12">
@@ -24,16 +24,6 @@
       <button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>
     </div>
 
-    <div class="col-9">
-      <span>id: </span>{{task.id}}
-
-      <label>name:
-        <input [(ngModel)]="task.name" placeholder="name"/>
-      </label>
-
-      <button class="btn btn-success btn-sm" (click)="save()">save</button>
-      <button class="delete btn btn-danger btn-sm" title="delete task"(click)="delete(task)">delete</button>
-    </div>
 
 
 

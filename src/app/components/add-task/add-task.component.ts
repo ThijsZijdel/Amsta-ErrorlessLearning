@@ -31,10 +31,11 @@ export class AddTaskComponent implements OnInit {
     this.tasksService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  add(name: string): void {
+  add(name: string, imgLink: string, mainDescription: string, steps: string): void {
     name = name.trim();
-    if (!name) { return; }
-    this.tasksService.addTask({ name } as Task)
+    if (!name || !imgLink || !mainDescription) { return; }
+
+    this.tasksService.addTask({ name, imgLink, mainDescription, steps  } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
