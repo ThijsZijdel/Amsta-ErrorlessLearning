@@ -16,11 +16,6 @@ import { TaskService } from '../../services/task.service';
  */
 export class TasksComponent implements OnInit {
   /**
-   * Current task object  [old way]
-   */
-  // currentTask: Task;
-
-  /**
    * Array of tasks
    */
   tasks: Task[];
