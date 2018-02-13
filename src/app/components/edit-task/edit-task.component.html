@@ -1,3 +1,23 @@
-<p>
-  edit-task works!
-</p>
+
+  <app-tasks></app-tasks>
+
+  <hr>
+  <hr>
+
+  <span>id: </span>{{task.id}} <br>
+
+  <label>name:
+    <input [(ngModel)]="task.name" placeholder="name"/>
+  </label> <br>
+  <label>imgLink:
+    <input [(ngModel)]="task.imgLink" placeholder="imgLink"/>
+  </label> <br>
+  <label> mainDescription:
+    <input [(ngModel)]="task.mainDescription" placeholder="mainDescription"/>
+  </label> <br>
+  <label> steps:
+    <input [(ngModel)]="task.steps" placeholder="steps"/><br>
+  </label> <br>
+
+  <button class="btn btn-success btn-sm" (click)="save()">save</button>
+  <button class="delete btn btn-danger btn-sm" title="delete task"(click)="delete(task)">delete</button>
