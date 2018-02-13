@@ -1,5 +1,8 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
+/**
+ * Dummy data json
+ */
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const tasks = [
@@ -12,6 +15,11 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 7, name: 'Tv kijken', imgLink: '/tasks/tv.jpg', mainDescription: 'Hier leer je met de televisie te werken' },
       { id: 8, name: 'Gaan slapen', imgLink: '/tasks/sleeping.jpg', mainDescription: 'Hier leer je jezelf klaar te maken voor slaap' }
     ];
-    return { tasks };
+
+    const employees = [
+      { id: 'Am3', name: 'Werknemer', username: 'root', password: 'root'}
+    ];
+
+    return { tasks, employees };
   }
 }

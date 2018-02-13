@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CurrentTaskComponent } from './components/current-task/current-task.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import {EditTaskComponent} from './components/edit-task/edit-task.component';
 
 /**
  * Declaration of the routes (array)
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'current/:id', component: CurrentTaskComponent },
   { path: 'tasks', component: TasksComponent },
   { path: 'console', component: MessagesComponent},
-  { path: 'employee/add-task', component: AddTaskComponent}
+  { path: 'employee/add-task', component: AddTaskComponent},
+  { path: 'employee/edit-task', component: EditTaskComponent}
 ];
 
 /**
