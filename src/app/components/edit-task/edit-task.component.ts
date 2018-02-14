@@ -12,10 +12,31 @@ export class EditTaskComponent implements OnInit {
 
   @Input() task: Task;
 
+  /**
+   * Array of tasks
+   */
+  tasks: Task[];
+
+
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
     this.getTask();
+    this.getTasks();
+  }
+
+  setTask(task: Task) {
+    this.task = task;
+  }
+
+  /**
+   * Called by ngOnInit
+   * get from the constructors task connection (service) the tasks
+   * and add (subscribe) each task to the tasks array
+   * @author Thijs Zijdel
+   */
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
 
