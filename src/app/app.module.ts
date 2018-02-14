@@ -31,6 +31,9 @@ import { AppRoutingModule } from './/app-routing.module';
  * Material design modules and components
  **/
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
@@ -76,7 +79,9 @@ import { SelectUserComponent } from './components/select-user/select-user.compon
       InMemoryDataService, { dataEncapsulation: false }
     ),
     BrowserAnimationsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     TaskService,
