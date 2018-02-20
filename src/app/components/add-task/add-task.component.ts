@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
+import {Step} from "../../models/Step";
 
 @Component({
   selector: 'app-add-task',
@@ -49,7 +50,12 @@ export class AddTaskComponent implements OnInit {
     name = name.trim();
     if (!name || !imgLink || !mainDescription) { return; } // note: steps not required, YET!
 
-    this.tasksService.addTask({ name, imgLink, mainDescription, steps  } as Task)
+    const step1: Step = {id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'};
+    const step2: Step = {id: 2, stepImgLink: 'link', stepDescription: 'name2'};
+
+    const stepsCreated: Step[] = [step1, step2];
+
+    this.tasksService.addTask({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: stepsCreated } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
