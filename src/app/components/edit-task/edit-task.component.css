@@ -1,0 +1,16 @@
+/**
+ * edit task's private CSS styles
+ */
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.tasks li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.tasks li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}

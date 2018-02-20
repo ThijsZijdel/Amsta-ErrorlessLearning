@@ -4,21 +4,31 @@
 <br>
 <h2>Alle beschikbare taken</h2>
 
+<div class="container-fluid">
 
-<ul class="list-group tasks">
+  <div class="row tasks">
 
-  <!--
-    for: all the tasks -> tasks: Task[];
-    set selected listener on the task
-    set click to onSelect method, with the clicked task
-  -->
-  <li *ngFor="let task of tasks" class ="list-group-item">
+    <!--
+      for: all the tasks -> tasks: Task[];
+      set selected listener on the task
+      set click to onSelect method, with the clicked task
+    -->
+    <div *ngFor="let task of tasks" class="col-md-4">
+      <mat-card>
 
-    <a routerLink="/current/{{task.id}}">
-      <!-- badge display for the tasks -->
-      <span class="badge">{{task.id}}</span> {{task.name}}
-    </a>
-  </li>
 
-</ul>
 
+        <mat-card-header>
+          <img class="card-img-top-left" src="./../assets/images{{task.imgLink}}" >
+          <mat-card-title>{{ task.id }} - {{ task.name }}</mat-card-title>
+          <mat-card-subtitle>{{ task.mainDescription | slice:0:25 }}</mat-card-subtitle>
+          <br>
+          <button routerLink="/current/{{task.id}}" mat-button class="startBtn">start</button>
+        </mat-card-header>
+        <!--</div>-->
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>

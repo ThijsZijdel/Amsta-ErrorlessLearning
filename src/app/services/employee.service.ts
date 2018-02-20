@@ -25,20 +25,20 @@ export class EmployeeService {
   }
 
   /**
-   * GET Employee from the server
+   * GET Employees from the server
+   * @author Thijs Zijdel
    */
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.employeesUrl)
       .pipe(
-        tap(heroes => this.log(`fetched Employee`)),
+        tap(employees => this.log(`loaded Employese`)),
         catchError(this.handleError('getEmployee', []))
       );
   }
 
   /**
    * GET Employee by id.
-   *
-   * Will 404 if id not found
+   * @author Thijs Zijdel
    */
   getEmployee(id: number): Observable<Employee> {
     const url = `${this.employeesUrl}/${id}`;
@@ -51,6 +51,7 @@ export class EmployeeService {
 
   /**
    * Log a EmployeeService message with the MessageService
+   * @author Thijs Zijdel
    */
   private log(message: string) {
     this.messageService.add('EmployeeService: ' + message);
@@ -63,19 +64,25 @@ export class EmployeeService {
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
+   * @author Thijs Zijdel
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
+      // log to console
+      console.error(error);
 
       this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
+      // Prevent crashing
       return of(result as T);
     };
   }
 
+  /**
+   * Set the current logged in employee
+   * @param {Employee} employee
+   * @author Thijs Zijdel
+   */
   setLoggedInEmployee(employee: Employee) {
       this.loggedInEmployee = employee;
   }

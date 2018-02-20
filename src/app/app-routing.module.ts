@@ -14,6 +14,7 @@ import {EditTaskComponent} from './components/edit-task/edit-task.component';
 /**
  * Declaration of the routes (array)
  * @type path: url   component: link to component
+ * @author Thijs Zijdel
  */
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
  * module setup
  * @export this module
  * note: don't declare components in the routing module
+ * @author Thijs Zijdel
  */
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ], // listener for browser url changes

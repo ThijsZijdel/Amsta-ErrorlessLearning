@@ -6,3 +6,16 @@
   text-align: center;
   margin: 100px auto;
 }
+mat-card.mat-card {
+  padding: 0;
+  margin-bottom: 25px;
+}
+.card-block {
+  padding: 25px 15px;
+}
+.startBtn {
+  background:#27ae60;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}

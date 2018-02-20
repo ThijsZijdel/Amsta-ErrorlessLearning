@@ -12,10 +12,31 @@ export class EditTaskComponent implements OnInit {
 
   @Input() task: Task;
 
+  /**
+   * Array of tasks
+   */
+  tasks: Task[];
+
+
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
     this.getTask();
+    this.getTasks();
+  }
+
+  setTask(task: Task) {
+    this.task = task;
+  }
+
+  /**
+   * Called by ngOnInit
+   * get from the constructors task connection (service) the tasks
+   * and add (subscribe) each task to the tasks array
+   * @author Thijs Zijdel
+   */
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
 
@@ -23,6 +44,7 @@ export class EditTaskComponent implements OnInit {
 
   /**
    * Save changes made to the current task
+   * @author Thijs Zijdel
    */
   save(): void {
     this.taskService.updateTask(this.task).subscribe();
@@ -31,6 +53,7 @@ export class EditTaskComponent implements OnInit {
   /**
    * Delete the current task
    * @param {Task} task (this)
+   * @author Thijs Zijdel
    */
   delete(task: Task): void {
     // this.heroes = this.heroes.filter(h => h !== hero);
@@ -43,8 +66,11 @@ export class EditTaskComponent implements OnInit {
    * Getter for the current task
    * note:  this will be setted to @input() task
    *        and used in *ngIf="task"
+   *
+   * @author Thijs Zijdel
    */
   getTask(): void {
+    // TODO: make edit task not const
     // const id = +this.route.snapshot.paramMap.get('id');
     const id = 1;
     this.taskService.getTask(id)

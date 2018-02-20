@@ -3,6 +3,7 @@
  */
 
 @import '~bootstrap/dist/css/bootstrap.css';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 *{
   font-family: Arial;
