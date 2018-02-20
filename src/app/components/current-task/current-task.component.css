@@ -11,10 +11,15 @@ hr.space {
 }
 
 
-
-
+div.mat-step-icon {
+  display: none;
+}
 
 .task-container .task-content .arrow {
   margin: auto 0;
+}
+
+button.control{
+  margin-top: 50px;
 }
 
