@@ -11,9 +11,10 @@ export class InMemoryDataService implements InMemoryDbService {
                   { id: 2, stepImgLink: '/tasks/step2.jpg', stepDescription: 'Beschrijving stap 1'}   ]
       },
       { id: 2, name: 'Tanden poetsen', imgLink: '/tasks/brushing.jpg', mainDescription: 'Hier leer je je tanden schoon te maken',
-        steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'},
-                  { id: 2, stepImgLink: '/tasks/brushing.jpg', stepDescription: 'Beschrijving stap 111'},
-                  { id: 3, stepImgLink: '/tasks/step2.jpg', stepDescription: 'Beschrijving stap 31'}]
+        steps: [  { id: 1, stepImgLink: '/tasks/step1.jpg', stepDescription: 'Pak je tandenborstel'},
+                  { id: 2, stepImgLink: '/tasks/step3.jpg', stepDescription: 'Doe hier een beetje tandpasta op'},
+                  { id: 3, stepImgLink: '/tasks/brushing.jpg', stepDescription: 'En poets maar.'},
+                  { id: 4, stepImgLink: '/tasks/timer.gif', stepDescription: 'Na de timer moet je stoppen.'}]
       },
       { id: 3, name: 'Douchen', imgLink: '/tasks/shower.jpg', mainDescription: 'Hier leer je jezelf schoon te maken',
         steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 2'},
