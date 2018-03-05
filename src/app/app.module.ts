@@ -30,11 +30,11 @@ import { AppRoutingModule } from './/app-routing.module';
 /**
  * Material design modules and components
  **/
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatStepperModule} from '@angular/material/stepper';
+import { MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -48,6 +48,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { LoginComponent } from './login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
+
 
 /**
  * Initialize the modules and application

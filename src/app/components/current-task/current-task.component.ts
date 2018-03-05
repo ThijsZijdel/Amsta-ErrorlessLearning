@@ -6,6 +6,9 @@ import { Location } from '@angular/common';
 
 import { TaskService} from '../../services/task.service';
 
+// Steps:
+import {Step} from '../../models/Step';
+
 /**
  * Current task component
  */
@@ -26,6 +29,7 @@ export class CurrentTaskComponent implements OnInit {
    */
   @Input() task: Task;
 
+  steps: Step[];
   /**
    * Constructor for:
    *
@@ -44,6 +48,7 @@ export class CurrentTaskComponent implements OnInit {
    */
   ngOnInit() {
     this.getTask();
+    this.getSteps();
   }
 
   /**
@@ -63,5 +68,13 @@ export class CurrentTaskComponent implements OnInit {
    */
   goBack(): void {
     this.location.back();
+  }
+
+  private getSteps(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.taskService.getTask(id)
+      .subscribe(task => {
+        return this.steps = task.steps;
+      });
   }
 }
