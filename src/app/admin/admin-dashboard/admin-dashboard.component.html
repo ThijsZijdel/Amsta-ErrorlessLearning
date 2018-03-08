@@ -1,0 +1,22 @@
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-md-3" *ngIf="loginStatusActual">
+
+      <app-admin-sidebar></app-admin-sidebar>
+
+    </div>
+
+
+    <div class="col-md-9">
+      <div class="container-admin-content" *ngIf="loginStatusActual">
+        <h3>container for admin dashboard content</h3>
+      </div>
+
+      <div *ngIf="!loginStatusActual">
+        <p>No admin/ employee account logged in.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
