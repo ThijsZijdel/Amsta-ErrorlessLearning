@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
   }
 
   private getActualStatus(): void {
-    console.log(this.status.getLoggedInStatus()+"< call on login")
     this.actualLoginStatus = this.status.getLoggedInStatus();
 
   }

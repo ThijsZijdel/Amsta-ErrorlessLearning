@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {StatusService} from "../login/status.service";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {observable} from "rxjs/symbol/observable";
 
 @Component({
   selector: 'app-admin-dashboard',
