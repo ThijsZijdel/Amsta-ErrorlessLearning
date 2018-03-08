@@ -6,7 +6,7 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 *{
-  font-family: Arial;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body, head, html {
