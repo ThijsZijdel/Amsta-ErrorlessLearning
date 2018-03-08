@@ -23,3 +23,14 @@
   </div>
 
 </div>
+
+<br><br>
+
+<div *ngIf="this.actualLoginStatus">
+  <h1>Welcome back</h1>
+
+  <a routerLink="/admin">Dasboard</a><br>
+  <a routerLink="/admin/add-task">Add task</a><br>
+  <a routerLink="/admin/edit-task">Edit task</a><br>
+  <!--<a (click)="top-nav.logout()">Log out</a>-->
+</div>

@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {isBoolean} from "util";
 
 @Injectable()
 export class StatusService {
 
-  private loggedInStatus = new BehaviorSubject<boolean>(false);
-  actualStatus = this.loggedInStatus.asObservable();
+  public loggedInStatus = false;
+  //actualStatus = this.loggedInStatus.get();
 
   constructor() { }
 
   changeLoggedInStatus(status: boolean) {
-    this.loggedInStatus.next(status);
+    console.log(this.loggedInStatus+"< before");
+    this.loggedInStatus= status;
+    console.log(this.loggedInStatus+"< after")
   }
 
   getLoggedInStatus() {
+
+    console.log(this.loggedInStatus +" returend status");
     return this.loggedInStatus;
   }
 }

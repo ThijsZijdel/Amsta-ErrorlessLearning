@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EmployeeService} from '../services/employee.service';
-import {Employee} from '../models/Employee';
-import {MessageService} from '../services/message.service';
+import {EmployeeService} from '../../services/employee.service';
+import {Employee} from '../../models/Employee';
+import {MessageService} from '../../services/message.service';
 import {StatusService} from './status.service';
 
 @Component({
@@ -11,13 +11,14 @@ import {StatusService} from './status.service';
 })
 export class LoginComponent implements OnInit {
 
-  isLoggedIn = false;
 
   employees: Employee[];
 
+  actualLoginStatus;
+
   constructor(private employeeService: EmployeeService,
               private messageService: MessageService,
-              private data: StatusService) { }
+              private status: StatusService) { }
 
   /**
    * Called on initialize
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
    */
   ngOnInit() {
     this.getEmployees();
-    this.data.actualStatus.subscribe(loggedInStatus => this.isLoggedIn = loggedInStatus);
+    this.getActualStatus();
   }
 
   /**
@@ -37,17 +38,20 @@ export class LoginComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
-  login(userNameInput: string, userPassInput: string) {
+  login(userNameInput: string, userPassInput: string): void {
     for ( const checkEmployee of this.employees ) {
       if (checkEmployee.username === userNameInput && checkEmployee.password === userPassInput){
         this.employeeService.setLoggedInEmployee(checkEmployee);
         this.log('access granted for: ' + checkEmployee.id);
 
-        this.data.changeLoggedInStatus(true);
+        this.getActualStatus();
+        this.status.changeLoggedInStatus(true);
+        this.getActualStatus();
         return;
       }
     }
     this.log('access NOT granted, wrong credentials');
+    return;
   }
 
   /**
@@ -55,5 +59,11 @@ export class LoginComponent implements OnInit {
    */
   private log(message: string) {
     this.messageService.add('Login: ' + message);
+  }
+
+  private getActualStatus(): void {
+    console.log(this.status.getLoggedInStatus()+"< call on login")
+    this.actualLoginStatus = this.status.getLoggedInStatus();
+
   }
 }
