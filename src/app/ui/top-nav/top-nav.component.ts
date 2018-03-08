@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusService} from '../../login/status.service';
+import { StatusService} from '../../admin/login/status.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -10,20 +10,10 @@ import { StatusService} from '../../login/status.service';
  * Nav bar component class
  */
 export class TopNavComponent implements OnInit {
-  isLoggedIn = false;
 
-  constructor(private data: StatusService) { }
+  constructor(private status: StatusService) { }
 
   ngOnInit() {
-    this.data.actualStatus.subscribe(loggedInStatus => this.isLoggedIn = loggedInStatus);
   }
 
-  /**
-   * Method for logging out of the application
-   * By setting the logged in status to false
-   * @author: Thijs Zijdel
-   */
-  logout() {
-    this.data.changeLoggedInStatus(false);
-  }
 }
