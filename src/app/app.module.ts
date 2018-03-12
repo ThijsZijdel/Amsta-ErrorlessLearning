@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
  */
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-import { CurrentTaskComponent } from './admin/current-task/current-task.component';
+import { CurrentTaskComponent } from './components/current-task/current-task.component';
 
 /**
  * Imports for angular modules

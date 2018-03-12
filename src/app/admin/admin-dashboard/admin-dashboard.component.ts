@@ -15,4 +15,7 @@ export class AdminDashboardComponent implements OnInit {
     this.loginStatusActual = this.status.getLoggedInStatus();
   }
 
+  setPanel(name: string) {
+
+  }
 }
