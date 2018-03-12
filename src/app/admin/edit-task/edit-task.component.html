@@ -35,5 +35,15 @@
     <input [(ngModel)]="task.steps" placeholder="steps"/><br>
   </label> <br>
 
+
+<div class="steps" *ngFor="let step of task.steps">
+  <hr>
+  <div class="id">{{step.id}}</div>
+  <img src="./../assets/images{{step.stepImgLink}}" width="200px"><br>
+  <input [(ngModel)]="step.stepImgLink" placeholder="stepImgLink"/><br>
+  <input [(ngModel)]="step.stepDescription" placeholder="stepDescription"/><br>
+
+</div>
+
   <button class="btn btn-success btn-sm" (click)="save()">save</button>
   <button class="delete btn btn-danger btn-sm" title="delete task"(click)="delete(task)">delete</button>
