@@ -16,6 +16,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   setPanel(name: string) {
-
+    console.log("Setted: "+name);
   }
 }
