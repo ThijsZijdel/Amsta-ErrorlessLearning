@@ -2,78 +2,82 @@
    Markup for the current task component
 -->
 
-
-<div class="container" *ngIf="task"><!-- link to the current-task.component.ts object -->
-
+<div class="container" *ngIf="task">
+  
+  <!-- link to the current-task.component.ts object -->
   <div class="row">
     <div class="col-12 align-center">
-      <h2>{{ task.name | uppercase }}</h2><br>
+      <h2>{{ task.name | uppercase }}</h2>
+      <br>
 
+      <mat-horizontal-stepper>
 
-            <mat-horizontal-stepper>
+        <mat-step label="Introductie" [completed]="false">
 
-              <mat-step label="Introductie" [completed]="false">
+          <div class="container-fluid step-container">
+            <div class="row step-row">
+              <div class="col-md-2 back arrow">
+                <button mat-button matStepperPrevious class="control">
+                  <img src="../../../assets/images/icons/ic_back.png" height="144" width="144" />
+                </button>
+              </div>
 
+              <div class="col-md-8">
+                <div class="imgContainer">
+                  <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto">
+                  <br>
+                  <br>
+                </div>
+                <div class="textContainer">
+                  <h3>{{ task.mainDescription }}</h3>
+                </div>
+              </div>
 
-                <div class="container-fluid step-container">
-                  <div class="row step-row">
-                    <div class="col-md-2 back arrow">
-                      <button mat-button matStepperPrevious class="control">
-                        <img src="../../../assets/images/icons/ic_back.png" height="144" width="144"/>
-                      </button>
-                    </div>
+              <div class="col-md-2 forward arrow">
+                <button mat-button matStepperNext class="control">
+                  <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144" />
+                </button>
+              </div>
+            </div>
+          </div>
 
-                    <div class="col-md-8">
-                      <img  src="./../assets/images{{task.imgLink}}" width="100%" height="auto"><br><br>
+        </mat-step>
 
-                      <h3>{{ task.mainDescription }}</h3>
-                    </div>
+        <div class="steps" *ngFor="let step of steps">
 
-                    <div class="col-md-2 forward arrow">
-                      <button mat-button matStepperNext class="control">
-                        <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144"/>
-                      </button>
-                    </div>
+          <mat-step label="Stap: {{step.id}}" [completed]="false">
+
+            <div class="container-fluid step-container">
+              <div class="row step-row">
+                <div class="col-md-2 back arrow">
+                  <button mat-button matStepperPrevious class="control">
+                    <img src="../../../assets/images/icons/ic_back.png" height="144" width="144" />
+                  </button>
+                </div>
+
+                <div class="col-md-8">
+                  <div class="imgContainer">
+                    <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto">
+                    <br>
+                    <br>
+                  </div>
+                  <div class="textContainer">
+                    <h3>{{ step.stepDescription }}</h3>
                   </div>
                 </div>
 
-
-              </mat-step>
-
-
-              <div class="steps" *ngFor="let step of steps">
-
-                <mat-step label="Stap: {{step.id}}" [completed]="false">
-
-
-                  <div class="container-fluid step-container">
-                    <div class="row step-row">
-                      <div class="col-md-2 back arrow">
-                        <button mat-button matStepperPrevious class="control">
-                          <img src="../../../assets/images/icons/ic_back.png" height="144" width="144"/>
-                        </button>
-                      </div>
-
-                      <div class="col-md-8">
-                        <img  src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto"><br><br>
-
-                        <h3>{{ step.stepDescription }}</h3>
-                      </div>
-
-                      <div class="col-md-2 forward arrow">
-                        <button mat-button matStepperNext class="control">
-                          <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144"/>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </mat-step>
-
+                <div class="col-md-2 forward arrow">
+                  <button mat-button matStepperNext class="control">
+                    <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144" />
+                  </button>
+                </div>
               </div>
+            </div>
+          </mat-step>
 
-            </mat-horizontal-stepper>
+        </div>
 
-
+      </mat-horizontal-stepper>
 
     </div>
 
@@ -81,16 +85,9 @@
       <hr class="space">
     </div>
 
-
-
-
-
     <div class="col-3">
       <button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>
     </div>
-
-
-
 
   </div>
 </div>
