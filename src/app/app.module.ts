@@ -22,7 +22,7 @@ import { MessageService } from './services/message.service';
 import { EmployeeService } from './services/employee.service';
 import { StatusService } from './admin/login/status.service';
 
-import { MessagesComponent } from './components/messages/messages.component';
+import { MessagesComponent } from './admin/messages/messages.component';
 
 
 import { AppRoutingModule } from './/app-routing.module';
