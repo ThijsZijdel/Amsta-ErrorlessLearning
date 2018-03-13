@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StatusService} from "../login/status.service";
+import {Router} from "@angular/router";
+import {AdminDashboardComponent} from "../admin-dashboard/admin-dashboard.component";
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -8,7 +10,7 @@ import {StatusService} from "../login/status.service";
 })
 export class AdminSidebarComponent implements OnInit {
 
-  constructor(private status: StatusService) { }
+  constructor(private status: StatusService, private dashboard: AdminDashboardComponent) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,10 @@ export class AdminSidebarComponent implements OnInit {
    */
   logout(): void {
     this.status.changeLoggedInStatus(false);
+  }
+
+  showPanel(name) {
+    this.dashboard.setPanel(name);
   }
 
 }

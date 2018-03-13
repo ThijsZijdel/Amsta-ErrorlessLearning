@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
  */
 import { TasksComponent } from './components/tasks/tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CurrentTaskComponent } from './admin/current-task/current-task.component';
+import { CurrentTaskComponent } from './components/current-task/current-task.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { AddTaskComponent } from './admin/add-task/add-task.component';
 import { EditTaskComponent } from './admin/edit-task/edit-task.component';

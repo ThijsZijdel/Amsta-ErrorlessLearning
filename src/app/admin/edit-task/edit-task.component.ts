@@ -12,32 +12,14 @@ export class EditTaskComponent implements OnInit {
 
   @Input() task: Task;
 
-  /**
-   * Array of tasks
-   */
-  tasks: Task[];
-
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.getTask();
-    this.getTasks();
+    this.task = null;
+    this.task = this.taskService.editTask;
   }
 
-  setTask(task: Task) {
-    this.task = task;
-  }
-
-  /**
-   * Called by ngOnInit
-   * get from the constructors task connection (service) the tasks
-   * and add (subscribe) each task to the tasks array
-   * @author Thijs Zijdel
-   */
-  getTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
-  }
 
 
 
@@ -50,6 +32,9 @@ export class EditTaskComponent implements OnInit {
     this.taskService.updateTask(this.task).subscribe();
   }
 
+  close(): void {
+    this.taskService.setEditTask(null);
+  }
   /**
    * Delete the current task
    * @param {Task} task (this)
