@@ -16,6 +16,7 @@ export class EditTaskComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.task = null;
     this.task = this.taskService.editTask;
   }
 
@@ -31,6 +32,9 @@ export class EditTaskComponent implements OnInit {
     this.taskService.updateTask(this.task).subscribe();
   }
 
+  close(): void {
+    this.taskService.setEditTask(null);
+  }
   /**
    * Delete the current task
    * @param {Task} task (this)
