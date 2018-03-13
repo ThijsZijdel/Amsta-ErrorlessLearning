@@ -11,9 +11,12 @@ import { StatusService} from '../../admin/login/status.service';
  */
 export class TopNavComponent implements OnInit {
 
-  constructor(private status: StatusService) { }
+  isLoggedIn: boolean;
+
+  constructor(private statuss: StatusService) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.statuss.getLoggedInStatus();
   }
 
 }

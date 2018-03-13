@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/tasks">Taken </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="status.loggedInStatus">
+      <li class="nav-item dropdown" *ngIf="this.isLoggedIn">
         <a class="nav-link dropdown-toggle" routerLink="/admin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Employee
         </a>

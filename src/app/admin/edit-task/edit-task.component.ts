@@ -47,20 +47,20 @@ export class EditTaskComponent implements OnInit {
     this.taskService.deleteTask(task).subscribe();
   }
 
-  /**
-   * Getter for the current task
-   * note:  this will be setted to @input() task
-   *        and used in *ngIf="task"
-   *
-   * @author Thijs Zijdel
-   */
-  getTask(): void {
-    // TODO: make edit task not const
-    // const id = +this.route.snapshot.paramMap.get('id');
-    const id = 1;
-    this.taskService.getTask(id)
-      .subscribe(task => this.task = task);
-  }
+  // /**
+  //  * Getter for the current task
+  //  * note:  this will be setted to @input() task
+  //  *        and used in *ngIf="task"
+  //  *
+  //  * @author Thijs Zijdel
+  //  */
+  // getTask(): void {
+  //   // TODO: make edit task not const
+  //   // const id = +this.route.snapshot.paramMap.get('id');
+  //   const id = 1;
+  //   this.taskService.getTask(id)
+  //     .subscribe(task => this.task = task);
+  // }
 
   // /**
   //  * Back button
