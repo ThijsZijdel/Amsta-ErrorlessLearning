@@ -8,7 +8,9 @@ import {TaskService} from '../services/task.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
   tasks: Task[] = [];
+
   constructor(private taskService: TaskService) { }
 
   /**
@@ -26,5 +28,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
   }
+
 
 }
