@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusService} from '../../admin/login/status.service';
+import {observable} from "rxjs/symbol/observable";
 
 @Component({
   selector: 'app-top-nav',
@@ -11,7 +12,7 @@ import { StatusService} from '../../admin/login/status.service';
  */
 export class TopNavComponent implements OnInit {
 
-  constructor(private status: StatusService) { }
+  constructor(private statusService: StatusService) { }
 
   ngOnInit() {
   }

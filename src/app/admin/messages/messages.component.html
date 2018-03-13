@@ -1,8 +1,9 @@
 <!--
    Markup for the messages component
 -->
-<app-login></app-login>
-
+<div *ngIf="!isLoggedIn">
+  <app-login></app-login>
+</div>
 <br>
 
 <div *ngIf="messageService.messages.length">
