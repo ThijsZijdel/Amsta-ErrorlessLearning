@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusService} from '../../admin/login/status.service';
+import {observable} from "rxjs/symbol/observable";
 
 @Component({
   selector: 'app-top-nav',
@@ -11,12 +12,9 @@ import { StatusService} from '../../admin/login/status.service';
  */
 export class TopNavComponent implements OnInit {
 
-  isLoggedIn: boolean;
-
-  constructor(private statuss: StatusService) { }
+  constructor(private statusService: StatusService) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.statuss.getLoggedInStatus();
   }
 
 }

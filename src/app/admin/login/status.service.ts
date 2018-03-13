@@ -10,7 +10,7 @@ export class StatusService {
   constructor() { }
 
   changeLoggedInStatus(status: boolean) {
-    this.loggedInStatus= status;
+    this.loggedInStatus = status;
   }
 
   getLoggedInStatus() {
