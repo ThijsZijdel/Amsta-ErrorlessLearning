@@ -19,6 +19,8 @@ export class TaskService {
 
   private tasksUrl = 'api/tasks';  // URL to web api
 
+  public editTask: Task;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -131,6 +133,11 @@ export class TaskService {
       catchError(this.handleError<Task[]>('searchTasks', []))
     );
   }
+
+  setEditTask(task: Task): void{
+    this.editTask = task;
+  }
+
 
 }
 

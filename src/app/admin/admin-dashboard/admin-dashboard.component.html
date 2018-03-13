@@ -12,14 +12,24 @@
         <h3>container for admin dashboard content</h3>
 
 
-        <div class="panel add-panel">
-          <app-add-task></app-add-task>
-        </div>
+        <ul class="list-group tasks">
 
-        <div class="panel edit-panel">
-          <app-edit-task></app-edit-task>
-        </div>
+          <!--
+            for: all the tasks -> tasks: Task[];
+            set selected listener on the task
+            set click to onSelect method, with the clicked task
+          -->
+          <li *ngFor="let task of tasks" class ="list-group-item">
 
+
+            <!-- badge display for the tasks -->
+            <span class="badge">{{task.id}}</span> {{task.name}}
+
+            <button class="btn btn-sm float-right"  (click)="editTask(this.task)" routerLink="/admin/edit-task"> Edit </button>
+
+          </li>
+
+        </ul>
 
 
       </div>

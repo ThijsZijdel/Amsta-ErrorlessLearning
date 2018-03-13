@@ -1,20 +1,4 @@
 
-<ul class="list-group tasks">
-
-  <!--
-    for: all the tasks -> tasks: Task[];
-    set selected listener on the task
-    set click to onSelect method, with the clicked task
-  -->
-  <li *ngFor="let task of tasks" class ="list-group-item" (click)="setTask(this.task)">
-
-
-      <!-- badge display for the tasks -->
-      <span class="badge">{{task.id}}</span> {{task.name}}
-
-  </li>
-
-</ul>
 
 
   <hr>
@@ -42,6 +26,8 @@
   <img src="./../assets/images{{step.stepImgLink}}" width="200px"><br>
   <input [(ngModel)]="step.stepImgLink" placeholder="stepImgLink"/><br>
   <input [(ngModel)]="step.stepDescription" placeholder="stepDescription"/><br>
+
+
 
 </div>
 
