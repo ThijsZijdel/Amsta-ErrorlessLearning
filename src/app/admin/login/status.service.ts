@@ -9,10 +9,21 @@ export class StatusService {
 
   constructor() { }
 
+  /**
+   * Set the loggedInStatus
+   *
+   * @param {boolean} status
+   * @author: Thijs Zijdel
+   */
   changeLoggedInStatus(status: boolean) {
     this.loggedInStatus = status;
   }
 
+  /**
+   * Get the actual login status
+   * @returns {boolean} state
+   * @author: Thijs Zijdel
+   */
   getLoggedInStatus() {
     return this.loggedInStatus;
   }

@@ -65,11 +65,17 @@ export class CurrentTaskComponent implements OnInit {
 
   /**
    * Back button
+   * @author: Thijs Zijdel
    */
   goBack(): void {
     this.location.back();
   }
 
+  /**
+   * For the each current task will this method been called.
+   * Based on the routers (task) id will the correct steps gotten.
+   * @author: Thijs Zijdel
+   */
   private getSteps(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.taskService.getTask(id)

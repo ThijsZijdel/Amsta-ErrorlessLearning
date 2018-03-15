@@ -15,14 +15,15 @@ export class EditTaskComponent implements OnInit {
 
   constructor(private taskService: TaskService) { }
 
+  /**
+   * On initialize set the current task to null (reset)
+   * And get the actual editable task and assign this to the input.
+   * @author: Thijs Zijdel
+   */
   ngOnInit() {
     this.task = null;
     this.task = this.taskService.editTask;
   }
-
-
-
-
 
   /**
    * Save changes made to the current task
@@ -32,9 +33,14 @@ export class EditTaskComponent implements OnInit {
     this.taskService.updateTask(this.task).subscribe();
   }
 
+  /**
+   * Close the edit task view
+   * @author: Thijs Zijdel
+   */
   close(): void {
     this.taskService.setEditTask(null);
   }
+
   /**
    * Delete the current task
    * @param {Task} task (this)
@@ -46,27 +52,5 @@ export class EditTaskComponent implements OnInit {
 
     this.taskService.deleteTask(task).subscribe();
   }
-
-  // /**
-  //  * Getter for the current task
-  //  * note:  this will be setted to @input() task
-  //  *        and used in *ngIf="task"
-  //  *
-  //  * @author Thijs Zijdel
-  //  */
-  // getTask(): void {
-  //   // TODO: make edit task not const
-  //   // const id = +this.route.snapshot.paramMap.get('id');
-  //   const id = 1;
-  //   this.taskService.getTask(id)
-  //     .subscribe(task => this.task = task);
-  // }
-
-  // /**
-  //  * Back button
-  //  */
-  // goBack(): void {
-  //   this.location.back();
-  // }
 
 }
