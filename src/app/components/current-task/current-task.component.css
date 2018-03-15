@@ -1,25 +1,81 @@
 /**
  * Current task's private CSS styles
  */
+
 .align-center {
   align-content: center;
   text-align: center;
 }
 
 hr.space {
-  margin: 50px 200px;
+  margin: 4px 200px;
 }
-
 
 div.mat-step-icon {
   display: none;
 }
 
-.task-container .task-content .arrow {
+.task-container .task-content {
   margin: auto 0;
 }
 
-button.control{
+button.control {
   margin-top: 50px;
 }
 
+/* Step Content */
+/* image */
+
+.imgContainer {
+  height: 40vh;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+.stepImg {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* description/text */
+
+.textContainer {
+  height: 20vh;
+  width: 100%;
+}
+
+/* Arrow */
+.arrow {
+  margin: auto 0;
+  padding: 0;
+}
+
+.arrowButton, .arrowButton.input[type="submit"], .arrowButton.input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 5% 0 5% 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.back{
+  /*#EC1C24*/
+  border: solid thick #ec6d6f;
+  border-radius: 100%;
+  background-color: #f9c8c2;
+  overflow: hidden;
+}
+
+.forward{
+  /*#0ED145*/
+  border: solid thick #50d185;
+  border-radius: 100%;
+  background-color: #baeec8;
+  overflow: hidden;
+}

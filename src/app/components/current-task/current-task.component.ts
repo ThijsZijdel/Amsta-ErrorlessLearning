@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TaskService} from '../../services/task.service';
-
+import { MatStepper } from '@angular/material';
 // Steps:
 import {Step} from '../../models/Step';
 
@@ -65,11 +65,35 @@ export class CurrentTaskComponent implements OnInit {
 
   /**
    * Back button
+   * @author: Thijs Zijdel
    */
   goBack(): void {
     this.location.back();
   }
 
+  /**
+   * Step backward with the given matstepper
+   * @author Menno Jongejan
+   * @param {MatStepper} stepper
+   */
+  goStepBack(stepper: MatStepper): void{
+    stepper.previous();
+  }
+
+  /**
+   * Step forward with the given matstepper
+   * @author Menno Jongejan
+   * @param {MatStepper} stepper
+   */
+  goStepForward(stepper: MatStepper): void{
+    stepper.next();
+  }
+
+  /**
+   * For the each current task will this method been called.
+   * Based on the routers (task) id will the correct steps gotten.
+   * @author: Thijs Zijdel
+   */
   private getSteps(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.taskService.getTask(id)

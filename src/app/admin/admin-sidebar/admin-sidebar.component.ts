@@ -18,12 +18,18 @@ export class AdminSidebarComponent implements OnInit {
   /**
    * Method for logging out of the application
    * By setting the logged in status to false
+   *
    * @author: Thijs Zijdel
    */
   logout(): void {
     this.status.changeLoggedInStatus(false);
   }
 
+  /**
+   * This method will be for showing the right panel OR changed to a router outlet.
+   * //TODO admin panel / router outlet.
+   * @param name
+   */
   showPanel(name) {
     this.dashboard.setPanel(name);
   }

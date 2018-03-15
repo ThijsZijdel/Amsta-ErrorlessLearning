@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   /**
    * Called on initialize
    * call getTasks to assign the setup the tasks array
+   * @author: Thijs Zijdel
    */
   ngOnInit() {
     this.getEmployees();
@@ -33,19 +34,29 @@ export class LoginComponent implements OnInit {
    * Called by ngOnInit
    * get from the constructors task connection (service) the tasks
    * and add (subscribe) each task to the tasks array
+   * @author: Thijs Zijdel
    */
   getEmployees(): void {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
+  /**
+   * Login for the employee with validation of th3
+   * @param {string} userNameInput
+   * @param {string} userPassInput
+   * @author: Thijs Zijdel
+   */
   login(userNameInput: string, userPassInput: string): void {
+    //check the inputted values on every employee
     for ( const checkEmployee of this.employees ) {
+      //if the fields match: login
       if (checkEmployee.username === userNameInput && checkEmployee.password === userPassInput){
         this.employeeService.setLoggedInEmployee(checkEmployee);
         this.log('access granted for: ' + checkEmployee.id);
 
-        this.getActualStatus();
         this.status.changeLoggedInStatus(true);
+
+        //Get the login status for showing the welcome message and links
         this.getActualStatus();
         return;
       }
@@ -56,11 +67,16 @@ export class LoginComponent implements OnInit {
 
   /**
    * Log a TaskService message with the MessageService
+   * @author: Thijs Zijdel
    */
   private log(message: string) {
     this.messageService.add('Login: ' + message);
   }
 
+  /**
+   * Get the actual login status
+   * @author: Thijs Zijdel
+   */
   private getActualStatus(): void {
     this.actualLoginStatus = this.status.getLoggedInStatus();
 

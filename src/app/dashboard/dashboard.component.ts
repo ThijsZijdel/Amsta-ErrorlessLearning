@@ -14,6 +14,13 @@ export class DashboardComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   /**
+   * On initialize get those tasks.
+   */
+  ngOnInit() {
+    this.getTasks();
+  }
+
+  /**
    * Get 3 tasks from the taskService to display on the home screen
    * @author Thijs Zijdel
    */
@@ -21,13 +28,5 @@ export class DashboardComponent implements OnInit {
     this.taskService.getTasks()
       .subscribe(tasks => this.tasks = tasks.slice(1, 4));
   }
-
-  /**
-   * On initialize get those tasks.
-   */
-  ngOnInit() {
-    this.getTasks();
-  }
-
 
 }
