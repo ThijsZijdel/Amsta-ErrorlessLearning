@@ -14,17 +14,10 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/tasks">Taken </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="statusService.loggedInStatus">
-        <a class="nav-link dropdown-toggle" routerLink="/admin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item " *ngIf="statusService.loggedInStatus">
+        <a class="nav-link" routerLink="/admin" role="button">
           Employee
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/admin">Dasboard</a>
-          <a class="dropdown-item" routerLink="/admin/add-task">Add task</a>
-          <a class="dropdown-item" routerLink="/admin/edit-task">Edit task</a>
-          <div class="dropdown-divider"></div>
-
-        </div>
       </li>
       <li class="nav-item" style="padding-left:50px;">
         <a class="nav-link disabled" routerLink="/console">Console</a>
