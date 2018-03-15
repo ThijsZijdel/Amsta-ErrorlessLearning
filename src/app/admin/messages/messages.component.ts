@@ -18,6 +18,7 @@ export class MessagesComponent implements OnInit {
   /**
    * Constructor with a connection to the message Service
    * @param {MessageService} messageService, application messages
+   * @author: Thijs Zijdel
    */
   constructor(public messageService: MessageService) {}
 

@@ -9,16 +9,13 @@
 
     <div class="col-md-9">
       <div class="container-admin-content" *ngIf="loginStatusActual">
-        <h3>container for admin dashboard content</h3>
+        <!-- TODO this will be changed to a more dynamic way of showing the panels -->
+        <!-- Example: an new router link, specific for the admin functionality     -->
+
+
 
 
         <ul class="list-group tasks">
-
-          <!--
-            for: all the tasks -> tasks: Task[];
-            set selected listener on the task
-            set click to onSelect method, with the clicked task
-          -->
           <li *ngFor="let task of tasks" class ="list-group-item">
 
 
@@ -28,10 +25,17 @@
             <button class="btn btn-sm float-right"  (click)="editTask(this.task)" routerLink="/admin/edit-task"> Edit </button>
 
           </li>
+          <li class ="list-group-item">
+            <span class="badge"></span> Een extra taak toevoegen.
+            <button class="btn btn-sm float-right"><a routerLink="/admin/add-task">Voeg toe</a></button>
+          </li>
 
         </ul>
 
+
+
         <app-edit-task></app-edit-task>
+
 
       </div>
 
