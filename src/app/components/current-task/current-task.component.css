@@ -28,6 +28,7 @@ button.control {
 
 .imgContainer {
   height: 40vh;
+  width: 100%;
   overflow: hidden;
   margin-bottom: 10px;
   vertical-align: top;
@@ -43,12 +44,13 @@ button.control {
 
 .textContainer {
   height: 20vh;
+  width: 100%;
 }
 
 /* Arrow */
 .arrow {
-  margin: auto;
-  padding: auto;
+  margin: auto 0;
+  padding: 0;
 }
 
 .arrowButton, .arrowButton.input[type="submit"], .arrowButton.input[type="reset"] {
@@ -56,7 +58,7 @@ button.control {
   color: inherit;
   border: none;
   padding: 0;
-  margin: 25px 0px 25px 0px;
+  margin: 5% 0 5% 0;
   font: inherit;
   cursor: pointer;
   outline: inherit;
