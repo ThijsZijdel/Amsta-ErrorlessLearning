@@ -1,15 +1,15 @@
 /**
  * Current task's private CSS styles
  */
+
 .align-center {
   align-content: center;
   text-align: center;
 }
 
 hr.space {
-  margin: 50px 200px;
+  margin: 4px 200px;
 }
-
 
 div.mat-step-icon {
   display: none;
@@ -19,7 +19,28 @@ div.mat-step-icon {
   margin: auto 0;
 }
 
-button.control{
+button.control {
   margin-top: 50px;
 }
 
+/* Step Content */
+/* image */
+
+.imgContainer {
+  height: 40vh;
+  overflow: hidden;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+.stepImg {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* description/text */
+
+.textContainer {
+  height: 20vh;
+}
