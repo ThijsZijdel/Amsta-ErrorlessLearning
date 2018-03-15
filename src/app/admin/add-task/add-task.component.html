@@ -24,10 +24,27 @@
 
   <div class="step-container container-fluid">
     <mat-tab-group>
-      <mat-tab label="Tab 1">Content 1</mat-tab>
-      <mat-tab label="Tab 2">Content 2</mat-tab>
+
+      <div *ngFor="let step of stepsCreated">
+
+
+        <mat-tab label="Tab {{step.id}}">
+          <h3>step {{step.id}}</h3>
+
+          <div class="separator-vertical"></div>
+
+          <input type="file" #fileInput placeholder="Upload file..." /><br>
+          <button type="button" (click)="upload()">Upload</button>
+
+        </mat-tab>
+
+
+      </div>
+
     </mat-tab-group>
   </div>
+
+  <div class="separator-vertical"></div>
 
   <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
   <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value, steps.value)">

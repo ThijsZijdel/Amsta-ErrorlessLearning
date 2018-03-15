@@ -1,3 +1,6 @@
 /**
  * Current task's private CSS styles
  */
+.separator-vertical {
+  margin: 25px 0;
+}
