@@ -5,67 +5,69 @@
 <div class="container" *ngIf="task">
 
   <!-- link to the current-task.component.ts object -->
-  <div class="col-12 align-center">
+  <div class="col-md-12 align-center">
     <h2>{{ task.name | uppercase }}</h2>
     <br>
-    <div class="row">
+    <div class="container-fluid">
+      <div class="row">
 
-      <div class="col-md-2 back arrow">
-        <button (click)="goStepBack(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === 0">
-          <img src="../../../assets/images/icons/ic_back.png" height="144" width="144"/>
-        </button>
-      </div>
+        <div class="col-md-2 back arrow">
+          <button (click)="goStepBack(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === 0">
+            <img src="../../../assets/images/icons/ic_back.png" width="100%" height="100%"/>
+          </button>
+        </div>
 
-      <div class="container col-md-8">
-        <mat-horizontal-stepper #stepper>
+        <div class="col-md-8">
+          <mat-horizontal-stepper #stepper>
 
-          <mat-step label="Introductie" [completed]="false">
-            <div class="container-fluid step-container">
-              <div class="row step-row">
-                <div class="imgContainer">
-                  <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto"><br><br>
-                </div>
-
-                <div class="textContainer">
-                  <h3>{{ task.mainDescription }}</h3>
-                </div>
-              </div>
-            </div>
-          </mat-step>
-
-          <div class="steps" *ngFor="let step of steps">
-
-            <mat-step label="Stap: {{step.id}}" [completed]="false">
-
+            <mat-step label="Introductie" [completed]="false">
               <div class="container-fluid step-container">
                 <div class="row step-row">
                   <div class="imgContainer">
-                    <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto"><br><br>
+                    <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto"><br><br>
                   </div>
 
                   <div class="textContainer">
-                    <h3>{{ step.stepDescription }}</h3>
+                    <h3>{{ task.mainDescription }}</h3>
                   </div>
                 </div>
               </div>
             </mat-step>
 
-          </div>
-        </mat-horizontal-stepper>
-      </div>
+            <div class="steps" *ngFor="let step of steps">
 
-      <div class="col-md-2 forward arrow">
-        <button (click)="goStepForward(stepper)" class="arrowButton"
-                [disabled]="stepper.selectedIndex === stepper._steps.length-1">
-          <img src="../../../assets/images/icons/ic_forw.png" height="144" width="144"/>
-        </button>
+              <mat-step label="Stap: {{step.id}}" [completed]="false">
+
+                <div class="container-fluid step-container">
+                  <div class="row step-row">
+                    <div class="imgContainer">
+                      <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto"><br><br>
+                    </div>
+
+                    <div class="textContainer">
+                      <h3>{{ step.stepDescription }}</h3>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+
+            </div>
+          </mat-horizontal-stepper>
+        </div>
+
+        <div class="col-md-2 forward arrow">
+          <button (click)="goStepForward(stepper)" class="arrowButton"
+                  [disabled]="stepper.selectedIndex === stepper._steps.length-1">
+            <img src="../../../assets/images/icons/ic_forw.png" width="100%" height="100%"/>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="col-12">
+    <div class="col-md-12">
       <hr class="space">
     </div>
 
-    <div class="col-3">
+    <div class="col-md-3">
       <button class="btn btn-secondary btn-sm" (click)="goBack()">go back</button>
     </div>
