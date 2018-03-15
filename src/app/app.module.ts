@@ -39,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -86,7 +87,8 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     BrowserAnimationsModule,
     MatStepperModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: [
     TaskService,
