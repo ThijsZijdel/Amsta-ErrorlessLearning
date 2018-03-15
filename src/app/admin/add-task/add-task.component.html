@@ -22,6 +22,30 @@
   </label>
 
 
+  <div class="step-container container-fluid">
+    <mat-tab-group>
+
+      <div *ngFor="let step of stepsCreated">
+
+
+        <mat-tab label="Tab {{step.id}}">
+          <h3>step {{step.id}}</h3>
+
+          <div class="separator-vertical"></div>
+
+
+
+
+        </mat-tab>
+
+
+      </div>
+
+    </mat-tab-group>
+  </div>
+
+  <div class="separator-vertical"></div>
+
   <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
   <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value, steps.value)">
     add
