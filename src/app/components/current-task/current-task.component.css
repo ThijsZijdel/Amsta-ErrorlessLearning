@@ -15,7 +15,7 @@ div.mat-step-icon {
   display: none;
 }
 
-.task-container .task-content .arrow {
+.task-container .task-content {
   margin: auto 0;
 }
 
@@ -43,4 +43,37 @@ button.control {
 
 .textContainer {
   height: 20vh;
+}
+
+/* Arrow */
+.arrow {
+  margin: auto;
+  padding: auto;
+}
+
+.arrowButton, .arrowButton.input[type="submit"], .arrowButton.input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 25px 0px 25px 0px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.back{
+  /*#EC1C24*/
+  border: solid thick #ec6d6f;
+  border-radius: 100%;
+  background-color: #f9c8c2;
+  overflow: hidden;
+}
+
+.forward{
+  /*#0ED145*/
+  border: solid thick #50d185;
+  border-radius: 100%;
+  background-color: #baeec8;
+  overflow: hidden;
 }
