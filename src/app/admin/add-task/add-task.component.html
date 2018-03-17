@@ -28,14 +28,17 @@
       <div *ngFor="let step of stepsCreated">
 
 
-        <mat-tab label="Tab {{step.id}}">
-          <h3>step {{step.id}}</h3>
+        <mat-tab label="Stap {{step.id}}">
+          <h3>Stap {{step.id}}</h3>
 
           <div class="separator-vertical"></div>
 
+          Beschrijving <br>
+          <input [(ngModel)]="step.stepDescription" #stepDesc /> <br>
 
 
-
+          Afbeelding <br>
+          <input [(ngModel)]="step.stepImgLink" #stepImg /> <br>
         </mat-tab>
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
@@ -15,9 +15,10 @@ export class AddTaskComponent implements OnInit {
    */
   tasks: Task[];
 
+  @Input() step: Step;
 
   step1: Step = {id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'};
-  step2: Step = {id: 2, stepImgLink: 'link', stepDescription: 'name2'};
+  step2: Step = {id: 2, stepImgLink: 'link', stepDescription: 'description step 2'};
 
   stepsCreated: Step[] = [this.step1, this.step2];
 
@@ -31,6 +32,7 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.getSteps();
+    this.step = this.step1;
   }
 
   /**
