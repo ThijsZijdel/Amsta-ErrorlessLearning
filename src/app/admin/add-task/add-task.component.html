@@ -23,7 +23,9 @@
 
   <ol>
     <li *ngFor="let step of stepsCreated">
-      {{step.stepDescription}} - <button (click)="up(step)">/\</button> - <button (click)="down(step)">\/</button>
+      {{step.stepDescription}} -
+        <a (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0"><img src="../../../assets/icons/arrows/up.svg" alt="up"></a>
+      <a (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1"><img src="../../../assets/icons/arrows/down.svg" alt="down"></a>
     </li>
   </ol>
 
