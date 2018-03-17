@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
+declare var $ :any;
 
 @Component({
   selector: 'app-add-task',
@@ -88,4 +89,34 @@ export class AddTaskComponent implements OnInit {
       index++;
     }
   }
+
+  up(step: Step) {
+    this.move(step, -1);
+  }
+
+  down(step: Step) {
+    this.move(step, 1);
+  }
+
+  /**
+   * Move an step in the stepsCreated array
+   * @param element
+   * @param delta
+   */
+  move(element, delta) {
+    var steps = this.stepsCreated;
+    //get the elements index
+    var index = steps.indexOf(element);
+    var newIndex = index + delta;
+
+    //check if the element is at the top or bottom
+    if (newIndex < 0  || newIndex == steps.length) return;
+
+    //sort the indexes
+    var indexes = [index, newIndex].sort();
+
+    //Replace from lowest index, two elements, reverting the order
+    steps.splice(indexes[0], 2, steps[indexes[1]], steps[indexes[0]]);
+  };
+
 }
