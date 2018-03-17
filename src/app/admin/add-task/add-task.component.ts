@@ -117,6 +117,9 @@ export class AddTaskComponent implements OnInit {
 
     //Replace from lowest index, two elements, reverting the order
     steps.splice(indexes[0], 2, steps[indexes[1]], steps[indexes[0]]);
+
+    //Re assign step id's
+    this.AssignIds();
   };
 
 }
