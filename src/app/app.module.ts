@@ -65,6 +65,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 /**
  * Initialize the modules and application
  * @author Thijs Zijdel -  configured the application for the start
