@@ -17,8 +17,8 @@ export class AddTaskComponent implements OnInit {
 
   @Input() step: Step;
 
-  step1: Step = {id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'};
-  step2: Step = {id: 2, stepImgLink: 'link', stepDescription: 'description step 2'};
+  step1: Step = {id: 1, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
+  step2: Step = {id: 2, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
 
   stepsCreated: Step[] = [this.step1, this.step2];
 
@@ -72,5 +72,9 @@ export class AddTaskComponent implements OnInit {
 
     //  new Step({ id:2, link:"link", desc: "desc"})
 
+  }
+
+  addStep() {
+    this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
   }
 }
