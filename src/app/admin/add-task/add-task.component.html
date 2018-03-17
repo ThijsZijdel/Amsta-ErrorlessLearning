@@ -46,6 +46,9 @@
 
           Afbeelding <br>
           <input [(ngModel)]="step.stepImgLink" #stepImg /> <br>
+
+          <br><br>
+          <button (click)="removeStep(step.id - 1)">remove</button>
         </mat-tab>
 
 

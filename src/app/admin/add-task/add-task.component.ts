@@ -17,10 +17,8 @@ export class AddTaskComponent implements OnInit {
 
   @Input() step: Step;
 
-  step1: Step = {id: 1, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
-  step2: Step = {id: 2, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
-
-  stepsCreated: Step[] = [this.step1, this.step2];
+  sampleStep: Step = {id: 1, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
+  stepsCreated: Step[] = [this.sampleStep];
 
   constructor(
     private tasksService: TaskService) { }
@@ -32,7 +30,6 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.getSteps();
-    this.step = this.step1;
   }
 
   /**
@@ -62,7 +59,8 @@ export class AddTaskComponent implements OnInit {
 
 
 
-    this.tasksService.addTask({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated } as Task)
+    this.tasksService.addTask
+      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -74,7 +72,20 @@ export class AddTaskComponent implements OnInit {
 
   }
 
+  removeStep(stepIndex: number){
+    this.stepsCreated.splice(stepIndex, 1);
+    this.AssignIds();
+  }
+
   addStep() {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
+  }
+
+  private AssignIds() {
+    var index = 1;
+    for (let step of this.stepsCreated){
+      step.id = index;
+      index++;
+    }
   }
 }
