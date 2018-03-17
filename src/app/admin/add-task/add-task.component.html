@@ -21,6 +21,13 @@
     <input #steps />
   </label>
 
+  <ol>
+    <li *ngFor="let step of stepsCreated">
+      {{step.stepDescription}}
+    </li>
+  </ol>
+
+  <br>
 
   <div class="step-container container-fluid">
     <mat-tab-group>
