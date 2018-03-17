@@ -21,11 +21,17 @@
     <input #steps />
   </label>
 
-  <ol>
+  <ol class="steps-list">
     <li *ngFor="let step of stepsCreated">
-      {{step.stepDescription}} -
-        <a (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0"><img src="../../../assets/icons/arrows/up.svg" alt="up"></a>
-      <a (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1"><img src="../../../assets/icons/arrows/down.svg" alt="down"></a>
+      {{step.stepDescription}}
+      <div class="arrows">
+        <a class="up arrow" (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0">
+          <img src="../../../assets/icons/arrows/up.svg" alt="up">
+        </a>
+        <a class="down arrow" (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1">
+          <img src="../../../assets/icons/arrows/down.svg" alt="down">
+        </a>
+      </div>
     </li>
   </ol>
 
@@ -62,7 +68,7 @@
         </mat-tab>
       </div>
 
-      <mat-tab label="Voeg stap toe" (click)="addStep()">
+      <mat-tab (click)="addStep()" label="Voeg stap toe" onclick="addStep()" >
         <button (click)="addStep()"> Voeg stap toe </button>
       </mat-tab>
 
@@ -73,7 +79,7 @@
 
 
   <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value, steps.value)">
+  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
     add
   </button>
 </div>

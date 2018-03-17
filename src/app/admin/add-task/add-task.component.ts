@@ -50,10 +50,9 @@ export class AddTaskComponent implements OnInit {
    * @param {string} name
    * @param {string} imgLink
    * @param {string} mainDescription
-   * @param {string} steps
    * @author Thijs Zijdel
    */
-  add(name: string, imgLink: string, mainDescription: string, steps: string): void {
+  protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
     if (!name || !imgLink || !mainDescription) { return; } // note: steps not required, YET!
 
@@ -73,12 +72,12 @@ export class AddTaskComponent implements OnInit {
 
   }
 
-  removeStep(stepIndex: number){
+  protected removeStep(stepIndex: number){
     this.stepsCreated.splice(stepIndex, 1);
     this.AssignIds();
   }
 
-  addStep() {
+  protected addStep() {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
   }
 
@@ -90,11 +89,11 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
-  up(step: Step) {
+  protected up(step: Step) {
     this.move(step, -1);
   }
 
-  down(step: Step) {
+  protected down(step: Step) {
     this.move(step, 1);
   }
 
@@ -103,7 +102,7 @@ export class AddTaskComponent implements OnInit {
    * @param element
    * @param delta
    */
-  move(element, delta) {
+  private move(element, delta) {
     var steps = this.stepsCreated;
     //get the elements index
     var index = steps.indexOf(element);
