@@ -17,23 +17,6 @@
 
   <br>
 
-  <label>Task steps:
-    <input #steps />
-  </label>
-
-  <ol class="steps-list">
-    <li *ngFor="let step of stepsCreated">
-      {{step.stepDescription}}
-      <div class="arrows">
-        <a class="up arrow" (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0">
-          <img src="../../../assets/icons/arrows/up.svg" alt="up">
-        </a>
-        <a class="down arrow" (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1">
-          <img src="../../../assets/icons/arrows/down.svg" alt="down">
-        </a>
-      </div>
-    </li>
-  </ol>
 
   <br>
 
@@ -43,33 +26,49 @@
       <div *ngFor="let step of stepsCreated">
 
 
-        <mat-tab label="Stap {{step.id}}">
-          <h3>Stap {{step.id}}</h3>
-
-          <div class="separator-vertical"></div>
-
-          Beschrijving <br>
-          <input [(ngModel)]="step.stepDescription" #stepDesc /> <br>
-
-
-          Afbeelding <br>
-          <input [(ngModel)]="step.stepImgLink" #stepImg /> <br>
-
-          <br><br>
-
-          <input type='file' id="stepImgInput"/>
-          <img id="myImg" src="#" alt="your image" />
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <a class="float-left" (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0">
+              <img src="../../../assets/icons/arrows/left.svg" alt="up">
+            </a>
+            Stap {{step.id}}
+            <a class="float-right" (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1">
+              <img src="../../../assets/icons/arrows/right.svg" alt="down">
+            </a>
+          </ng-template>
 
 
+          <div class="addStep-body">
+            <h3>Stap {{step.id}}</h3>
+
+            <div class="separator-vertical"></div>
+
+            Beschrijving <br>
+            <input [(ngModel)]="step.stepDescription" #stepDesc /> <br>
 
 
-          <br><br>
-          <button (click)="removeStep(step.id - 1)">remove</button>
+            Afbeelding <br>
+            <input [(ngModel)]="step.stepImgLink" #stepImg /> <br>
+
+            <br><br>
+
+            <input type='file' id="stepImgInput"/>
+
+            <img id="blah" src="http://placehold.it/180" alt="image" />
+
+
+
+
+            <br><br>
+            <button (click)="removeStep(step.id - 1)">remove</button>
+          </div>
         </mat-tab>
       </div>
 
-      <mat-tab (click)="addStep()" label="Voeg stap toe" onclick="addStep()" >
-        <button (click)="addStep()"> Voeg stap toe </button>
+      <mat-tab label="Voeg stap toe">
+        <div class="addStep-body">
+          <button (click)="addStep()"> Voeg stap toe </button>
+        </div>
       </mat-tab>
 
     </mat-tab-group>
@@ -77,9 +76,13 @@
 
   <div class="separator-vertical"></div>
 
+  <hr>
 
-  <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
-    add
-  </button>
+<!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
+<button (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
+  add
+</button>
 </div>
+
+
+

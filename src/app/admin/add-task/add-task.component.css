@@ -5,40 +5,10 @@
   margin: 25px 0;
 }
 
-ol.steps-list {
-  width: 100%;
-  padding: 0;
-
-}
-ol.steps-list li::before{
-  height: 50px;
-  padding: 25px 5px;
-  width:2px;
-  border-left: 1px solid #DDDDDD;
-  content: " ";
-}
-ol.steps-list li:last-child {
-  border-bottom: 1px solid #DDDDDD;
-}
-ol.steps-list li {
-  overflow: hidden;
-  border: 1px solid #DDDDDD;
-  border-bottom: none;
-  padding: 6px 5px;
-  list-style-position: inside;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-ol.steps-list li div.arrows {
-  width: 60px;
-  float: right;
-}
-
-ol.steps-list li div.arrows a.arrow.up {
-  float: left;
-}
-ol.steps-list li div.arrows a.arrow.down {
-  float: right;
-}
 div.step-container {
 
+}
+.addStep-body {
+  min-height: 400px;
+  padding: 25px 50px !important;
 }
