@@ -1,19 +1,20 @@
 <div>
-  <label>Task name:
-    <input #taskName />
-  </label>
+
+  <mat-form-field>
+    <input matInput #taskName placeholder="Taak naam">
+  </mat-form-field>
 
   <br>
 
-  <label>Task img:
-    <input #taskImgLink />
-  </label>
+  <mat-form-field>
+    <input matInput #taskImgLink placeholder="Taak hoofd afbeelding link">
+  </mat-form-field>
 
   <br>
 
-  <label>Task desc:
-    <input #mainDesc />
-  </label>
+  <mat-form-field>
+    <input matInput #mainDesc placeholder="Taak beschrijving">
+  </mat-form-field>
 
   <br>
 
@@ -69,7 +70,13 @@
 
       <mat-tab label="Voeg stap toe">
         <div class="addStep-body">
-          <button (click)="addStep()"> Voeg stap toe </button>
+          <h3>Let op:</h3> <br>
+          <p>Er zijn in totaal al {{stepsCreated.length}} stappen aangemaakt.</p>
+          <p>{{addStepMessage}}</p>
+          <br>
+          <button class="btn btn-success btn-md"(click)="addStep()"> Voeg stap toe </button>
+          <br>
+
         </div>
       </mat-tab>
 
@@ -80,10 +87,11 @@
 
   <hr>
 
-<!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-<button (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
-  add
-</button>
+  <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
+  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
+    add
+  </button>
+
 </div>
 
 

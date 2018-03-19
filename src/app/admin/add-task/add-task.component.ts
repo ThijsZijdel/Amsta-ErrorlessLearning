@@ -21,6 +21,8 @@ export class AddTaskComponent implements OnInit {
   sampleStep: Step = {id: 1, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
   stepsCreated: Step[] = [this.sampleStep];
 
+  private addStepMessage: string = "";
+
   constructor(
     private tasksService: TaskService) { }
 
@@ -31,6 +33,7 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.getSteps();
+    this.setAddStepMessage();
   }
 
   /**
@@ -54,10 +57,7 @@ export class AddTaskComponent implements OnInit {
    */
   protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
-    if (!name || !imgLink || !mainDescription) { return; } // note: steps not required, YET!
-
-
-
+    if (!name || !imgLink || !mainDescription) { return; }
 
     this.tasksService.addTask
       ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated } as Task)
@@ -79,6 +79,7 @@ export class AddTaskComponent implements OnInit {
 
   protected addStep() {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
+    this.setAddStepMessage();
   }
 
   private AssignIds() {
@@ -87,6 +88,7 @@ export class AddTaskComponent implements OnInit {
       step.id = index;
       index++;
     }
+    this.setAddStepMessage();
   }
 
   protected up(step: Step) {
@@ -122,5 +124,21 @@ export class AddTaskComponent implements OnInit {
   };
 
 
+  private setAddStepMessage() {
+    let size = this.stepsCreated.length;
 
+    if (size <= 6) {
+      this.addStepMessage = "Het is daarom aan te raden om meer stappen toe te voegen. ";
+      return;
+    } else if (size >= 6 && size <= 10 ) {
+      this.addStepMessage = "Het is aan te raden om nog een aantal stappen toe te voegen. ";
+      return;
+    } else if (size >= 11 && size <= 12 ) {
+      this.addStepMessage = "Het is niet aan te raden om meer stappen toe te voegen. ";
+      return;
+    } else {
+      this.addStepMessage = "Meer stappen leidt tot nog meer verwarring. ";
+      return;
+    }
+  }
 }
