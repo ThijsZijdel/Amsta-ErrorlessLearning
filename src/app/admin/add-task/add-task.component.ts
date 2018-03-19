@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
-declare var $ :any;
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-task',
@@ -17,11 +17,12 @@ export class AddTaskComponent implements OnInit {
   tasks: Task[];
 
   @Input() step: Step;
-
-  sampleStep: Step = {id: 1, stepImgLink: '/path/to/img.jpg', stepDescription: ''};
-  stepsCreated: Step[] = [this.sampleStep];
+  
+  stepsCreated: Step[] = [];
 
   private addStepMessage: string = "";
+
+  showReordering: boolean = false;
 
   constructor(
     private tasksService: TaskService) { }
@@ -32,7 +33,6 @@ export class AddTaskComponent implements OnInit {
    */
   ngOnInit() {
     this.getTasks();
-    this.getSteps();
     this.setAddStepMessage();
   }
 
@@ -66,22 +66,33 @@ export class AddTaskComponent implements OnInit {
       });
   }
 
-  private getSteps() {
-
-    //  new Step({ id:2, link:"link", desc: "desc"})
-
-  }
-
+  /**
+   * Method for removing a certain step out the array
+   * Note: id's will be reassigned
+   *
+   * @param {number} stepIndex, the index of the step
+   * @author Thijs Zijdel
+   */
   protected removeStep(stepIndex: number){
     this.stepsCreated.splice(stepIndex, 1);
     this.AssignIds();
   }
 
+  /**
+   * Method for adding a new step for the task
+   * note: dummy step is pushed in the stepsCreated array
+   * @author Thijs Zijdel
+   */
   protected addStep() {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
     this.setAddStepMessage();
   }
 
+  /**
+   * Method for (re)assigning all the step id's
+   * This is to ensure that there aren't any wrong id's when removing a step
+   * @author Thijs Zijdel
+   */
   private AssignIds() {
     var index = 1;
     for (let step of this.stepsCreated){
@@ -91,10 +102,20 @@ export class AddTaskComponent implements OnInit {
     this.setAddStepMessage();
   }
 
+  /**
+   * Method for moving a step "up" in the array of stepsCreated
+   * @param {Step} step, that needs to be up one.
+   * @author Thijs Zijdel
+   */
   protected up(step: Step) {
     this.move(step, -1);
   }
 
+  /**
+   * Method for moving a step "down" in the array of stepsCreated
+   * @param {Step} step, that needs to be down one.
+   * @author Thijs Zijdel
+   */
   protected down(step: Step) {
     this.move(step, 1);
   }
@@ -103,6 +124,7 @@ export class AddTaskComponent implements OnInit {
    * Move an step in the stepsCreated array
    * @param element
    * @param delta
+   * @author Thijs Zijdel
    */
   private move(element, delta) {
     var steps = this.stepsCreated;
@@ -123,10 +145,15 @@ export class AddTaskComponent implements OnInit {
     this.AssignIds();
   };
 
-
+  /**
+   * Method for setting the appropriate alert message when adding a new step.
+   * This is based on the amount of steps already added.
+   * @author Thijs Zijdel
+   */
   private setAddStepMessage() {
     let size = this.stepsCreated.length;
 
+    //validate the size
     if (size <= 6) {
       this.addStepMessage = "Het is daarom aan te raden om meer stappen toe te voegen. ";
       return;
@@ -141,4 +168,11 @@ export class AddTaskComponent implements OnInit {
       return;
     }
   }
+
+  /**
+   * Name validation form controls
+   * @type {FormControl} + get the alert message
+   */
+  nameValidation = new FormControl('', [Validators.required]);
+  getErrorMessage() {return this.nameValidation.hasError('required') ? 'Je moet een waarde invoeren' : '';}
 }

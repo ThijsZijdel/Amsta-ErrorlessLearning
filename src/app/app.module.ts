@@ -30,7 +30,7 @@ import { SelectUserComponent } from './components/select-user/select-user.compon
 /**
  * Imports for angular modules
  */
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 /**
@@ -54,9 +54,12 @@ import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 /**
  * Data routing
@@ -90,6 +93,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -103,7 +107,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatButtonModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatSlideToggleModule
   ],
   providers: [
     TaskService,
