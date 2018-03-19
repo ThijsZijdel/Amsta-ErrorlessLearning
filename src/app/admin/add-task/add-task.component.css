@@ -4,3 +4,34 @@
 .separator-vertical {
   margin: 25px 0;
 }
+
+div.step-container {
+
+}
+.addStep-body {
+  min-height: 400px;
+  padding: 25px 50px !important;
+  border: 1px solid #ddd;
+}
+
+a.arrow {
+
+}
+
+a.left.arrow {
+  margin-right: 25px;
+}
+a.right.arrow {
+  margin-left: 25px;
+}
+.mat-tab-header-labels {
+  background: #ddd !important;
+  width: 210px !important;
+  height: 50px;
+  margin: 0 -25px -6px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.mat-tab-labels {
+  background: red;
+}
