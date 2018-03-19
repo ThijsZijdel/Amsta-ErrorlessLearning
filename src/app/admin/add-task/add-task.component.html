@@ -28,13 +28,15 @@
 
         <mat-tab>
           <ng-template mat-tab-label>
-            <a class="float-left" (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0">
-              <img src="../../../assets/icons/arrows/left.svg" alt="up">
-            </a>
-            Stap {{step.id}}
-            <a class="float-right" (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1">
-              <img src="../../../assets/icons/arrows/right.svg" alt="down">
-            </a>
+            <div class="mat-tab-header-labels">
+              <a class="left arrow" (click)="up(step)" *ngIf="stepsCreated.indexOf(step) != 0">
+                <img src="../../../assets/icons/arrows/left.svg" alt="up">
+              </a>
+              Stap {{step.id}}
+              <a class="right arrow" (click)="down(step)" *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1">
+                <img src="../../../assets/icons/arrows/right.svg" alt="down">
+              </a>
+            </div>
           </ng-template>
 
 
