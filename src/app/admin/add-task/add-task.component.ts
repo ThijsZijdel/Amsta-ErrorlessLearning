@@ -3,6 +3,7 @@ import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
 import {FormControl, Validators} from "@angular/forms";
+import {StatusService} from "../login/status.service";
 
 @Component({
   selector: 'app-add-task',
@@ -17,7 +18,7 @@ export class AddTaskComponent implements OnInit {
   tasks: Task[];
 
   @Input() step: Step;
-  
+
   stepsCreated: Step[] = [];
 
   private addStepMessage: string = "";
@@ -25,7 +26,8 @@ export class AddTaskComponent implements OnInit {
   showReordering: boolean = false;
 
   constructor(
-    private tasksService: TaskService) { }
+    private tasksService: TaskService,
+    private status: StatusService) { }
 
   /**
    * Called on initialize

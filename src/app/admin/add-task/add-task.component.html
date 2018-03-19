@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="status.loggedInStatus">
 
   <mat-form-field>
     <input matInput #taskName placeholder="Taak naam" [formControl]="nameValidation" required>
