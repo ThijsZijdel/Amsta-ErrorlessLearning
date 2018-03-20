@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30334257-9bda-485e-87fd-10581c1306c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.angular-cli.json" afterPath="$PROJECT_DIR$/.angular-cli.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.module.ts" afterPath="$PROJECT_DIR$/src/app/app.module.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -94,15 +92,13 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+            <state relative-caret-position="258">
+              <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
                 <element signature="e#145#192#0" expanded="true" />
-                <element signature="e#605#697#0" expanded="true" />
-                <element signature="e#1301#1373#0" expanded="true" />
-                <element signature="e#1728#1788#0" expanded="true" />
-                <element signature="e#2309#2384#0" expanded="true" />
+                <element signature="e#495#549#0" expanded="true" />
+                <element signature="e#922#982#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -473,12 +469,12 @@
       <workItem from="1521108550030" duration="10975000" />
       <workItem from="1521137647293" duration="18354000" />
       <workItem from="1521377408412" duration="11674000" />
-      <workItem from="1521547683045" duration="2752000" />
+      <workItem from="1521547683045" duration="3034000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161670000" />
+    <option name="totallyTimeSpent" value="161952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -950,15 +946,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+        <state relative-caret-position="258">
+          <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
             <element signature="e#145#192#0" expanded="true" />
-            <element signature="e#605#697#0" expanded="true" />
-            <element signature="e#1301#1373#0" expanded="true" />
-            <element signature="e#1728#1788#0" expanded="true" />
-            <element signature="e#2309#2384#0" expanded="true" />
+            <element signature="e#495#549#0" expanded="true" />
+            <element signature="e#922#982#0" expanded="true" />
           </folding>
         </state>
       </provider>

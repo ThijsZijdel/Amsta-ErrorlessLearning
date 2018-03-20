@@ -11,7 +11,7 @@ import { CurrentTaskComponent } from './components/current-task/current-task.com
 /**
  * Imports for angular modules
  */
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 /**
@@ -51,6 +51,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
+import {MatFormFieldModule, MatInputModule, MatSlideToggleModule, MatTooltipModule} from "@angular/material";
 
 
 /**
@@ -78,6 +79,7 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -88,7 +90,12 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     MatStepperModule,
     MatCardModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatSlideToggleModule
   ],
   providers: [
     TaskService,
