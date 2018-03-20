@@ -1,20 +1,23 @@
 <div *ngIf="status.loggedInStatus">
 
+  <h3>Een extra stappenplan (/taak) toevoegen.</h3>
+
+
   <mat-form-field>
-    <input matInput #taskName placeholder="Taak naam" [formControl]="nameValidation" required>
+    <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required>
     <mat-error *ngIf="nameValidation.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <br>
 
   <mat-form-field>
-    <input matInput #taskImgLink placeholder="Taak hoofd afbeelding link">
+    <input matInput #taskImgLink placeholder="Hoofd afbeelding link">
   </mat-form-field>
 
   <br>
 
   <mat-form-field>
-    <textarea matInput #mainDesc placeholder="Taak beschrijving"></textarea>
+    <textarea matInput #mainDesc placeholder="Beschrijving van de taak"></textarea>
   </mat-form-field>
 
   <br>
