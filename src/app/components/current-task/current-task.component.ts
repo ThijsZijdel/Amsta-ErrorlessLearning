@@ -1,13 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../../models/Task';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TaskService} from '../../services/task.service';
+import { TaskService } from '../../services/task.service';
 import { MatStepper } from '@angular/material';
+import {MatStepperModule} from '@angular/material/stepper';
+
 // Steps:
-import {Step} from '../../models/Step';
+import { Step } from '../../models/Step';
 
 /**
  * Current task component
@@ -22,7 +24,7 @@ import {Step} from '../../models/Step';
  * implements Initialize (OnInit)
  */
 export class CurrentTaskComponent implements OnInit {
-
+  isCompleted = false;
   /**
    * Set current task based on the routers constructor
    * *ngIf="task"
@@ -39,8 +41,8 @@ export class CurrentTaskComponent implements OnInit {
    * @param location the location
    */
   constructor(private route: ActivatedRoute,
-              private taskService: TaskService,
-              private location: Location) {
+    private taskService: TaskService,
+    private location: Location) {
   }
 
   /**
@@ -76,7 +78,8 @@ export class CurrentTaskComponent implements OnInit {
    * @author Menno Jongejan
    * @param {MatStepper} stepper
    */
-  goStepBack(stepper: MatStepper): void{
+  goStepBack(stepper: MatStepper): void {
+    stepper.selected.completed = false;
     stepper.previous();
   }
 
@@ -85,7 +88,8 @@ export class CurrentTaskComponent implements OnInit {
    * @author Menno Jongejan
    * @param {MatStepper} stepper
    */
-  goStepForward(stepper: MatStepper): void{
+  goStepForward(stepper: MatStepper): void {
+    stepper.selected.completed = true;
     stepper.next();
   }
 
