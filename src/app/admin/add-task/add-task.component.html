@@ -1,4 +1,4 @@
-<div *ngIf="status.loggedInStatus">
+<div *ngIf="!status.loggedInStatus">
 
   <h3>Een extra stappenplan (/taak) toevoegen.</h3>
 
@@ -17,7 +17,8 @@
   <br>
 
   <mat-form-field>
-    <textarea matInput #mainDesc placeholder="Beschrijving van de taak"></textarea>
+    <textarea matInput #mainDesc class="mainDesc"
+              placeholder="Beschrijving van de taak"></textarea>
   </mat-form-field>
 
   <br>

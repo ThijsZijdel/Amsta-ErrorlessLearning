@@ -44,7 +44,7 @@ export class AddTaskComponent implements OnInit {
    * and add (subscribe) each task to the tasks array
    * @author Thijs Zijdel
    */
-  getTasks(): void {
+  private getTasks(): void {
     this.tasksService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
@@ -75,9 +75,9 @@ export class AddTaskComponent implements OnInit {
    * @param {number} stepIndex, the index of the step
    * @author Thijs Zijdel
    */
-  protected removeStep(stepIndex: number){
+  protected removeStep(stepIndex: number):void{
     this.stepsCreated.splice(stepIndex, 1);
-    this.AssignIds();
+    this.assignIds();
   }
 
   /**
@@ -85,7 +85,7 @@ export class AddTaskComponent implements OnInit {
    * note: dummy step is pushed in the stepsCreated array
    * @author Thijs Zijdel
    */
-  protected addStep() {
+  protected addStep():void {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
     this.setAddStepMessage();
   }
@@ -95,7 +95,7 @@ export class AddTaskComponent implements OnInit {
    * This is to ensure that there aren't any wrong id's when removing a step
    * @author Thijs Zijdel
    */
-  private AssignIds() {
+  private assignIds() {
     var index = 1;
     for (let step of this.stepsCreated){
       step.id = index;
@@ -109,7 +109,7 @@ export class AddTaskComponent implements OnInit {
    * @param {Step} step, that needs to be up one.
    * @author Thijs Zijdel
    */
-  protected up(step: Step) {
+  protected up(step: Step):void {
     this.move(step, -1);
   }
 
@@ -118,7 +118,7 @@ export class AddTaskComponent implements OnInit {
    * @param {Step} step, that needs to be down one.
    * @author Thijs Zijdel
    */
-  protected down(step: Step) {
+  protected down(step: Step):void {
     this.move(step, 1);
   }
 
@@ -128,7 +128,7 @@ export class AddTaskComponent implements OnInit {
    * @param delta
    * @author Thijs Zijdel
    */
-  private move(element, delta) {
+  private move(element, delta):void {
     var steps = this.stepsCreated;
     //get the elements index
     var index = steps.indexOf(element);
@@ -144,7 +144,7 @@ export class AddTaskComponent implements OnInit {
     steps.splice(indexes[0], 2, steps[indexes[1]], steps[indexes[0]]);
 
     //Re assign step id's
-    this.AssignIds();
+    this.assignIds();
   };
 
   /**
@@ -152,7 +152,7 @@ export class AddTaskComponent implements OnInit {
    * This is based on the amount of steps already added.
    * @author Thijs Zijdel
    */
-  private setAddStepMessage() {
+  private setAddStepMessage():void {
     let size = this.stepsCreated.length;
 
     //validate the size
@@ -176,5 +176,5 @@ export class AddTaskComponent implements OnInit {
    * @type {FormControl} + get the alert message
    */
   nameValidation = new FormControl('', [Validators.required]);
-  getErrorMessage() {return this.nameValidation.hasError('required') ? 'Je moet een waarde invoeren' : '';}
+  getErrorMessage() {return this.nameValidation.hasError('required') ? 'Je moet deze taak een naam geven' : '';}
 }

@@ -14,5 +14,4 @@ import { Component } from '@angular/core';
  * Main application class (component)
  */
 export class AppComponent {
-  title = 'Amsta';
 }
