@@ -95,6 +95,6 @@ button.control {
   z-index: 1;
 }
 
-.mat-step-header .mat-step-icon-not-touched {
-  background-color: #50d185!important;
+/deep/ .mat-step-header .mat-step-icon-not-touched {
+  background-color: #50d185;
 }
