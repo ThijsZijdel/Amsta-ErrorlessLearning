@@ -13,18 +13,24 @@
 
         <div class="col-md-2 back arrow">
           <button (click)="goStepBack(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === 0">
-            <img src="../../../assets/icons/ic_back.png" width="100%" height="100%"/>
+            <img src="../../../assets/icons/ic_back.png" width="100%" height="100%" />
           </button>
         </div>
 
         <div class="col-md-8">
-          <mat-horizontal-stepper #stepper>
+          <mat-horizontal-stepper #stepper [linear]="true">
 
-            <mat-step label="Introductie" [completed]="false">
+            <ng-template matStepperIcon="edit">
+              <div class="doneCircle"><mat-icon>done</mat-icon></div>
+            </ng-template>
+
+            <mat-step label="Introductie" [completed]="false" [editable]="true">
               <div class="container-fluid step-container">
                 <div class="row step-row">
                   <div class="imgContainer">
-                    <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto"><br><br>
+                    <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto">
+                    <br>
+                    <br>
                   </div>
 
                   <div class="textContainer">
@@ -36,12 +42,14 @@
 
             <div class="steps" *ngFor="let step of steps">
 
-              <mat-step label="Stap: {{step.id}}" [completed]="false">
+              <mat-step label="Stap: {{step.id}}" [completed]="false" [editable]="true">
 
                 <div class="container-fluid step-container">
                   <div class="row step-row">
                     <div class="imgContainer">
-                      <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto"><br><br>
+                      <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto">
+                      <br>
+                      <br>
                     </div>
 
                     <div class="textContainer">
@@ -49,16 +57,17 @@
                     </div>
                   </div>
                 </div>
+
               </mat-step>
 
             </div>
+            
           </mat-horizontal-stepper>
         </div>
 
         <div class="col-md-2 forward arrow">
-          <button (click)="goStepForward(stepper)" class="arrowButton"
-                  [disabled]="stepper.selectedIndex === stepper._steps.length-1">
-            <img src="../../../assets/icons/ic_forw.png" width="100%" height="100%"/>
+          <button (click)="goStepForward(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === stepper._steps.length-1">
+            <img src="../../../assets/icons/ic_forw.png" width="100%" height="100%" />
           </button>
         </div>
       </div>
