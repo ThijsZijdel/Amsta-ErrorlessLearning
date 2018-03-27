@@ -102,8 +102,8 @@ button.control {
 /deep/ .mat-horizontal-stepper-header-container {
   position: relative;
   width: 100vw;
-  position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin: 15px auto 35px;
   padding: 5px 50px 5px 50px;
 }
