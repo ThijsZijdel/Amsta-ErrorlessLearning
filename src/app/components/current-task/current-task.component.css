@@ -8,7 +8,7 @@
 }
 
 hr.space {
-  margin: 4px 200px;
+  margin: 2px 200px;
 }
 
 div.mat-step-icon {
@@ -44,7 +44,7 @@ button.control {
 /* description/text */
 
 .textContainer {
-  height: 20vh;
+  height: 15vh;
   width: 100%;
 }
 
@@ -97,4 +97,13 @@ button.control {
 
 /deep/ .mat-step-header .mat-step-icon-not-touched {
   background-color: #50d185;
+}
+
+/deep/ .mat-horizontal-stepper-header-container {
+  position: relative;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 50px 5px 50px;
 }
