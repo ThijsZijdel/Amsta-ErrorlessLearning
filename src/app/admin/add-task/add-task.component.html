@@ -1,4 +1,4 @@
-<div *ngIf="!status.loggedInStatus">
+<div *ngIf="status.loggedInStatus">
 
   <h3>Een extra stappenplan (/taak) toevoegen.</h3>
 
@@ -105,6 +105,9 @@
     Deze taak toevoegen
   </button>
 
+</div>
+<div *ngIf="!status.loggedInStatus">
+  Please log in
 </div>
 
 
