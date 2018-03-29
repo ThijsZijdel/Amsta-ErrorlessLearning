@@ -14,7 +14,8 @@ export class InMemoryDataService implements InMemoryDbService {
         steps: [  { id: 1, stepImgLink: '/tasks/step1.jpg', stepDescription: 'Pak je tandenborstel'},
                   { id: 2, stepImgLink: '/tasks/step3.jpg', stepDescription: 'Doe hier een beetje tandpasta op'},
                   { id: 3, stepImgLink: '/tasks/brushing.jpg', stepDescription: 'En poets maar.'},
-                  { id: 4, stepImgLink: '/tasks/timer.gif', stepDescription: 'Na de timer moet je stoppen.'}]
+                  { id: 4, stepImgLink: '/tasks/timer.gif', stepDescription: 'Na de timer moet je stoppen.'},
+                  { id: 5, stepImgLink: '/tasks/end.jpg', stepDescription: 'Nu ben je klaar.'},]
       },
       { id: 3, name: 'Douchen', imgLink: '/tasks/shower.jpg', mainDescription: 'Hier leer je jezelf schoon te maken',
         steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 2'},
