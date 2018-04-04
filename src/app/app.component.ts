@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 /**
  * Main application component (MainApp)
  *                            [app-root]
