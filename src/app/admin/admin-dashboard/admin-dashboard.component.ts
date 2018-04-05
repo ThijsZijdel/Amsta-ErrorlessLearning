@@ -46,7 +46,6 @@ export class AdminDashboardComponent implements OnInit {
     this.taskService.setEditTask(task);
   }
 
-
   /**
    * Called by ngOnInit
    * get from the constructors task connection (service) the tasks

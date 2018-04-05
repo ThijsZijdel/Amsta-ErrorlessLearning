@@ -1,0 +1,11 @@
+.login-bg {
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  z-index: -999;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

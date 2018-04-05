@@ -20,9 +20,10 @@
 
 
             <!-- badge display for the tasks -->
-            <span class="badge">{{task.id}}</span> {{task.name}}
+            <div class="task-name">{{task.name}}</div>
+            <div class="task-description">{{task.mainDescription}}
 
-            <button class="btn btn-sm float-right"  (click)="editTask(this.task)" routerLink="/admin/edit-task"> Edit </button>
+            <button class="btn btn-1 btn-1c"  (click)="editTask(this.task)" routerLink="/admin/edit-task"> Bewerken </button></div>
 
           </li>
           <li class ="list-group-item">
@@ -37,7 +38,7 @@
       </div>
 
       <div *ngIf="!loginStatusActual">
-        <p>No admin/ employee account logged in.</p><br><br>
+        <p>U bent niet ingelogd</p><br><br>
       </div>
 
     </div>
