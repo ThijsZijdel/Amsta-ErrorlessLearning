@@ -21,7 +21,7 @@ if (isset($_REQUEST['action'])) {
             $password = $_REQUEST['password'];
 
             // Create connection
-            $conn = new mysqli(constant(D::$servername), constant(D::$username), constant(D::$password));
+            $conn = new mysqli(constant(D::$SERVER_NAME), constant(D::$USERNAME), constant(D::$PASSWORD));
 
             // Check connection
             if ($conn->connect_error) {
@@ -29,7 +29,7 @@ if (isset($_REQUEST['action'])) {
                     'message' => 'Database connection error',
                 );
             } else if (!empty($username) && !empty($password)) {
-                $sql = "SELECT * FROM team5_app.Employee where username=" . $username;
+                $sql = "SELECT * FROM constanct(D::$DATABASE_NAME) team5_app.Employee where username=" . $username;
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {

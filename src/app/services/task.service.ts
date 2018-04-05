@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'api/tasks';  // URL to web api
+  private tasksUrl = 'api/task';  // URL to web api
 
   public editTask: Task;
 
@@ -42,7 +42,7 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTask(id: number): Observable<Task> {
-    const url = `${this.tasksUrl}/${id}`;
+    const url = `${this.tasksUrl}/?action=get&id=${id}`;
 
     return this.http.get<Task>(url).pipe(
       tap(_ => this.log(`fetched Task id=${id}`)),

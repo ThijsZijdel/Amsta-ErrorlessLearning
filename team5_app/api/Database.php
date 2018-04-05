@@ -8,7 +8,11 @@
 
 class Database
 {
-    public static $servername = "localhost";
-    public static $username = "team5";
-    public static $password = "78pESGC7k8rEMq4K";
+    public static $SERVER_NAME = "localhost";
+    public static $DATABASE_NAME = "amsta";
+    public static $USERNAME = "";
+    public static $PASSWORD = "";
+
+    //public static $username = "team5";
+    //public static $password = "78pESGC7k8rEMq4K";
 }
