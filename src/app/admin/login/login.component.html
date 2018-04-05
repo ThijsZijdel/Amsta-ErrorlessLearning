@@ -1,36 +1,43 @@
-<br><br><br>
-<div class="col-md-4">
+<div class="login-bg">
+  <br>
+  <br>
+  <br>
+  <div class="col-md-4">
 
-  <div class="card" style="width: 100%;">
-    <div class="card-block">
-      <h4 class="card-title">Login voor werknemers:</h4>
+    <div class="card" style="width: 100%;">
+      <div class="card-block">
+        <h4 class="card-title">Login voor werknemers:</h4>
 
-      <label>Username:
-        <input #username type="text" placeholder="username..."/>
-      </label>
+        <label>Username:
+          <input #username type="text" placeholder="username..." />
+        </label>
 
-      <br>
+        <br>
 
-      <label>Password:
-        <input #password type="password" placeholder="password..."/>
-      </label>
+        <label>Password:
+          <input #password type="password" placeholder="password..." />
+        </label>
 
-      <button class="btn btn-outline-primary btn-sm"
-              (click)="login(username.value, password.value)">
-        login
-      </button>
+        <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">
+          login
+        </button>
+      </div>
     </div>
+
   </div>
 
-</div>
+  <br>
+  <br>
 
-<br><br>
+  <div *ngIf="this.actualLoginStatus">
+    <h1>Welcome back</h1>
 
-<div *ngIf="this.actualLoginStatus">
-  <h1>Welcome back</h1>
-
-  <a routerLink="/admin">Dasboard</a><br>
-  <a routerLink="/admin/add-task">Add task</a><br>
-  <a routerLink="/admin/edit-task">Edit task</a><br>
-  <!--<a (click)="top-nav.logout()">Log out</a>-->
+    <a routerLink="/admin">Dasboard</a>
+    <br>
+    <a routerLink="/admin/add-task">Add task</a>
+    <br>
+    <a routerLink="/admin/edit-task">Edit task</a>
+    <br>
+    <!--<a (click)="top-nav.logout()">Log out</a>-->
+  </div>
 </div>
