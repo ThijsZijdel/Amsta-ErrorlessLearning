@@ -95,11 +95,11 @@ button.control {
   z-index: 1;
 }
 
-/deep/ .mat-step-header .mat-step-icon-not-touched {
+:host /deep/ .mat-step-header .mat-step-icon-not-touched {
   background-color: #50d185;
 }
 
-/deep/ .mat-horizontal-stepper-header-container {
+:host /deep/ .mat-horizontal-stepper-header-container {
   position: relative;
   width: 100vw;
   left: 50%;
@@ -107,3 +107,4 @@ button.control {
   margin: 15px auto 35px;
   padding: 5px 50px 5px 50px;
 }
+
