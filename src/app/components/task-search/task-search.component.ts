@@ -19,6 +19,8 @@ import { TaskService} from '../../services/task.service';
 })
 export class TaskSearchComponent implements OnInit {
 
+  visible;
+
   tasks$: Observable<Task[]>;
   private searchTerms = new Subject<string>();
 

@@ -3,6 +3,7 @@ import {EmployeeService} from '../../services/employee.service';
 import {Employee} from '../../models/Employee';
 import {MessageService} from '../../services/message.service';
 import {StatusService} from './status.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService,
               private messageService: MessageService,
-              private status: StatusService) { }
+              private status: StatusService,
+              private router: Router) { }
 
   /**
    * Called on initialize
@@ -58,6 +60,7 @@ export class LoginComponent implements OnInit {
 
         //Get the login status for showing the welcome message and links
         this.getActualStatus();
+        this.router.navigate(['/admin']);
         return;
       }
     }

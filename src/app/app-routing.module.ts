@@ -11,6 +11,7 @@ import { MessagesComponent } from './admin/messages/messages.component';
 import { AddTaskComponent } from './admin/add-task/add-task.component';
 import { EditTaskComponent } from './admin/edit-task/edit-task.component';
 import { AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
+import { LoginComponent } from './admin/login/login.component';
 
 /**
  * Declaration of the routes (array)
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'console', component: MessagesComponent},
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'admin/add-task', component: AddTaskComponent},
-  { path: 'admin/edit-task', component: EditTaskComponent}
+  { path: 'admin/edit-task', component: EditTaskComponent},
+  { path: 'login', component: LoginComponent}
 ];
 
 /**

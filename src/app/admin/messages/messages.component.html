@@ -1,23 +1,11 @@
 <!--
    Markup for the messages component
 -->
-<div *ngIf="!isLoggedIn">
-  <app-login></app-login>
-</div>
-<br>
-
 <div *ngIf="messageService.messages.length">
-
   <br>
-
   <h2>Messages</h2>
   <button class="clear" (click)="messageService.clear()">
     clear
   </button>
-
   <div *ngFor='let message of messageService.messages'> {{message}} </div>
-
 </div>
-
-
-
