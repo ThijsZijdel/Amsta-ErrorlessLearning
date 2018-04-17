@@ -9,7 +9,11 @@ import {TaskService} from '../services/task.service';
 })
 export class DashboardComponent implements OnInit {
 
+  currentTime: string;
+
   tasks: Task[] = [];
+
+  currentTasks: Task[] = [];
 
   constructor(private taskService: TaskService) { }
 
@@ -18,15 +22,30 @@ export class DashboardComponent implements OnInit {
    */
   ngOnInit() {
     this.getTasks();
+    this.currentTime = "10:30";
+
+    this.filterTasks();
   }
 
   /**
-   * Get 3 tasks from the taskService to display on the home screen
+   * Get all the tasks
    * @author Thijs Zijdel
    */
   getTasks(): void {
     this.taskService.getTasks()
-      .subscribe(tasks => this.tasks = tasks.slice(1, 4));
+      .subscribe(tasks => this.tasks = tasks);
   }
+
+  filterTasks(): void {
+      for(let taskCheck of this.tasks){
+        for(let time of taskCheck.taskTimes){
+          let startHour = time.startTime.substring(0,time.startTime.indexOf(":"));
+          console.log("test:"+startHour+" from "+time.startTime);
+        }
+      }
+
+  }
+
+
 
 }
