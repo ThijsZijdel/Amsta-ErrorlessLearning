@@ -1,11 +1,16 @@
 <div>
-  <h3>Links</h3> <br>
-  <a routerLink="/admin">Dasboard</a><br>
-  <a routerLink="/admin/add-task">Add task</a><br>
-  <a routerLink="/dashboard" (click)="logout()" >Log out</a>
+  <div style="margin: 15px; text-align: center;">
+    <button class="btn btn-1 btn-1c blue" style="display: inline-block;" routerLink="/admin/add-task">Taak toevoegen</button>
+  </div>
+  <a routerLink="/admin">Dasboard</a>
+  <br>
+  <a routerLink="/admin/add-task">Add task</a>
+  <br>
+  <a routerLink="/dashboard" (click)="logout()">Log out</a>
 
-  <br><br><br>
-  <a href="#" (click)="showPanel(panel-add)" >test panel</a>
+  <br>
+  <br>
+  <br>
+  <a href="#" (click)="showPanel(panel-add)">test panel</a>
 
 </div>
-
