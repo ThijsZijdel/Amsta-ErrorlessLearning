@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: Mennolp, Lucas
+ * User: Menno, Lucas
  * Date: 3/22/2018
  * Time: 2:38 PM
  */
@@ -18,8 +18,98 @@ if (isset($_REQUEST['action'])) {
   if ($action === "add") {
 
   } else if ($action === "remove") {
+    if (isset($_REQUEST["id"])) {
+      $id = $_REQUEST["id"];
 
+      // Create connection
+      $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"), constant("DATABASE_NAME"));
+
+      if ($conn->connect_error) {
+        $response['status'] = array(
+          'message' => 'Database connection error',
+        );
+      } else {
+        // sql to delete a record
+        $sql = "DELETE FROM amsta.Task WHERE id=" + $id;
+
+        // Connection with success and error messages.
+        if ($conn->query($sql) === TRUE) {
+          $response['status'] = array(
+            'success' => true,
+            'message' => 'Successfully removed task',
+            'taskId' => $id
+          );
+        } else {
+          $response['status'] = array(
+            'success' => false,
+            'message' => 'Error something went wrong while trying to delete task',
+          );
+        }
+      }
+    }
   } else if ($action === "edit") {
+    $json = file_get_contents('php://input');
+    $obj = json_decode($json);
+
+    $taskId = $obj->Task->id;
+    $taskName = $obj->Task->name;
+    $taskDescription = $obj->Task->mainDescription;
+    $taskImageLink = $obj->Task->imgLink;
+    $taskSteps = $obj->Task->steps;
+
+    // Create connection
+    $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
+    $success = true;
+
+    if ($conn->connect_error) {
+      $response['status'] = array(
+        'success' => false,
+        'message' => 'Database connection error',
+      );
+    } else {
+      $sql = "UPDATE amsta.Task SET amsta.Task.name='" . $taskName . "',amsta.Task.description='" . $taskDescription . "',amsta.Task.imgLink='" . $taskImageLink . "' WHERE amsta.Task.idTask=" . $taskId;
+      // Connection with success and error messages.
+      if ($conn->query($sql) === TRUE) {
+        $response['status'] = array(
+          'success' => true,
+          'message' => 'Only the task has successfully been updated.',
+          'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
+        );
+
+        foreach($taskSteps as $step)
+        {
+          $stepId = $step->id;
+          $stepDescription = $step->stepDescription;
+          $stepImageLink = $step->stepImgLink;
+
+          $sql = "UPDATE amsta.Step SET amsta.Step.description='" . $stepDescription . "',amsta.Step.imgLink='" . $stepImageLink . "' WHERE amsta.Step.Task_taskId=" . $taskId . " AND amsta.Step.idStep=" . $stepId;
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+          }
+        }
+      } else {
+        $response['status'] = array(
+          'message' => 'Error something went wrong while trying to update task',
+          'success' => false,
+          'errorMessage' => $conn->error
+        );
+      }
+
+      if($success)
+      {
+        $response['status'] = array(
+          'message' => 'Task and steps successfully updated!',
+          'success' => true
+        );
+      } else {
+        $response['status'] = array(
+          'message' => 'Error something went wrong while trying to update task',
+          'success' => false,
+          'errorMessage' => $conn->error
+        );
+      }
+    }
 
   } else if ($action === "get") {
     if (isset($_REQUEST["id"])) {
