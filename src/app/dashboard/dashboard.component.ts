@@ -10,12 +10,14 @@ import {TaskService} from '../services/task.service';
 export class DashboardComponent implements OnInit {
 
   currentTime: string;
-
-  tasks: Task[] = [];
-
-  currentTasks: Task[] = [];
-
   currentHour: number;
+  currentMinute: number;
+
+  pastTasks: Task[] = [];
+  currentTasks: Task[] = [];
+  upcommingTasks: Task[] = [];
+
+
 
   constructor(private taskService: TaskService) { }
 
@@ -23,35 +25,21 @@ export class DashboardComponent implements OnInit {
    * On initialize get those tasks.
    */
   ngOnInit() {
-    this.getCurrentTasks();
-
-    var now = new Date();
-    this.currentTime = now.getHours()+":"+now.getMinutes();
-
-    this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
-   // this.filterTasks();
+    this.initializeTime();
+    this.getTasks();
   }
 
   /**
    * Get all the tasks
    * @author Thijs Zijdel
    */
-  getCurrentTasks(): void {
+  getTasks(): void {
 
 
     this.taskService.getTasks().subscribe(tasks => {
+      for(let task of tasks){
 
-
-
-      for(let taskCheck of tasks){
-
-
-
-
-
-        for(let time of taskCheck.taskTimes){
-
-
+        for(let time of task.taskTimes){
 
           let startHour = parseInt(time.startTime.substring(0, time.startTime.indexOf(":")));
           let startMin = parseInt(time.startTime.substring(time.startTime.indexOf(":"),time.startTime.length));
@@ -59,38 +47,34 @@ export class DashboardComponent implements OnInit {
           let endHour = parseInt(time.endTime.substring(0, time.endTime.indexOf(":")));
           let endMin = parseInt(time.endTime.substring(time.endTime.indexOf(":"),time.endTime.length));
 
-          console.log("test:"+startHour+" from "+time.startTime+" till: "+endHour + "  =_>"+time.endTime);
 
 
 
           if (this.currentHour >= startHour && this.currentHour <= endHour) {
-            this.tasks.push(taskCheck);
+            //TODO validate minutes
+            this.currentTasks.push(task);
+
+          } else if (this.currentHour <= startHour){
+            this.upcommingTasks.push(task);
+          } else if (this.currentHour >= endHour){
+            this.pastTasks.push(task);
           }
+
         }
       }
 
-
-
-
-
-        //this.tasks = tasks as Task[]
-
-      });
-  }
-
-  filterTasks(): void {
-
-      window.alert(this.tasks.length);
-
-      for(let taskCheck of this.tasks){
-        for(let time of taskCheck.taskTimes){
-          let startHour = time.startTime.substring(0,time.startTime.indexOf(":"));
-          console.log("test:"+startHour+" from "+time.startTime);
-        }
-      }
-
+    });
   }
 
 
 
+  /**
+   * Method for setting up the current time
+   */
+  private initializeTime() {
+    var now = new Date();
+    this.currentTime = now.getHours()+":"+now.getMinutes();
+    this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
+    this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":"),this.currentTime.length));
+  }
 }
