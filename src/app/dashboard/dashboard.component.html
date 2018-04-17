@@ -17,6 +17,9 @@
           <h4 class="card-title">{{task.name}}</h4>
           <p class="card-text">{{ task.mainDescription }}</p>
           <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
+
+          {{task.taskTimes[0].startTime}}-{{task.taskTimes[0].endTime}} <br>
+         
         </div>
         <!--</div>-->
       </mat-card>
