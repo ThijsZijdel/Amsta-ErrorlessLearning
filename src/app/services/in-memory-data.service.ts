@@ -32,7 +32,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 5, name: 'Lunch eten' , imgLink: '/tasks/cooking.jpg', mainDescription: 'Hier leer je netjes te lunchen',
         steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 2'},
                   { id: 2, stepImgLink: '/tasks/cleaning.jpg', stepDescription: 'Beschrijving stp 3'}],
-        taskTime: {startTime: "13:00", endTime: "14:00"}
+        taskTimes:[ {startTime: "13:00", endTime: "14:00"} ]
       },
       { id: 6, name: 'Koken', imgLink: '/tasks/cooking.jpg', mainDescription: 'Hier leer je te koken',
         steps: [  { id: 1, stepImgLink: '/tasks/cooking.jpg', stepDescription: 'Beschrijving stap 1'},
