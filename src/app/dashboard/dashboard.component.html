@@ -1,10 +1,5 @@
 <div class="container">
 
-  <div class="col-9" style="margin-top:75px;">
-    <!-- component task search -->
-    <app-task-search></app-task-search>
-  </div>
-
   <br>
   <h3>Ochtend ritueel</h3>
 
@@ -19,7 +14,7 @@
           <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
 
           {{task.taskTimes[0].startTime}}-{{task.taskTimes[0].endTime}} <br>
-         
+
         </div>
         <!--</div>-->
       </mat-card>
