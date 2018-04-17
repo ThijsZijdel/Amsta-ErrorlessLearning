@@ -6,4 +6,9 @@ export class TaskTime {
     this.startTime = startTime;
     this.endTime = endTime;
   }
+
+  toString(): string {
+    return this.startTime + "-" + this.endTime;
+  }
+
 }
