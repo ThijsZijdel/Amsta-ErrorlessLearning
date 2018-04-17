@@ -1,25 +1,76 @@
 <div class="container">
 
   <br>
-  <h3>Ochtend ritueel</h3>
+
 
   <div class="row">
-    <div *ngFor="let task of tasks" class="col-md-4">
+    <div *ngFor="let task of pastTasks" class="col-md-3">
       <mat-card>
-        <!--<div class="card" style="width: 100%;">-->
+
         <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
         <div class="card-block">
           <h4 class="card-title">{{task.name}}</h4>
           <p class="card-text">{{ task.mainDescription }}</p>
           <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
 
-          {{task.taskTimes[0].startTime}}-{{task.taskTimes[0].endTime}} <br>
+          <div class="time-indicator" *ngFor="let time of taskTimes">
+            {{time.startTime}} - {{time.endTime}} &nbsp;&nbsp;
+          </div>
 
         </div>
-        <!--</div>-->
+
       </mat-card>
     </div>
   </div>
+
+
+  <div class="row">
+
+    <div *ngFor="let task of currentTasks" class="col-md-4">
+      <mat-card>
+
+        <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{task.name}}</h4>
+          <p class="card-text">{{ task.mainDescription }}</p>
+          <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
+
+          <div class="time-indicator" *ngFor="let time of taskTimes">
+            {{time.startTime}} - {{time.endTime}} &nbsp;&nbsp;
+          </div>
+
+        </div>
+
+      </mat-card>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div *ngFor="let task of upcommingTasks" class="col-md-3">
+      <mat-card>
+
+        <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{task.name}}</h4>
+          <p class="card-text">{{ task.mainDescription }}</p>
+          <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
+
+          <div class="time-indicator" *ngFor="let time of taskTimes">
+            {{time.startTime}} - {{time.endTime}} &nbsp;&nbsp;
+          </div>
+
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+
+
 
   <div class="row">
 
