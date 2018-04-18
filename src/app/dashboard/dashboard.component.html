@@ -13,8 +13,12 @@
           <p class="card-text">{{ task.mainDescription }}</p>
           <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
 
-          <div class="time-indicator" *ngFor="let time of task.taskTimes">
-            <div *ngIf="isPast(time.endTime)">{{time.startTime}} - {{time.endTime}}</div>
+          <br>
+
+          <div class="time-indicator-box">
+            <div *ngFor="let time of task.taskTimes"  class="time-indicator-box">
+              <div *ngIf="isPast(time.endTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+            </div>
           </div>
 
         </div>
@@ -72,8 +76,12 @@
             <p class="card-text">{{ task.mainDescription }}</p>
             <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
 
-            <div class="time-indicator" *ngFor="let time of task.taskTimes">
-              <div *ngIf="isNow(time.startTime, time.endTime)">{{time.startTime}} - {{time.endTime}}</div>
+            <br>
+
+            <div class="time-indicator-box">
+              <div *ngFor="let time of task.taskTimes">
+                <div *ngIf="isNow(time.startTime, time.endTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+              </div>
             </div>
 
           </div>
@@ -111,7 +119,7 @@
   <div class="container">
 
     <div class="row">
-      <div *ngFor="let task of upcommingTasks.slice(1,amountOfUpcomingTasksDisplayIndex)" class="col-md-3">
+      <div *ngFor="let task of upcommingTasks.slice(0,amountOfUpcomingTasksDisplayIndex)" class="col-md-3">
         <mat-card>
 
           <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
@@ -120,8 +128,12 @@
             <p class="card-text">{{ task.mainDescription }}</p>
             <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
 
-            <div class="time-indicator" *ngFor="let time of task.taskTimes">
-              <div *ngIf="isUpcoming(time.startTime)">{{time.startTime}} - {{time.endTime}}</div>
+            <br>
+
+            <div class="time-indicator-box">
+              <div *ngFor="let time of task.taskTimes" class="time-indicator-box">
+                <div *ngIf="isUpcoming(time.startTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+              </div>
             </div>
 
           </div>

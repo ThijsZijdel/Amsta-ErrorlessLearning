@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
           } else if (this.isUpcoming(time.startTime)){
             this.upcommingTasks.push(task);
 
-          } else if (this.isPast(time.endTime)){
+          } else if (this.isPast(time.endTime) && this.isNotAlreadyInPast(task)){
             this.pastTasks.push(task);
           }
 
@@ -114,5 +114,14 @@ export class DashboardComponent implements OnInit {
       this.amountOfUpcomingTasksDisplayIndex = 4;
       this.showAllUpcomingTasksButtonText = "Laat zien";
     }
+  }
+
+  private isNotAlreadyInPast(checkTask: Task) {
+    let addThisTask: boolean = true;
+    for(let task of this.pastTasks){
+      if (checkTask.id == task.id)
+        addThisTask = false;
+    }
+    return addThisTask
   }
 }
