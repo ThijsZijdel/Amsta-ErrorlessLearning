@@ -16,6 +16,69 @@ if (isset($_REQUEST['action'])) {
   $action = $_REQUEST['action'];
 
   if ($action === "add") {
+    $json = file_get_contents('php://input');
+    $obj = json_decode($json);
+
+    $taskId = $obj->Task->id;
+    $taskName = $obj->Task->name;
+    $taskDescription = $obj->Task->mainDescription;
+    $taskImageLink = $obj->Task->imgLink;
+    $taskSteps = $obj->Task->steps;
+
+    // Create connection
+    $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
+    $success = true;
+
+    if ($conn->connect_error) {
+      $response['status'] = array(
+        'success' => false,
+        'message' => 'Database connection error',
+      );
+    } else {
+      $sql = "INSERT INTO amsta.Task(name, description, imgLink, idTask) VALUES($taskName, $taskDescription, $taskImageLink, $taskId)" ;
+      //Connection with success and error messages.
+      if ($conn->query($sql) === TRUE) {
+        $response['status'] = array(
+          'success' => true,
+          'message' => 'Only the task has successfully been updated.',
+          'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
+        );
+
+        foreach($taskSteps as $step)
+        {
+          $stepId = $step->id;
+          $stepDescription = $step->stepDescription;
+          $stepImageLink = $step->stepImgLink;
+
+          $sql = "INSERT INTO  amsta.Step(imgLink, description, Task_taskId) VALUES($stepImageLink, $stepDescription, $taskId)";
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+          }
+        }
+      } else {
+        $response['status'] = array(
+          'message' => 'Error something went wrong while trying to add the task',
+          'success' => false,
+          'errorMessage' => $conn->error
+        );
+      }
+
+      if($success)
+      {
+        $response['status'] = array(
+          'message' => 'Task and steps successfully added!',
+          'success' => true 
+        );
+      } else {
+        $response['status'] = array(
+          'message' => 'Error something went wrong while trying to add the task',
+          'success' => false,
+          'errorMessage' => $conn->error
+        );
+      }
+    }
+
 
   } else if ($action === "remove") {
     if (isset($_REQUEST["id"])) {
