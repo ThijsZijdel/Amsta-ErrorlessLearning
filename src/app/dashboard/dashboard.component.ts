@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   upcommingTasks: Task[] = [];
 
 
-
   constructor(private taskService: TaskService) { }
 
   /**
@@ -26,37 +25,27 @@ export class DashboardComponent implements OnInit {
    */
   ngOnInit() {
     this.initializeTime();
-    this.getTasks();
+    //this.getTasks();
+    this.getFilteredTasks();
   }
 
   /**
    * Get all the tasks
    * @author Thijs Zijdel
    */
-  getTasks(): void {
-
-
+  getFilteredTasks(): void {
     this.taskService.getTasks().subscribe(tasks => {
       for(let task of tasks){
 
         for(let time of task.taskTimes){
 
-          let startHour = parseInt(time.startTime.substring(0, time.startTime.indexOf(":")));
-          let startMin = parseInt(time.startTime.substring(time.startTime.indexOf(":"),time.startTime.length));
-
-          let endHour = parseInt(time.endTime.substring(0, time.endTime.indexOf(":")));
-          let endMin = parseInt(time.endTime.substring(time.endTime.indexOf(":"),time.endTime.length));
-
-
-
-
-          if (this.currentHour >= startHour && this.currentHour <= endHour) {
-            //TODO validate minutes
+          if (this.isNow(time.startTime, time.endTime)) {
             this.currentTasks.push(task);
 
-          } else if (this.currentHour <= startHour){
+          } else if (this.isUpcoming(time.startTime)){
             this.upcommingTasks.push(task);
-          } else if (this.currentHour >= endHour){
+
+          } else if (this.isPast(time.endTime)){
             this.pastTasks.push(task);
           }
 
@@ -64,6 +53,16 @@ export class DashboardComponent implements OnInit {
       }
 
     });
+  }
+
+  private getMinute(time: string) {
+    return parseInt(time.substring(time.indexOf(":"),time.length));
+
+  }
+
+  private getHour(time: string) {
+    return parseInt(time.substring(0, time.indexOf(":")));
+
   }
 
 
@@ -76,5 +75,19 @@ export class DashboardComponent implements OnInit {
     this.currentTime = now.getHours()+":"+now.getMinutes();
     this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
     this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":"),this.currentTime.length));
+  }
+
+
+  isPast(endTime: string) {
+    return (this.currentHour >= this.getHour(endTime));
+  }
+
+  isNow(startTime: string, endTime: string) {
+    //TODO validate minutes
+    return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
+  }
+
+  isUpcoming(startTime: string){
+    return (this.currentHour <= this.getHour(startTime));
   }
 }
