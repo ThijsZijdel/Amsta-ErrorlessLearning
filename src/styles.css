@@ -13,3 +13,156 @@ body, head, html {
   margin: 0;
   padding: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #34302b;
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #34302b;
+}
+
+h1, .h1 {
+  font-size: 2rem;
+  line-height: 2.125rem;
+  margin-top: 0;
+}
+
+@media (min-width:768px) {
+  h1, .h1 {
+    font-size: 2.5rem;
+    line-height: 2.625rem;
+  }
+}
+
+@media (min-width:1280px) {
+  h1, .h1 {
+    font-size: 3.125rem;
+    line-height: 3.375rem;
+  }
+}
+
+h2 {
+  font-size: 1.625rem;
+}
+
+@media (min-width:768px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width:1280px) {
+  h2 {
+    font-size: 1.875rem;
+  }
+}
+
+.page-node-type-home .page-content h2 {
+  font-size: 1.75rem;
+}
+
+@media (min-width:768px) {
+  .page-node-type-home .page-content h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width:1400px) {
+  .page-node-type-home .page-content h2 {
+    font-size: 2.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+@media (min-width:768px) {
+  h3 {
+    font-size: 1.375rem;
+  }
+}
+
+@media (min-width:1280px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+@media (min-width:768px) {
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width:1280px) {
+  h4 {
+    font-size: 1.375rem;
+  }
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+@media (min-width:1280px) {
+  h5 {
+    font-size: 0.875rem;
+  }
+}
+
+p {
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.75rem;
+}
+
+@media (min-width:768px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+}
+
+@media (min-width:1280px) {
+  p {
+    font-size: 1.375rem;
+    line-height: 2.125rem;
+  }
+}
+
+h2 + p, h3 + p {
+  margin-top: .4em;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  color: #34302b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background: #fbf8f3;
+  height: 100%;
+  padding-top: 85px;
+}

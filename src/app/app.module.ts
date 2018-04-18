@@ -41,6 +41,8 @@ import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -52,7 +54,13 @@ import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
-import { MatFormFieldModule, MatInputModule, MatSlideToggleModule, MatTooltipModule } from "@angular/material";
+
+import {
+   MatFormFieldModule, MatInputModule, MatSlideToggleModule,
+  MatTooltipModule
+} from "@angular/material";
+
+
 
 
 /**
@@ -97,7 +105,8 @@ import { MatFormFieldModule, MatInputModule, MatSlideToggleModule, MatTooltipMod
     MatInputModule,
     MatTooltipModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [
     TaskService,
