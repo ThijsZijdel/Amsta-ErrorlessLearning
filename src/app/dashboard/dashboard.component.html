@@ -4,7 +4,7 @@
 
 
   <div class="row">
-    <div *ngFor="let task of pastTasks" class="col-md-3">
+    <div *ngFor="let task of pastTasks.slice(pastTasks.length-amountOfPastTasksDisplayIndex+1,pastTasks.length).reverse()" class="col-md-3">
       <mat-card>
 
         <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
@@ -20,13 +20,39 @@
         </div>
 
       </mat-card>
+
     </div>
+
+    <div class="col-md-3">
+      <mat-card>
+        <img class="card-img-top" src="./../assets/images/tasks-done.jpg" alt="Card image cap">
+
+        <div class="card-block">
+          <h6 class="card-title">Alle voltooide taken zien?</h6>
+          <p class="card-text">Klik dan op de onderstaande knop</p>
+
+
+          <button mat-raised-button (click)="toggleDisplayAmountPastTasks()">
+            {{showAllPastTasksButtonText}}
+          </button>
+
+        </div>
+
+
+      </mat-card>
+    </div>
+
   </div>
 </div>
 
 
 
-  <div class="current-tasks-container">
+  <div class="current-tasks-container" id="current">
+    <div class="indicator">
+      <img src="./../assets/icons/arrows/up.svg"><br>
+      <span>al voltooide taken</span>
+    </div>
+
     <div class="container">
     <div class="row current-tasks">
       <h1>Huidige taken</h1>
@@ -51,28 +77,55 @@
       </div>
     </div>
     </div>
-  </div>
 
-    <div class="container">
-  <div class="row">
-    <div *ngFor="let task of upcommingTasks" class="col-md-3">
-      <mat-card>
-
-        <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
-        <div class="card-block">
-          <h6 class="card-title">{{task.name}}</h6>
-          <p class="card-text">{{ task.mainDescription }}</p>
-          <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
-
-          <div class="time-indicator" *ngFor="let time of task.taskTimes">
-            <div *ngIf="isUpcoming(time.startTime)">{{time.startTime}} - {{time.endTime}}</div>
-          </div>
-
-        </div>
-
-      </mat-card>
+    <div class="indicator">
+      <span>nog te voltooien taken</span><br>
+      <img src="./../assets/icons/arrows/down.svg">
     </div>
   </div>
+
+  <div class="container">
+
+    <div class="row">
+      <div *ngFor="let task of upcommingTasks.slice(1,amountOfUpcomingTasksDisplayIndex)" class="col-md-3">
+        <mat-card>
+
+          <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+          <div class="card-block">
+            <h6 class="card-title">{{task.name}}</h6>
+            <p class="card-text">{{ task.mainDescription }}</p>
+            <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
+
+            <div class="time-indicator" *ngFor="let time of task.taskTimes">
+              <div *ngIf="isUpcoming(time.startTime)">{{time.startTime}} - {{time.endTime}}</div>
+            </div>
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+      <div class="col-md-3" *ngIf="upcommingTasks.length > 4">
+        <mat-card>
+          <img class="card-img-top" src="./../assets/images/tasks-todo.jpg" alt="Card image cap">
+
+          <div class="card-block">
+            <h6 class="card-title">Alle nog te voltooien taken zien?</h6>
+            <p class="card-text">Klik dan op de onderstaande knop</p>
+
+
+            <button mat-raised-button (click)="toggleDisplayAmountUpcomingTasks()">
+              {{showAllUpcomingTasksButtonText}}
+            </button>
+
+          </div>
+
+
+        </mat-card>
+      </div>
+
+    </div>
 
 
 
