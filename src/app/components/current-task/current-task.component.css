@@ -104,7 +104,10 @@ button.control {
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
-  margin: 15px auto 35px;
-  padding: 5px 50px 5px 50px;
+  padding: 25px 50px 30px 50px;
 }
-
+:host /deep/ .mat-horizontal-content-container,
+:host /deep/ .mat-horizontal-stepper-header-container,
+:host /deep/ mat-stepper-horizontal {
+  background: #fbf8f3 !important;
+}
