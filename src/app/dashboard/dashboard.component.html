@@ -1,6 +1,6 @@
+<div class="body">
 <div class="container">
 
-  <br><br><br><br>
 
 
   <div class="row">
@@ -22,30 +22,38 @@
       </mat-card>
     </div>
   </div>
+</div>
 
 
-  <div class="row">
 
-    <div *ngFor="let task of currentTasks" class="col-md-4">
-      <mat-card>
+  <div class="current-tasks-container">
+    <div class="container">
+    <div class="row current-tasks">
+      <h1>Huidige taken</h1>
 
-        <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title">{{task.name}}</h4>
-          <p class="card-text">{{ task.mainDescription }}</p>
-          <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
 
-          <div class="time-indicator" *ngFor="let time of task.taskTimes">
-            <div *ngIf="isNow(time.startTime, time.endTime)">{{time.startTime}} - {{time.endTime}}</div>
+      <div *ngFor="let task of currentTasks" class="col-md-4">
+        <mat-card>
+
+          <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">{{task.name}}</h4>
+            <p class="card-text">{{ task.mainDescription }}</p>
+            <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
+
+            <div class="time-indicator" *ngFor="let time of task.taskTimes">
+              <div *ngIf="isNow(time.startTime, time.endTime)">{{time.startTime}} - {{time.endTime}}</div>
+            </div>
+
           </div>
 
-        </div>
-
-      </mat-card>
+        </mat-card>
+      </div>
     </div>
-
+    </div>
   </div>
 
+    <div class="container">
   <div class="row">
     <div *ngFor="let task of upcommingTasks" class="col-md-3">
       <mat-card>
@@ -84,4 +92,5 @@
 
   </div>
 
+</div>
 </div>
