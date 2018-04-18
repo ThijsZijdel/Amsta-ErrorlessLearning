@@ -47,6 +47,11 @@
 
 
 
+
+
+
+
+  <!-- current tasks -->
   <div class="current-tasks-container" id="current">
     <div class="indicator">
       <img src="./../assets/icons/arrows/up.svg"><br>
@@ -75,14 +80,33 @@
 
         </mat-card>
       </div>
+
+
+      <!-- Display card when there aren't any task available -->
+      <mat-card *ngIf="currentTasks.length == 0">
+        <img class="card-img-top" src="./../assets/images/tasks-none.jpg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Er zijn momenteel geen taken.</h4>
+          <p class="card-text">Leg de iPad weg of kijk bij de overige taken..</p>
+        </div>
+      </mat-card>
+
     </div>
     </div>
+
+
+
 
     <div class="indicator">
       <span>nog te voltooien taken</span><br>
       <img src="./../assets/icons/arrows/down.svg">
     </div>
   </div>
+  <!-- ! current tasks -->
+
+
+
+
 
   <div class="container">
 
