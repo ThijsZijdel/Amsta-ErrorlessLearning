@@ -17,6 +17,11 @@ export class DashboardComponent implements OnInit {
   currentTasks: Task[] = [];
   upcommingTasks: Task[] = [];
 
+  amountOfPastTasksDisplayIndex: number = 4;
+  showAllPastTasksButtonText: string = "Laat zien";
+
+  amountOfUpcomingTasksDisplayIndex: number = 4;
+  showAllUpcomingTasksButtonText: string= "Laat zien";
 
   constructor(private taskService: TaskService) { }
 
@@ -89,5 +94,25 @@ export class DashboardComponent implements OnInit {
 
   isUpcoming(startTime: string){
     return (this.currentHour <= this.getHour(startTime));
+  }
+
+  toggleDisplayAmountPastTasks() {
+    if (this.amountOfPastTasksDisplayIndex==4) {
+      this.amountOfPastTasksDisplayIndex = 99;
+      this.showAllPastTasksButtonText = "Verstop ze"
+    } else {
+      this.amountOfPastTasksDisplayIndex = 4;
+      this.showAllPastTasksButtonText = "Laat zien";
+    }
+  }
+
+  toggleDisplayAmountUpcomingTasks() {
+    if (this.amountOfUpcomingTasksDisplayIndex==4) {
+      this.amountOfUpcomingTasksDisplayIndex = 99;
+      this.showAllUpcomingTasksButtonText = "Verstop ze"
+    } else {
+      this.amountOfUpcomingTasksDisplayIndex = 4;
+      this.showAllUpcomingTasksButtonText = "Laat zien";
+    }
   }
 }

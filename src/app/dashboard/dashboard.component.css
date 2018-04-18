@@ -49,3 +49,8 @@ mat-card.mat-card {
 .current-tasks h1:after{
   clear: both;
 }
+.indicator {
+  text-align: center;
+  max-width: 250px;
+  margin: 0 auto
+}
