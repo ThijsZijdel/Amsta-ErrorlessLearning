@@ -12,6 +12,7 @@ mat-card.mat-card {
   margin-top: 5px;
   padding: 0;
   padding-bottom: 50px;
+  height: 400px;
 }
 .card-block {
   padding: 25px 15px;
@@ -26,4 +27,59 @@ mat-card.mat-card {
 }
 .card-img-top {
   border-radius: 0;
+  height: 175px;
+}
+
+
+.body {
+  background: #fbf8f3;
+}
+.current-tasks {
+  margin: 100px 0 150px 0;
+}
+.current-tasks-container{
+  background: #fff;
+  padding: 25px 0;
+  margin: 50px 0;
+}
+.current-tasks h1{
+  font-weight: 600;
+  margin: 25px 0;
+  width: 100%;
+}
+.current-tasks mat-card.mat-card{
+  height: 450px;
+}
+.current-tasks .time-indicator-box {
+  top: 5px;
+}
+.current-tasks h1:after{
+  clear: both;
+}
+.indicator {
+  text-align: center;
+  max-width: 250px;
+  margin: 0 auto
+}
+.time-indicator-box:before,
+.time-indicator-box:after {
+  clear: both;
+  width: 100%;
+}
+.time-indicator-box{
+  margin: 5px 0 0;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+.time-indicator {
+  background: #545454;
+  text-align: center;
+  font-size: 90%;
+  width: 90px;
+  padding: 1px 0px;
+  border-radius: 5px;
+  color: #fff;
+  bottom: 0;
 }
