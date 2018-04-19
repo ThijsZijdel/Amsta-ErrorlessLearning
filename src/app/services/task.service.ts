@@ -30,7 +30,8 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTasks (): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksUrl)
+    const url = `${this.tasksUrl}?action=getAll`;
+    return this.http.get<Task[]>(url)
       .pipe(
         tap(tasks => this.log(`fetched tasks`)),
         catchError(this.handleError('getTask', []))
