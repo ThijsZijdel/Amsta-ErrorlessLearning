@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" style="height:90vh">
-    <div class="col-md-3" *ngIf="loginStatusActual">
+    <div class="col-md-3 sidebar" *ngIf="loginStatusActual">
 
       <app-admin-sidebar></app-admin-sidebar>
 
@@ -24,25 +24,17 @@
               <div class="task-name">{{task.name}}</div>
               <div class="task-description">{{task.mainDescription}}</div>
               <div class="tagRow">
-                <div class="tag" *ngFor="let taskTime of task.taskTimes"><div class="tagColor"></div>
-                  {{taskTime.startTime}} - {{taskTime.endTime}}
+                <div class="tag" *ngFor="let taskTime of task.taskTimes">
+                  <div class="tagColor"></div>
+                  1{{taskTime.startTime}} - 1{{taskTime.endTime}} 1{{taskTime.tagColor}}
                 </div>
               </div>
             </div>
             <div class="taskButtons" style="width: 25%; display: inline-block; height: 100%; position: absolute; top: 0px;">
               <button class="btn btn-1 btn-1c purple" (click)="editTask(this.task)" routerLink="/admin/edit-task"> Bewerken </button>
             </div>
-
-
           </li>
-         
-            <button class="btn btn-1 btn-1c blue" routerLink="/admin/add-task">Aanmaken</button>
-
-
         </ul>
-
-
-
       </div>
 
       <div *ngIf="!loginStatusActual">

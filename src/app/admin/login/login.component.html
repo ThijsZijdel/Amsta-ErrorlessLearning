@@ -2,25 +2,51 @@
   <br>
   <br>
   <br>
-  <div class="col-md-4">
+  <div class="col-md-4" style="width: auto;">
 
-    <div class="card" style="width: 100%;">
-      <div class="card-block">
-        <h4 class="card-title">Login voor werknemers:</h4>
+    <div style="background-color: white; width: 100%; position: relative;">
+      <div style="max-width: 250px; display: inline-block; margin: 25px 25px 25px 25px">
 
-        <label>Username:
-          <input #username type="text" placeholder="username..." />
-        </label>
+        <svg version="1.1" id="Laag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 160.1 44.2" style="enable-background:new 0 0 160.1 44.2;" xml:space="preserve">
+          <style type="text/css">
+            .st0 {
+              fill: #795094;
+            }
 
-        <br>
+            .st1 {
+              fill: #F08A00;
+            }
 
-        <label>Password:
-          <input #password type="password" placeholder="password..." />
-        </label>
+          </style>
+          <path class="st0" d="M141.9,36.1l-60,1.3c-29.2,0.6-62.6,2.6-81.8,6.8l-0.1,0l4-12.1h137.9V36.1L141.9,36.1z" />
+          <path class="st1" d="M124.2,2.8c-1.8,1.8-3.2,4.3-3.2,7.2v18.3h6.2c0,0,0-6.2,0-6.9c0.7,0,7.6,0,8.3,0c0,0.7,0,6.9,0,6.9h6.2V10
+       c0-2.8-1.4-5.4-3.2-7.2C136.9,1,134.3,0,131.4,0C128.6,0,126,1,124.2,2.8L124.2,2.8z M127.3,10c0-2.6,1.6-4.5,4.1-4.5
+       c2.6,0,4.2,1.9,4.2,4.5v6.2h-8.3V10L127.3,10z" />
+          <path class="st1" d="M35.7,28.4l-2.1-6l-8.1,0l-2,6.1h-5.4l9.1-28.1h4.7l9.7,28.1H35.7L35.7,28.4z M30.5,12.6
+       c-0.4-1.2-0.7-2.3-0.9-3.9h-0.2c-0.2,1.6-0.6,2.8-0.9,3.8L27,17.1l4.9,0L30.5,12.6L30.5,12.6z" />
+          <path class="st1" d="M64.3,28.3V14.9c0.1-1,0.1-3,0.1-3l-0.2,0c0,0-1,2-1.5,3l-3.8,7.5h-2.4l-4.3-7.5c-0.5-1-1.6-3-1.6-3h-0.2
+       c0,0,0,1.4,0,3v13.5H45v-28h5l5.3,9.3c1.3,2.2,2.4,5.2,2.4,5.2h0.2c0,0,1-3,2.2-5.2l4.8-9.3h5v28H64.3L64.3,28.3z" />
+          <path class="st1" d="M84.2,28.8c-3.9,0-7-0.9-9.2-2.1l2.5-4.8c1.5,0.9,3.8,1.7,6.4,1.7c1.8,0,3.8-0.7,3.8-2.6c0-3.3-6.5-3.9-9.7-7.8
+       c-1-1.2-1.6-2.8-1.6-5c0-4.3,3.3-8.2,9.3-8.2c2.8,0,6.3,0.6,8.1,1.4l-1.2,5c-1.8-0.7-4.4-1.3-6.5-1.3c-1.8,0-3.2,0.9-3.2,2.2
+       c0,4.4,11.3,3.9,11.3,12.8C94.3,25.6,89.8,28.8,84.2,28.8L84.2,28.8z" />
+          <polygon class="st1" points="119.2,5.7 111.8,5.7 111.8,28.4 105.6,28.4 105.6,5.7 96.6,5.7 98.3,0.4 119.5,0.4 119.2,5.7 "
+          />
+        </svg>
 
-        <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">
-          login
-        </button>
+        <div class="card-block" style="text-align: center;">
+          <h4 class="card-title">Login voor werknemers:</h4>
+
+          <mat-form-field class="example-full-width" style="width: 250px;">
+            <input matInput #username placeholder="Gebruikersnaam">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 250px;">
+            <input matInput type="password" #password placeholder="Wachtwoord">
+          </mat-form-field>
+          <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">
+            login
+          </button>
+        </div>
       </div>
     </div>
 
