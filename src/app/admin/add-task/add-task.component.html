@@ -1,3 +1,6 @@
+
+<div class="container">
+  <div class="col-md-12">
 <div *ngIf="status.loggedInStatus">
 
   <h3>Een extra stappenplan (/taak) toevoegen.</h3>
@@ -21,13 +24,13 @@
               placeholder="Beschrijving van de taak"></textarea>
   </mat-form-field>
 
-  <br>
+  <br><br>
   <mat-slide-toggle  (change)="showReordering = !showReordering" *ngIf="stepsCreated.length >= 2">
     Verander volgorde stappen
   </mat-slide-toggle>
 
 
-  <br>
+  <br><br>
 
   <div class="step-container container-fluid">
     <mat-tab-group>
@@ -35,7 +38,7 @@
       <div *ngFor="let step of stepsCreated">
 
 
-        <mat-tab>
+        <mat-tab class="tab-step">
           <ng-template mat-tab-label>
             <div class="mat-tab-header-labels">
               <a class="left arrow" (click)="up(step)" matTooltipPosition="below" matTooltip="Een positie terug"
@@ -81,7 +84,7 @@
         </mat-tab>
       </div>
 
-      <mat-tab label="Voeg stap toe">
+      <mat-tab label="Voeg stap toe" class="tab-step">
         <div class="addStep-body">
           <h3>Let op:</h3> <br>
           <p>Er zijn in totaal al {{stepsCreated.length}} stappen aangemaakt.</p>
@@ -109,6 +112,6 @@
 <div *ngIf="!status.loggedInStatus">
   Please log in
 </div>
-
-
+</div>
+</div>
 

@@ -5,7 +5,8 @@
   margin: 25px 0;
 }
 
-div.step-container {
+.tab-step , .mat-tab-body-wrapper{
+  background: #fff;
 
 }
 .addStep-body {
