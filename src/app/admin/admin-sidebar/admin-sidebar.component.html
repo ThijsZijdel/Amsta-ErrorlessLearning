@@ -1,15 +1,8 @@
 <div>
-  <div style="margin: 15px; text-align: center;">
-    <button class="btn btn-1 btn-1c blue" style="display: inline-block;" routerLink="/admin/add-task">Taak toevoegen</button>
-  </div>
-  <div style="margin: 15px;">
-    <div class="sideTitle">Tools</div>
-    <a routerLink="/admin">Dasboard</a>
-    <br>
-    <a routerLink="/dashboard" (click)="logout()">Uitloggen</a>
-    <br>
-    <br>
-    <br>
-    <a href="#" (click)="showPanel(panel-add)">test panel</a>
-  </div>
+  <h3>Links</h3> <br>
+  <a routerLink="/admin">Thuis pagina</a><br>
+  <a routerLink="/admin/add-task">Voeg taak toe</a><br>
+  <a routerLink="/console">Berichten (console)</a><br>
+  <a routerLink="/dashboard" (click)="logout()" class="indicator-red">Uitloggen</a>
 </div>
+
