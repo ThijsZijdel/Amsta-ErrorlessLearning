@@ -8,17 +8,17 @@
       <div class="card-block">
         <h4 class="card-title">Login voor werknemers:</h4>
 
-        <label>Username:
-          <input #username type="text" placeholder="username..." />
+        <label>Gebruikersnaam:
+          <input #username type="text" class="input" placeholder="gebruikersnaam..." />
         </label>
 
         <br>
 
-        <label>Password:
-          <input #password type="password" placeholder="password..." />
+        <label>Wachtwoord:
+          <input #password type="password"  class="input second" placeholder="wachtwoord..." />
         </label>
 
-        <button class="btn btn-outline-primary btn-sm" (click)="login(username.value, password.value)">
+        <button class="btn btn-outline-primary btn-sm right" (click)="login(username.value, password.value)">
           login
         </button>
       </div>
