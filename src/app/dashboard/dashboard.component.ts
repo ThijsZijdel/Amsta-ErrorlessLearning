@@ -9,19 +9,19 @@ import {TaskService} from '../services/task.service';
 })
 export class DashboardComponent implements OnInit {
 
-  currentTime: string;
-  currentHour: number;
-  currentMinute: number;
+  private currentTime: string;
+  private currentHour: number;
+  private currentMinute: number;
 
-  pastTasks: Task[] = [];
-  currentTasks: Task[] = [];
-  upcommingTasks: Task[] = [];
+  private pastTasks: Task[] = [];
+  private currentTasks: Task[] = [];
+  private upcommingTasks: Task[] = [];
 
-  amountOfPastTasksDisplayIndex: number = 4;
-  showAllPastTasksButtonText: string = "Laat zien";
+  private amountOfPastTasksDisplayIndex: number = 4;
+  private showAllPastTasksButtonText: string = "Laat zien";
 
-  amountOfUpcomingTasksDisplayIndex: number = 4;
-  showAllUpcomingTasksButtonText: string= "Laat zien";
+  private amountOfUpcomingTasksDisplayIndex: number = 4;
+  private showAllUpcomingTasksButtonText: string= "Laat zien";
 
   constructor(private taskService: TaskService) { }
 
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
    * 3 possibilities: past, current and upcoming.
    * @author Thijs Zijdel
    */
-  getFilteredTasks(): void {
+  private getFilteredTasks(): void {
     this.taskService.getTasks().subscribe(tasks => {
       //loop trough all the tasks
       for(let task of tasks){
@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
    * Method for setting up the current time
    * @author Thijs Zijdel
    */
-  private initializeTime() {
+  private initializeTime():void {
     var now = new Date();
     this.currentTime = now.getHours()+":"+now.getMinutes();
     this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
@@ -103,7 +103,7 @@ export class DashboardComponent implements OnInit {
    * @returns {boolean} true if it is past, false if it isn't
    * @author Thijs Zijdel
    */
-  isPast(endTime: string) {
+  protected isPast(endTime: string) {
     return (this.currentHour >= this.getHour(endTime));
   }
 
@@ -114,7 +114,7 @@ export class DashboardComponent implements OnInit {
    * @returns {boolean} true if it is now, false if it isn't
    * @author Thijs Zijdel
    */
-  isNow(startTime: string, endTime: string) {
+  protected isNow(startTime: string, endTime: string) {
     //TODO validate minutes
     return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
   }
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
    * @returns {boolean} true if it is upcoming, false if it isn't
    * @author Thijs Zijdel
    */
-  isUpcoming(startTime: string){
+  protected isUpcoming(startTime: string){
     return (this.currentHour <= this.getHour(startTime));
   }
 
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit {
    * Standard index = 4, toggle to 99 (limited)
    * @author thijs zijdel
    */
-  toggleDisplayAmountPastTasks() {
+  protected toggleDisplayAmountPastTasks() {
     if (this.amountOfPastTasksDisplayIndex==4) {
       this.amountOfPastTasksDisplayIndex = 99;
       this.showAllPastTasksButtonText = "Verstop ze"
@@ -149,7 +149,7 @@ export class DashboardComponent implements OnInit {
    * Standard index = 4, toggle to 99 (limited)
    * @author thijs zijdel
    */
-  toggleDisplayAmountUpcomingTasks() {
+  protected toggleDisplayAmountUpcomingTasks() {
     if (this.amountOfUpcomingTasksDisplayIndex==4) {
       this.amountOfUpcomingTasksDisplayIndex = 99;
       this.showAllUpcomingTasksButtonText = "Verstop ze"
