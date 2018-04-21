@@ -35,14 +35,18 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
-   * Get all the tasks
+   * Get all the tasks and put them in the right arrays
+   * 3 possibilities: past, current and upcoming.
    * @author Thijs Zijdel
    */
   getFilteredTasks(): void {
     this.taskService.getTasks().subscribe(tasks => {
+      //loop trough all the tasks
       for(let task of tasks){
-
+        //loop trough all the task times
         for(let time of task.taskTimes){
+
+          //check in wich array the task must be added.
 
           if (this.isNow(time.startTime, time.endTime)) {
             this.currentTasks.push(task);
@@ -60,20 +64,31 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  /**
+   * Method for getting the minutes out an time string
+   * @param {string} time     (format:   09:00)
+   * @returns {number} minutes
+   * @author Thijs Zijdel
+   */
   private getMinute(time: string) {
     return parseInt(time.substring(time.indexOf(":"),time.length));
 
   }
 
+  /**
+   * Method for getting the hours out an time string
+   * @param {string} time     (format:   09:00)
+   * @returns {number} hours
+   * @author Thijs Zijdel
+   */
   private getHour(time: string) {
     return parseInt(time.substring(0, time.indexOf(":")));
 
   }
 
-
-
   /**
    * Method for setting up the current time
+   * @author Thijs Zijdel
    */
   private initializeTime() {
     var now = new Date();
@@ -82,20 +97,43 @@ export class DashboardComponent implements OnInit {
     this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":"),this.currentTime.length));
   }
 
-
+  /**
+   * Method for checking if an time is past the current time
+   * @param {string} endTime  (format:  09:00)
+   * @returns {boolean} true if it is past, false if it isn't
+   * @author Thijs Zijdel
+   */
   isPast(endTime: string) {
     return (this.currentHour >= this.getHour(endTime));
   }
 
+  /**
+   * Method for checking if an time is in the current time
+   * @param {string} startTime  (format:  09:00)
+   * @param {string} endTime    (format:  09:00)
+   * @returns {boolean} true if it is now, false if it isn't
+   * @author Thijs Zijdel
+   */
   isNow(startTime: string, endTime: string) {
     //TODO validate minutes
     return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
   }
 
+  /**
+   * Method for checking if an time is upcoming
+   * @param {string} startTime  (format:  09:00)
+   * @returns {boolean} true if it is upcoming, false if it isn't
+   * @author Thijs Zijdel
+   */
   isUpcoming(startTime: string){
     return (this.currentHour <= this.getHour(startTime));
   }
 
+  /**
+   * Method for toggling the amount of tasks that are displayed (PAST TASKS)
+   * Standard index = 4, toggle to 99 (limited)
+   * @author thijs zijdel
+   */
   toggleDisplayAmountPastTasks() {
     if (this.amountOfPastTasksDisplayIndex==4) {
       this.amountOfPastTasksDisplayIndex = 99;
@@ -106,6 +144,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  /**
+   * Method for toggling the amount of tasks that are displayed (UPCOMING TASKS)
+   * Standard index = 4, toggle to 99 (limited)
+   * @author thijs zijdel
+   */
   toggleDisplayAmountUpcomingTasks() {
     if (this.amountOfUpcomingTasksDisplayIndex==4) {
       this.amountOfUpcomingTasksDisplayIndex = 99;
@@ -116,6 +159,12 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  /**
+   * Method for validating if an task is not already added to the past tasks array
+   * @param {Task} checkTask; task that will be checked
+   * @returns {boolean} true if it not already added.
+   * @author Thijs Zijdel
+   */
   private isNotAlreadyInPast(checkTask: Task) {
     let addThisTask: boolean = true;
     for(let task of this.pastTasks){
