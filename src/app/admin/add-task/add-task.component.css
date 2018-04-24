@@ -5,7 +5,8 @@
   margin: 25px 0;
 }
 
-div.step-container {
+.tab-step , .mat-tab-body-wrapper{
+  background: #fff;
 
 }
 .addStep-body {
@@ -37,4 +38,8 @@ a.right.arrow {
 }
 .mainDesc{
   width: 400px;
+}
+.padding {
+  padding: 5px 0;
+  margin: 0px 0;
 }

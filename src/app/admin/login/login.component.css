@@ -9,3 +9,24 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.card-block{
+  padding: 25px 50px;
+}
+
+
+input, .input {
+  float: right;
+}
+
+.input.second{
+  margin-left: 25px;
+}
+
+button.right{
+  float:right;
+  margin: 5px 5px 0 0;
+}
+button.right:after{
+  clear:both;
+}

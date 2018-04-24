@@ -1,31 +1,72 @@
+
+<div class="container">
+  <div class="col-md-12">
 <div *ngIf="status.loggedInStatus">
 
-  <h3>Een extra stappenplan (/taak) toevoegen.</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Een extra stappenplan (/taak) toevoegen.</h3>
 
 
-  <mat-form-field>
-    <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required>
-    <mat-error *ngIf="nameValidation.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
+      <div class="padding">
+        <mat-form-field>
+          <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required>
+          <mat-error *ngIf="nameValidation.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
 
-  <br>
 
-  <mat-form-field>
-    <input matInput #taskImgLink placeholder="Hoofd afbeelding link">
-  </mat-form-field>
+      <br>
 
-  <br>
+      <div class="padding">
+        <mat-form-field>
+          <textarea matInput #mainDesc class="mainDesc"
+                    placeholder="Beschrijving van de taak"></textarea>
+        </mat-form-field>
+      </div>
 
-  <mat-form-field>
-    <textarea matInput #mainDesc class="mainDesc"
-              placeholder="Beschrijving van de taak"></textarea>
-  </mat-form-field>
+      <br>
 
-  <br>
-  <mat-slide-toggle  (change)="showReordering = !showReordering" *ngIf="stepsCreated.length >= 2">
-    Verander volgorde stappen
-  </mat-slide-toggle>
+      <div class="padding">
+        <mat-form-field>
+          <input matInput #startTime class="startTime" type="time" [formControl]="timeValidation" required
+                    placeholder="Voer de begin tijd in">
 
+
+          <mat-error *ngIf="timeValidation.invalid">{{getErrorMessageTime()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #endTime class="endTime" type="time" [formControl]="timeValidation" required
+                 placeholder="Voer de eind tijd in">
+
+
+          <mat-error *ngIf="timeValidation.invalid">{{getErrorMessageTime()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <br>
+      <mat-slide-toggle  (change)="showReordering = !showReordering" *ngIf="stepsCreated.length >= 2">
+        Verander volgorde stappen
+      </mat-slide-toggle>
+
+    </div>
+
+    <div class="col-md-6">
+
+
+      <img id="blah" src="http://placehold.it/500x300" alt="image" />
+      <br><br>
+      <input type='file' id="stepImgInput"/>
+      &nbsp;
+      <div class="padding">
+        <mat-form-field>
+          <input matInput #taskImgLink placeholder="Hoofd afbeelding link">
+        </mat-form-field>
+      </div>
+      <br>
+    </div>
+
+  </div>
 
   <br>
 
@@ -35,7 +76,7 @@
       <div *ngFor="let step of stepsCreated">
 
 
-        <mat-tab>
+        <mat-tab class="tab-step">
           <ng-template mat-tab-label>
             <div class="mat-tab-header-labels">
               <a class="left arrow" (click)="up(step)" matTooltipPosition="below" matTooltip="Een positie terug"
@@ -51,37 +92,52 @@
           </ng-template>
 
 
+
+
           <div class="addStep-body">
-            <h3>Stap {{step.id}}</h3>
 
-            <div class="separator-vertical"></div>
+            <div class="row">
 
-            <mat-form-field>
-              <input matInput [(ngModel)]="step.stepDescription" #stepDesc placeholder="Stap beschrijving">
-            </mat-form-field>
+              <div class="col-md-5">
+              <h3>Stap {{step.id}}</h3>
 
-            <br>
+              <div class="separator-vertical"></div>
 
-            <mat-form-field>
-              <input matInput [(ngModel)]="step.stepImgLink" #stepImg placeholder="Stap Afbeelding">
-            </mat-form-field>
+              <mat-form-field>
+                <input matInput [(ngModel)]="step.stepDescription" #stepDesc placeholder="Stap beschrijving">
+              </mat-form-field>
 
-            <br><br>
+              <br>
 
-            <input type='file' id="stepImgInput"/>
+              <mat-form-field>
+                <input matInput [(ngModel)]="step.stepImgLink" #stepImg placeholder="Stap Afbeelding">
+              </mat-form-field>
 
-            <img id="blah" src="http://placehold.it/180" alt="image" />
+              <br><br>
+              </div>
+              <div class="col-md-7">
+                <img id="blah" src="http://placehold.it/400x250" alt="image" />
+                <br><br>
+                <input type='file' id="stepImgInput"/>
+              </div>
 
 
 
+
+            </div>
 
             <br><br>
             <button (click)="removeStep(step.id - 1)" mat-raised-button color="warn">Verwijder deze stap</button>
           </div>
+
+
+
+
+
         </mat-tab>
       </div>
 
-      <mat-tab label="Voeg stap toe">
+      <mat-tab label="Voeg stap toe" class="tab-step">
         <div class="addStep-body">
           <h3>Let op:</h3> <br>
           <p>Er zijn in totaal al {{stepsCreated.length}} stappen aangemaakt.</p>
@@ -101,14 +157,14 @@
   <hr>
 
   <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-  <button mat-raised-button color="primary" (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
+  <button mat-raised-button color="primary" (click)="add(taskName.value, taskImgLink.value, mainDesc.value, startTime.value, endTime.value)">
     Deze taak toevoegen
   </button>
 
 </div>
 <div *ngIf="!status.loggedInStatus">
-  Please log in
+  <app-login></app-login>
 </div>
-
-
+</div>
+</div>
 

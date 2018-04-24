@@ -4,6 +4,7 @@ import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
 import {FormControl, Validators} from "@angular/forms";
 import {StatusService} from "../login/status.service";
+import {TaskTime} from "../../models/TaskTime";
 
 @Component({
   selector: 'app-add-task',
@@ -55,14 +56,19 @@ export class AddTaskComponent implements OnInit {
    * @param {string} name
    * @param {string} imgLink
    * @param {string} mainDescription
+   * @param {string} startTime
+   * @param {string} endTime
    * @author Thijs Zijdel
    */
-  protected add(name: string, imgLink: string, mainDescription: string): void {
+  protected add(name: string, imgLink: string, mainDescription: string, startTime: string, endTime:string): void {
     name = name.trim();
-    if (!name || !imgLink || !mainDescription) { return; }
+    if (!name || !imgLink || !mainDescription || !startTime || !endTime) { return; }
+
+    let times: TaskTime[] = new Array;
+    times.push(new TaskTime(startTime, endTime));
 
     this.tasksService.addTask
-      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated } as Task)
+      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated, taskTimes: times } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -177,4 +183,9 @@ export class AddTaskComponent implements OnInit {
    */
   nameValidation = new FormControl('', [Validators.required]);
   getErrorMessage() {return this.nameValidation.hasError('required') ? 'Je moet deze taak een naam geven' : '';}
+
+
+  timeValidation = new FormControl('', [Validators.required]);
+  getErrorMessageTime() {return this.nameValidation.hasError('required') ? 'Voer een tijd in zoals bijv: 09:00' : '';}
+
 }
