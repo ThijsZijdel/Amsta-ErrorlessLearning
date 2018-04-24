@@ -2,3 +2,8 @@
   font-weight: 600;
   color: #ff5658;
 }
+
+a {
+  line-height: 2;
+  text-transform: capitalize
+}

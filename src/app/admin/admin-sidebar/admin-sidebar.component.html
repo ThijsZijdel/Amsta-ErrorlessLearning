@@ -1,8 +1,13 @@
 <div>
-  <h3>Links</h3> <br>
-  <a routerLink="/admin">Thuis pagina</a><br>
-  <a routerLink="/admin/add-task">Voeg taak toe</a><br>
-  <a routerLink="/console">Berichten (console)</a><br>
-  <a routerLink="/dashboard" (click)="logout()" class="indicator-red">Uitloggen</a>
-</div>
 
+  <button routerLink="/admin/add-task" mat-raised-button color="primary" style="width: 100%; margin-top: 30px; margin-bottom: 30px; text-transform: uppercase">Taak Toevoegen</button>
+  <div style="margin-left: 20px;">
+    <h3 style="margin-bottom: 10px">Links</h3>
+    <a routerLink="/admin">Thuis Pagina</a>
+    <br>
+    <a routerLink="/console">Berichten (console)</a>
+    <br>
+    <a routerLink="/dashboard" (click)="logout()" class="indicator-red">Uitloggen</a>
+  </div>
+
+</div>

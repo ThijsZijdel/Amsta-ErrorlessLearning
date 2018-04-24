@@ -113,11 +113,7 @@ div.col-md-9 {
 }
 
 .sidebar {
-  -moz-box-shadow: inset 1px 4px 9px -6px;
-  -webkit-box-shadow: inset 1px 4px 9px -6px;
-  box-shadow: inset -9px 0px 9px -12px;
   width: 250px;
   flex: none;
-  background-color: #fafafa;
   height: 100%;
 }
