@@ -81,7 +81,7 @@ if (isset($_REQUEST['action'])) {
       $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"), constant("DATABASE_NAME"));
 
       if ($conn->connect_error) {
-        $response['status'] = array(
+        $response = array(
           'message' => 'Database connection error',
         );
       } else {
@@ -90,13 +90,13 @@ if (isset($_REQUEST['action'])) {
 
         // Connection with success and error messages.
         if ($conn->query($sql) === TRUE) {
-          $response['status'] = array(
+          $response = array(
             'success' => true,
             'message' => 'Successfully removed task',
             'taskId' => $id
           );
         } else {
-          $response['status'] = array(
+          $response = array(
             'success' => false,
             'message' => 'Error something went wrong while trying to delete task',
           );
@@ -107,18 +107,18 @@ if (isset($_REQUEST['action'])) {
     $json = file_get_contents('php://input');
     $obj = json_decode($json);
 
-    $taskId = $obj->Task->id;
-    $taskName = $obj->Task->name;
-    $taskDescription = $obj->Task->mainDescription;
-    $taskImageLink = $obj->Task->imgLink;
-    $taskSteps = $obj->Task->steps;
+    $taskId = $obj->id;
+    $taskName = $obj->name;
+    $taskDescription = $obj->mainDescription;
+    $taskImageLink = $obj->imgLink;
+    $taskSteps = $obj->steps;
 
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
     $success = true;
 
     if ($conn->connect_error) {
-      $response['status'] = array(
+      $response = array(
         'success' => false,
         'message' => 'Database connection error',
       );
@@ -126,7 +126,7 @@ if (isset($_REQUEST['action'])) {
       $sql = "UPDATE amsta.Task SET amsta.Task.name='" . $taskName . "',amsta.Task.description='" . $taskDescription . "',amsta.Task.imgLink='" . $taskImageLink . "' WHERE amsta.Task.idTask=" . $taskId;
       // Connection with success and error messages.
       if ($conn->query($sql) === TRUE) {
-        $response['status'] = array(
+        $response = array(
           'success' => true,
           'message' => 'Only the task has successfully been updated.',
           'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
@@ -145,7 +145,7 @@ if (isset($_REQUEST['action'])) {
           }
         }
       } else {
-        $response['status'] = array(
+        $response = array(
           'message' => 'Error something went wrong while trying to update task',
           'success' => false,
           'errorMessage' => $conn->error
@@ -154,12 +154,12 @@ if (isset($_REQUEST['action'])) {
 
       if($success)
       {
-        $response['status'] = array(
+        $response = array(
           'message' => 'Task and steps successfully updated!',
           'success' => true
         );
       } else {
-        $response['status'] = array(
+        $response = array(
           'message' => 'Error something went wrong while trying to update task',
           'success' => false,
           'errorMessage' => $conn->error
@@ -175,7 +175,7 @@ if (isset($_REQUEST['action'])) {
       $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
 
       if ($conn->connect_error) {
-        $response['status'] = array(
+        $response = array(
           'message' => 'Database connection error',
         );
       }
@@ -216,7 +216,7 @@ if (isset($_REQUEST['action'])) {
             );
             array_push($steps,$step);
           }
-          $response['Task'] = array(
+          $response = array(
             'name' => $taskName,
             'imgLink' => $taskImageLink,
             'mainDescription' => $taskDescription,
@@ -228,10 +228,76 @@ if (isset($_REQUEST['action'])) {
         $conn->close();
       }
     }
+  } else if($action === "getAll") {
+    // Create connection
+    $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
+
+    if ($conn->connect_error) {
+      $response = array(
+        'message' => 'Database connection error',
+      );
+    }
+    else
+    {
+      // Easy query to get all tasks and steps.
+      $sql = "SELECT amsta.Task.idTask AS id, amsta.Task.name AS taskName,amsta.Task.description AS taskDescription, amsta.Task.imgLink as taskImageLink,amsta.Step.* FROM
+          amsta.Task INNER JOIN
+          amsta.Step ON amsta.Step.Task_taskId=amsta.Task.idTask";
+
+      // Query database
+      $result = $conn->query($sql);
+
+      // Loop through data of database
+      if($result->num_rows > 0)
+        $taskId = -1;
+        $tasks = array();
+        $steps = array();
+        $task = array();
+
+        while ($row = $result->fetch_assoc()) {
+          // New row
+          if($taskId != $row["id"] && $taskId != -1) {
+              array_push($tasks, $task);
+
+              $steps = array();
+              $task = array();
+          }
+          $taskId=$row["id"];
+
+          // Fill Task
+          $taskName = $row["taskName"];
+          $taskDescription = $row["taskDescription"];
+          $taskImageLink = $row["taskImageLink"];
+
+          // Fill task with steps
+          $step = array(
+            'stepImgLink' => $row['imgLink'],
+            'stepDescription' => $row['description']
+          );
+
+          array_push($steps,$step);
+
+          $task = array(
+            'id' => $taskId,
+            'name' => $taskName,
+            'imgLink' => $taskImageLink,
+            'mainDescription' => $taskDescription,
+            'steps' => $steps
+          );
+        }
+
+        //Push last task in the tasks array
+        array_push($tasks, $task);
+
+        $response = $tasks;
+
+        // Close connection
+        $conn->close();
+    }
   }
 }
 else {
-  $response['status'] = array(
+  $response[] = array(
     'message' => 'No action found',
   );
 }
