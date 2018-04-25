@@ -34,10 +34,13 @@ export class AddTaskComponent implements OnInit {
   editTask: Task = null;
 
 
-  name: string;
+  taskNameValue: string;
   imgLink: string;
   mainDescription: string;
 
+
+
+  AdminDoingMessage: string = "Een extra stappenplan toevoegen.";
 
   constructor(
     private tasksService: TaskService,
@@ -65,11 +68,13 @@ export class AddTaskComponent implements OnInit {
 
   private checkForEdit() {
     if (this.editTask != null){
-      this.name = this.editTask.name;
+      this.taskNameValue = this.editTask.name;
       this.imgLink = this.editTask.imgLink;
       this.mainDescription = this.editTask.mainDescription;
       this.taskTimes = this.editTask.taskTimes;
       this.stepsCreated = this.editTask.steps;
+      
+      this.AdminDoingMessage = "Een taak aanpassen."
     }
   }
 

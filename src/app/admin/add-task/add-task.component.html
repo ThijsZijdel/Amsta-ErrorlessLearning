@@ -5,12 +5,12 @@
 
   <div class="row">
     <div class="col-md-6">
-      <h3>Een extra stappenplan (/taak) toevoegen.</h3>
+      <h3>{{AdminDoingMessage}}</h3>
 
 
       <div class="padding">
         <mat-form-field>
-          <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required>
+          <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required value="{{taskNameValue}}">
           <mat-error *ngIf="nameValidation.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
