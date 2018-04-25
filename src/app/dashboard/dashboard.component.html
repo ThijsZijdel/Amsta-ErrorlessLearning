@@ -15,7 +15,7 @@
 
           <br>
 
-          <div class="time-indicator-box">
+          <div class="time-indicator-box-container">
             <div *ngFor="let time of task.taskTimes"  class="time-indicator-box">
               <div *ngIf="isPast(time.endTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
             </div>
