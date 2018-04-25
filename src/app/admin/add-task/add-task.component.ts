@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/Task';
 import {Step} from '../../models/Step';
-import {FormControl, Validators} from "@angular/forms";
 import {StatusService} from "../login/status.service";
 import {TaskTime} from "../../models/TaskTime";
 
@@ -16,19 +15,37 @@ export class AddTaskComponent implements OnInit {
   /**
    * The tasks from taskService
    */
-  tasks: Task[];
+  protected tasks: Task[];
 
+
+  /**
+   * Tasks attributes
+   */
+  taskNameValue: string;
+  imgLink: string;
+  mainDescription: string;
+
+  //Step variables
   @Input() step: Step;
+  protected stepsCreated: Step[] = [];
+  protected addStepMessage: string = "";
+  protected showReordering: boolean = false;
 
-  stepsCreated: Step[] = [];
+  //Task times
+  taskTimes: TaskTime[] = [];
 
-  private addStepMessage: string = "";
 
-  showReordering: boolean = false;
+  /**
+   * Potential editable task
+   */
+  protected editTask: Task = null;
 
-  constructor(
-    private tasksService: TaskService,
-    private status: StatusService) { }
+
+  protected AdminDoingMessage: string = "Een extra stappenplan toevoegen.";
+
+  constructor(private tasksService: TaskService,
+              private status: StatusService) {
+  }
 
   /**
    * Called on initialize
@@ -37,6 +54,17 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.setAddStepMessage();
+
+    //check if an tasks needs to be edited
+    this.checkForEdit();
+  }
+
+  /**
+   * Close this view and remove the editing task
+   * @author: Thijs Zijdel
+   */
+  close(): void {
+    this.tasksService.setEditTask(null);
   }
 
   /**
@@ -56,19 +84,23 @@ export class AddTaskComponent implements OnInit {
    * @param {string} name
    * @param {string} imgLink
    * @param {string} mainDescription
-   * @param {string} startTime
-   * @param {string} endTime
    * @author Thijs Zijdel
    */
-  protected add(name: string, imgLink: string, mainDescription: string, startTime: string, endTime:string): void {
+  protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
-    if (!name || !imgLink || !mainDescription || !startTime || !endTime) { return; }
+    if (!name || !imgLink || !mainDescription) {
+      return;
+    }
 
-    let times: TaskTime[] = new Array;
-    times.push(new TaskTime(startTime, endTime));
 
     this.tasksService.addTask
-      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated, taskTimes: times } as Task)
+    ({
+      name: name,
+      imgLink: imgLink,
+      mainDescription: mainDescription,
+      steps: this.stepsCreated,
+      taskTimes: this.taskTimes
+    } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -81,7 +113,7 @@ export class AddTaskComponent implements OnInit {
    * @param {number} stepIndex, the index of the step
    * @author Thijs Zijdel
    */
-  protected removeStep(stepIndex: number):void{
+  protected removeStep(stepIndex: number): void {
     this.stepsCreated.splice(stepIndex, 1);
     this.assignIds();
   }
@@ -91,7 +123,7 @@ export class AddTaskComponent implements OnInit {
    * note: dummy step is pushed in the stepsCreated array
    * @author Thijs Zijdel
    */
-  protected addStep():void {
+  protected addStep(): void {
     this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
     this.setAddStepMessage();
   }
@@ -103,7 +135,7 @@ export class AddTaskComponent implements OnInit {
    */
   private assignIds() {
     var index = 1;
-    for (let step of this.stepsCreated){
+    for (let step of this.stepsCreated) {
       step.id = index;
       index++;
     }
@@ -115,7 +147,7 @@ export class AddTaskComponent implements OnInit {
    * @param {Step} step, that needs to be up one.
    * @author Thijs Zijdel
    */
-  protected up(step: Step):void {
+  protected up(step: Step): void {
     this.move(step, -1);
   }
 
@@ -124,7 +156,7 @@ export class AddTaskComponent implements OnInit {
    * @param {Step} step, that needs to be down one.
    * @author Thijs Zijdel
    */
-  protected down(step: Step):void {
+  protected down(step: Step): void {
     this.move(step, 1);
   }
 
@@ -134,14 +166,14 @@ export class AddTaskComponent implements OnInit {
    * @param delta
    * @author Thijs Zijdel
    */
-  private move(element, delta):void {
+  private move(element, delta): void {
     var steps = this.stepsCreated;
     //get the elements index
     var index = steps.indexOf(element);
     var newIndex = index + delta;
 
     //check if the element is at the top or bottom
-    if (newIndex < 0  || newIndex == steps.length) return;
+    if (newIndex < 0 || newIndex == steps.length) return;
 
     //sort the indexes
     var indexes = [index, newIndex].sort();
@@ -158,17 +190,17 @@ export class AddTaskComponent implements OnInit {
    * This is based on the amount of steps already added.
    * @author Thijs Zijdel
    */
-  private setAddStepMessage():void {
+  private setAddStepMessage(): void {
     let size = this.stepsCreated.length;
 
     //validate the size
     if (size <= 6) {
       this.addStepMessage = "Het is daarom aan te raden om meer stappen toe te voegen. ";
       return;
-    } else if (size >= 6 && size <= 10 ) {
+    } else if (size >= 6 && size <= 10) {
       this.addStepMessage = "Het is aan te raden om nog een aantal stappen toe te voegen. ";
       return;
-    } else if (size >= 11 && size <= 12 ) {
+    } else if (size >= 11 && size <= 12) {
       this.addStepMessage = "Het is niet aan te raden om meer stappen toe te voegen. ";
       return;
     } else {
@@ -177,15 +209,72 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  addTime() {
+    this.taskTimes.push(new TaskTime("10:00", "11:00"));
+  }
+
+  removeTime(time: TaskTime) {
+    this.taskTimes.splice(this.taskTimes.indexOf(time), 1);
+  }
+
+
   /**
-   * Name validation form controls
-   * @type {FormControl} + get the alert message
+   * Check if there is an task that needs to be editted.
+   * If this is true, setup all the fields
+   * @author Thijs Zijdel
    */
-  nameValidation = new FormControl('', [Validators.required]);
-  getErrorMessage() {return this.nameValidation.hasError('required') ? 'Je moet deze taak een naam geven' : '';}
+  private checkForEdit() {
+    //get an potential edit task.
+    this.editTask = this.tasksService.editTask;
 
 
-  timeValidation = new FormControl('', [Validators.required]);
-  getErrorMessageTime() {return this.nameValidation.hasError('required') ? 'Voer een tijd in zoals bijv: 09:00' : '';}
+    if (this.editTask != null) {
+      this.taskNameValue = this.editTask.name;
+      this.imgLink = this.editTask.imgLink;
+      this.mainDescription = this.editTask.mainDescription;
+      this.taskTimes = this.editTask.taskTimes;
+      this.stepsCreated = this.editTask.steps;
+
+      this.AdminDoingMessage = "Een taak aanpassen."
+    } else {
+      //setup a empty dummy time
+      this.taskTimes.push(new TaskTime("09:00", "10:00"));
+    }
+  }
+
+  /**
+   * Save changes made to the current task
+   * @author Thijs Zijdel
+   */
+  protected saveEditingTask(name: string, imgLink: string, mainDescription: string): void {
+
+    this.getUpdatedFields();
+    console.log(this.editTask.name + " is the current edit task name: becomes-->" + this.taskNameValue);
+    this.editTask.name = name;
+    this.editTask.imgLink = imgLink;
+    this.editTask.mainDescription = mainDescription;
+
+    this.editTask.taskTimes = this.taskTimes;
+    this.editTask.steps = this.stepsCreated;
+
+    this.tasksService.updateTask(this.editTask).subscribe();
+  }
+
+  private getUpdatedFields() {
+    // this.taskNameValue = $scope.taskname;
+  }
+
+  /**
+   * Delete the current edit task
+   * @param {Task} task (this)
+   * @author Thijs Zijdel
+   */
+  protected deleteEditingTask(task: Task): void {
+    // this.heroes = this.heroes.filter(h => h !== hero);
+    // this.heroService.deleteHero(hero).subscribe();
+    this.editTask = null;
+    this.tasksService.editTask = null;
+    this.tasksService.deleteTask(task).subscribe();
+  }
 
 }

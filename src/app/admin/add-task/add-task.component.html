@@ -3,15 +3,44 @@
   <div class="col-md-12">
 <div *ngIf="status.loggedInStatus">
 
+
+
   <div class="row">
     <div class="col-md-6">
-      <h3>Een extra stappenplan (/taak) toevoegen.</h3>
+      <h3>{{AdminDoingMessage}}</h3>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="editTask == null">
+        <button mat-raised-button color="primary" (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
+          Deze taak toevoegen
+        </button>
+        <button mat-raised-button (click)="close()" routerLink="/admin"> Sluiten </button>
+      </div>
+
+      <div *ngIf="editTask != null">
+        <button mat-raised-button color="primary" (click)="saveEditingTask(taskName.value, taskImgLink.value, mainDesc.value)">Deze taak opslaan</button>
+        <button mat-button color="warn" title="delete task" (click)="deleteEditingTask(editTask)" routerLink="/admin">
+          Deze taak verwijderen
+        </button>
+        <button mat-raised-button (click)="close()" routerLink="/admin"> Sluiten </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="separator-vertical"></div>
+  <hr>
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+
 
 
       <div class="padding">
         <mat-form-field>
-          <input matInput #taskName placeholder="Naam van de takenlijst" [formControl]="nameValidation" required>
-          <mat-error *ngIf="nameValidation.invalid">{{getErrorMessage()}}</mat-error>
+          <input matInput #taskName placeholder="Naam van de takenlijst" value="{{taskNameValue}}">
         </mat-form-field>
       </div>
 
@@ -20,31 +49,36 @@
 
       <div class="padding">
         <mat-form-field>
-          <textarea matInput #mainDesc class="mainDesc"
-                    placeholder="Beschrijving van de taak"></textarea>
+          <textarea matInput #mainDesc class="mainDesc" matTextareaAutosize matAutosizeMinRows="2"
+                    matAutosizeMaxRows="5"
+                    placeholder="Beschrijving van de taak"> {{mainDescription}} </textarea>
         </mat-form-field>
       </div>
 
       <br>
 
-      <div class="padding">
+
+      <div class="padding task-times" *ngFor="let time of taskTimes">
         <mat-form-field>
-          <input matInput #startTime class="startTime" type="time" [formControl]="timeValidation" required
-                    placeholder="Voer de begin tijd in">
+          <input matInput #startTime class="startTime" type="time"
+                    placeholder="Voer de begin tijd in" value="{{time.startTime}}">
 
-
-          <mat-error *ngIf="timeValidation.invalid">{{getErrorMessageTime()}}</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput #endTime class="endTime" type="time" [formControl]="timeValidation" required
-                 placeholder="Voer de eind tijd in">
+          <input matInput #endTime class="endTime" type="time"
+                 placeholder="Voer de eind tijd in" value="{{time.endTime}}">
 
-
-          <mat-error *ngIf="timeValidation.invalid">{{getErrorMessageTime()}}</mat-error>
         </mat-form-field>
+        <button *ngIf="taskTimes.length>1" mat-button color="warn" (click)="removeTime(time)">
+          verwijder deze tijd
+        </button>
       </div>
 
-      <br>
+      <button mat-raised-button class="float-right" (click)="addTime()">+ Voeg extra tijd toe</button>
+
+
+
+      <br><br>
       <mat-slide-toggle  (change)="showReordering = !showReordering" *ngIf="stepsCreated.length >= 2">
         Verander volgorde stappen
       </mat-slide-toggle>
@@ -54,13 +88,16 @@
     <div class="col-md-6">
 
 
-      <img id="blah" src="http://placehold.it/500x300" alt="image" />
+      <img *ngIf="editTask != null" class="main-image-container" src="./../assets/images{{imgLink}}" alt="image" />
+      <img *ngIf="editTask == null" class="main-image-container" src="http://placehold.it/500x300" alt="image" />
+
+
       <br><br>
       <input type='file' id="stepImgInput"/>
       &nbsp;
       <div class="padding">
         <mat-form-field>
-          <input matInput #taskImgLink placeholder="Hoofd afbeelding link">
+          <input matInput #taskImgLink placeholder="Hoofd afbeelding link" value="{{imgLink}}">
         </mat-form-field>
       </div>
       <br>
@@ -116,9 +153,11 @@
               <br><br>
               </div>
               <div class="col-md-7">
-                <img id="blah" src="http://placehold.it/400x250" alt="image" />
+                <img *ngIf="editTask != null" class="step-img-container" src="./../assets/images{{step.stepImgLink}}" alt="image" />
+                <img *ngIf="editTask == null" class="step-img-container" src="http://placehold.it/400x250" alt="image" />
+
                 <br><br>
-                <input type='file' id="stepImgInput"/>
+                <input type='file' id="stepImgInputw"/>
               </div>
 
 
@@ -127,7 +166,7 @@
             </div>
 
             <br><br>
-            <button (click)="removeStep(step.id - 1)" mat-raised-button color="warn">Verwijder deze stap</button>
+            <button (click)="removeStep(step.id - 1)" mat-button color="warn">Verwijder deze stap</button>
           </div>
 
 
@@ -152,14 +191,6 @@
     </mat-tab-group>
   </div>
 
-  <div class="separator-vertical"></div>
-
-  <hr>
-
-  <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-  <button mat-raised-button color="primary" (click)="add(taskName.value, taskImgLink.value, mainDesc.value, startTime.value, endTime.value)">
-    Deze taak toevoegen
-  </button>
 
 </div>
 <div *ngIf="!status.loggedInStatus">
@@ -167,4 +198,7 @@
 </div>
 </div>
 </div>
+
+
+
 
