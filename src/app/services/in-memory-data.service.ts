@@ -6,11 +6,6 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const tasks = [
-      { id: 1, name: 'Schoonmaken', imgLink: '/tasks/cleaning.jpg', mainDescription: 'Hier leer je het huis schoon te maken',
-        steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'},
-                  { id: 2, stepImgLink: '/tasks/step2.jpg', stepDescription: 'Beschrijving stap 1'}],
-        taskTimes:[ {startTime: "13:00", endTime: "14:00"} ]
-      },
       { id: 2, name: 'Tanden poetsen', imgLink: '/tasks/brushing.jpg', mainDescription: 'Hier leer je je tanden schoon te maken',
         steps: [  { id: 1, stepImgLink: '/tasks/step1.jpg', stepDescription: 'Pak je tandenborstel'},
                   { id: 2, stepImgLink: '/tasks/step3.jpg', stepDescription: 'Doe hier een beetje tandpasta op'},
@@ -23,6 +18,11 @@ export class InMemoryDataService implements InMemoryDbService {
         steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 2'},
                   { id: 2, stepImgLink: '/tasks/shower.jpg', stepDescription: 'Beschrijving stap 3'}],
         taskTimes:[ {startTime: "11:00", endTime: "12:00"} ]
+      },
+      { id: 1, name: 'Schoonmaken', imgLink: '/tasks/cleaning.jpg', mainDescription: 'Hier leer je het huis schoon te maken',
+        steps: [  { id: 1, stepImgLink: '/tasks/step3.png', stepDescription: 'Beschrijving stap 1'},
+          { id: 2, stepImgLink: '/tasks/step2.jpg', stepDescription: 'Beschrijving stap 1'}],
+        taskTimes:[ {startTime: "13:00", endTime: "14:00"} ]
       },
       { id: 4, name: 'Nieuws lezen', imgLink: '/tasks/reading.jpg', mainDescription: 'Hier leer je het nieuws te begrijpen',
         steps: [  { id: 1, stepImgLink: '/tasks/step3.jpg', stepDescription: 'Beschrijving stap 2'},
