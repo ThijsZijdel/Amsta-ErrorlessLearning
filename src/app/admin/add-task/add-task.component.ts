@@ -26,6 +26,19 @@ export class AddTaskComponent implements OnInit {
 
   showReordering: boolean = false;
 
+  taskTimes: TaskTime[] = [];
+
+
+
+
+  editTask: Task = null;
+
+
+  name: string;
+  imgLink: string;
+  mainDescription: string;
+
+
   constructor(
     private tasksService: TaskService,
     private status: StatusService) { }
@@ -37,7 +50,62 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.setAddStepMessage();
+
+    this.taskTimes.push(new TaskTime("09:00","10:00"));
+
+
+
+
+
+
+    this.editTask = this.tasksService.editTask;
+
+    this.checkForEdit();
   }
+
+  private checkForEdit() {
+    if (this.editTask != null){
+      this.name = this.editTask.name;
+      this.imgLink = this.editTask.imgLink;
+      this.mainDescription = this.editTask.mainDescription;
+      this.taskTimes = this.editTask.taskTimes;
+      this.stepsCreated = this.editTask.steps;
+    }
+  }
+
+  /**
+   * Save changes made to the current task
+   * @author Thijs Zijdel
+   */
+  save(): void {
+    this.tasksService.updateTask(this.editTask).subscribe();
+  }
+
+  /**
+   * Close the edit task view
+   * @author: Thijs Zijdel
+   */
+  close(): void {
+    this.tasksService.setEditTask(null);
+  }
+
+  /**
+   * Delete the current task
+   * @param {Task} task (this)
+   * @author Thijs Zijdel
+   */
+  delete(task: Task): void {
+    // this.heroes = this.heroes.filter(h => h !== hero);
+    // this.heroService.deleteHero(hero).subscribe();
+
+
+
+    this.editTask = null;
+    this.tasksService.editTask = null;
+    this.tasksService.deleteTask(task).subscribe();
+  }
+
+
 
   /**
    * Called by ngOnInit
@@ -60,15 +128,14 @@ export class AddTaskComponent implements OnInit {
    * @param {string} endTime
    * @author Thijs Zijdel
    */
-  protected add(name: string, imgLink: string, mainDescription: string, startTime: string, endTime:string): void {
+  protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
-    if (!name || !imgLink || !mainDescription || !startTime || !endTime) { return; }
+    if (!name || !imgLink || !mainDescription) { return; }
 
-    let times: TaskTime[] = new Array;
-    times.push(new TaskTime(startTime, endTime));
+
 
     this.tasksService.addTask
-      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated, taskTimes: times } as Task)
+      ({name: name, imgLink: imgLink, mainDescription: mainDescription, steps: this.stepsCreated, taskTimes: this.taskTimes } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -187,5 +254,12 @@ export class AddTaskComponent implements OnInit {
 
   timeValidation = new FormControl('', [Validators.required]);
   getErrorMessageTime() {return this.nameValidation.hasError('required') ? 'Voer een tijd in zoals bijv: 09:00' : '';}
+
+  addTime() {
+    this.taskTimes.push(new TaskTime("10:00","11:00"));
+  }
+  removeTime(time:TaskTime){
+    this.taskTimes.splice(this.taskTimes.indexOf(time),1);
+  }
 
 }
