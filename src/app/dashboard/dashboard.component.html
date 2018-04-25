@@ -4,7 +4,7 @@
 
 
   <div class="row">
-    <div *ngFor="let task of pastTasks.slice(pastTasks.length-amountOfPastTasksDisplayIndex+1,pastTasks.length).reverse()" class="col-md-3">
+    <div *ngFor="let task of pastTasks.slice(pastTasks.length-amountOfPastTasksDisplayIndex,pastTasks.length-1).reverse()" class="col-md-3 card-task-contianer">
       <mat-card>
 
         <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
@@ -27,7 +27,7 @@
 
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3" *ngIf="pastTasks.length > 4">
       <mat-card>
         <img class="card-img-top" src="./../assets/images/tasks-done.jpg" alt="Card image cap">
 
@@ -67,7 +67,7 @@
       <h1>Huidige taken</h1>
 
 
-      <div *ngFor="let task of currentTasks" class="col-md-4">
+      <div *ngFor="let task of currentTasks" class="col-md-4 card-task-contianer">
         <mat-card>
 
           <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
@@ -78,9 +78,11 @@
 
             <br>
 
-            <div class="time-indicator-box">
-              <div *ngFor="let time of task.taskTimes">
-                <div *ngIf="isNow(time.startTime, time.endTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+            <div class="time-indicator-box-container">
+              <div class="time-indicator-box">
+                <div *ngFor="let time of task.taskTimes">
+                  <div *ngIf="isNow(time.startTime, time.endTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+                </div>
               </div>
             </div>
 
@@ -119,7 +121,7 @@
   <div class="container">
 
     <div class="row">
-      <div *ngFor="let task of upcommingTasks.slice(0,amountOfUpcomingTasksDisplayIndex-1)" class="col-md-3">
+      <div *ngFor="let task of upcommingTasks.slice(0,amountOfUpcomingTasksDisplayIndex-1)" class="col-md-3 card-task-contianer">
         <mat-card>
 
           <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
@@ -130,9 +132,11 @@
 
             <br>
 
-            <div class="time-indicator-box">
-              <div *ngFor="let time of task.taskTimes" class="time-indicator-box">
-                <div *ngIf="isUpcoming(time.startTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+            <div class="time-indicator-box-container">
+              <div class="time-indicator-box">
+                <div *ngFor="let time of task.taskTimes" class="time-indicator-box">
+                  <div *ngIf="isUpcoming(time.startTime)" class="time-indicator">{{time.startTime}} - {{time.endTime}}</div>
+                </div>
               </div>
             </div>
 
