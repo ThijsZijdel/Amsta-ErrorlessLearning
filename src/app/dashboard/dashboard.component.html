@@ -11,7 +11,7 @@
         <div class="card-block">
           <h6 class="card-title">{{task.name}}</h6>
           <p class="card-text">{{ task.mainDescription }}</p>
-          <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
+          <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
 
           <br>
 
@@ -32,11 +32,11 @@
         <img class="card-img-top" src="./../assets/images/tasks-done.jpg" alt="Card image cap">
 
         <div class="card-block">
-          <h6 class="card-title">Alle voltooide taken zien?</h6>
+          <h6 class="card-title">Alle eerder geplande taken van vandaag zien?</h6>
           <p class="card-text">Klik dan op de onderstaande knop</p>
 
 
-          <button mat-raised-button (click)="toggleDisplayAmountPastTasks()">
+          <button mat-raised-button (click)="toggleDisplayAmountPastTasks()" class="start-tasks-btn btn-info">
             {{showAllPastTasksButtonText}}
           </button>
 
@@ -59,7 +59,7 @@
   <div class="current-tasks-container" id="current">
     <div class="indicator">
       <img src="./../assets/icons/arrows/up.svg"><br>
-      <span>al voltooide taken</span>
+      <span>eerder geplande taken van vandaag</span>
     </div>
 
     <div class="container">
@@ -74,7 +74,7 @@
           <div class="card-block">
             <h4 class="card-title">{{task.name}}</h4>
             <p class="card-text">{{ task.mainDescription }}</p>
-            <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn">start</button>
+            <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn start-tasks-btn">start</button>
 
             <br>
 
@@ -108,7 +108,7 @@
 
 
     <div class="indicator">
-      <span>nog te voltooien taken</span><br>
+      <span>later geplande taken van vandaag</span><br>
       <img src="./../assets/icons/arrows/down.svg">
     </div>
   </div>
@@ -128,7 +128,7 @@
           <div class="card-block">
             <h6 class="card-title">{{task.name}}</h6>
             <p class="card-text">{{ task.mainDescription }}</p>
-            <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm">start</button>
+            <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
 
             <br>
 
@@ -151,11 +151,11 @@
           <img class="card-img-top" src="./../assets/images/tasks-todo.jpg" alt="Card image cap">
 
           <div class="card-block">
-            <h6 class="card-title">Alle nog te voltooien taken zien?</h6>
+            <h6 class="card-title">Alle later geplande taken van vandaag zien?</h6>
             <p class="card-text">Klik dan op de onderstaande knop</p>
 
 
-            <button mat-raised-button (click)="toggleDisplayAmountUpcomingTasks()">
+            <button mat-raised-button (click)="toggleDisplayAmountUpcomingTasks()" class="start-tasks-btn btn-info">
               {{showAllUpcomingTasksButtonText}}
             </button>
 

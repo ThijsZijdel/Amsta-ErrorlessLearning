@@ -92,3 +92,12 @@ mat-card.mat-card {
   margin-right: 6px;
   bottom: 0;
 }
+.start-tasks-btn{
+  position:absolute;
+  bottom: 25px;
+  right:25px;
+}
+.btn-info{
+  background: #795094;
+  color: #fff;
+}
