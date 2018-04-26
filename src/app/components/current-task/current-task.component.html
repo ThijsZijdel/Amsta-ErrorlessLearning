@@ -12,7 +12,7 @@
       <div class="row">
 
         <div class="col-md-2 back arrow">
-          <button (click)="goStepBack(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === 0">
+          <button (click)="goStepBack(stepper)" class="arrowButton">
             <img src="../../../assets/icons/ic_back.png" width="100%" height="100%" />
           </button>
         </div>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="col-md-2 forward arrow">
-          <button (click)="goStepForward(stepper)" class="arrowButton" [disabled]="stepper.selectedIndex === stepper._steps.length-1">
+          <button (click)="goStepForward(stepper)" class="arrowButton">
             <img src="../../../assets/icons/ic_forw.png" width="100%" height="100%" />
           </button>
         </div>
@@ -99,6 +99,4 @@
       <hr class="space">
     </div>
 
-    <div class="col-md-3">
-      <button class="btn btn-secondary btn-sm" (click)="goBack()">Terug</button>
-    </div>
+
