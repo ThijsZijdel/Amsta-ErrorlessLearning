@@ -1,5 +1,5 @@
-<div class="body">
-<div class="container">
+<div class="body" >
+<div class="container" *ngIf="pastTasks.length !== 0" >
 
 
 
@@ -57,7 +57,7 @@
 
   <!-- current tasks -->
   <div class="current-tasks-container" id="current">
-    <div class="indicator">
+    <div class="indicator" *ngIf="pastTasks.length !== 0">
       <img src="./../assets/icons/arrows/up.svg"><br>
       <span>eerder geplande taken van vandaag</span>
     </div>

@@ -79,6 +79,12 @@ export class CurrentTaskComponent implements OnInit {
    * @param {MatStepper} stepper
    */
   goStepBack(stepper: MatStepper): void {
+    //check if the go back button is clicked on the first step
+    if (stepper.selectedIndex==0)
+      if(this.openClosingMessage())
+        this.goBack();
+
+
     stepper.selected.completed = false;
     stepper.previous();
   }
@@ -89,6 +95,11 @@ export class CurrentTaskComponent implements OnInit {
    * @param {MatStepper} stepper
    */
   goStepForward(stepper: MatStepper): void {
+    //check if the go forward button is clicked on the last step
+    if (stepper.selectedIndex==stepper._steps.length-1)
+      if(this.openClosingMessage())
+        this.goBack();
+
     stepper.selected.completed = true;
     stepper.next();
   }
@@ -104,5 +115,13 @@ export class CurrentTaskComponent implements OnInit {
       .subscribe(task => {
         return this.steps = task.steps;
       });
+  }
+
+  private openClosingMessage() {
+    if (confirm("Wilt u deze taak echt sluiten?")) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
