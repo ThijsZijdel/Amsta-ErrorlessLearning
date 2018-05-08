@@ -6,6 +6,12 @@
  * Time: 2:38 PM
  */
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Credentials: true");
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Max-Age: 1000');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
 define("SERVER_NAME", "localhost");
 define("DATABASE_NAME", "amsta");
 define("USERNAME", "root");
@@ -19,10 +25,11 @@ if (isset($_REQUEST['action'])) {
     $json = file_get_contents('php://input');
     $obj = json_decode($json);
 
-    $taskName = $obj->Task->name;
-    $taskDescription = $obj->Task->mainDescription;
-    $taskImageLink = $obj->Task->imgLink;
-    $taskSteps = $obj->Task->steps;
+    $taskName = $obj->name;
+    $taskDescription = $obj->mainDescription;
+    $taskImageLink = $obj->imgLink;
+    $taskSteps = $obj->steps;
+    $taskTimes = $obj->taskTimes;
 
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
@@ -53,6 +60,17 @@ if (isset($_REQUEST['action'])) {
             $success = false;
           }
         }
+        foreach($taskTimes as $taskTime)
+        {
+          $taskStartTime = $taskTime->startTime;
+          $taskEndTime = $taskTime->endTime;
+
+          $sql = "INSERT INTO  amsta.TaskTime(startTime, endTime, Task_taskId) VALUES('" . $taskStartTime . "', '" . $taskEndTime . "', '" . $taskId . "')";
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+          }
+        }
       } else {
         $success = false;
       }
@@ -61,7 +79,7 @@ if (isset($_REQUEST['action'])) {
       {
         $response['status'] = array(
           'message' => 'Task and steps successfully added!',
-          'success' => true 
+          'success' => true
         );
       } else {
         $response['status'] = array(
@@ -71,8 +89,6 @@ if (isset($_REQUEST['action'])) {
         );
       }
     }
-
-
   } else if ($action === "remove") {
     if (isset($_REQUEST["id"])) {
       $id = $_REQUEST["id"];
@@ -112,6 +128,7 @@ if (isset($_REQUEST['action'])) {
     $taskDescription = $obj->mainDescription;
     $taskImageLink = $obj->imgLink;
     $taskSteps = $obj->steps;
+    $taskTimes = $obj->taskTimes;
 
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
@@ -144,6 +161,19 @@ if (isset($_REQUEST['action'])) {
             $success = false;
           }
         }
+
+        foreach($taskTimes as $taskTime)
+        {
+          $taskStartTime = $taskTime->startTime;
+          $taskEndTime = $taskTime->endTime;
+          $taskTimeId = $taskTime->id;
+
+          $sql = "UPDATE amsta.TaskTime SET amsta.TaskTime.startTime='" . $taskStartTime . "', amsta.TaskTime.endTime='" . $taskEndTime . "' WHERE amsta.TaskTime.Task_taskId=" . $taskId . " AND amsta.TaskTime.id=" . $taskTimeId;
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+          }
+        }
       } else {
         $response = array(
           'message' => 'Error something went wrong while trying to update task',
@@ -166,7 +196,6 @@ if (isset($_REQUEST['action'])) {
         );
       }
     }
-
   } else if ($action === "get") {
     if (isset($_REQUEST["id"])) {
       $id = $_REQUEST["id"];
@@ -181,13 +210,8 @@ if (isset($_REQUEST['action'])) {
       }
       else
       {
-        $sql = "SELECT amsta.Task.name AS taskName,amsta.Task.description AS taskDescription, amsta.Task.imgLink as taskImageLink,amsta.Step.* FROM
-          amsta.Task INNER JOIN
-          amsta.Step ON
-          amsta.Task.idTask=
-          amsta.Step.Task_taskId where
-          amsta.Task.idTask=" . $id;
-
+        $sql = "SELECT amsta.Task.name AS taskName,amsta.Task.description AS taskDescription, amsta.Task.imgLink as taskImageLink FROM
+          amsta.Task WHERE amsta.Task.idTask=" . $id;
 
         // Query database
         $result = $conn->query($sql);
@@ -195,37 +219,67 @@ if (isset($_REQUEST['action'])) {
         // Loop through data of database
         if ($result->num_rows > 0)
         {
-
           $steps = array();
+          $taskTimes = array();
 
           // output data of each row
-          while ($row = $result->fetch_assoc()) {
+          $row = $result->fetch_assoc();
 
-            // SQL OUTPUT FORMAT
-            // taskname, taskdesc, taskimglink,stepid,imglink,description,taskid
+          // Fill Task
+          $taskName = $row["taskName"];
+          $taskDescription = $row["taskDescription"];
+          $taskImageLink = $row["taskImageLink"];
 
-            // Fill Task
-            $taskName = $row["taskName"];
-            $taskDescription = $row["taskDescription"];
-            $taskImageLink = $row["taskImageLink"];
+          $sql = "SELECT amsta.Step.description, amsta.Step.imgLink FROM
+          amsta.Step WHERE amsta.Step.Task_idTask=" . $id;
 
-            // Fill task with steps
-            $step = array(
-              'stepImgLink' => $row['imgLink'],
-              'stepDescription' => $row['description']
-            );
-            array_push($steps,$step);
+          // Query database
+          $result = $conn->query($sql);
+
+          // Loop through data of database
+          if ($result->num_rows > 0)
+          { // output data of each row
+            while ($row = $result->fetch_assoc()) {
+              // Fill task with steps
+              $step = array(
+                'stepImgLink' => $row['imgLink'],
+                'stepDescription' => $row['description']
+              );
+              array_push($steps,$step);
+            }
+          }
+
+          $sql = "SELECT amsta.TaskTime.startTime, amsta.Step.endTime FROM
+          amsta.TaskTime WHERE amsta.TaskTime.Task_idTask=" . $id;
+
+          // Query database
+          $result = $conn->query($sql);
+
+          // Loop through data of database
+          if ($result->num_rows > 0)
+          {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+              // Fill task with steps
+              $taskTime = array(
+                'startTime' => $row['startTime'],
+                'endTime' => $row['endTime']
+              );
+              array_push($taskTimes,$taskTime);
+            }
+
           }
           $response = array(
             'name' => $taskName,
             'imgLink' => $taskImageLink,
             'mainDescription' => $taskDescription,
-            'steps' => $steps
+            'steps' => $steps,
+            'taskTimes' => $taskTimes
           );
-        }
 
-        // Close connection
-        $conn->close();
+          //Close connection for TaskTimes query
+          $conn->close();
+        }
       }
     }
   } else if($action === "getAll") {
@@ -239,60 +293,79 @@ if (isset($_REQUEST['action'])) {
     }
     else
     {
-      // Easy query to get all tasks and steps.
-      $sql = "SELECT amsta.Task.idTask AS id, amsta.Task.name AS taskName,amsta.Task.description AS taskDescription, amsta.Task.imgLink as taskImageLink,amsta.Step.* FROM
-          amsta.Task INNER JOIN
-          amsta.Step ON amsta.Step.Task_taskId=amsta.Task.idTask";
-
+        $tasks = array();
+        $sql = "SELECT amsta.Task.idTask as taskId,amsta.Task.name AS taskName,amsta.Task.description AS taskDescription, amsta.Task.imgLink as taskImageLink FROM
+                amsta.Task";
       // Query database
       $result = $conn->query($sql);
 
       // Loop through data of database
-      if($result->num_rows > 0)
-        $taskId = -1;
-        $tasks = array();
-        $steps = array();
-        $task = array();
-
+      if ($result->num_rows > 0)
+      {
+        // output data of each row
         while ($row = $result->fetch_assoc()) {
-          // New row
-          if($taskId != $row["id"] && $taskId != -1) {
-              array_push($tasks, $task);
+          $steps = array();
+          $taskTimes = array();
 
-              $steps = array();
-              $task = array();
-          }
-          $taskId=$row["id"];
-
-          // Fill Task
           $taskName = $row["taskName"];
           $taskDescription = $row["taskDescription"];
           $taskImageLink = $row["taskImageLink"];
+          $id = $row["taskId"];
 
-          // Fill task with steps
-          $step = array(
-            'stepImgLink' => $row['imgLink'],
-            'stepDescription' => $row['description']
-          );
+          $sql = "SELECT amsta.Step.description, amsta.Step.imgLink FROM
+          amsta.Step WHERE amsta.Step.Task_idTask=" . $id;
 
-          array_push($steps,$step);
+          // Query database
+          $secundairResult = $conn->query($sql);
+
+          // Loop through data of database
+          if ($secundairResult->num_rows > 0)
+          { // output data of each row
+            while ($row = $secundairResult->fetch_assoc()) {
+              // Fill task with steps
+              $step = array(
+                'stepImgLink' => $row['imgLink'],
+                'stepDescription' => $row['description']
+              );
+              array_push($steps,$step);
+            }
+          }
+
+          $sql = "SELECT amsta.TaskTime.startTime, amsta.Step.endTime FROM
+          amsta.TaskTime WHERE amsta.TaskTime.Task_idTask=" . $id;
+
+          // Query database
+          $secundairResult = $conn->query($sql);
+
+          // Loop through data of database
+          if ($secundairResult->num_rows > 0)
+          {
+            // output data of each row
+            while ($row = $secundairResult->fetch_assoc()) {
+              // Fill task with steps
+              $taskTime = array(
+                'startTime' => $row['startTime'],
+                'endTime' => $row['endTime']
+              );
+              array_push($taskTimes,$taskTime);
+            }
+          }
 
           $task = array(
-            'id' => $taskId,
             'name' => $taskName,
             'imgLink' => $taskImageLink,
             'mainDescription' => $taskDescription,
-            'steps' => $steps
+            'steps' => $steps,
+            'taskTimes' => $taskTimes
           );
+
+          array_push($tasks, $task);
         }
-
-        //Push last task in the tasks array
-        array_push($tasks, $task);
-
         $response = $tasks;
 
         // Close connection
         $conn->close();
+      }
     }
   }
 }
