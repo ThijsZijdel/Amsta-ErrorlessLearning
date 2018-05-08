@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
   /**
    * Method for getting the minutes out an time string
-   * @param {string} time     (format:   09:00)
+   * @param {string} time     (format:   09:00 )
    * @returns {number} minutes
    * @author Thijs Zijdel
    */
@@ -102,6 +102,7 @@ export class DashboardComponent implements OnInit {
    * @param {string} endTime  (format:  09:00)
    * @returns {boolean} true if it is past, false if it isn't
    * @author Thijs Zijdel
+   * @author Lucas - minute validation
    */
   protected isPast(endTime: string) {
     return (this.currentHour >= this.getHour(endTime));
@@ -113,6 +114,7 @@ export class DashboardComponent implements OnInit {
    * @param {string} endTime    (format:  09:00)
    * @returns {boolean} true if it is now, false if it isn't
    * @author Thijs Zijdel
+   * @author Lucas - minute validation
    */
   protected isNow(startTime: string, endTime: string) {
     //TODO validate minutes
@@ -124,6 +126,7 @@ export class DashboardComponent implements OnInit {
    * @param {string} startTime  (format:  09:00)
    * @returns {boolean} true if it is upcoming, false if it isn't
    * @author Thijs Zijdel
+   * @author Lucas - minute validation
    */
   protected isUpcoming(startTime: string){
     return (this.currentHour <= this.getHour(startTime));
