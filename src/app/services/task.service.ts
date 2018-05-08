@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'api/task.php';  // URL to web api
+  private tasksUrl = 'https://team5.amsta-hva.tk/api/task.php';  // URL to web api
 
   public editTask: Task;
 
