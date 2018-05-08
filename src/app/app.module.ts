@@ -11,7 +11,7 @@ import { CurrentTaskComponent } from './components/current-task/current-task.com
 /**
  * Imports for angular modules
  */
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 /**
@@ -30,14 +30,18 @@ import { AppRoutingModule } from './/app-routing.module';
 /**
  * Material design modules and components
  **/
-import { MatStepperModule} from '@angular/material/stepper';
-import { MatCardModule} from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -50,6 +54,13 @@ import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
+
+import {
+   MatFormFieldModule, MatInputModule, MatSlideToggleModule,
+  MatTooltipModule
+} from "@angular/material";
+
+
 
 
 /**
@@ -77,6 +88,7 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -86,7 +98,15 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     BrowserAnimationsModule,
     MatStepperModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [
     TaskService,

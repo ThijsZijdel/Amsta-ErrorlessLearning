@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {StatusService} from "../login/status.service";
-import {Task} from '../../models/Task';
-import {TaskService} from "../../services/task.service";
+import { StatusService } from "../login/status.service";
+import { Task } from '../../models/Task';
+import { TaskService } from "../../services/task.service";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -18,7 +18,7 @@ export class AdminDashboardComponent implements OnInit {
   tasks: Task[];
 
   constructor(private status: StatusService,
-              private taskService: TaskService) { }
+    private taskService: TaskService) { }
 
   /**
    * on initialize the current login status will be get
@@ -34,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
    * @param {string} name
    */
   setPanel(name: string) {
-    console.log("Setted: "+name);
+    console.log("Setted: " + name);
   }
 
   /**
@@ -45,7 +45,6 @@ export class AdminDashboardComponent implements OnInit {
   editTask(task: Task) {
     this.taskService.setEditTask(task);
   }
-
 
   /**
    * Called by ngOnInit

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 /**
  * Main application component (MainApp)
  *                            [app-root]
@@ -14,5 +15,4 @@ import { Component } from '@angular/core';
  * Main application class (component)
  */
 export class AppComponent {
-  title = 'Amsta';
 }

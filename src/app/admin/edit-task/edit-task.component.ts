@@ -49,7 +49,8 @@ export class EditTaskComponent implements OnInit {
   delete(task: Task): void {
     // this.heroes = this.heroes.filter(h => h !== hero);
     // this.heroService.deleteHero(hero).subscribe();
-
+    this.task = null;
+    this.taskService.editTask = null;
     this.taskService.deleteTask(task).subscribe();
   }
 

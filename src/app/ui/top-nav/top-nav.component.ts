@@ -12,6 +12,8 @@ import {observable} from "rxjs/symbol/observable";
  */
 export class TopNavComponent implements OnInit {
 
+  isValid = false;
+
   constructor(private statusService: StatusService) { }
 
   ngOnInit() {

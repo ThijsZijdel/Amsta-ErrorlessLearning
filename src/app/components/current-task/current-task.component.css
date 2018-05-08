@@ -8,7 +8,7 @@
 }
 
 hr.space {
-  margin: 4px 200px;
+  margin: 2px 200px;
 }
 
 div.mat-step-icon {
@@ -24,10 +24,11 @@ button.control {
 }
 
 /* Step Content */
+
 /* image */
 
 .imgContainer {
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   overflow: hidden;
   margin-bottom: 10px;
@@ -43,17 +44,20 @@ button.control {
 /* description/text */
 
 .textContainer {
-  height: 20vh;
+  height: 15vh;
   width: 100%;
 }
 
 /* Arrow */
+
 .arrow {
   margin: auto 0;
   padding: 0;
 }
 
-.arrowButton, .arrowButton.input[type="submit"], .arrowButton.input[type="reset"] {
+.arrowButton,
+.arrowButton.input[type="submit"],
+.arrowButton.input[type="reset"] {
   background: none;
   color: inherit;
   border: none;
@@ -64,7 +68,7 @@ button.control {
   outline: inherit;
 }
 
-.back{
+.back {
   /*#EC1C24*/
   border: solid thick #ec6d6f;
   border-radius: 100%;
@@ -72,10 +76,38 @@ button.control {
   overflow: hidden;
 }
 
-.forward{
+.forward {
   /*#0ED145*/
   border: solid thick #50d185;
   border-radius: 100%;
   background-color: #baeec8;
   overflow: hidden;
+}
+
+.doneCircle {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #ec6d6f;
+  z-index: 1;
+}
+
+:host /deep/ .mat-step-header .mat-step-icon-not-touched {
+  background-color: #50d185;
+}
+
+:host /deep/ .mat-horizontal-stepper-header-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 25px 50px 30px 50px;
+}
+:host /deep/ .mat-horizontal-content-container,
+:host /deep/ .mat-horizontal-stepper-header-container,
+:host /deep/ mat-stepper-horizontal {
+  background: #fbf8f3 !important;
 }

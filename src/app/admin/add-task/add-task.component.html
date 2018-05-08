@@ -1,29 +1,204 @@
-<div>
-  <label>Task name:
-    <input #taskName />
-  </label>
+
+<div class="container">
+  <div class="col-md-12">
+<div *ngIf="status.loggedInStatus">
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>{{AdminDoingMessage}}</h3>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="editTask == null">
+        <button mat-raised-button color="primary" (click)="add(taskName.value, taskImgLink.value, mainDesc.value)">
+          Deze taak toevoegen
+        </button>
+        <button mat-raised-button (click)="close()" routerLink="/admin"> Sluiten </button>
+      </div>
+
+      <div *ngIf="editTask != null">
+        <button mat-raised-button color="primary" (click)="saveEditingTask(taskName.value, taskImgLink.value, mainDesc.value)">Deze taak opslaan</button>
+        <button mat-button color="warn" title="delete task" (click)="deleteEditingTask(editTask)" routerLink="/admin">
+          Deze taak verwijderen
+        </button>
+        <button mat-raised-button (click)="close()" routerLink="/admin"> Sluiten </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="separator-vertical"></div>
+  <hr>
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+
+
+
+      <div class="padding">
+        <mat-form-field>
+          <input matInput #taskName placeholder="Naam van de takenlijst" value="{{taskNameValue}}">
+        </mat-form-field>
+      </div>
+
+
+      <br>
+
+      <div class="padding">
+        <mat-form-field>
+          <textarea matInput #mainDesc class="mainDesc" matTextareaAutosize matAutosizeMinRows="2"
+                    matAutosizeMaxRows="5"
+                    placeholder="Beschrijving van de taak"> {{mainDescription}} </textarea>
+        </mat-form-field>
+      </div>
+
+      <br>
+
+
+      <div class="padding task-times" *ngFor="let time of taskTimes">
+        <mat-form-field>
+          <input matInput #startTime class="startTime" type="time"
+                    placeholder="Voer de begin tijd in" value="{{time.startTime}}">
+
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #endTime class="endTime" type="time"
+                 placeholder="Voer de eind tijd in" value="{{time.endTime}}">
+
+        </mat-form-field>
+        <button *ngIf="taskTimes.length>1" mat-button color="warn" (click)="removeTime(time)">
+          verwijder deze tijd
+        </button>
+      </div>
+
+      <button mat-raised-button class="float-right" (click)="addTime()">+ Voeg extra tijd toe</button>
+
+
+
+      <br><br>
+      <mat-slide-toggle  (change)="showReordering = !showReordering" *ngIf="stepsCreated.length >= 2">
+        Verander volgorde stappen
+      </mat-slide-toggle>
+
+    </div>
+
+    <div class="col-md-6">
+
+
+      <img *ngIf="editTask != null" class="main-image-container" src="./../assets/images{{imgLink}}" alt="image" />
+      <img *ngIf="editTask == null" class="main-image-container" src="http://placehold.it/500x300" alt="image" />
+
+
+      <br><br>
+      <input type='file' id="stepImgInput"/>
+      &nbsp;
+      <div class="padding">
+        <mat-form-field>
+          <input matInput #taskImgLink placeholder="Hoofd afbeelding link" value="{{imgLink}}">
+        </mat-form-field>
+      </div>
+      <br>
+    </div>
+
+  </div>
 
   <br>
 
-  <label>Task img:
-    <input #taskImgLink />
-  </label>
+  <div class="step-container container-fluid">
+    <mat-tab-group>
 
-  <br>
-
-  <label>Task desc:
-    <input #mainDesc />
-  </label>
-
-  <br>
-
-  <label>Task steps:
-    <input #steps />
-  </label>
+      <div *ngFor="let step of stepsCreated">
 
 
-  <!-- taskName.value = '', taskImgLink.value = '', mainDesc.value = '', steps.value = '' -->
-  <button (click)="add(taskName.value, taskImgLink.value, mainDesc.value, steps.value)">
-    add
-  </button>
+        <mat-tab class="tab-step">
+          <ng-template mat-tab-label>
+            <div class="mat-tab-header-labels">
+              <a class="left arrow" (click)="up(step)" matTooltipPosition="below" matTooltip="Een positie terug"
+                 *ngIf="stepsCreated.indexOf(step) != 0 && showReordering">
+                <img src="../../../assets/icons/arrows/left.svg" alt="up">
+              </a>
+              Stap {{step.id}}
+              <a class="right arrow" (click)="down(step)" matTooltipPosition="below" matTooltip="Een positie verder"
+                 *ngIf="stepsCreated.indexOf(step) != stepsCreated.length - 1 && showReordering">
+                <img src="../../../assets/icons/arrows/right.svg" alt="down">
+              </a>
+            </div>
+          </ng-template>
+
+
+
+
+          <div class="addStep-body">
+
+            <div class="row">
+
+              <div class="col-md-5">
+              <h3>Stap {{step.id}}</h3>
+
+              <div class="separator-vertical"></div>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="step.stepDescription" #stepDesc placeholder="Stap beschrijving">
+              </mat-form-field>
+
+              <br>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="step.stepImgLink" #stepImg placeholder="Stap Afbeelding">
+              </mat-form-field>
+
+              <br><br>
+              </div>
+              <div class="col-md-7">
+                <img *ngIf="editTask != null" class="step-img-container" src="./../assets/images{{step.stepImgLink}}" alt="image" />
+                <img *ngIf="editTask == null" class="step-img-container" src="http://placehold.it/400x250" alt="image" />
+
+                <br><br>
+                <input type='file' id="stepImgInputw"/>
+              </div>
+
+
+
+
+            </div>
+
+            <br><br>
+            <button (click)="removeStep(step.id - 1)" mat-button color="warn">Verwijder deze stap</button>
+          </div>
+
+
+
+
+
+        </mat-tab>
+      </div>
+
+      <mat-tab label="Voeg stap toe" class="tab-step">
+        <div class="addStep-body">
+          <h3>Let op:</h3> <br>
+          <p>Er zijn in totaal al {{stepsCreated.length}} stappen aangemaakt.</p>
+          <p>{{addStepMessage}}</p>
+          <br>
+          <button mat-raised-button class="btn btn-success btn-md"(click)="addStep()"> Voeg stap toe </button>
+          <br>
+
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+
 </div>
+<div *ngIf="!status.loggedInStatus">
+  <app-login></app-login>
+</div>
+</div>
+</div>
+
+
+
+

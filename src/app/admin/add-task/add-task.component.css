@@ -1,3 +1,64 @@
 /**
  * Current task's private CSS styles
  */
+.separator-vertical {
+  margin: 25px 0;
+}
+
+.tab-step , .mat-tab-body-wrapper{
+  background: #fff;
+
+}
+.addStep-body {
+  min-height: 400px;
+  padding: 25px 50px !important;
+  border: 1px solid #ddd;
+}
+
+a.arrow {
+
+}
+
+a.left.arrow {
+  margin-right: 25px;
+}
+a.right.arrow {
+  margin-left: 25px;
+}
+.mat-tab-header-labels {
+  background: #ddd !important;
+  width: 210px !important;
+  height: 50px;
+  margin: 0 -25px -6px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.mat-tab-labels {
+  background: red;
+}
+.mainDesc{
+  width: 400px;
+}
+.padding {
+  padding: 5px 0;
+  margin: 0px 0;
+}
+
+
+
+.step-img-container{
+  max-width: 400px;
+  width: 400px;
+
+  max-height: 200px;
+  height: 200px;
+}
+
+
+.main-image-container{
+  max-width: 500px;
+  width: 500px;
+
+  max-height: 300px;
+  height: 300px;
+}

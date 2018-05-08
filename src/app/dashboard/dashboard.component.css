@@ -12,9 +12,13 @@ mat-card.mat-card {
   margin-top: 5px;
   padding: 0;
   padding-bottom: 50px;
+  height: 400px;
 }
 .card-block {
   padding: 25px 15px;
+}
+.card-task-contianer{
+  position: relative;
 }
 .startBtn {
   background:#27ae60;
@@ -26,4 +30,74 @@ mat-card.mat-card {
 }
 .card-img-top {
   border-radius: 0;
+  height: 175px;
+}
+
+
+.body {
+  background: #fbf8f3;
+}
+.current-tasks {
+  margin: 100px 0 150px 0;
+}
+.current-tasks-container{
+  background: #fff;
+  padding: 25px 0;
+  margin: 50px 0;
+}
+.current-tasks h1{
+  font-weight: 600;
+  margin: 25px 0;
+  width: 100%;
+}
+.current-tasks mat-card.mat-card{
+  height: 450px;
+}
+.current-tasks .time-indicator-box {
+  top: 5px;
+}
+.current-tasks h1:after{
+  clear: both;
+}
+.indicator {
+  text-align: center;
+  max-width: 250px;
+  margin: 0 auto
+}
+.time-indicator-box:before,
+.time-indicator-box:after {
+  clear: both;
+  width: 100%;
+}
+.time-indicator-box-container{
+  z-index: 99;
+  position: absolute;
+  top: 0;
+
+}
+.time-indicator-box{
+  margin: 5px 0 0;
+  display: inline-block;
+  bottom: 0px;
+
+}
+.time-indicator {
+  display: inline;
+  color: rgba(0, 0, 0, .87);
+  background-color: #646464;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 2px 5px 2px 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+  bottom: 0;
+}
+.start-tasks-btn{
+  position:absolute;
+  bottom: 25px;
+  right:25px;
+}
+.btn-info{
+  background: #795094;
+  color: #fff;
 }
