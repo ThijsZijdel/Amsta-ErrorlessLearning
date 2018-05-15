@@ -48,7 +48,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskSearchComponent } from './components/task-search/task-search.component';
-import { AddTaskComponent } from './admin/add-task/add-task.component';
+import { ManageTaskComponent } from './admin/add-task/manage-task.component';
 import { EditTaskComponent } from './admin/edit-task/edit-task.component';
 import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
@@ -76,7 +76,7 @@ import {
     TopNavComponent,
     DashboardComponent,
     TaskSearchComponent,
-    AddTaskComponent,
+    ManageTaskComponent,
     EditTaskComponent,
     LoginComponent,
     SelectUserComponent,
