@@ -23,7 +23,7 @@ export class Activity {
               timeStarted: string, timeEnded: string,
               completedTime: string, completed: boolean,
 
-              resident: Resident,task: Task) {
+              residentId: string,taskId: number) {
     this.id = id;
     this.name = name;
     this.date = date;
@@ -36,8 +36,8 @@ export class Activity {
     this.completedTime = completedTime;
     this.completed = completed;
 
-    this.residentId = resident;
+    this.residentId = residentId;
 
-    this.task = task;
+    this.taskId = taskId;
   }
 }

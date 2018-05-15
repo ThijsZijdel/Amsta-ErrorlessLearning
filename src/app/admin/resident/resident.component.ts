@@ -33,6 +33,8 @@ export class ResidentComponent implements OnInit {
   }
 
   private orderActivities() {
+
+
     for(let activity of this.resident.activities){
 
       if (activity.date === this.today)
