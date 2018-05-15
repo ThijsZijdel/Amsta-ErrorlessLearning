@@ -126,3 +126,7 @@ div.col-md-9 {
   right: 30px;
   top: 35px;
 }
+.container-admin-content {
+  margin-top: 20px;
+  height:100%;
+}

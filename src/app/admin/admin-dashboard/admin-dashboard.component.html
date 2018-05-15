@@ -9,7 +9,8 @@
 
 
     <div class="col-md-9" style="padding-right: 0px;">
-      <div class="container-admin-content" style="overflow-y: scroll; height:100%;" *ngIf="loginStatusActual">
+
+      <div class="container-admin-content" *ngIf="loginStatusActual">
 
         <mat-tab-group>
           <mat-tab label="Taken beheer">
@@ -46,7 +47,7 @@
             <ul class="list-group tasks">
               <li *ngFor="let resident of residents" class="list-group-item">
                 <div class="task-name">{{resident.name}} {{resident.surname}}</div>
-                <div class="task-description">Extra info over bewoner?</div>
+                <div class="task-description">Extra info over bewoner</div>
 
                 <div class="tagRow">
                   <div class="tag">
