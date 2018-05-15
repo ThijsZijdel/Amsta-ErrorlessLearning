@@ -25,6 +25,7 @@ export class ManageTaskComponent implements OnInit {
   imgLink: string;
   mainDescription: string;
 
+
   //Step variables
   @Input() step: Step;
   protected stepsCreated: Step[] = [];
@@ -249,7 +250,7 @@ export class ManageTaskComponent implements OnInit {
   protected saveEditingTask(name: string, imgLink: string, mainDescription: string): void {
 
     this.getUpdatedFields();
-    console.log(this.editTask.name + " is the current edit task name: becomes-->" + this.taskNameValue);
+
     this.editTask.name = name;
     this.editTask.imgLink = imgLink;
     this.editTask.mainDescription = mainDescription;
@@ -277,4 +278,24 @@ export class ManageTaskComponent implements OnInit {
     this.tasksService.deleteTask(task).subscribe();
   }
 
+  updateThisTime(isStartTime: boolean, index: number, value: string) {
+
+
+    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
+    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
+    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
+
+
+    if (isStartTime)
+      this.taskTimes[index].startTime = value;
+    else
+      this.taskTimes[index].endTime = value;
+
+    console.log("----------------------------------------------")
+    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
+    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
+    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
+
+
+  }
 }
