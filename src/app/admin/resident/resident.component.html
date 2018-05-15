@@ -1,3 +1,53 @@
-<p>
-  resident works!
-</p>
+
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-md-3">
+      <h3>{{resident.name}} {{resident.surname}}</h3>
+      <h4>
+        <b>{{resident.id}}</b>
+      </h4>
+    </div>
+
+    <div class="col-md-9">
+
+
+
+      <mat-list>
+        <h3 mat-subheader>Today</h3>
+        <mat-list-item *ngFor="let todayTask of todayTasks">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>{{todayTask.name}}</h4>
+          <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Tomorrow</h3>
+        <mat-list-item *ngFor="let tomorrowTask of todoTasks">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <h4 mat-line>{{tomorrowTask.name}}</h4>
+          <p mat-line> {{tomorrowTask.timeStart}} - {{tomorrowTask.timeEnd}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Done</h3>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let doneTask of doneTasks">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <h4 mat-line>{{doneTask.name}}</h4>
+          <p mat-line> {{doneTask.completedTime}}</p>
+        </mat-list-item>
+      </mat-list>
+
+
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
