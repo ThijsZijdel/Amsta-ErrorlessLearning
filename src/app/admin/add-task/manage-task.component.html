@@ -58,14 +58,14 @@
       <br>
 
 
-      <div class="padding task-times" *ngFor="let time of taskTimes">
+      <div class="padding task-times" *ngFor="let time of taskTimes; let i = index">
         <mat-form-field>
-          <input matInput #startTime class="startTime" type="time"
+          <input matInput #startTime class="startTime" type="time" (change)="updateThisTime(true, i, this.startTime.value)"
                     placeholder="Voer de begin tijd in" value="{{time.startTime}}">
 
         </mat-form-field>
         <mat-form-field>
-          <input matInput #endTime class="endTime" type="time"
+          <input matInput #endTime class="endTime" type="time" (change)="updateThisTime(false, i, this.endTime.value)"
                  placeholder="Voer de eind tijd in" value="{{time.endTime}}">
 
         </mat-form-field>
