@@ -12,38 +12,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="employee.service.spec.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.spec.ts">
+    <leaf>
+      <file leaf-file-name="task.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="456">
+              <caret line="405" column="37" lean-forward="false" selection-start-line="405" selection-start-column="37" selection-end-line="405" selection-end-column="37" />
               <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <marker date="1526390603469" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
               </folding>
             </state>
           </provider>
@@ -52,70 +28,23 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+            <state relative-caret-position="340">
+              <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
-                <marker date="1525781659147" expanded="true" signature="3513:3523" ph="[...]" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
+      <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="329" column="39" lean-forward="true" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+            <state relative-caret-position="353">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-                <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-                <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-                <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-                <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-                <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-                <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-                <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-                <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-                <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-                <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-                <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Task.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/models/Task.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskTime.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/models/TaskTime.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Step.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/models/Step.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -135,13 +64,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/app/components/current-task/current-task.component.css" />
         <option value="$PROJECT_DIR$/src/app/components/current-task/current-task.component.html" />
-        <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
         <option value="$PROJECT_DIR$/team5_app/api/Database.php" />
         <option value="$PROJECT_DIR$/team5_app/api/auth.php" />
         <option value="C:/oldxampp/htdocs/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/services/task.service.ts" />
         <option value="$PROJECT_DIR$/team5_app/api/task.php" />
+        <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
       </list>
     </option>
   </component>
@@ -173,6 +102,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,34 +127,14 @@
               <item name="Amsta" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
-              <item name="team5_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
-              <item name="team5_app" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,38 +272,60 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32424000" />
+    <option name="totallyTimeSpent" value="32446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08802083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08802083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -418,9 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -428,9 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -448,25 +374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,7 +381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -482,7 +388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -490,9 +395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -500,9 +402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -520,25 +419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -546,7 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -554,7 +433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -562,9 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -572,9 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -592,25 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -618,7 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,9 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -644,9 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -664,9 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -674,9 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -684,7 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,25 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -718,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,9 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,9 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="43" lean-forward="false" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -753,7 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,7 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -804,25 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="132" column="36" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
-          <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,7 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,24 +666,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-            <marker date="1525781659147" expanded="true" signature="3513:3523" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,17 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,7 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,24 +691,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="329" column="39" lean-forward="true" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
           <folding>
-            <marker date="1525786633320" expanded="true" signature="1128:1260" ph="INSERT INTO amsta.Task... " />
-            <marker date="1525786633320" expanded="true" signature="1809:1947" ph="INSERT INTO Step" />
-            <marker date="1525786633320" expanded="true" signature="2213:2349" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="3335:3367" ph="DELETE FROM " />
-            <marker date="1525786633320" expanded="true" signature="4451:4627" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5173:5356" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5827" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5828" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5866" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5672:5867" ph="UPDATE amsta... " />
-            <marker date="1525786633320" expanded="true" signature="5678:5827" ph="INSERT INTO TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="6959:7123" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="7610:7715" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="8241:8356" ph="SELECT amsta... TaskTime" />
-            <marker date="1525786633320" expanded="true" signature="9546:9719" ph="SELECT amsta... Task" />
-            <marker date="1525786633320" expanded="true" signature="10202:10307" ph="SELECT amsta... Step" />
-            <marker date="1525786633320" expanded="true" signature="10860:10975" ph="SELECT amsta... TaskTime" />
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
