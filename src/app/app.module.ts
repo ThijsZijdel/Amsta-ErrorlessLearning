@@ -49,7 +49,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskSearchComponent } from './components/task-search/task-search.component';
 import { ManageTaskComponent } from './admin/add-task/manage-task.component';
-import { EditTaskComponent } from './admin/edit-task/edit-task.component';
+
+
 import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
@@ -59,6 +60,7 @@ import {
    MatFormFieldModule, MatInputModule, MatSlideToggleModule,
   MatTooltipModule
 } from "@angular/material";
+import {ResidentService} from "./services/resident.service";
 
 
 
@@ -77,7 +79,6 @@ import {
     DashboardComponent,
     TaskSearchComponent,
     ManageTaskComponent,
-    EditTaskComponent,
     LoginComponent,
     SelectUserComponent,
     AdminDashboardComponent,
@@ -112,7 +113,8 @@ import {
     TaskService,
     MessageService,
     EmployeeService,
-    StatusService
+    StatusService,
+    ResidentService
   ],
   bootstrap: [AppComponent]
 })
