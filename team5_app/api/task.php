@@ -152,11 +152,10 @@ if (isset($_REQUEST['action'])) {
           'message' => 'Only the task has successfully been updated.',
           'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
         );
-        $sql = "SELECT COUNT(team5_app.Step.idStep) AS steps FROM team5_app.Step";
+        $sql = "SELECT COUNT(team5_app.Step.idStep) AS steps FROM team5_app.Step WHERE team5_app.Step.Task_idTask=" . $taskId;
 
         // Query database
         $result = $conn->query($sql);
-
         $stepAmount = 0;
 
         // Loop through data of database
@@ -164,9 +163,6 @@ if (isset($_REQUEST['action'])) {
         {
           $row = $result->fetch_assoc();
           $stepAmount = intval($row['steps']);
-        }
-        if (!$conn->query($sql) === TRUE) {
-          $success = false;
         }
 
         if($success) {
