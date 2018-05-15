@@ -6,11 +6,11 @@ import {StatusService} from "../login/status.service";
 import {TaskTime} from "../../models/TaskTime";
 
 @Component({
-  selector: 'app-add-task',
-  templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.css']
+  selector: 'app-manage-task',
+  templateUrl: './manage-task.component.html',
+  styleUrls: ['./manage-task.component.css']
 })
-export class AddTaskComponent implements OnInit {
+export class ManageTaskComponent implements OnInit {
 
   /**
    * The tasks from taskService
