@@ -13,15 +13,15 @@ export class DashboardComponent implements OnInit {
   private currentHour: number;
   private currentMinute: number;
 
-  private pastTasks: Task[] = [];
-  private currentTasks: Task[] = [];
-  private upcommingTasks: Task[] = [];
+  protected pastTasks: Task[] = [];
+  protected currentTasks: Task[] = [];
+  protected upcommingTasks: Task[] = [];
 
-  private amountOfPastTasksDisplayIndex: number = 4;
-  private showAllPastTasksButtonText: string = "Laat zien";
+  protected amountOfPastTasksDisplayIndex: number = 4;
+  protected showAllPastTasksButtonText: string = "Laat zien";
 
-  private amountOfUpcomingTasksDisplayIndex: number = 4;
-  private showAllUpcomingTasksButtonText: string= "Laat zien";
+  protected amountOfUpcomingTasksDisplayIndex: number = 4;
+  protected showAllUpcomingTasksButtonText: string= "Laat zien";
 
   constructor(private taskService: TaskService) { }
 
