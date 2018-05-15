@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StatusService } from "../login/status.service";
 import { Task } from '../../models/Task';
 import { TaskService } from "../../services/task.service";
+import {ResidentService} from "../../services/resident.service";
+import {Resident} from "../../models/Resident";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -17,8 +19,11 @@ export class AdminDashboardComponent implements OnInit {
    */
   tasks: Task[];
 
+  residents: Resident[];
+
   constructor(private status: StatusService,
-    private taskService: TaskService) { }
+              private taskService: TaskService,
+              private residentService: ResidentService) { }
 
   /**
    * on initialize the current login status will be get
@@ -27,6 +32,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     this.loginStatusActual = this.status.getLoggedInStatus();
     this.getTasks();
+    this.getResidents();
   }
 
   /**
@@ -54,5 +60,10 @@ export class AdminDashboardComponent implements OnInit {
    */
   getTasks(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+  }
+
+
+  getResidents(): void {
+    this.residentService.getResidents().subscribe(residents => this.residents = residents);
   }
 }
