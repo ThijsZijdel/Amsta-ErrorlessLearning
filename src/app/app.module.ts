@@ -61,6 +61,7 @@ import {
   MatTooltipModule
 } from "@angular/material";
 import {ResidentService} from "./services/resident.service";
+import { ResidentComponent } from './admin/resident/resident.component';
 
 
 
@@ -82,7 +83,8 @@ import {ResidentService} from "./services/resident.service";
     LoginComponent,
     SelectUserComponent,
     AdminDashboardComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    ResidentComponent
   ],
   imports: [
     BrowserModule,
