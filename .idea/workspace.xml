@@ -16,8 +16,8 @@
       <file leaf-file-name="task.php" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="405" column="37" lean-forward="false" selection-start-line="405" selection-start-column="37" selection-end-line="405" selection-end-column="37" />
+            <state relative-caret-position="371">
+              <caret line="400" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
               <folding>
                 <marker date="1526390603469" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
               </folding>
@@ -29,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+              <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -37,11 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="417" column="6" lean-forward="true" selection-start-line="417" selection-start-column="6" selection-end-line="417" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="353">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -69,8 +79,8 @@
         <option value="C:/oldxampp/htdocs/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/services/task.service.ts" />
-        <option value="$PROJECT_DIR$/team5_app/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
+        <option value="$PROJECT_DIR$/team5_app/api/task.php" />
       </list>
     </option>
   </component>
@@ -128,6 +138,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="team5_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="team5_app" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -272,7 +293,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32446000" />
+    <option name="totallyTimeSpent" value="32497000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -339,13 +360,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/models/Step.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -374,6 +388,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -419,6 +434,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -464,6 +480,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -530,6 +547,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -614,6 +632,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="132" column="36" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -687,30 +706,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
+    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="329" column="39" lean-forward="true" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+        <state relative-caret-position="353">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="400" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+          <folding>
+            <marker date="1526390603469" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+          <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
+    <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="380">
+          <caret line="417" column="6" lean-forward="true" selection-start-line="417" selection-start-column="6" selection-end-line="417" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
