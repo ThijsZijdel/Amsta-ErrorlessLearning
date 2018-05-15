@@ -70,6 +70,7 @@ export class CurrentTaskComponent implements OnInit {
    * @author: Thijs Zijdel
    */
   goBack(): void {
+    alert("Geef de iPad terug aan een medewerker.");
     this.location.back();
   }
 
