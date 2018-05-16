@@ -29,3 +29,9 @@
   position: absolute;
   right: 25px;
 }
+
+
+.chartJSContainer {
+  z-index: 99;
+  background: #eee;
+}
