@@ -62,6 +62,7 @@ import {
 } from "@angular/material";
 import {ResidentService} from "./services/resident.service";
 import { ResidentComponent } from './admin/resident/resident.component';
+import { ActivityViewComponent } from './admin/activity-view/activity-view.component';
 
 
 
@@ -84,7 +85,8 @@ import { ResidentComponent } from './admin/resident/resident.component';
     SelectUserComponent,
     AdminDashboardComponent,
     AdminSidebarComponent,
-    ResidentComponent
+    ResidentComponent,
+    ActivityViewComponent
   ],
   imports: [
     BrowserModule,
