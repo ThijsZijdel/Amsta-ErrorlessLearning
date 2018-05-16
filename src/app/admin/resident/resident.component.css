@@ -23,5 +23,9 @@
   float: right;
   position: absolute;
   right: 60px;
-  top: 15px;
+  top: 17px;
+}
+.edit-toggle {
+  position: absolute;
+  right: 25px;
 }

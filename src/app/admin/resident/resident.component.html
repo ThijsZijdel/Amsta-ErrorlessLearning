@@ -25,63 +25,73 @@
 
     <div class="col-md-9">
 
-      <mat-slide-toggle  (change)="editable = !editable">
+      <mat-slide-toggle  (change)="editable = !editable" class="edit-toggle">
         Pas taken aan
       </mat-slide-toggle>
 
-      <mat-list>
-        <mat-divider></mat-divider>
-        <h3 mat-subheader>Today</h3> <h3 class="done-label">Voltooid</h3>
 
-        <mat-selection-list>
-          <div *ngFor="let todayTask of resident.activities" >
+      <mat-tab-group>
+        <mat-tab label="Activiteiten">
+          <mat-list>
+            <h3 mat-subheader>Today</h3> <h3 class="done-label">Voltooid</h3>
 
-            <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)" selected="true" disabled="{{editable}}">
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>{{todayTask.name}}</h4>
-              <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
-            </mat-list-option>
+            <mat-selection-list>
+              <div *ngFor="let todayTask of resident.activities" >
 
-            <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)" selected="false" disabled="{{editable}}">
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>{{todayTask.name}}</h4>
-              <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
-            </mat-list-option>
+                <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)" selected="true" disabled="{{editable}}">
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <h4 mat-line>{{todayTask.name}}</h4>
+                  <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+                </mat-list-option>
 
-          </div>
-        </mat-selection-list>
+                <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)" selected="false" disabled="{{editable}}">
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <h4 mat-line>{{todayTask.name}}</h4>
+                  <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+                </mat-list-option>
 
-
-
-
-        <mat-divider></mat-divider>
-        <h3 mat-subheader>Todo</h3> <h3 class="done-label">Voltooid</h3>
-
-
-        <mat-selection-list #shoes>
-          <mat-list-option *ngFor="let todoTask of resident.activities" disabled="{{editable}}">
-            <h4 mat-line>{{todoTask.name}}</h4>
-            <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
-            <button mat-button class="info-button" href="/admin">Info</button>
-          </mat-list-option>
-        </mat-selection-list>
+              </div>
+            </mat-selection-list>
 
 
 
 
-        <mat-divider></mat-divider>
-        <h3 mat-subheader>Done</h3> <h3 class="done-label">Voltooid</h3>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Todo</h3> <h3 class="done-label">Voltooid</h3>
 
-        <mat-selection-list class="scrolable">
-          <div *ngFor="let doneTask of resident.activities">
-            <mat-list-option *ngIf="isCompleted(doneTask)" selected="true" disabled="{{editable}}">
-              <h4 mat-line>{{doneTask.name}}</h4>
-              <p mat-line> {{doneTask.completedTime}} min. bezig geweest</p>
-            </mat-list-option>
-          </div>
-        </mat-selection-list>
 
-      </mat-list>
+            <mat-selection-list #shoes>
+              <mat-list-option *ngFor="let todoTask of resident.activities" disabled="{{editable}}">
+                <h4 mat-line>{{todoTask.name}}</h4>
+                <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
+                <button mat-button class="info-button" (click)="getInfo(todoTask)"color="primary"  *ngIf="editable">Info</button>
+              </mat-list-option>
+            </mat-selection-list>
+
+
+
+
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Done</h3> <h3 class="done-label">Voltooid</h3>
+
+            <mat-selection-list class="scrolable">
+              <div *ngFor="let doneTask of resident.activities">
+                <mat-list-option *ngIf="isCompleted(doneTask)" selected="true" disabled="{{editable}}">
+                  <h4 mat-line>{{doneTask.name}}</h4>
+                  <p mat-line> {{doneTask.completedTime}} min. bezig geweest</p>
+                </mat-list-option>
+              </div>
+            </mat-selection-list>
+
+          </mat-list>
+        </mat-tab>
+        <mat-tab label="Meer informatie">
+
+        </mat-tab>
+      </mat-tab-group>
+
+
+
 
 
 

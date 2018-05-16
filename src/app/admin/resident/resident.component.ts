@@ -20,6 +20,8 @@ export class ResidentComponent implements OnInit {
 
   today: Date = new Date();
 
+  protected infoActivity: Activity;
+
   constructor(private route: ActivatedRoute,
               private residentService: ResidentService) { }
 
@@ -28,6 +30,7 @@ export class ResidentComponent implements OnInit {
   ngOnInit() {
     this.getResident();
     this.orderActivities();
+    this.clearInfoActivity();
   }
 
   getResident(){
@@ -67,4 +70,15 @@ export class ResidentComponent implements OnInit {
     return (!this.isToday(activity.date) && !this.isCompleted(activity))
   }
 
+  protected getInfo(activity: Activity):void {
+    if (activity === null)
+      this.clearInfoActivity();
+    else
+      this.infoActivity = activity;
+  }
+
+
+  private clearInfoActivity() {
+    this.infoActivity = new Activity(null, "null", null, null, null, null,null ,null,null,null,null);
+  }
 }
