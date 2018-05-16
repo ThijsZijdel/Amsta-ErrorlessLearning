@@ -5,6 +5,7 @@ import {MessageService} from "./message.service";
 import {Observable} from "rxjs/Observable";
 import {catchError, tap} from "rxjs/operators";
 import {of} from "rxjs/observable/of";
+import {Activity} from "../models/Activity";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -42,6 +43,14 @@ export class ResidentService {
       tap(_ => this.log(`fetched Resident id=${id}`)),
       catchError(this.handleError<Resident>(`getResident id=${id}`))
     );
+  }
+
+  getResidentActivities(resident: any): Activity[]{
+    if (resident instanceof Resident){
+      return resident.activities;
+    } else {
+      return null;
+    }
   }
 
   /**
