@@ -16,9 +16,12 @@ export class ResidentService {
 
   private tasksUrl = 'api/residents';  // URL to web api
 
+  private infoActivity: Activity;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
+
 
   /**
    * get Residents from the server
@@ -145,7 +148,17 @@ export class ResidentService {
 
 
 
+  public setInfoActivity(activity: Activity):void{
+    this.infoActivity = activity;
+  }
 
+  public infoActivityIsSet(): boolean{
+    return this.infoActivity !== null;
+  }
+
+  public getInfoActivity(): Activity {
+    return this.infoActivity;
+  }
 
 
 

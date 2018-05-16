@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Activity} from "../../models/Activity";
+import {ResidentService} from "../../services/resident.service";
 
 @Component({
   selector: 'app-activity-view',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityViewComponent implements OnInit {
 
-  constructor() { }
+  protected infoActivityView: Activity;
+
+  constructor(protected residentService: ResidentService) { }
 
   ngOnInit() {
+    this.infoActivityView = this.residentService.getInfoActivity();
   }
+
 
 }

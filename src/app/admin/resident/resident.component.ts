@@ -4,6 +4,7 @@ import {ResidentService} from "../../services/resident.service";
 import {ActivatedRoute} from "@angular/router";
 import {Activity} from "../../models/Activity";
 import {Observable} from "rxjs/Observable";
+import {ActivityViewComponent} from "../activity-view/activity-view.component";
 
 @Component({
   selector: 'app-resident',
@@ -20,10 +21,10 @@ export class ResidentComponent implements OnInit {
 
   today: Date = new Date();
 
-  protected infoActivity: Activity;
+  //protected infoActivity: Activity;
 
   constructor(private route: ActivatedRoute,
-              private residentService: ResidentService) { }
+              protected residentService: ResidentService) { }
 
   editable: boolean = true;
 
@@ -60,11 +61,20 @@ export class ResidentComponent implements OnInit {
 
   }
 
+  completedActivities:Activity[] ;
+
   protected isToday(date: Date): boolean {
     return date === this.today;
   }
+
   protected isCompleted(activity: Activity): boolean {
-    return activity.completed;
+    if (activity.completed) {
+      //this.completedActivities.push(activity);
+      return true;
+    }else {
+      return false;
+    }
+
   }
   protected isTodo(activity: Activity): boolean {
     return (!this.isToday(activity.date) && !this.isCompleted(activity))
@@ -74,11 +84,20 @@ export class ResidentComponent implements OnInit {
     if (activity === null)
       this.clearInfoActivity();
     else
-      this.infoActivity = activity;
+      this.residentService.setInfoActivity(activity);
+
+  }
+
+
+  protected getStatAvgTime():void {
+    let timeMin: number;
+    for (let activity of this.completedActivities){
+      timeMin += parseInt(activity.completedTime);
+    }
   }
 
 
   private clearInfoActivity() {
-    this.infoActivity = new Activity(null, "null", null, null, null, null,null ,null,null,null,null);
+    //this.infoActivity = new Activity(null, "null", null, null, null, null,null ,null,null,null,null);
   }
 }

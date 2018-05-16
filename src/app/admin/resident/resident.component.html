@@ -60,11 +60,12 @@
             <h3 mat-subheader>Todo</h3> <h3 class="done-label">Voltooid</h3>
 
 
-            <mat-selection-list #shoes>
-              <mat-list-option *ngFor="let todoTask of resident.activities" disabled="{{editable}}">
+            <mat-selection-list #todoTasks>
+              <mat-list-option *ngFor="let todoTask of resident.activities; let indexTodo = index" disabled="{{editable}}">
                 <h4 mat-line>{{todoTask.name}}</h4>
                 <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
                 <button mat-button class="info-button" (click)="getInfo(todoTask)"color="primary"  *ngIf="editable">Info</button>
+
               </mat-list-option>
             </mat-selection-list>
 
@@ -74,7 +75,7 @@
             <mat-divider></mat-divider>
             <h3 mat-subheader>Done</h3> <h3 class="done-label">Voltooid</h3>
 
-            <mat-selection-list class="scrolable">
+            <mat-selection-list #doneTasks class="scrolable">
               <div *ngFor="let doneTask of resident.activities">
                 <mat-list-option *ngIf="isCompleted(doneTask)" selected="true" disabled="{{editable}}">
                   <h4 mat-line>{{doneTask.name}}</h4>
@@ -85,8 +86,17 @@
 
           </mat-list>
         </mat-tab>
-        <mat-tab label="Meer informatie">
+        <mat-tab label="Meer informatie" *ngIf="residentService.infoActivityIsSet()">
+          <app-activity-view></app-activity-view>
+        </mat-tab>
 
+
+        <mat-tab label="Statistieken">
+          Nog te voltooien taken: {{resident.activities.length - todoTasks.selectedOptions.selected.length}}
+
+          <br>
+
+          Voltooide taken: {{doneTasks.selectedOptions.selected.length}}
         </mat-tab>
       </mat-tab-group>
 
