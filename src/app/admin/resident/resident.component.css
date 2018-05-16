@@ -1,0 +1,27 @@
+.scrolable{
+  overflow-y: scroll;
+  height: 150%;
+}
+
+
+.done-label {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,.54);
+  float: right;
+  margin: -30px 5px 0 0;
+}
+
+
+.resident-image{
+  max-width: 100%;
+  height: auto ;
+}
+.info-button {
+  width: 25px;
+  float: right;
+  position: absolute;
+  right: 60px;
+  top: 15px;
+}
