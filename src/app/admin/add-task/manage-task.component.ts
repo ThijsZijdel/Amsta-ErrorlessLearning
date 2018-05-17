@@ -140,6 +140,11 @@ export class ManageTaskComponent implements OnInit {
       step.id = index;
       index++;
     }
+    var taskTimesIndex = 1;
+    for(let time of this.taskTimes) {
+      time.id = taskTimesIndex;
+      taskTimesIndex++;
+    }
     this.setAddStepMessage();
   }
 
@@ -257,6 +262,8 @@ export class ManageTaskComponent implements OnInit {
 
     this.editTask.taskTimes = this.taskTimes;
     this.editTask.steps = this.stepsCreated;
+
+    this.assignIds();
 
     this.tasksService.updateTask(this.editTask).subscribe();
   }

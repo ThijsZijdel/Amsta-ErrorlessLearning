@@ -137,12 +137,12 @@ if (isset($_REQUEST['action'])) {
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
     $success = true;
+    $errorcode = '';
+    $errorMessage = '';
 
     if ($conn->connect_error) {
-      $response = array(
-        'success' => false,
-        'message' => 'Database connection error',
-      );
+      $errorcode = "DATABASE_ERROR";
+      $errorMessage = $conn->error;
     } else {
       $sql = "UPDATE team5_app.Task SET team5_app.Task.name='" . $taskName . "',team5_app.Task.description='" . $taskDescription . "',team5_app.Task.imgLink='" . $taskImageLink . "' WHERE team5_app.Task.idTask=" . $taskId;
       // Connection with success and error messages.
@@ -150,8 +150,9 @@ if (isset($_REQUEST['action'])) {
         $response = array(
           'success' => true,
           'message' => 'Only the task has successfully been updated.',
-          'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
         );
+
+        ///////////////ADD OR REMOVE EXISTING STEPS////////////////
         $sql = "SELECT COUNT(team5_app.Step.idStep) AS steps FROM team5_app.Step WHERE team5_app.Step.Task_idTask=" . $taskId;
 
         // Query database
@@ -165,43 +166,90 @@ if (isset($_REQUEST['action'])) {
           $stepAmount = intval($row['steps']);
         }
 
-        if($success) {
-          // Stepamount is current amount of steps inside database
-          // count($taskSteps) is current amount of steps inside task retrieved from application.
+        // Stepamount is current amount of steps inside database
+        // count($taskSteps) is current amount of steps inside task retrieved from application.
+        if($stepAmount < count($taskSteps)) // There is a/are step(s) added
+        {
+          $amountStepsAdded = count($taskSteps) - $stepAmount;
 
-          if($stepAmount < count($taskSteps)) // There is a/are step(s) added
-          {
-            $amountStepsAdded = count($taskSteps) - $stepAmount;
-
-            for ($i = 0; $i < $amountStepsAdded; $i++) {
-              $sql = "INSERT INTO  team5_app.Step(idStep,imgLink, description, Task_taskId) VALUES(" . (count($taskSteps)+$i) . " ,'null','null'," . $taskId . ")";
-
-              if (!$conn->query($sql) === TRUE) {
-                $success = false;
-              }
-            }
-          }
-          else if($stepAmount > count($taskSteps)) // There is a/are step(s) removed
-          {
-            $amountStepsRemoved = $stepAmount - count($taskSteps);
-
-            $sql = "DELETE FROM team5_app.Step WHERE team5_app.Step.idStep > " . count($taskSteps) . " AND team5_app.Step.Task_taskId=" . $taskId;
-
+          for ($i = 0; $i < $amountStepsAdded; $i++) {
+            $newStepId = $stepAmount + 1 + $i;
+            $sql = "INSERT INTO  team5_app.Step(idStep,imgLink, description, Task_idTask) VALUES(" . $newStepId . " ,'null','null'," . $taskId . ")";
             if (!$conn->query($sql) === TRUE) {
               $success = false;
+              $errorcode = 'INSERT_STEP';
+              $errorMessage = $conn->error;
             }
           }
+        }
+        else if($stepAmount > count($taskSteps)) // There is a/are step(s) removed
+        {
+          $amountStepsRemoved = $stepAmount - count($taskSteps);
+          $startRemoveIndex = $stepAmount - $amountStepsRemoved;
 
-          foreach ($taskSteps as $step) {
-            $stepId = $step->id;
-            $stepDescription = $step->stepDescription;
-            $stepImageLink = $step->stepImgLink;
+          $sql = "DELETE FROM team5_app.Step WHERE team5_app.Step.idStep > " . $startRemoveIndex . " AND team5_app.Step.Task_idTask=" . $taskId;
 
-            $sql = "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+            $errorcode = 'DELETE_STEP';
+            $errorMessage = $conn->error;
+          }
+        }
+        ///////////////END ADD OR REMOVE EXISTING STEPS////////////////
 
+        ///////////////ADD OR REMOVE EXISTING TASKTIMES////////////////
+        $sql = "SELECT COUNT(team5_app.TaskTime.id) AS taskTimes FROM team5_app.TaskTime WHERE team5_app.TaskTime.Task_taskId=" . $taskId;
+
+        // Query database
+        $result = $conn->query($sql);
+        $timesAmount = 0;
+
+        // Loop through data of database
+        if ($result->num_rows > 0)
+        {
+          $row = $result->fetch_assoc();
+          $timesAmount = intval($row['taskTimes']);
+        }
+
+        if($timesAmount < count($taskTimes)) // There is a/are step(s) added
+        {
+          $amountTimesAdded = count($taskTimes) - $timesAmount;
+
+          for ($i = 0; $i < $amountTimesAdded; $i++) {
+            $newTaskTimeId = $timesAmount + 1 + $i;
+            $sql = "INSERT INTO  team5_app.TaskTime(id,startTime, endTime, Task_taskId) VALUES(". $newTaskTimeId . ",'null','null'," . $taskId . ")";
             if (!$conn->query($sql) === TRUE) {
               $success = false;
+              $errorcode = 'INSERT_TASKTIME';
+              $errorMessage = $conn->error;
             }
+          }
+        }
+        else if($timesAmount > count($taskTimes)) // There is a/are step(s) removed
+        {
+          $amountTimesRemoved = $timesAmount - count($taskTimes);
+          $startRemoveIndex = $timesAmount - $amountTimesRemoved;
+
+          $sql = "DELETE FROM team5_app.TaskTime WHERE team5_app.TaskTime.id > " . $startRemoveIndex . " AND team5_app.TaskTime.Task_taskId=" . $taskId;
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+            $errorcode = 'DELETE_TASKTIME';
+            $errorMessage = $conn->error;
+          }
+        }
+        ///////////////END ADD OR REMOVE EXISTING TASKTIMES////////////////
+        foreach ($taskSteps as $step) {
+          $stepId = $step->id;
+          $stepDescription = $step->stepDescription;
+          $stepImageLink = $step->stepImgLink;
+
+          $sql = "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
+
+          if (!$conn->query($sql) === TRUE) {
+            $success = false;
+            $errorcode = 'UPDATE_STEPS';
+            $errorMessage = $conn->error;
           }
         }
 
@@ -215,14 +263,10 @@ if (isset($_REQUEST['action'])) {
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
+            $errorcode = 'UPDATE_TASKTIME';
+            $errorMessage = $conn->error;
           }
         }
-      } else {
-        $response = array(
-          'message' => 'Error something went wrong while trying to update task',
-          'success' => false,
-          'errorMessage' => $conn->error
-        );
       }
 
       if($success)
@@ -235,7 +279,8 @@ if (isset($_REQUEST['action'])) {
         $response = array(
           'message' => 'Error something went wrong while trying to update task',
           'success' => false,
-          'errorMessage' => $conn->error
+          'errorMessage' => $errorMessage,
+          'error_code' => $errorcode
         );
       }
     }
@@ -417,6 +462,7 @@ if (isset($_REQUEST['action'])) {
 }
 else {
   $response = array(
+    'success' => false,
     'message' => 'No action found',
   );
 }
