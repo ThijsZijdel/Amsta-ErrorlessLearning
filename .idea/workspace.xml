@@ -14,34 +14,88 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="task.php" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
+        <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="400" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="166" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
               <folding>
-                <marker date="1526390603469" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+                <element signature="e#6#100#0#PHP" expanded="true" />
+                <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+                <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+                <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+                <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+                <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+                <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+                <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+                <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+                <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+                <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+                <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+                <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+                <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+                <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+                <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+                <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <file leaf-file-name="edit-task.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/edit-task/edit-task.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+            <state relative-caret-position="255">
+              <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
               <folding>
-                <element signature="e#0#58#0" expanded="true" />
+                <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
+        <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="417" column="6" lean-forward="true" selection-start-line="417" selection-start-column="6" selection-end-line="417" selection-end-column="6" />
+            <state relative-caret-position="-784">
+              <caret line="157" column="45" lean-forward="true" selection-start-line="157" selection-start-column="45" selection-end-line="157" selection-end-column="45" />
+              <folding>
+                <element signature="e#6#100#0#PHP" expanded="true" />
+                <marker date="1526396763292" expanded="true" signature="1288:1424" ph="INSERT INTO team5_app.Task... " />
+                <marker date="1526396763292" expanded="true" signature="2085:2227" ph="INSERT INTO Step" />
+                <marker date="1526396763292" expanded="true" signature="2579:2719" ph="INSERT INTO TaskTime" />
+                <marker date="1526396763292" expanded="true" signature="3953:3989" ph="DELETE FROM " />
+                <marker date="1526396763292" expanded="true" signature="5303:5499" ph="UPDATE team5... " />
+                <marker date="1526396763292" expanded="true" signature="5929:6027" ph="SELECT COUNT... Step" />
+                <marker date="1526396763292" expanded="true" signature="6902:7041" ph="INSERT INTO Step" />
+                <marker date="1526396763292" expanded="true" signature="7466:7580" ph="DELETE FROM " />
+                <marker date="1526396763292" expanded="true" signature="8007:8210" ph="UPDATE team5... " />
+                <marker date="1526396763292" expanded="true" signature="8656:8870" ph="UPDATE team5... " />
+                <marker date="1526396763292" expanded="true" signature="10253:10437" ph="SELECT team5... Task" />
+                <marker date="1526396763292" expanded="true" signature="11054:11141" ph="SELECT team5... Step" />
+                <marker date="1526396763292" expanded="true" signature="11905:12004" ph="SELECT team5... TaskTime" />
+                <marker date="1526396763292" expanded="true" signature="13642:13835" ph="SELECT team5... Task" />
+                <marker date="1526396763292" expanded="true" signature="14434:14521" ph="SELECT team5... Step" />
+                <marker date="1526396763292" expanded="true" signature="15327:15416" ph="SELECT team5... TaskTime" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit-task.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/edit-task/edit-task.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -50,8 +104,8 @@
       <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="132">
+              <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -60,6 +114,16 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getall</find>
+      <find>var</find>
+      <find>$step</find>
+      <find>376</find>
+      <find>TaskTime</find>
+      <find>while trying to upd</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,9 +142,10 @@
         <option value="$PROJECT_DIR$/team5_app/api/auth.php" />
         <option value="C:/oldxampp/htdocs/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/task.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/task.service.ts" />
         <option value="$PROJECT_DIR$/team5_app/api/task.php" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php" />
       </list>
     </option>
   </component>
@@ -131,6 +196,36 @@
               <item name="Amsta" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="edit-task" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amsta" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Amsta" type="b2602c69:ProjectViewProjectNode" />
@@ -293,11 +388,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32497000" />
+    <option name="totallyTimeSpent" value="35864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -306,7 +400,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -360,20 +454,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -388,7 +468,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,7 +532,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -480,7 +596,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="true" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -547,7 +681,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
           <caret line="226" column="24" lean-forward="false" selection-start-line="226" selection-start-column="24" selection-end-line="226" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -632,7 +784,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="132" column="36" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -685,13 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/models/TaskTime.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -708,20 +871,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="132">
+          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="400" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
-          <folding>
-            <marker date="1526390603469" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
           </folding>
         </state>
       </provider>
@@ -731,16 +884,86 @@
         <state relative-caret-position="340">
           <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
           <folding>
-            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#0#58#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/edit-task/edit-task.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/edit-task/edit-task.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="417" column="6" lean-forward="true" selection-start-line="417" selection-start-column="6" selection-end-line="417" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="270">
+          <caret line="166" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763240" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763240" expanded="true" signature="1907:2049" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="2315:2455" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="3441:3477" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="4561:4757" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="5121:5219" ph="SELECT COUNT... Step" />
+            <marker date="1526396763240" expanded="true" signature="5932:6071" ph="INSERT INTO Step" />
+            <marker date="1526396763240" expanded="true" signature="6386:6500" ph="DELETE FROM " />
+            <marker date="1526396763240" expanded="true" signature="6821:7024" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="7358:7572" ph="UPDATE team5... " />
+            <marker date="1526396763240" expanded="true" signature="8665:8849" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="9336:9423" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="9989:10088" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763240" expanded="true" signature="11338:11531" ph="SELECT team5... Task" />
+            <marker date="1526396763240" expanded="true" signature="12014:12101" ph="SELECT team5... Step" />
+            <marker date="1526396763240" expanded="true" signature="12709:12798" ph="SELECT team5... TaskTime" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-784">
+          <caret line="157" column="45" lean-forward="true" selection-start-line="157" selection-start-column="45" selection-end-line="157" selection-end-column="45" />
+          <folding>
+            <element signature="e#6#100#0#PHP" expanded="true" />
+            <marker date="1526396763292" expanded="true" signature="1288:1424" ph="INSERT INTO team5_app.Task... " />
+            <marker date="1526396763292" expanded="true" signature="2085:2227" ph="INSERT INTO Step" />
+            <marker date="1526396763292" expanded="true" signature="2579:2719" ph="INSERT INTO TaskTime" />
+            <marker date="1526396763292" expanded="true" signature="3953:3989" ph="DELETE FROM " />
+            <marker date="1526396763292" expanded="true" signature="5303:5499" ph="UPDATE team5... " />
+            <marker date="1526396763292" expanded="true" signature="5929:6027" ph="SELECT COUNT... Step" />
+            <marker date="1526396763292" expanded="true" signature="6902:7041" ph="INSERT INTO Step" />
+            <marker date="1526396763292" expanded="true" signature="7466:7580" ph="DELETE FROM " />
+            <marker date="1526396763292" expanded="true" signature="8007:8210" ph="UPDATE team5... " />
+            <marker date="1526396763292" expanded="true" signature="8656:8870" ph="UPDATE team5... " />
+            <marker date="1526396763292" expanded="true" signature="10253:10437" ph="SELECT team5... Task" />
+            <marker date="1526396763292" expanded="true" signature="11054:11141" ph="SELECT team5... Step" />
+            <marker date="1526396763292" expanded="true" signature="11905:12004" ph="SELECT team5... TaskTime" />
+            <marker date="1526396763292" expanded="true" signature="13642:13835" ph="SELECT team5... Task" />
+            <marker date="1526396763292" expanded="true" signature="14434:14521" ph="SELECT team5... Step" />
+            <marker date="1526396763292" expanded="true" signature="15327:15416" ph="SELECT team5... TaskTime" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -127,8 +127,6 @@ if (isset($_REQUEST['action'])) {
     $json = file_get_contents('php://input');
     $obj = json_decode($json);
 
-    var_dump($obj);
-
     $taskId = $obj->id;
     $taskName = $obj->name;
     $taskDescription = $obj->mainDescription;
@@ -154,21 +152,17 @@ if (isset($_REQUEST['action'])) {
           'message' => 'Only the task has successfully been updated.',
           'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
         );
-        $sql = "SELECT COUNT(team5_app.Step.idStep) AS steps FROM team5_app.Step";
+        $sql = "SELECT COUNT(team5_app.Step.idStep) AS steps FROM team5_app.Step WHERE team5_app.Step.Task_idTask=" . $taskId;
 
         // Query database
         $result = $conn->query($sql);
-
         $stepAmount = 0;
 
         // Loop through data of database
         if ($result->num_rows > 0)
         {
           $row = $result->fetch_assoc();
-          $stepAmount = $row['steps'];
-        }
-        if (!$conn->query($sql) === TRUE) {
-          $success = false;
+          $stepAmount = intval($row['steps']);
         }
 
         if($success) {
@@ -217,7 +211,7 @@ if (isset($_REQUEST['action'])) {
           $taskEndTime = $taskTime->endTime;
           $taskTimeId = $taskTime->id;
 
-          $sql = "UPDATE team5_app.TaskTime SET team5_app.TaskTime.startTime='" . $taskStartTime . "', team5_app.TaskTime.endTime='" . $taskEndTime . "' WHERE team5_app.TaskTime.Task_idTask=" . $taskId . " AND team5_app.TaskTime.id=" . $taskTimeId;
+          $sql = "UPDATE team5_app.TaskTime SET team5_app.TaskTime.startTime='" . $taskStartTime . "', team5_app.TaskTime.endTime='" . $taskEndTime . "' WHERE team5_app.TaskTime.Task_taskId=" . $taskId . " AND team5_app.TaskTime.id=" . $taskTimeId;
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
@@ -279,7 +273,7 @@ if (isset($_REQUEST['action'])) {
           $taskDescription = $row["taskDescription"];
           $taskImageLink = $row["taskImageLink"];
 
-          $sql = "SELECT team5_app.Step.description, team5_app.Step.imgLink FROM
+          $sql = "SELECT team5_app.Step.* FROM
           team5_app.Step WHERE team5_app.Step.Task_idTask=" . $id;
 
           // Query database
@@ -291,6 +285,7 @@ if (isset($_REQUEST['action'])) {
             while ($row = $result->fetch_assoc()) {
               // Fill task with steps
               $step = array(
+                'id' => $row['idStep'],
                 'stepImgLink' => $row['imgLink'],
                 'stepDescription' => $row['description']
               );
@@ -298,8 +293,8 @@ if (isset($_REQUEST['action'])) {
             }
           }
 
-          $sql = "SELECT team5_app.TaskTime.startTime, team5_app.Step.endTime FROM
-          team5_app.TaskTime WHERE team5_app.TaskTime.Task_idTask=" . $id;
+          $sql = "SELECT team5_app.TaskTime.* FROM
+          team5_app.TaskTime WHERE team5_app.TaskTime.Task_taskId=" . $id;
 
           // Query database
           $result = $conn->query($sql);
@@ -311,6 +306,7 @@ if (isset($_REQUEST['action'])) {
             while ($row = $result->fetch_assoc()) {
               // Fill task with steps
               $taskTime = array(
+                'id' => $row['id'],
                 'startTime' => $row['startTime'],
                 'endTime' => $row['endTime']
               );
@@ -319,6 +315,7 @@ if (isset($_REQUEST['action'])) {
 
           }
           $response = array(
+            'id' => $id,
             'name' => $taskName,
             'imgLink' => $taskImageLink,
             'mainDescription' => $taskDescription,
@@ -361,7 +358,7 @@ if (isset($_REQUEST['action'])) {
           $taskImageLink = $row["taskImageLink"];
           $id = $row["taskId"];
 
-          $sql = "SELECT team5_app.Step.description, team5_app.Step.imgLink FROM
+          $sql = "SELECT team5_app.Step.* FROM
           team5_app.Step WHERE team5_app.Step.Task_idTask=" . $id;
 
           // Query database
@@ -373,6 +370,7 @@ if (isset($_REQUEST['action'])) {
             while ($secondRow = $secondResult->fetch_assoc()) {
               // Fill task with steps
               $step = array(
+                'id' => $secondRow['idStep'],
                 'stepImgLink' => $secondRow['imgLink'],
                 'stepDescription' => $secondRow['description']
               );
@@ -380,7 +378,7 @@ if (isset($_REQUEST['action'])) {
             }
           }
 
-          $sql = "SELECT team5_app.TaskTime.startTime, team5_app.TaskTime.endTime FROM team5_app.TaskTime WHERE team5_app.TaskTime.Task_taskId=" . $id;
+          $sql = "SELECT team5_app.TaskTime.* FROM team5_app.TaskTime WHERE team5_app.TaskTime.Task_taskId=" . $id;
 
           // Query database
           $thirdResult = $conn->query($sql);
@@ -391,6 +389,7 @@ if (isset($_REQUEST['action'])) {
             while ($thirdRow = $thirdResult->fetch_assoc()) {
               // Fill task with steps
               $taskTime = array(
+                'id' => $thirdRow['id'],
                 'startTime' => $thirdRow['startTime'],
                 'endTime' => $thirdRow['endTime']
               );
@@ -399,6 +398,7 @@ if (isset($_REQUEST['action'])) {
           }
 
           $task = array(
+            'id' => $id,
             'name' => $taskName,
             'imgLink' => $taskImageLink,
             'mainDescription' => $taskDescription,
