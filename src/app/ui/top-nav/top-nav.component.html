@@ -13,6 +13,15 @@
     </ul>
 
     <ul class="navbar-nav">
+        <!-- Wanneer de knop wordt ingedrukt wordt de gebruiker doorgestuurd naar het login scherm voor de bewoners -->
+        <li class="nav-item">
+          <button routerLink="/loginresident" class="btn btn-2 btn-2a">Bewoners</button>
+        </li>
+    </ul>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <ul class="navbar-nav">
       <!-- Wanneer de verzorger ingelogd is wordt zij doorgestuurd naar het verzorgerdashboard -->
       <div *ngIf="statusService.loggedInStatus; else loginEmployee">
         <li class="nav-item">
@@ -25,6 +34,6 @@
           <button routerLink="/login" class="btn btn-1 btn-1a">Verzorger</button>
         </li>
       </ng-template>
-    </ul>
+    </ul>    
   </div>
 </nav>

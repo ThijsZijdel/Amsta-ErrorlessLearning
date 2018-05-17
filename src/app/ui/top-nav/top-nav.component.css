@@ -35,6 +35,17 @@
   background: #795094;
 }
 
+.btn-2 {
+  border: 1.5px solid #795094;
+  color: #795094;
+}
+
+.btn-2a:hover,
+.btn-2a:active {
+  color: white;
+  background: #795094;
+}
+
 .navbar {
   padding: 0.5rem 2rem !important;
 }
