@@ -100,7 +100,9 @@ export class TaskService {
    * note: POST
    */
   addTask (task: Task): Observable<Task> {
-    return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
+    const url = `${this.tasksUrl}?action=add`;
+
+    return this.http.post<Task>(url, task, httpOptions).pipe(
       tap((task: Task) => this.log(`added task w/ id=${task.id}`)),
       catchError(this.handleError<Task>('addTask'))
     );
