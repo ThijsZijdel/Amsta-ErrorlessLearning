@@ -35,3 +35,9 @@
   z-index: 99;
   background: #eee;
 }
+.activity-id {
+  position: absolute;
+  left: 150px;
+  top: 7px;
+  color: #999;
+}

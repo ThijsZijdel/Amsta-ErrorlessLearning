@@ -8,10 +8,8 @@
       <h4 style="float:right;">
         <b>{{resident.id}}</b>
       </h4>
-      <p style="font-size: 13px; line-height: 15px;">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Adipisci aliquam aliquid beatae consequatur dolor ea incidunt.
-        Ipsa ipsum iusto natus pariatur praesentium quae quod tempora, tempore, tenetur vel vitae voluptatem?
+      <p style="font-size: 15px; line-height: 18px;">
+        {{resident.bio}}
       </p>
 
 
@@ -30,24 +28,34 @@
       </mat-slide-toggle>
 
 
-      <mat-tab-group>
-        <mat-tab label="Activiteiten">
+      <mat-tab-group [selectedIndex]="tabsIndex" #tabsActivity >
+
+
+        <mat-tab label="Activiteiten" (click)="setTabIndex(0); clearInfoActivity();" [disabled]="infoDisplay">
           <mat-list>
             <h3 mat-subheader>Today</h3> <h3 class="done-label">Voltooid</h3>
 
             <mat-selection-list>
               <div *ngFor="let todayTask of resident.activities" >
 
-                <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)" selected="true" disabled="{{editable}}">
+                <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)"
+                                 selected="true" disabled="{{editable}}">
                   <mat-icon mat-list-icon>folder</mat-icon>
                   <h4 mat-line>{{todayTask.name}}</h4>
+                  <span class="activity-id">{{todayTask.id}}</span>
                   <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+                  <button mat-button class="info-button" color="primary"
+                          (click)="getInfo(todayTask); setTabIndex(1);" *ngIf="editable">Info</button>
                 </mat-list-option>
 
-                <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)" selected="false" disabled="{{editable}}">
+                <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)"
+                                 selected="false" disabled="{{editable}}">
                   <mat-icon mat-list-icon>folder</mat-icon>
                   <h4 mat-line>{{todayTask.name}}</h4>
+                  <span class="activity-id">{{todayTask.id}}</span>
                   <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+                  <button mat-button class="info-button" color="primary"
+                          (click)="getInfo(todayTask); setTabIndex(1);" *ngIf="editable">Info</button>
                 </mat-list-option>
 
               </div>
@@ -60,13 +68,17 @@
             <h3 mat-subheader>Todo</h3> <h3 class="done-label">Voltooid</h3>
 
 
-            <mat-selection-list #todoTasks>
-              <mat-list-option *ngFor="let todoTask of resident.activities; let indexTodo = index" disabled="{{editable}}">
-                <h4 mat-line>{{todoTask.name}}</h4>
-                <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
-                <button mat-button class="info-button" (click)="getInfo(todoTask)"color="primary"  *ngIf="editable">Info</button>
+            <mat-selection-list #todoTasks (selectionChange)="checkChanges()">
+              <div *ngFor="let todoTask of resident.activities; let indexTodo = index" >
+                <mat-list-option *ngIf="!todoTask.completed" disabled="{{editable}}">
+                  <h4 mat-line>{{todoTask.name}}</h4>
+                  <span class="activity-id">{{todoTask.id}}</span>
+                  <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
+                  <button mat-button class="info-button" color="primary"  *ngIf="editable"
+                          (click)="getInfo(todoTask); setTabIndex(1);">Info</button>
 
-              </mat-list-option>
+                </mat-list-option>
+              </div>
             </mat-selection-list>
 
 
@@ -79,20 +91,54 @@
               <div *ngFor="let doneTask of resident.activities">
                 <mat-list-option *ngIf="isCompleted(doneTask)" selected="true" disabled="{{editable}}">
                   <h4 mat-line>{{doneTask.name}}</h4>
+                  <span class="activity-id">{{doneTask.id}}</span>
                   <p mat-line> {{doneTask.completedTime}} min. bezig geweest</p>
+                  <button mat-button class="info-button" color="primary"
+                          (click)="getInfo(doneTask); setTabIndex(1);" *ngIf="editable">Info</button>
                 </mat-list-option>
               </div>
             </mat-selection-list>
 
           </mat-list>
         </mat-tab>
-        <mat-tab label="Meer informatie" *ngIf="residentService.infoActivityIsSet()">
-          <app-activity-view></app-activity-view>
+
+
+
+
+        <mat-tab label="Meer informatie" (click)="setTabIndex(1)" [disabled]="!infoDisplay">
+          <button mat-raised-button color="warn" (click)="clearInfoActivity(); setTabIndex(0)">Sluit extra informatie</button>
+          <button mat-raised-button color="primary" style="margin:25px;"
+                  (click)="reload()">reload</button>
+          <div *ngIf="infoActiv != null">
+
+            <h3>{{infoActiv.name}}</h3> <i>{{infoActiv.taskId}}</i><br>
+            {{infoActiv.date}} <br>
+            {{infoActiv.completedTime }} minuten <br>
+            Gestart op: {{infoActiv.timeStarted}} <br>
+            Gestopt op: {{infoActiv.timeEnded}} <br>
+
+            <br>
+            <br>
+
+            Ingepland tussen: <br>
+            {{infoActiv.timeStart}} - {{infoActiv.timeEnded}} <br>
+
+            <br>
+
+            Voltooid:
+            <input type="checkbox" *ngIf="infoActiv.completed" checked>
+            <input type="checkbox" *ngIf="!infoActiv.completed">
+
+
+          </div>
         </mat-tab>
 
 
-        <mat-tab label="Statistieken">
-          Nog te voltooien taken: {{resident.activities.length - todoTasks.selectedOptions.selected.length}}
+
+
+
+        <mat-tab label="Statistieken" (click)="setTabIndex(2)" [disabled]="infoDisplay">
+          Totaal aantal activiteiten: {{resident.activities.length}}
 
           <br>
 
@@ -155,3 +201,6 @@
   new Chart(ctx, options);
 
 </script>
+
+
+<button (click)="alertIt()"> test </button>

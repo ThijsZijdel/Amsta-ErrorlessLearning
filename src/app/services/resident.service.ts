@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {catchError, tap} from "rxjs/operators";
 import {of} from "rxjs/observable/of";
 import {Activity} from "../models/Activity";
+import {observable} from "rxjs/symbol/observable";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +17,7 @@ export class ResidentService {
 
   private tasksUrl = 'api/residents';  // URL to web api
 
-  private infoActivity: Activity;
+  public infoActivity: Activity;
 
   constructor(
     private http: HttpClient,
@@ -48,11 +49,11 @@ export class ResidentService {
     );
   }
 
-  getResidentActivities(resident: any): Activity[]{
-    if (resident instanceof Resident){
+  getResidentActivities(resident: any): Activity[] {
+
+
+    if (resident instanceof Resident) {
       return resident.activities;
-    } else {
-      return null;
     }
   }
 
@@ -73,6 +74,7 @@ export class ResidentService {
    * @param result - optional value to return as the observable result
    * @author Thijs Zijdel
    */
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -153,12 +155,9 @@ export class ResidentService {
   }
 
   public infoActivityIsSet(): boolean{
-    return this.infoActivity !== null;
+    return this.infoActivity.name.length !== 0 || this.infoActivity.name.length !== null;
   }
 
-  public getInfoActivity(): Activity {
-    return this.infoActivity;
-  }
 
 
 

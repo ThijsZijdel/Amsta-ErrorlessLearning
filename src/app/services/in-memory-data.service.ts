@@ -57,13 +57,13 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const residents = [
-      { id: '1', name: 'Sandra', surname: 'Merkel', imgPath: '/tasks/step2.jpg',
+      { id: '1', name: 'Sandra', surname: 'Merkel',  bio: "Aardige vrouw maar afwisselend gedrag.",imgPath: '/tasks/step2.jpg',
         activities: [
           {id: '1', name: "Tandenpoetsen", date: new Date(), timeStart: "11:00", timeEnd: "12:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "6", completed: false, residentId: "1", taskId: 1},
           {id: '2', name: "Douchen", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "8", completed: true, residentId: "1", taskId: 2}
         ]
       },
-      { id: '2', name: 'Marco', surname: 'Willems', imgPath: '/tasks/step2.jpg',
+      { id: '2', name: 'Marco', surname: 'Willems', bio: "Al een aantal jaar bij Amsta de poort.", imgPath: '/tasks/step2.jpg',
         activities: [
           {id: '3', name: "Sample", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "10", completed: true, residentId: "2", taskId: 3},
           {id: '4', name: "Tv kijken", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "45", completed: true, residentId: "2", taskId: 4},

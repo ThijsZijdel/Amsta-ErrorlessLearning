@@ -4,7 +4,7 @@ import {ResidentService} from "../../services/resident.service";
 import {ActivatedRoute} from "@angular/router";
 import {Activity} from "../../models/Activity";
 import {Observable} from "rxjs/Observable";
-import {ActivityViewComponent} from "../activity-view/activity-view.component";
+
 
 @Component({
   selector: 'app-resident',
@@ -15,12 +15,13 @@ export class ResidentComponent implements OnInit {
 
   resident: Resident;
 
-  doneTasks: Activity[];
-  todoTasks: Activity[];
-  todayTasks: Activity[];
-
   today: Date = new Date();
 
+  tabsIndex: number;
+
+  infoDisplay: boolean = false;
+
+  protected infoActiv: Activity = null;
   //protected infoActivity: Activity;
 
   constructor(private route: ActivatedRoute,
@@ -30,7 +31,7 @@ export class ResidentComponent implements OnInit {
 
   ngOnInit() {
     this.getResident();
-    this.orderActivities();
+
     this.clearInfoActivity();
   }
 
@@ -42,26 +43,7 @@ export class ResidentComponent implements OnInit {
    // this.resident = this.residentService.getResident(id);
   }
 
-  private orderActivities() {
 
-
-      for (let activity of this.residentService.getResidentActivities(this.resident)) {
-
-        console.log("activ"+activity.name)
-
-        if (activity.date === this.today) {
-          this.todayTasks.push(activity)
-        }else if (activity.completed) {
-          this.doneTasks.push(activity)
-        }else {
-          this.todoTasks.push(activity)
-        }
-
-      }
-
-  }
-
-  completedActivities:Activity[] ;
 
   protected isToday(date: Date): boolean {
     return date === this.today;
@@ -76,9 +58,6 @@ export class ResidentComponent implements OnInit {
     }
 
   }
-  protected isTodo(activity: Activity): boolean {
-    return (!this.isToday(activity.date) && !this.isCompleted(activity))
-  }
 
   protected getInfo(activity: Activity):void {
     if (activity === null)
@@ -86,18 +65,32 @@ export class ResidentComponent implements OnInit {
     else
       this.residentService.setInfoActivity(activity);
 
+    this.infoDisplay = true;
+
+  }
+
+  protected clearInfoActivity():void {
+    this.residentService.infoActivity = null;
+    this.infoDisplay = false;
   }
 
 
-  protected getStatAvgTime():void {
-    let timeMin: number;
-    for (let activity of this.completedActivities){
-      timeMin += parseInt(activity.completedTime);
+
+  protected reload(): void{
+    this.getInfoActivity();
+  }
+
+
+  private getInfoActivity() {
+    this.infoActiv = this.residentService.infoActivity;
+  }
+
+
+  protected setTabIndex(index: number): void{
+    if (this.tabsIndex == index) {
+      this.tabsIndex = null;
     }
-  }
 
-
-  private clearInfoActivity() {
-    //this.infoActivity = new Activity(null, "null", null, null, null, null,null ,null,null,null,null);
+    this.tabsIndex = index;
   }
 }
