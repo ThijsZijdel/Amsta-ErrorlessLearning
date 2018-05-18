@@ -66,4 +66,11 @@ export class AdminDashboardComponent implements OnInit {
   getResidents(): void {
     this.residentService.getResidents().subscribe(residents => this.residents = residents);
   }
+
+  protected editableResident() {
+    this.residentService.editResident = true;
+  }
+  protected clearEditSetting() {
+    this.residentService.editResident = false;
+  }
 }

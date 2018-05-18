@@ -57,8 +57,8 @@
                 </div>
 
                 <div class="float-right fix-pos">
-                  <button mat-raised-button color="secondary" routerLink="/resident/{{resident.id}}"> Bewerken </button>
-                  <button mat-raised-button color="primary" routerLink="/resident/{{resident.id}}"> Bekijken </button>
+                  <button mat-raised-button color="secondary" (click)="editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
+                  <button mat-raised-button color="primary" (click)="clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
                 </div>
 
               </li>

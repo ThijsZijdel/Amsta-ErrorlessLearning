@@ -41,3 +41,15 @@
   top: 7px;
   color: #999;
 }
+
+.button-right {
+  width: 25px;
+  float: right;
+  position: absolute;
+  right: 155px;
+  top: 17px;
+}
+
+.accent-form-field {
+  /*color: yellow;*/
+}
