@@ -11,6 +11,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 // Steps:
 import { Step } from '../../models/Step';
 import {ResidentService} from "../../services/resident.service";
+import {Resident} from "../../models/Resident";
+import {TaskTime} from "../../models/TaskTime";
+import {Activity} from "../../models/Activity";
 
 /**
  * Current task component
@@ -75,6 +78,7 @@ export class CurrentTaskComponent implements OnInit {
    */
   goBack(): void {
     alert("Geef de iPad terug aan een medewerker.");
+
     this.location.back();
   }
 
@@ -124,21 +128,123 @@ export class CurrentTaskComponent implements OnInit {
 
   private openClosingMessage() {
     if (confirm("Wilt u deze taak echt sluiten?")) {
+      this.stopMonitoring();
       return true;
     } else {
       return false;
     }
   }
 
+  private resident: Resident;
 
-  startDate: Date = null;
+  private startDate: Date = null;
+
+  private taskTime: TaskTime;
+  private currentTime: string;
+  private currentHour: number;
+  private currentMinute: number;
+
+  private completed: boolean = false;
+
+  private endedTime: string;
+
   /**
    * Start monitoring task events for the user (resident)
    */
   private startMonitoring() {
-    this.residentService.loggedInResident;
+    this.resident = this.residentService.loggedInResident;
     this.startDate = new Date();
+
+    this.initializeTime();
+    this.getCurrentTaskTime();
 
 
   }
+
+  private stopMonitoring() {
+    console.log("monitoring stopped");
+
+    var now = new Date();
+    this.endedTime = now.getHours()+":"+now.getMinutes();
+    this.completed = true;
+
+    this.resident.activities.push(
+      new Activity(
+        "9",
+        this.task.name,
+        this.startDate,
+
+        this.taskTime.startTime,
+        this.taskTime.endTime,
+        this.currentTime,
+        this.endedTime,
+        (this.getMinute(this.endedTime)-this.getMinute(this.currentTime)).toString(),
+        this.completed,
+        this.resident.id,
+        this.task.id,
+        "Automatisch..."));
+
+
+    this.residentService.updateResident(this.resident);
+  }
+
+
+
+
+  private getCurrentTaskTime(){
+    for (let time of this.task.taskTimes){
+      if (this.isNow(time.startTime, time.endTime))
+        this.taskTime = time;
+    }
+  }
+
+
+  /**
+   * Method for getting the hours out an time string
+   * @param {string} time     (format:   09:00)
+   * @returns {number} hours
+   * @author Thijs Zijdel
+   */
+  private getHour(time: string) {
+    return parseInt(time.substring(0, time.indexOf(":")));
+
+  }
+
+  /**
+   * Method for getting the minutes out an time string
+   * @param {string} time     (format:   09:00 )
+   * @returns {number} minutes
+   * @author Thijs Zijdel
+   */
+  private getMinute(time: string) {
+    return parseInt(time.substring(time.indexOf(":"),time.length));
+
+  }
+
+  /**
+   * Method for setting up the current time
+   * @author Thijs Zijdel
+   */
+  private initializeTime():void {
+    var now = new Date();
+    this.currentTime = now.getHours()+":"+now.getMinutes();
+    this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
+    this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":"),this.currentTime.length));
+  }
+
+
+  /**
+   * Method for checking if an time is in the current time
+   * @param {string} startTime  (format:  09:00)
+   * @param {string} endTime    (format:  09:00)
+   * @returns {boolean} true if it is now, false if it isn't
+   * @author Thijs Zijdel
+   * @author Lucas - minute validation
+   */
+  protected isNow(startTime: string, endTime: string) {
+    //TODO validate minutes
+    return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
+  }
+
+
 }

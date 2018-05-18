@@ -32,7 +32,7 @@ export class ResidentComponent implements OnInit {
   //protected infoActivity: Activity;
 
   constructor(private route: ActivatedRoute,
-              protected residentService: ResidentService,
+              public residentService: ResidentService,
               protected taskService: TaskService) { }
 
   editable: boolean = true;

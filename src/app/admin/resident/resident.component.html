@@ -198,7 +198,9 @@
 
           <br>
 
+          Nog te voltooien taken: {{resident.activities.length - doneTasks.selectedOptions.selected.length}}
 
+          <br>
 
           <canvas id="chartJSContainer" width="600" height="400"></canvas>
 
@@ -258,3 +260,6 @@
   new Chart(ctx, options);
 
 </script>
+
+<button (click)="residentService.login(residentService.getResident(1))">login</button>
+<span *ngIf="residentService.loggedInResident != null">test label {{residentService.loggedInResident.name}}</span>
