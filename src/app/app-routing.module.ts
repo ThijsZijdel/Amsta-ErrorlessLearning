@@ -8,7 +8,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CurrentTaskComponent } from './components/current-task/current-task.component';
 import { MessagesComponent } from './admin/messages/messages.component';
-import { ManageTaskComponent } from './admin/add-task/manage-task.component';
+import { ManageTaskComponent } from './admin/manage-task/manage-task.component';
 import { AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
 import { LoginComponent } from './admin/login/login.component';
 import { ResidentComponent} from "./admin/resident/resident.component";

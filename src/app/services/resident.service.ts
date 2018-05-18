@@ -19,6 +19,8 @@ export class ResidentService {
 
   public infoActivity: Activity;
 
+  public editResident: boolean = false;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }

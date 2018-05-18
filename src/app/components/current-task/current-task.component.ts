@@ -10,6 +10,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 // Steps:
 import { Step } from '../../models/Step';
+import {ResidentService} from "../../services/resident.service";
 
 /**
  * Current task component
@@ -42,7 +43,8 @@ export class CurrentTaskComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute,
     private taskService: TaskService,
-    private location: Location) {
+    private location: Location,
+    private residentService: ResidentService) {
   }
 
   /**
@@ -51,6 +53,8 @@ export class CurrentTaskComponent implements OnInit {
   ngOnInit() {
     this.getTask();
     this.getSteps();
+
+    this.startMonitoring();
   }
 
   /**
@@ -124,5 +128,17 @@ export class CurrentTaskComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+
+  startDate: Date = null;
+  /**
+   * Start monitoring task events for the user (resident)
+   */
+  private startMonitoring() {
+    this.residentService.loggedInResident;
+    this.startDate = new Date();
+
+
   }
 }

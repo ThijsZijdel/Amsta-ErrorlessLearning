@@ -17,13 +17,16 @@ export class Activity {
   residentId: string;
   taskId: number;
 
+  notes: string;
+
   constructor(id: string, name: string, date: Date,
               timeStart: string, timeEnd: string,
 
               timeStarted: string, timeEnded: string,
               completedTime: string, completed: boolean,
 
-              residentId: string,taskId: number) {
+              residentId: string,taskId: number,
+              notes: string) {
     this.id = id;
     this.name = name;
     this.date = date;
@@ -39,5 +42,6 @@ export class Activity {
     this.residentId = residentId;
 
     this.taskId = taskId;
+    this.notes = notes;
   }
 }
