@@ -105,6 +105,7 @@ export class ResidentService {
   /**
    * add a new Resident to the server
    * note: POST
+   * @author Thijs Zijdel
    */
   addResident (resident: Resident): Observable<Resident> {
     return this.http.post<Resident>(this.tasksUrl, resident, httpOptions).pipe(
