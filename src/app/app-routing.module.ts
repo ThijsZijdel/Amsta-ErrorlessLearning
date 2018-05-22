@@ -29,7 +29,9 @@ const routes: Routes = [
   { path: 'admin/manage-task', component: ManageTaskComponent},
   { path: 'login', component: LoginComponent},
   { path: 'resident/:id', component: ResidentComponent},
-  { path: 'loginresident', component: LoginResidentComponent}
+  { path: 'loginresident', component: LoginResidentComponent},
+  {path: '404', component: DashboardComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 /**

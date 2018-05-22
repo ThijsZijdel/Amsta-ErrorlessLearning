@@ -82,7 +82,6 @@ import { LoginResidentComponent } from './admin/login-resident/login-resident.co
     TaskSearchComponent,
     ManageTaskComponent,
     LoginComponent,
-    SelectUserComponent,
     AdminDashboardComponent,
     AdminSidebarComponent,
     ResidentComponent,
