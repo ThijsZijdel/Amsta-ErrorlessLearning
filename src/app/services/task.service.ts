@@ -142,15 +142,28 @@ export class TaskService {
     );
   }
 
-  setEditTask(task: Task): void{
+  /**
+   * set an task that is requested for editing
+   * @param {Task} task
+   * @author Thijs Zijdel
+   */
+  public setEditTask(task: Task): void{
     this.editTask = task;
   }
 
 
-  getCurrentTaskTime(): TaskTime {
+  /**
+   * Method for getting the current task time
+   * @returns {TaskTime}
+   */
+  public getCurrentTaskTime(): TaskTime {
     return this.currentTaskTime;
   }
-  setCurrentTaskTime(taskTime: TaskTime): void{
+  /**
+   * Method for setting the current task time
+   * @returns {TaskTime}
+   */
+  public setCurrentTaskTime(taskTime: TaskTime): void{
     this.currentTaskTime = taskTime;
   }
 }

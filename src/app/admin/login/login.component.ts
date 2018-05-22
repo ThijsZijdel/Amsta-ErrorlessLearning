@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  employees: Employee[];
+  protected employees: Employee[];
 
   actualLoginStatus;
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
    * and add (subscribe) each task to the tasks array
    * @author: Thijs Zijdel
    */
-  getEmployees(): void {
+  private getEmployees(): void {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
    * @param {string} userPassInput
    * @author: Thijs Zijdel
    */
-  login(userNameInput: string, userPassInput: string): void {
+   protected login(userNameInput: string, userPassInput: string): void {
     //check the inputted values on every employee
     for ( const checkEmployee of this.employees ) {
       //if the fields match: login

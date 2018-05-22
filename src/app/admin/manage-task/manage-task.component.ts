@@ -21,9 +21,9 @@ export class ManageTaskComponent implements OnInit {
   /**
    * Tasks attributes
    */
-  taskNameValue: string;
-  imgLink: string;
-  mainDescription: string;
+  protected taskNameValue: string;
+  protected imgLink: string;
+  protected mainDescription: string;
 
 
   //Step variables
@@ -33,7 +33,7 @@ export class ManageTaskComponent implements OnInit {
   protected showReordering: boolean = false;
 
   //Task times
-  taskTimes: TaskTime[] = [];
+  protected taskTimes: TaskTime[] = [];
 
 
   /**
@@ -64,7 +64,7 @@ export class ManageTaskComponent implements OnInit {
    * Close this view and remove the editing task
    * @author: Thijs Zijdel
    */
-  close(): void {
+  protected close(): void {
     this.tasksService.setEditTask(null);
   }
 
@@ -215,11 +215,21 @@ export class ManageTaskComponent implements OnInit {
     }
   }
 
-  addTime() {
+  /**
+   * Method for adding a new task time
+   * Note: standard values 10:00 - 11:00
+   * @author Thijs Zijdel
+   */
+  protected addTime():void {
     this.taskTimes.push(new TaskTime("10:00", "11:00"));
   }
 
-  removeTime(time: TaskTime) {
+  /**
+   * Remove an task time from the task
+   * @param {TaskTime} time that needs to be removed
+   * @author Thijs Zijdel
+   */
+  protected removeTime(time: TaskTime):void {
     this.taskTimes.splice(this.taskTimes.indexOf(time), 1);
   }
 
@@ -229,7 +239,7 @@ export class ManageTaskComponent implements OnInit {
    * If this is true, setup all the fields
    * @author Thijs Zijdel
    */
-  private checkForEdit() {
+  private checkForEdit():void {
     //get an potential edit task.
     this.editTask = this.tasksService.editTask;
 
@@ -285,24 +295,11 @@ export class ManageTaskComponent implements OnInit {
     this.tasksService.deleteTask(task).subscribe();
   }
 
-  updateThisTime(isStartTime: boolean, index: number, value: string) {
-
-
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
-
-
+  protected updateThisTime(isStartTime: boolean, index: number, value: string):void  {
     if (isStartTime)
       this.taskTimes[index].startTime = value;
     else
       this.taskTimes[index].endTime = value;
-
-    console.log("----------------------------------------------")
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
-
 
   }
 }

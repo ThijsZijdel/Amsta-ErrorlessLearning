@@ -36,6 +36,27 @@ export class CurrentTaskComponent implements OnInit {
   @Input() task: Task;
 
   steps: Step[];
+
+
+
+  /**
+   * Variables for task monitoring
+   */
+  private resident: Resident;
+
+  private startDate: Date = null;
+
+  private taskTime: TaskTime;
+  private currentTime: string;
+  private currentHour: number;
+  private currentMinute: number;
+
+  private completed: boolean = false;
+
+  private endedTime: string;
+
+
+
   /**
    * Constructor for:
    *
@@ -141,25 +162,10 @@ export class CurrentTaskComponent implements OnInit {
 
 
   /**
-   * Variables for task monitoring
-   */
-  private resident: Resident;
-
-  private startDate: Date = null;
-
-  private taskTime: TaskTime;
-  private currentTime: string;
-  private currentHour: number;
-  private currentMinute: number;
-
-  private completed: boolean = false;
-
-  private endedTime: string;
-
-
-
-  /**
    * Start monitoring task events for the user (resident)
+   * For the activity log of that user
+   *
+   * @author Thijs Zijdel
    */
   private startMonitoring() {
     this.resident = this.residentService.loggedInResident;
@@ -181,6 +187,12 @@ export class CurrentTaskComponent implements OnInit {
 
   }
 
+  /**
+   * Stop monitoring the activities of this task
+   * Calculate the right times and asign this to the user activities
+   *
+   * @author Thijs Zijdel
+   */
   private stopMonitoring() {
     if (this.resident != null) {
       console.log("monitoring stopped");
@@ -191,6 +203,7 @@ export class CurrentTaskComponent implements OnInit {
 
       console.log(this.resident.activities.length + " voor");
 
+      //add it to the users activities
       this.resident.activities.push(
         new Activity(
           "9",

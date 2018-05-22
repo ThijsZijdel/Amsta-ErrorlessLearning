@@ -12,14 +12,14 @@ import {Resident} from "../../models/Resident";
 })
 export class AdminDashboardComponent implements OnInit {
 
-  loginStatusActual;
+  protected loginStatusActual;
 
   /**
    * Array of tasks
    */
-  tasks: Task[];
+  protected tasks: Task[];
 
-  residents: Resident[];
+  protected residents: Resident[];
 
   constructor(private status: StatusService,
               private taskService: TaskService,
@@ -36,19 +36,11 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   /**
-   * see to do
-   * @param {string} name
-   */
-  setPanel(name: string) {
-    console.log("Setted: " + name);
-  }
-
-  /**
    * Called on click button, for setting the editable task
    * @param {Task} task
    * @author: Thijs Zijdel
    */
-  editTask(task: Task) {
+  protected editTask(task: Task): void {
     this.taskService.setEditTask(task);
   }
 
@@ -58,16 +50,24 @@ export class AdminDashboardComponent implements OnInit {
    * and add (subscribe) each task to the tasks array
    * @author Thijs Zijdel
    */
-  getTasks(): void {
+  private getTasks(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
 
-  getResidents(): void {
+  /**
+   * Get al the residents for the resident manager
+   * @author Thijs Zijdel
+   */
+  private getResidents(): void {
     this.residentService.getResidents().subscribe(residents => this.residents = residents);
   }
 
-  protected editableResident() {
+  /**
+   * Set the editable resident
+   * @author Thijs Zijdel
+   */
+  protected editableResident():void  {
     this.residentService.editResident = true;
   }
 }

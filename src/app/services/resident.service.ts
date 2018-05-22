@@ -21,6 +21,13 @@ export class ResidentService {
 
   public editResident: boolean = false;
 
+
+  public residentLoggedIn = false;
+
+  public loggedInResident: Resident;
+
+
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -51,13 +58,15 @@ export class ResidentService {
     );
   }
 
+
+
   getResidentActivities(resident: any): Activity[] {
-
-
     if (resident instanceof Resident) {
       return resident.activities;
     }
   }
+
+
 
   /**
    * Log a ResidentService message with the MessageService
@@ -147,13 +156,10 @@ export class ResidentService {
   // }
 
 
-
-
-
-
-
-
-
+  /**
+   * Set an info activity
+   * @param {Activity} activity
+   */
   public setInfoActivity(activity: Activity):void{
     this.infoActivity = activity;
   }
@@ -164,34 +170,14 @@ export class ResidentService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  public residentLoggedIn = false;
-
-  public loggedInResident: Resident;
-
-  public residents: Resident[];
-
-
-
   /**
-   * Log in
+   * Log in for residents
+   * note: no validation necessary
    *
    * @param Resident
    * @author: Thijs Zijdel
    */
-  login(resident: Resident) {
+  login(resident: Resident): void {
     if (resident == null)
       this.logout();
 
@@ -204,7 +190,7 @@ export class ResidentService {
    *
    * @author: Thijs Zijdel
    */
-  logout() {
+  logout(): void {
     this.residentLoggedIn = false;
     this.loggedInResident = null;
   }

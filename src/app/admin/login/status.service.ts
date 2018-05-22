@@ -5,7 +5,7 @@ import {isBoolean} from "util";
 @Injectable()
 export class StatusService {
 
-  public loggedInStatus = false;
+  public loggedInStatus:boolean = false;
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class StatusService {
    * @param {boolean} status
    * @author: Thijs Zijdel
    */
-  changeLoggedInStatus(status: boolean) {
+  public changeLoggedInStatus(status: boolean):void {
     this.loggedInStatus = status;
   }
 
@@ -24,7 +24,7 @@ export class StatusService {
    * @returns {boolean} state
    * @author: Thijs Zijdel
    */
-  getLoggedInStatus() {
+  public getLoggedInStatus(): boolean {
     return this.loggedInStatus;
   }
 }

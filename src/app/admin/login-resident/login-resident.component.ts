@@ -9,7 +9,7 @@ import { Resident } from '../../models/Resident'
 })
 export class LoginResidentComponent implements OnInit {
 
-  residents: Resident[];
+  protected residents: Resident[];
 
   constructor(private residentService: ResidentService) {  }
 

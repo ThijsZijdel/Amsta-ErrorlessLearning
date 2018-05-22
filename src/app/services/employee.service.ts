@@ -87,6 +87,7 @@ export class EmployeeService {
 
   /**
    * Set the current logged in employee
+   *
    * @param {Employee} employee
    * @author Thijs Zijdel
    */
