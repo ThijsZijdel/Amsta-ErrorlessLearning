@@ -65,28 +65,6 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
-   * Method for getting the minutes out an time string
-   * @param {string} time     (format:   09:00 )
-   * @returns {number} minutes
-   * @author Thijs Zijdel
-   */
-  private getMinute(time: string) {
-    return parseInt(time.substring(time.indexOf(":"),time.length));
-
-  }
-
-  /**
-   * Method for getting the hours out an time string
-   * @param {string} time     (format:   09:00)
-   * @returns {number} hours
-   * @author Thijs Zijdel
-   */
-  private getHour(time: string) {
-    return parseInt(time.substring(0, time.indexOf(":")));
-
-  }
-
-  /**
    * Method for setting up the current time
    * @author Thijs Zijdel
    */
@@ -94,7 +72,7 @@ export class DashboardComponent implements OnInit {
     var now = new Date();
     this.currentTime = now.getHours()+":"+now.getMinutes();
     this.currentHour = parseInt(this.currentTime.substring(0, this.currentTime.indexOf(":")));
-    this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":"),this.currentTime.length));
+    this.currentMinute = parseInt(this.currentTime.substring(this.currentTime.indexOf(":") + 1,this.currentTime.length));
   }
 
   /**
@@ -102,10 +80,10 @@ export class DashboardComponent implements OnInit {
    * @param {string} endTime  (format:  09:00)
    * @returns {boolean} true if it is past, false if it isn't
    * @author Thijs Zijdel
-   * @author Lucas - minute validation
    */
   protected isPast(endTime: string) {
-    return (this.currentHour >= this.getHour(endTime));
+    return(this.currentMinute >= this.getMinute(endTime) &&
+      this.currentHour >= this.getHour(endTime));
   }
 
   /**
@@ -117,8 +95,13 @@ export class DashboardComponent implements OnInit {
    * @author Lucas - minute validation
    */
   protected isNow(startTime: string, endTime: string) {
-    //TODO validate minutes
-    return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
+    //check if current time is within the end and start time of the task
+    return(
+      this.currentHour >= this.getHour(startTime) &&
+      this.currentHour <= this.getHour(endTime));
+
+    //this.currentMinute >= this.getMinute(startTime) &&
+    //this.currentMinute <= this.getMinute(endTime) &&
   }
 
   /**
@@ -126,10 +109,11 @@ export class DashboardComponent implements OnInit {
    * @param {string} startTime  (format:  09:00)
    * @returns {boolean} true if it is upcoming, false if it isn't
    * @author Thijs Zijdel
-   * @author Lucas - minute validation
    */
   protected isUpcoming(startTime: string){
-    return (this.currentHour <= this.getHour(startTime));
+    return(this.currentHour <= this.getHour(startTime));
+
+    //this.currentMinute <= this.getMinute(startTime) &&
   }
 
   /**
@@ -176,4 +160,31 @@ export class DashboardComponent implements OnInit {
     }
     return addThisTask
   }
+
+
+
+
+
+  /**
+   * Method for getting the minutes out an time string
+   * @param {string} time     (format:   09:00 )
+   * @returns {number} minutes
+   * @author Thijs Zijdel
+   */
+  public getMinute(time: string) {
+    return parseInt(time.substring(time.indexOf(":") + 1, time.length));
+
+
+  }
+
+  /**
+   * Method for getting the hours out an time string
+   * @param {string} time     (format:   09:00)
+   * @returns {number} hours
+   * @author Thijs Zijdel
+   */
+  public getHour(time: string) {
+    return parseInt(time.substring(0, time.indexOf(":")));
+  }
+
 }

@@ -9,6 +9,7 @@ import { MessageService } from './message.service';
 
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {TaskTime} from "../models/TaskTime";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,6 +21,8 @@ export class TaskService {
   private tasksUrl = 'api/tasks';  // URL to web api
 
   public editTask: Task;
+
+  private currentTaskTime: TaskTime = null;
 
   constructor(
     private http: HttpClient,
@@ -139,5 +142,11 @@ export class TaskService {
   }
 
 
+  getCurrentTaskTime(): TaskTime {
+    return this.currentTaskTime;
+  }
+  setCurrentTaskTime(taskTime: TaskTime): void{
+    this.currentTaskTime = taskTime;
+  }
 }
 

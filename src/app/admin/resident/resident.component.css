@@ -1,0 +1,57 @@
+.scrolable{
+  overflow-y: scroll;
+  height: 150%;
+}
+
+
+.done-label {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,.54);
+  float: right;
+  margin: -30px 5px 0 0;
+}
+
+
+.resident-image{
+  max-width: 100%;
+  height: auto ;
+}
+.info-button {
+  width: 25px;
+  float: right;
+  position: absolute;
+  right: 60px;
+  top: 17px;
+}
+.edit-toggle {
+  position: absolute;
+  right: 25px;
+}
+
+
+.chartJSContainer {
+  z-index: 99;
+  background: #eee;
+}
+.activity-id {
+  position: absolute;
+  left: 150px;
+  top: 7px;
+  color: #999;
+}
+
+.button-right {
+  width: 25px;
+  float: right;
+  position: absolute;
+  right: 155px;
+  top: 17px;
+  background: #27ae60;
+  color:#fff;
+}
+
+.accent-form-field {
+  /*color: yellow;*/
+}

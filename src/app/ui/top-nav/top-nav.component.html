@@ -13,16 +13,33 @@
     </ul>
 
     <ul class="navbar-nav">
+        <!-- Wanneer de knop wordt ingedrukt wordt de gebruiker doorgestuurd naar het login scherm voor de bewoners -->
+        <li class="nav-item">
+          <button routerLink="/loginresident" class="btn btn-2 btn-2a">
+            <span *ngIf="!this.residentService.residentLoggedIn">Bewoners</span>
+            <span *ngIf="this.residentService.residentLoggedIn">{{this.residentService.loggedInResident.name}}</span>
+          </button>
+        </li>
+    </ul>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <ul class="navbar-nav">
       <!-- Wanneer de verzorger ingelogd is wordt zij doorgestuurd naar het verzorgerdashboard -->
       <div *ngIf="statusService.loggedInStatus; else loginEmployee">
         <li class="nav-item">
-          <button routerLink="/admin" class="btn btn-1 btn-1a">Verzorger</button>
+          <button routerLink="/admin" class="btn btn-1 btn-1a">
+            <span>Ingelogd:</span>
+            <span *ngIf="this.employeeService.loggedInEmployee!=null">{{this.employeeService.loggedInEmployee.name}}</span>
+          </button>
         </li>
       </div>
       <!-- Wanneer de verzorger niet ingelogd is wordt zij doorgestuurd naar het verszorgerloginscherm -->
       <ng-template #loginEmployee>
         <li class="nav-item">
-          <button routerLink="/login" class="btn btn-1 btn-1a">Verzorger</button>
+          <button routerLink="/login" class="btn btn-1 btn-1a">
+            <span>Verzorger</span>
+          </button>
         </li>
       </ng-template>
     </ul>

@@ -48,17 +48,22 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskSearchComponent } from './components/task-search/task-search.component';
-import { ManageTaskComponent } from './admin/add-task/manage-task.component';
-import { EditTaskComponent } from './admin/edit-task/edit-task.component';
+import { ManageTaskComponent } from './admin/manage-task/manage-task.component';
+
+
 import { LoginComponent } from './admin/login/login.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 
 import {
-   MatFormFieldModule, MatInputModule, MatSlideToggleModule,
+  MatFormFieldModule, MatInputModule, MatListModule, MatSlideToggleModule,
   MatTooltipModule
 } from "@angular/material";
+import {ResidentService} from "./services/resident.service";
+import { ResidentComponent } from './admin/resident/resident.component';
+import { LoginResidentComponent } from './admin/login-resident/login-resident.component';
+
 
 
 
@@ -77,11 +82,12 @@ import {
     DashboardComponent,
     TaskSearchComponent,
     ManageTaskComponent,
-    EditTaskComponent,
     LoginComponent,
     SelectUserComponent,
     AdminDashboardComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    ResidentComponent,
+    LoginResidentComponent
   ],
   imports: [
     BrowserModule,
@@ -106,13 +112,15 @@ import {
     MatTooltipModule,
     MatSlideToggleModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     TaskService,
     MessageService,
     EmployeeService,
-    StatusService
+    StatusService,
+    ResidentService
   ],
   bootstrap: [AppComponent]
 })

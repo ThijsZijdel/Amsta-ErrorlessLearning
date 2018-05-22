@@ -1,0 +1,12 @@
+<div *ngIf="this.residentService.residentLoggedIn">
+  <p>Logged in resident: {{this.residentService.loggedInResident.name}}</p>
+</div>
+
+<div *ngFor="let resident of residents">
+    <button class="btn btn-1 btn-1a" (click)="setResident(resident)">{{resident.name}} {{resident.surname}}</button>
+  <br>
+</div>
+
+<div>
+  <button mat-raised-button (click)="logout()">Log uit</button>
+</div>

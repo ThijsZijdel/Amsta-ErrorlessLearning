@@ -9,38 +9,71 @@
 
 
     <div class="col-md-9" style="padding-right: 0px;">
-      <div class="container-admin-content" style="overflow-y: scroll; height:100%;" *ngIf="loginStatusActual">
-        <!-- TODO this will be changed to a more dynamic way of showing the panels -->
-        <!-- Example: an new router link, specific for the admin functionality     -->
+
+      <div class="container-admin-content" *ngIf="loginStatusActual">
+
+        <mat-tab-group>
+          <mat-tab label="Taken beheer">
+
+            <ul class="list-group tasks">
+              <li *ngFor="let task of tasks" class="list-group-item">
 
 
-
-
-        <ul class="list-group tasks">
-          <li *ngFor="let task of tasks" class="list-group-item">
-
-
-            <!-- badge display for the tasks -->
-            <div class="TaskInfo" style="width: 75%; float: left;">
-              <div class="task-name" style="text-transform: capitalize">{{task.name}}</div>
-              <div class="task-description">{{task.mainDescription}}</div>
-              <div class="tagRow">
-                <div class="tag" *ngFor="let taskTime of task.taskTimes">
-                  <div class="tagColor"></div>
-                  {{taskTime.startTime}} - {{taskTime.endTime}}
+                <!-- badge display for the tasks -->
+                <div class="TaskInfo" style="width: 75%; float: left;">
+                  <div class="task-name" style="text-transform: capitalize">{{task.name}}</div>
+                  <div class="task-description">{{task.mainDescription}}</div>
+                  <div class="tagRow">
+                    <div class="tag" *ngFor="let taskTime of task.taskTimes">
+                      <div class="tagColor"></div>
+                      {{taskTime.startTime}} - {{taskTime.endTime}}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="taskButtons" style="width: 25%; display: inline-block; height: 100%; position: absolute; top: 0px;">
-              <button class="btn btn-1 btn-1c purple" (click)="editTask(this.task)" routerLink="/admin/manage-task"> Bewerken </button>
-            </div>
-          </li>
+                <div class="taskButtons">
+                  <button class="btn btn-1 btn-1c yellow btn-possition" (click)="editTask(this.task)" routerLink="/admin/manage-task"> Bewerken </button>
+                </div>
+              </li>
+            </ul>
 
 
 
 
 
-        </ul>
+
+          </mat-tab>
+          <mat-tab label="Bewoners beheren">
+
+            <ul class="list-group tasks">
+              <li *ngFor="let resident of residents" class="list-group-item">
+                <div class="task-name">{{resident.name}} {{resident.surname}}</div>
+                <div class="task-description">Extra info over bewoner</div>
+
+                <div class="tagRow">
+                  <div class="tag">
+                    <div class="tagColor"></div>
+                    Laatste activiteit: om {{resident.activities[resident.activities.length-1].timeStarted}}
+                    op {{resident.activities[resident.activities.length-1].date.toString().substring(0, 10)}}
+                  </div>
+                </div>
+
+                <div class="float-right fix-pos">
+                  <button class="btn btn-1 btn-1c purple" (click)="clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
+                  <button class="btn btn-1 btn-1c yellow" (click)="editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
+                </div>
+
+              </li>
+            </ul>
+
+
+
+          </mat-tab>
+        </mat-tab-group>
+
+
+
+
+
 
 
 
@@ -55,4 +88,5 @@
     </div>
   </div>
 </div>
+
 

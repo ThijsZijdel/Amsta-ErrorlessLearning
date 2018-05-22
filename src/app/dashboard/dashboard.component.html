@@ -74,7 +74,16 @@
           <div class="card-block">
             <h4 class="card-title">{{task.name}}</h4>
             <p class="card-text">{{ task.mainDescription }}</p>
-            <button routerLink="/current/{{task.id}}" mat-raised-button class="startBtn start-tasks-btn">start</button>
+
+            <div *ngFor="let time of task.taskTimes">
+              <div *ngIf="isNow(time.startTime, time.endTime)">
+                <button (click)="this.taskService.setCurrentTaskTime(time)" routerLink="/current/{{task.id}}"
+                        mat-raised-button class="startBtn start-tasks-btn">
+                  start
+                </button>
+              </div>
+            </div>
+
 
             <br>
 
