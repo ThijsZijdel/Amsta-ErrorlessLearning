@@ -59,15 +59,15 @@ export class InMemoryDataService implements InMemoryDbService {
     const residents = [
       { id: '1', name: 'Sandra', surname: 'Merkel',  bio: "Aardige vrouw maar afwisselend gedrag.",imgPath: '/residents/woman1.jpg',
         activities: [
-          {id: '1', name: "Tandenpoetsen", date: new Date(), timeStart: "11:00", timeEnd: "12:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "6", completed: false, residentId: "1", taskId: 1, notes: "Helaas te lang."},
-          {id: '2', name: "Douchen", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "8", completed: true, residentId: "1", taskId: 2, notes: "Erg goed gegaan."}
+          {id: '1', name: "Tandenpoetsen", date: new Date(2018, 5, 11), timeStart: "11:00", timeEnd: "12:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "6", completed: false, residentId: "1", taskId: 1, notes: "Helaas te lang."},
+          {id: '2', name: "Douchen", date: new Date(2018, 5, 12), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "8", completed: true, residentId: "1", taskId: 2, notes: "Erg goed gegaan."}
         ]
       },
       { id: '2', name: 'Marco', surname: 'Willems', bio: "Al een aantal jaar bij Amsta de poort.", imgPath: '/residents/men1.jpg',
         activities: [
-          {id: '3', name: "Sample", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "10", completed: true, residentId: "2", taskId: 3, notes: "Kon wat sneller."},
-          {id: '4', name: "Tv kijken", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "45", completed: true, residentId: "2", taskId: 4, notes: "Top."},
-          {id: '5', name: "Tandenpoetsen", date: new Date(), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "5", completed: true, residentId: "2", taskId: 5, notes: "erg goed gegaan."}
+          {id: '3', name: "Sample", date: new Date(2018, 5, 17), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "10", completed: true, residentId: "2", taskId: 3, notes: "Kon wat sneller."},
+          {id: '4', name: "Tv kijken", date: new Date(2018, 5, 14), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "45", completed: true, residentId: "2", taskId: 4, notes: "Top."},
+          {id: '5', name: "Tandenpoetsen", date: new Date(2018, 5, 12), timeStart: "11:00", timeEnd: "11:00", timeStarted: "11:00", timeEnded: "11:00", completedTime: "5", completed: true, residentId: "2", taskId: 5, notes: "erg goed gegaan."}
         ]
       }
     ];

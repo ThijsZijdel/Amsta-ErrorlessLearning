@@ -48,6 +48,8 @@
   position: absolute;
   right: 155px;
   top: 17px;
+  background: #27ae60;
+  color:#fff;
 }
 
 .accent-form-field {

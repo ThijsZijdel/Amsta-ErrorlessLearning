@@ -31,7 +31,7 @@
                   </div>
                 </div>
                 <div class="taskButtons">
-                  <button class="btn btn-1 btn-1c purple" (click)="editTask(this.task)" routerLink="/admin/manage-task"> Bewerken </button>
+                  <button class="btn btn-1 btn-1c yellow btn-possition" (click)="editTask(this.task)" routerLink="/admin/manage-task"> Bewerken </button>
                 </div>
               </li>
             </ul>
@@ -52,13 +52,14 @@
                 <div class="tagRow">
                   <div class="tag">
                     <div class="tagColor"></div>
-                    Punten? - Behaald?
+                    Laatste activiteit: om {{resident.activities[resident.activities.length-1].timeStarted}}
+                    op {{resident.activities[resident.activities.length-1].date.toString().substring(0, 10)}}
                   </div>
                 </div>
 
                 <div class="float-right fix-pos">
-                  <button mat-raised-button color="secondary" (click)="editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
-                  <button mat-raised-button color="primary" (click)="clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
+                  <button class="btn btn-1 btn-1c purple" (click)="clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
+                  <button class="btn btn-1 btn-1c yellow" (click)="editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
                 </div>
 
               </li>
