@@ -52,7 +52,6 @@ import { ManageTaskComponent } from './admin/manage-task/manage-task.component';
 
 
 import { LoginComponent } from './admin/login/login.component';
-import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 
