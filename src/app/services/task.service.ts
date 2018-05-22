@@ -22,6 +22,8 @@ export class TaskService {
 
   public editTask: Task;
 
+  private currentTaskTime: TaskTime = null;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -141,7 +143,10 @@ export class TaskService {
 
 
   getCurrentTaskTime(): TaskTime {
-
+    return this.currentTaskTime;
+  }
+  setCurrentTaskTime(taskTime: TaskTime): void{
+    this.currentTaskTime = taskTime;
   }
 }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../models/task';
 import {TaskService} from '../services/task.service';
-import {Time} from "../gen/TimeGen";
 
 @Component({
   selector: 'app-dashboard',
@@ -187,4 +186,5 @@ export class DashboardComponent implements OnInit {
   public getHour(time: string) {
     return parseInt(time.substring(0, time.indexOf(":")));
   }
+
 }

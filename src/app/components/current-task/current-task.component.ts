@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 
 import { TaskService } from '../../services/task.service';
 import { MatStepper } from '@angular/material';
-import {MatStepperModule} from '@angular/material/stepper';
+
 
 // Steps:
 import { Step } from '../../models/Step';
@@ -14,7 +14,6 @@ import {ResidentService} from "../../services/resident.service";
 import {Resident} from "../../models/Resident";
 import {TaskTime} from "../../models/TaskTime";
 import {Activity} from "../../models/Activity";
-import {Time} from '../../gen/TimeGen';
 
 /**
  * Current task component
@@ -127,6 +126,10 @@ export class CurrentTaskComponent implements OnInit {
       });
   }
 
+  /**
+   * Message when the tasks is ready to close
+   * @returns {boolean} if the tasks need to be stopped
+   */
   private openClosingMessage() {
     if (confirm("Wilt u deze taak echt sluiten?")) {
       this.stopMonitoring();
@@ -136,6 +139,10 @@ export class CurrentTaskComponent implements OnInit {
     }
   }
 
+
+  /**
+   * Variables for task monitoring
+   */
   private resident: Resident;
 
   private startDate: Date = null;
@@ -149,6 +156,8 @@ export class CurrentTaskComponent implements OnInit {
 
   private endedTime: string;
 
+
+
   /**
    * Start monitoring task events for the user (resident)
    */
@@ -159,7 +168,7 @@ export class CurrentTaskComponent implements OnInit {
     this.initializeTime();
 
 
-    this.taskService.getCurrentTaskTime();
+    this.taskTime = this.taskService.getCurrentTaskTime();
 
 
   }
