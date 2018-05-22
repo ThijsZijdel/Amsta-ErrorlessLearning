@@ -11,7 +11,17 @@
         <div class="card-block">
           <h6 class="card-title">{{task.name}}</h6>
           <p class="card-text">{{ task.mainDescription }}</p>
-          <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
+
+
+          <div *ngFor="let time of task.taskTimes">
+            <div *ngIf="isPast(time.endTime)">
+              <button (click)="this.taskService.setCurrentTaskTime(time)" routerLink="/current/{{task.id}}"
+                      mat-raised-button class="btn-sm start-tasks-btn">
+                start
+              </button>
+            </div>
+          </div>
+
 
           <br>
 
@@ -137,7 +147,18 @@
           <div class="card-block">
             <h6 class="card-title">{{task.name}}</h6>
             <p class="card-text">{{ task.mainDescription }}</p>
-            <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
+
+            <div *ngFor="let time of task.taskTimes">
+              <div *ngIf="isUpcoming(time.startTime)">
+
+                <button (click)="this.taskService.setCurrentTaskTime(time)" routerLink="/current/{{task.id}}"
+                        mat-raised-button class="btn-sm start-tasks-btn">
+                  start
+                </button>
+              </div>
+            </div>
+
+
 
             <br>
 
