@@ -113,6 +113,7 @@ export class ResidentService {
     );
   }
 
+
   /**
    * delete the Resident from the server
    * note: DELETE

@@ -70,7 +70,4 @@ export class AdminDashboardComponent implements OnInit {
   protected editableResident() {
     this.residentService.editResident = true;
   }
-  protected clearEditSetting() {
-    this.residentService.editResident = false;
-  }
 }
