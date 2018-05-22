@@ -22,8 +22,13 @@ export class LoginResidentComponent implements OnInit {
     this.residentService.getResidents().subscribe(residents => this.residents = residents);
   }
 
-  public setResident(resident: Resident): void {
+  protected setResident(resident: Resident): void {
     this.residentService.residentLoggedIn = true;
     this.residentService.login(resident);
+  }
+
+  protected logout(): void {
+    this.residentService.residentLoggedIn = false;
+    this.residentService.logout();
   }
 }
