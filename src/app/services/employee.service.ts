@@ -16,7 +16,7 @@ export class EmployeeService {
   /**
    * Current logged in employee
    */
-  private loggedInEmployee: Employee;
+  public loggedInEmployee: Employee;
 
   private employeesUrl = 'api/employees';  // URL to web api
 
@@ -86,5 +86,6 @@ export class EmployeeService {
   setLoggedInEmployee(employee: Employee) {
       this.loggedInEmployee = employee;
   }
+
 
 }
