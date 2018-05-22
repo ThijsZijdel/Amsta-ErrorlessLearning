@@ -9,6 +9,7 @@ import { MessageService } from './message.service';
 
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {TaskTime} from "../models/TaskTime";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -139,5 +140,8 @@ export class TaskService {
   }
 
 
+  getCurrentTaskTime(): TaskTime {
+
+  }
 }
 

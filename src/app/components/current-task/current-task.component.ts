@@ -14,6 +14,7 @@ import {ResidentService} from "../../services/resident.service";
 import {Resident} from "../../models/Resident";
 import {TaskTime} from "../../models/TaskTime";
 import {Activity} from "../../models/Activity";
+import {Time} from '../../gen/TimeGen';
 
 /**
  * Current task component
@@ -156,7 +157,9 @@ export class CurrentTaskComponent implements OnInit {
     this.startDate = new Date();
 
     this.initializeTime();
-    this.getCurrentTaskTime();
+
+
+    this.taskService.getCurrentTaskTime();
 
 
   }
@@ -189,37 +192,22 @@ export class CurrentTaskComponent implements OnInit {
   }
 
 
-
-
-  private getCurrentTaskTime(){
-    for (let time of this.task.taskTimes){
-      if (this.isNow(time.startTime, time.endTime))
-        this.taskTime = time;
-    }
-  }
-
-
   /**
-   * Method for getting the hours out an time string
-   * @param {string} time     (format:   09:00)
-   * @returns {number} hours
+   * Method for checking if an time is in the current time
+   * @param {string} startTime  (format:  09:00)
+   * @param {string} endTime    (format:  09:00)
+   * @returns {boolean} true if it is now, false if it isn't
    * @author Thijs Zijdel
+   * @author Lucas - minute validation
    */
-  private getHour(time: string) {
-    return parseInt(time.substring(0, time.indexOf(":")));
-
+  protected isNow(startTime: string, endTime: string) {
+    //check if current time is within the end and start time of the task
+    return(this.currentMinute >= this.getMinute(startTime) &&
+      this.currentMinute <= this.getMinute(endTime) &&
+      this.currentHour >= this.getHour(startTime) &&
+      this.currentHour <= this.getHour(endTime));
   }
 
-  /**
-   * Method for getting the minutes out an time string
-   * @param {string} time     (format:   09:00 )
-   * @returns {number} minutes
-   * @author Thijs Zijdel
-   */
-  private getMinute(time: string) {
-    return parseInt(time.substring(time.indexOf(":"),time.length));
-
-  }
 
   /**
    * Method for setting up the current time
@@ -234,17 +222,25 @@ export class CurrentTaskComponent implements OnInit {
 
 
   /**
-   * Method for checking if an time is in the current time
-   * @param {string} startTime  (format:  09:00)
-   * @param {string} endTime    (format:  09:00)
-   * @returns {boolean} true if it is now, false if it isn't
+   * Method for getting the minutes out an time string
+   * @param {string} time     (format:   09:00 )
+   * @returns {number} minutes
    * @author Thijs Zijdel
-   * @author Lucas - minute validation
    */
-  protected isNow(startTime: string, endTime: string) {
-    //TODO validate minutes
-    return(this.currentHour >= this.getHour(startTime) && this.currentHour <= this.getHour(endTime)) ;
+  public getMinute(time: string) {
+    return parseInt(time.substring(time.indexOf(":") + 1, time.length));
+
+
   }
 
+  /**
+   * Method for getting the hours out an time string
+   * @param {string} time     (format:   09:00)
+   * @returns {number} hours
+   * @author Thijs Zijdel
+   */
+  public getHour(time: string) {
+    return parseInt(time.substring(0, time.indexOf(":")));
+  }
 
 }
