@@ -82,8 +82,11 @@ export class ResidentComponent implements OnInit {
   }
 
   protected clearInfoActivity():void {
-    this.residentService.infoActivity = null;
-    this.infoDisplay = false;
+    if (this.residentService.infoActivity!=null)
+      this.residentService.infoActivity = null;
+
+    if (this.infoDisplay == true)
+      this.infoDisplay = false;
   }
 
 
