@@ -18,7 +18,7 @@ const httpOptions = {
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'api/tasks';  // URL to web api
+  private tasksUrl = 'https://team5.amsta-hva.tk/api/task.php';  // URL to web api
 
   public editTask: Task;
 
@@ -33,7 +33,8 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTasks (): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksUrl)
+    const url = `${this.tasksUrl}?action=getAll`;
+    return this.http.get<Task[]>(url)
       .pipe(
         tap(tasks => this.log(`fetched tasks`)),
         catchError(this.handleError('getTask', []))
@@ -45,7 +46,7 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTask(id: number): Observable<Task> {
-    const url = `${this.tasksUrl}/${id}`;
+    const url = `${this.tasksUrl}?action=get&id=${id}`;
 
     return this.http.get<Task>(url).pipe(
       tap(_ => this.log(`fetched Task id=${id}`)),
@@ -89,7 +90,9 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   updateTask (task: Task): Observable<any> {
-    return this.http.put(this.tasksUrl, task, httpOptions).pipe(
+    const url = `${this.tasksUrl}?action=edit`;
+
+    return this.http.put(url, task, httpOptions).pipe(
       tap(_ => this.log(`updated task id=${task.id}`)),
       catchError(this.handleError<any>('updateTask'))
     );
@@ -100,7 +103,9 @@ export class TaskService {
    * note: POST
    */
   addTask (task: Task): Observable<Task> {
-    return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
+    const url = `${this.tasksUrl}?action=add`;
+
+    return this.http.post<Task>(url, task, httpOptions).pipe(
       tap((task: Task) => this.log(`added task w/ id=${task.id}`)),
       catchError(this.handleError<Task>('addTask'))
     );
@@ -113,7 +118,7 @@ export class TaskService {
    */
   deleteTask (task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
-    const url = `${this.tasksUrl}/${id}`;
+    const url = `${this.tasksUrl}?action=delete&id=${id}`;
 
     return this.http.delete<Task>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted task id=${id}`)),
