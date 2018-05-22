@@ -163,41 +163,57 @@ export class CurrentTaskComponent implements OnInit {
    */
   private startMonitoring() {
     this.resident = this.residentService.loggedInResident;
-    this.startDate = new Date();
 
-    this.initializeTime();
+    if (this.resident != null) {
+      this.startDate = new Date();
+
+      this.initializeTime();
 
 
-    this.taskTime = this.taskService.getCurrentTaskTime();
+      this.taskTime = this.taskService.getCurrentTaskTime();
 
+      if (this.taskTime == null)
+        this.taskTime = new TaskTime("09:00", "10:00");
+
+    } else {
+      console.log("monitoring not started")
+    }
 
   }
 
   private stopMonitoring() {
-    console.log("monitoring stopped");
+    if (this.resident != null) {
+      console.log("monitoring stopped");
 
-    var now = new Date();
-    this.endedTime = now.getHours()+":"+now.getMinutes();
-    this.completed = true;
+      var now = new Date();
+      this.endedTime = now.getHours() + ":" + now.getMinutes();
+      this.completed = true;
 
-    this.resident.activities.push(
-      new Activity(
-        "9",
-        this.task.name,
-        this.startDate,
+      console.log(this.resident.activities.length + " voor");
 
-        this.taskTime.startTime,
-        this.taskTime.endTime,
-        this.currentTime,
-        this.endedTime,
-        (this.getMinute(this.endedTime)-this.getMinute(this.currentTime)).toString(),
-        this.completed,
-        this.resident.id,
-        this.task.id,
-        "Automatisch..."));
+      this.resident.activities.push(
+        new Activity(
+          "9",
+          this.task.name,
+          this.startDate,
+
+          this.taskTime.startTime,
+          this.taskTime.endTime,
+          this.currentTime,
+          this.endedTime,
+          (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
+          this.completed,
+          this.resident.id,
+          this.task.id,
+          "Automatisch..."));
 
 
-    this.residentService.updateResident(this.resident);
+      console.log(this.resident.activities.length + " na");
+      this.residentService.updateResident(this.resident);
+
+    } else {
+      console.log("monitoring not ended")
+    }
   }
 
 
