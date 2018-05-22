@@ -35,9 +35,8 @@ export class EmployeeService {
     let observable=Observable.create(observer => {
       setTimeout(() => {
         let employees = [employee]
-        observer.next(employees); // This method same as resolve() method from Angular 1
+        observer.next(employees);
         observer.complete();//to show we are done with our processing
-        // observer.error(new Error("error message"));
       }, 2000);
 
     })

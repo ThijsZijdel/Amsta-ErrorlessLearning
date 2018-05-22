@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="task.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="148" column="35" lean-forward="false" selection-start-line="148" selection-start-column="35" selection-end-line="148" selection-end-column="35" />
+            <state relative-caret-position="298">
+              <caret line="379" column="31" lean-forward="true" selection-start-line="379" selection-start-column="31" selection-end-line="379" selection-end-column="31" />
               <folding>
                 <element signature="e#6#100#0#PHP" expanded="true" />
                 <marker date="1526564353503" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
@@ -44,39 +44,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5646">
-              <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-              <folding>
-                <element signature="e#6#100#0#PHP" expanded="true" />
-                <marker date="1526566534464" expanded="true" signature="1288:1424" ph="INSERT INTO team5_app.Task... " />
-                <marker date="1526566534464" expanded="true" signature="2118:2195" ph="INSERT INTO Step" />
-                <marker date="1526566534464" expanded="true" signature="2118:2288" ph="INSERT INTO Step" />
-                <marker date="1526566534464" expanded="true" signature="2764:2839" ph="INSERT INTO TaskTime" />
-                <marker date="1526566534464" expanded="true" signature="2764:2928" ph="INSERT INTO TaskTime" />
-                <marker date="1526566534464" expanded="true" signature="4260:4305" ph="DELETE FROM " />
-                <marker date="1526566534464" expanded="true" signature="5672:5868" ph="UPDATE team5... " />
-                <marker date="1526566534464" expanded="true" signature="6262:6360" ph="SELECT COUNT... Step" />
-                <marker date="1526566534464" expanded="true" signature="7234:7361" ph="INSERT INTO Step" />
-                <marker date="1526566534464" expanded="true" signature="7938:8052" ph="DELETE FROM " />
-                <marker date="1526566534464" expanded="true" signature="8495:8605" ph="SELECT COUNT... TaskTime" />
-                <marker date="1526566534464" expanded="true" signature="9315:9442" ph="INSERT INTO TaskTime" />
-                <marker date="1526566534464" expanded="true" signature="10026:10148" ph="DELETE FROM " />
-                <marker date="1526566534464" expanded="true" signature="10732:10935" ph="UPDATE team5... " />
-                <marker date="1526566534464" expanded="true" signature="11454:11668" ph="UPDATE team5... " />
-                <marker date="1526566534464" expanded="true" signature="12953:13137" ph="SELECT team5... Task" />
-                <marker date="1526566534464" expanded="true" signature="13754:13841" ph="SELECT team5... Step" />
-                <marker date="1526566534464" expanded="true" signature="14605:14704" ph="SELECT team5... TaskTime" />
-                <marker date="1526566534464" expanded="true" signature="16342:16535" ph="SELECT team5... Task" />
-                <marker date="1526566534464" expanded="true" signature="17134:17221" ph="SELECT team5... Step" />
-                <marker date="1526566534464" expanded="true" signature="18027:18116" ph="SELECT team5... TaskTime" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="edit-task.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/admin/edit-task/edit-task.component.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,14 +57,10 @@
       <file leaf-file-name="task.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="116" column="56" lean-forward="true" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
+            <state relative-caret-position="1802">
+              <caret line="116" column="56" lean-forward="false" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
               <folding>
                 <marker date="1526566010717" expanded="true" signature="2595:2661" ph="..." />
-                <marker date="1526566010717" expanded="true" signature="2733:2980" ph="..." />
-                <marker date="1526566010717" expanded="true" signature="2903:2980" ph="..." />
-                <marker date="1526566010717" expanded="true" signature="3057:3106" ph="..." />
-                <marker date="1526566010717" expanded="true" signature="3172:3488" ph="..." />
               </folding>
             </state>
           </provider>
@@ -106,11 +69,21 @@
       <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+            <state relative-caret-position="391">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="in-memory-data.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/in-memory-data.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="94" lean-forward="false" selection-start-line="44" selection-start-column="94" selection-end-line="44" selection-end-column="94" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,10 +119,10 @@
         <option value="$PROJECT_DIR$/team5_app/api/auth.php" />
         <option value="C:/oldxampp/htdocs/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
         <option value="$PROJECT_DIR$/team5_app/api/task.php" />
         <option value="$PROJECT_DIR$/src/app/services/task.service.ts" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php" />
+        <option value="$PROJECT_DIR$/src/app/services/employee.service.ts" />
       </list>
     </option>
   </component>
@@ -161,10 +134,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="856" />
-    <option name="y" value="16" />
-    <option name="width" value="1562" />
-    <option name="height" value="961" />
+    <option name="x" value="-7" />
+    <option name="width" value="1096" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -182,9 +154,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,7 +227,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -391,14 +363,17 @@
       <workItem from="1524139176473" duration="5229000" />
       <workItem from="1525781751115" duration="4968000" />
       <workItem from="1526565894108" duration="679000" />
+      <workItem from="1526986718870" duration="1532000" />
+      <workItem from="1526988416068" duration="571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36543000" />
+    <option name="totallyTimeSpent" value="38646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -407,11 +382,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08802083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -419,11 +393,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -440,16 +415,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3757">
@@ -870,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -899,16 +854,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="116" column="56" lean-forward="false" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
           <folding>
-            <element signature="e#0#55#0" expanded="true" />
+            <marker date="1526566010717" expanded="true" signature="2595:2661" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php" />
+    <entry file="file://$PROJECT_DIR$/src/app/services/employee.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/in-memory-data.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="94" lean-forward="false" selection-start-line="44" selection-start-column="94" selection-end-line="44" selection-end-column="94" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/team5_app/api/task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="148" column="35" lean-forward="false" selection-start-line="148" selection-start-column="35" selection-end-line="148" selection-end-column="35" />
+        <state relative-caret-position="298">
+          <caret line="379" column="31" lean-forward="true" selection-start-line="379" selection-start-column="31" selection-end-line="379" selection-end-column="31" />
           <folding>
             <element signature="e#6#100#0#PHP" expanded="true" />
             <marker date="1526564353503" expanded="true" signature="1222:1358" ph="INSERT INTO team5_app.Task... " />
@@ -930,51 +911,6 @@
             <marker date="1526564353503" expanded="true" signature="13309:13502" ph="SELECT team5... Task" />
             <marker date="1526564353503" expanded="true" signature="13985:14072" ph="SELECT team5... Step" />
             <marker date="1526564353503" expanded="true" signature="14680:14769" ph="SELECT team5... TaskTime" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/task.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="116" column="56" lean-forward="true" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
-          <folding>
-            <marker date="1526566010717" expanded="true" signature="2595:2661" ph="..." />
-            <marker date="1526566010717" expanded="true" signature="2733:2980" ph="..." />
-            <marker date="1526566010717" expanded="true" signature="2903:2980" ph="..." />
-            <marker date="1526566010717" expanded="true" signature="3057:3106" ph="..." />
-            <marker date="1526566010717" expanded="true" signature="3172:3488" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5646">
-          <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-          <folding>
-            <element signature="e#6#100#0#PHP" expanded="true" />
-            <marker date="1526566534464" expanded="true" signature="1288:1424" ph="INSERT INTO team5_app.Task... " />
-            <marker date="1526566534464" expanded="true" signature="2118:2195" ph="INSERT INTO Step" />
-            <marker date="1526566534464" expanded="true" signature="2118:2288" ph="INSERT INTO Step" />
-            <marker date="1526566534464" expanded="true" signature="2764:2839" ph="INSERT INTO TaskTime" />
-            <marker date="1526566534464" expanded="true" signature="2764:2928" ph="INSERT INTO TaskTime" />
-            <marker date="1526566534464" expanded="true" signature="4260:4305" ph="DELETE FROM " />
-            <marker date="1526566534464" expanded="true" signature="5672:5868" ph="UPDATE team5... " />
-            <marker date="1526566534464" expanded="true" signature="6262:6360" ph="SELECT COUNT... Step" />
-            <marker date="1526566534464" expanded="true" signature="7234:7361" ph="INSERT INTO Step" />
-            <marker date="1526566534464" expanded="true" signature="7938:8052" ph="DELETE FROM " />
-            <marker date="1526566534464" expanded="true" signature="8495:8605" ph="SELECT COUNT... TaskTime" />
-            <marker date="1526566534464" expanded="true" signature="9315:9442" ph="INSERT INTO TaskTime" />
-            <marker date="1526566534464" expanded="true" signature="10026:10148" ph="DELETE FROM " />
-            <marker date="1526566534464" expanded="true" signature="10732:10935" ph="UPDATE team5... " />
-            <marker date="1526566534464" expanded="true" signature="11454:11668" ph="UPDATE team5... " />
-            <marker date="1526566534464" expanded="true" signature="12953:13137" ph="SELECT team5... Task" />
-            <marker date="1526566534464" expanded="true" signature="13754:13841" ph="SELECT team5... Step" />
-            <marker date="1526566534464" expanded="true" signature="14605:14704" ph="SELECT team5... TaskTime" />
-            <marker date="1526566534464" expanded="true" signature="16342:16535" ph="SELECT team5... Task" />
-            <marker date="1526566534464" expanded="true" signature="17134:17221" ph="SELECT team5... Step" />
-            <marker date="1526566534464" expanded="true" signature="18027:18116" ph="SELECT team5... TaskTime" />
           </folding>
         </state>
       </provider>
