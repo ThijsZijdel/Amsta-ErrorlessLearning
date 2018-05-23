@@ -145,19 +145,32 @@
 
 
         <mat-tab label="Meer informatie" (click)="setTabIndex(1)" [disabled]="!infoDisplay">
-          <button mat-raised-button color="warn" (click)="clearInfoActivity(); setTabIndex(0)">Sluit extra informatie</button>
+          <button mat-raised-button color="warn" class="float-right-corner"
+                  (click)="clearInfoActivity(); setTabIndex(0)">Sluit extra informatie</button>
 
           <div *ngIf="infoActiv != null">
 
-            <h3>{{infoActiv.name}}</h3> <i>Activiteit id: {{infoActiv.id}}</i><br>
-            <i>Taak id: {{infoActiv.taskId}}</i><br>
-            <i>Bewoner id: {{infoActiv.residentId}}</i><br>
+            <h3>{{infoActiv.name}}</h3>
 
+            <div class="id-box">
+              <i>Activiteit id: {{infoActiv.id}}</i><br>
+              <i>Taak id: {{infoActiv.taskId}}</i><br>
+              <i>Bewoner id: {{infoActiv.residentId}}</i><br>
+            </div>
+
+
+            <br>
+
+            <b>Notities over deze activiteit:</b>
             <p>
               {{infoActiv.notes}}
             </p>
 
+
+            <b>Datum uitgevoerd:</b>
             {{infoActiv.date}} <br>
+
+            <b>Duur van het uitvoeren:</b>
             {{infoActiv.completedTime }} minuten <br>
             Gestart op: {{infoActiv.timeStarted}} <br>
             Gestopt op: {{infoActiv.timeEnded}} <br>
@@ -171,15 +184,18 @@
             <br>
 
             Voltooid:
-            <input type="checkbox" *ngIf="infoActiv.completed" checked>
-            <input type="checkbox" *ngIf="!infoActiv.completed">
+            <span *ngIf="infoActiv.completed"> Ja </span>
+            <span *ngIf="!infoActiv.completed"> Nee </span>
 
+            <hr class="margin-top-seperator">
+              <h4>Informatie over de uitgevoerde taak:</h4>
             <hr>
 
-            {{activityTask.name}} <i>{{activityTask.id}}</i> <br>
+            {{activityTask.name}} <i>id: {{activityTask.id}}</i> <br>
             <br>
+            <b>Beschrijving:</b>
+            <p> {{activityTask.mainDescription}} <br></p>
 
-            {{activityTask.mainDescription}} <br>
 
           </div>
         </mat-tab>
@@ -208,17 +224,24 @@
         </mat-tab>
 
         <mat-tab label="Pas activity aan" (click)="setTabIndex(3)" [disabled]="!editDisplay" *ngIf="editDisplay">
-          <button mat-raised-button color="warn" (click)="clearInfoActivity(); setTabIndex(0); exitEditTab();">Sluit extra informatie</button>
+          <button mat-raised-button color="warn" class="float-right-corner"
+                  (click)="clearInfoActivity(); setTabIndex(0); exitEditTab();">Sluit extra informatie</button>
 
           <div *ngIf="infoActiv != null">
 
-            <h3>{{infoActiv.name}}</h3> <i>Activiteit id: {{infoActiv.id}}</i><br>
-            <i>Taak id: {{infoActiv.taskId}}</i><br>
-            <i>Bewoner id: {{infoActiv.residentId}}</i><br>
+            <h3>{{infoActiv.name}}</h3>
+
+            <div class="id-box">
+              <i>Activiteit id: {{infoActiv.id}}</i><br>
+              <i>Taak id: {{infoActiv.taskId}}</i><br>
+              <i>Bewoner id: {{infoActiv.residentId}}</i><br>
+            </div>
 
             <mat-form-field class="accent-form-field" color="accent">
-              <textarea matInput #infoNotes placeholder="Notities" value="{{infoActiv.notes}}"></textarea>
+              <textarea matInput #infoNotes placeholder="Notities over deze activiteit:" value="{{infoActiv.notes}}"></textarea>
             </mat-form-field>
+
+            <br>
 
             <mat-form-field class="accent-form-field" color="accent" >
               <input matInput #infoDate placeholder="Datum: " value="{{infoActiv.date}}">
@@ -235,7 +258,9 @@
             <mat-form-field class="accent-form-field" color="accent" >
               <input matInput #infoTimeStart placeholder="Tijd gestart op: " value="{{infoActiv.timeStarted}}">
             </mat-form-field>
+
              <br>
+
             <mat-form-field class="accent-form-field" color="accent" >
               <input matInput #infoTimeEnd placeholder="Tijd gestopt op: " value="{{infoActiv.timeEnded}}">
             </mat-form-field>
@@ -243,27 +268,32 @@
 
             <br>
 
-            <hr>
-
-            <h3>Activiteit:</h3>
-            <br>
-
-
             Ingepland tussen: <br>
             {{infoActiv.timeStart}} - {{infoActiv.timeEnded}} <br>
 
             <br>
 
             Voltooid:
-            <input type="checkbox" *ngIf="infoActiv.completed" checked>
-            <input type="checkbox" *ngIf="!infoActiv.completed">
+            <span *ngIf="infoActiv.completed"> Ja </span>
+            <span *ngIf="!infoActiv.completed"> Nee </span>
 
-            <hr>
-
-            {{activityTask.name}} <i>{{activityTask.id}}</i> <br>
             <br>
 
-            {{activityTask.mainDescription}} <br>
+            <button mat-raised-button color="accent" class="float-right-bottom"
+                    (click)="clearInfoActivity(); setTabIndex(0)">Aanpassingen opslaan</button>
+
+
+
+
+            <hr class="margin-top-seperator">
+            <h4>Informatie over de uitgevoerde taak:</h4>
+            <hr>
+
+            {{activityTask.name}} <i>id: {{activityTask.id}}</i> <br>
+            <br>
+            <b>Beschrijving:</b>
+            <p> {{activityTask.mainDescription}} <br></p>
+
 
           </div>
 
@@ -316,6 +346,3 @@
   new Chart(ctx, options);
 
 </script>
-
-<button (click)="residentService.login(residentService.getResident(1))">login</button>
-<span *ngIf="residentService.loggedInResident != null">test label {{residentService.loggedInResident.name}}</span>
