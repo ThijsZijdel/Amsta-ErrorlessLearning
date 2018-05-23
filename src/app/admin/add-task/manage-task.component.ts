@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TaskService} from '../../services/task.service';
-import {Task} from '../../models/Task';
-import {Step} from '../../models/Step';
-import {StatusService} from "../login/status.service";
-import {TaskTime} from "../../models/TaskTime";
+import { Component, Input, OnInit } from '@angular/core';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/Task';
+import { Step } from '../../models/Step';
+import { StatusService } from "../login/status.service";
+import { TaskTime } from "../../models/TaskTime";
 
 @Component({
   selector: 'app-manage-task',
@@ -45,7 +45,7 @@ export class ManageTaskComponent implements OnInit {
   protected AdminDoingMessage: string = "Een extra stappenplan toevoegen.";
 
   constructor(private tasksService: TaskService,
-              private status: StatusService) {
+    private status: StatusService) {
   }
 
   /**
@@ -95,13 +95,13 @@ export class ManageTaskComponent implements OnInit {
 
 
     this.tasksService.addTask
-    ({
-      name: name,
-      imgLink: imgLink,
-      mainDescription: mainDescription,
-      steps: this.stepsCreated,
-      taskTimes: this.taskTimes
-    } as Task)
+      ({
+        name: name,
+        imgLink: imgLink,
+        mainDescription: mainDescription,
+        steps: this.stepsCreated,
+        taskTimes: this.taskTimes
+      } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -141,7 +141,7 @@ export class ManageTaskComponent implements OnInit {
       index++;
     }
     var taskTimesIndex = 1;
-    for(let time of this.taskTimes) {
+    for (let time of this.taskTimes) {
       time.id = taskTimesIndex;
       taskTimesIndex++;
     }
@@ -266,6 +266,8 @@ export class ManageTaskComponent implements OnInit {
     this.assignIds();
 
     this.tasksService.updateTask(this.editTask).subscribe();
+
+    console.log("Saved to DB")
   }
 
   private getUpdatedFields() {
@@ -288,9 +290,9 @@ export class ManageTaskComponent implements OnInit {
   updateThisTime(isStartTime: boolean, index: number, value: string) {
 
 
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
+    console.log("is an start:" + isStartTime + "  -> index:" + index + "  -> value" + value)
+    console.log("taskTimes[index].startTime   =>  " + this.taskTimes[index].startTime)
+    console.log("taskTimes[index].endTime   =>  " + this.taskTimes[index].endTime)
 
 
     if (isStartTime)
@@ -299,10 +301,27 @@ export class ManageTaskComponent implements OnInit {
       this.taskTimes[index].endTime = value;
 
     console.log("----------------------------------------------")
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
+    console.log("is an start:" + isStartTime + "  -> index:" + index + "  -> value" + value)
+    console.log("taskTimes[index].startTime   =>  " + this.taskTimes[index].startTime)
+    console.log("taskTimes[index].endTime   =>  " + this.taskTimes[index].endTime)
 
 
   }
+
+  selectedFile: File;
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0]
+  }
+
+  onUploadImgLink(ImgType: string) {
+    this.tasksService.uploadImage(this.selectedFile, ImgType);
+    
+    this.imgLink = "/tasks/" + this.selectedFile;
+    this.editTask.imgLink = this.imgLink;
+
+
+    console.log("Set fileurl to " + this.editTask.imgLink)
+  }
+
 }

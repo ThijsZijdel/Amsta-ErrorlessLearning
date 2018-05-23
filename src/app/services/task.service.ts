@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { Task } from '../models/Task';
 
@@ -29,12 +29,12 @@ export class TaskService {
    * get tasks from the server
    * @author Thijs Zijdel
    */
-  getTasks (): Observable<Task[]> {
+  getTasks(): Observable<Task[]> {
     const url = `${this.tasksUrl}?action=getAll`;
     return this.http.get<Task[]>(url)
       .pipe(
-        tap(tasks => this.log(`fetched tasks`)),
-        catchError(this.handleError('getTask', []))
+      tap(tasks => this.log(`fetched tasks`)),
+      catchError(this.handleError('getTask', []))
       );
   }
 
@@ -68,7 +68,7 @@ export class TaskService {
    * @param result - optional value to return as the observable result
    * @author Thijs Zijdel
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       console.error(error); // log to console
@@ -86,8 +86,10 @@ export class TaskService {
    * note: PUT
    * @author Thijs Zijdel
    */
-  updateTask (task: Task): Observable<any> {
+  updateTask(task: Task): Observable<any> {
     const url = `${this.tasksUrl}?action=edit`;
+
+    console.log("JAAAAAA");
 
     return this.http.put(url, task, httpOptions).pipe(
       tap(_ => this.log(`updated task id=${task.id}`)),
@@ -99,7 +101,7 @@ export class TaskService {
    * add a new task to the server
    * note: POST
    */
-  addTask (task: Task): Observable<Task> {
+  addTask(task: Task): Observable<Task> {
     const url = `${this.tasksUrl}?action=add`;
 
     return this.http.post<Task>(url, task, httpOptions).pipe(
@@ -113,7 +115,7 @@ export class TaskService {
    * note: DELETE
    * @author Thijs Zijdel
    */
-  deleteTask (task: Task | number): Observable<Task> {
+  deleteTask(task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
     const url = `${this.tasksUrl}?action=delete&id=${id}`;
 
@@ -139,10 +141,31 @@ export class TaskService {
     );
   }
 
-  setEditTask(task: Task): void{
+  setEditTask(task: Task): void {
     this.editTask = task;
   }
 
+  /**
+   * uploads a new image to the server
+   * note: POST
+   * @author René Kok
+   */
+
+  uploadImage(file, imgType: string) {
+    const url = `${this.tasksUrl}?action=uploadImage`;
+
+    const formData: FormData = new FormData();
+    formData.append('fileToUpload', file, file.name);
+
+    this.http.post(url, formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event => {
+        console.log(event); // handle event here
+      });
+
+  }
 
 }
 
