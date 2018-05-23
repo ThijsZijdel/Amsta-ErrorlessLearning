@@ -93,7 +93,15 @@
 
 
       <br><br>
-      <input type='file' id="stepImgInput"/>
+
+      <input 
+  style="display: none" 
+  type="file" (change)="onFileChanged($event)" 
+  #fileInput>
+<button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
+<button (click)="onUploadImgLink(1)">Upload!</button>
+
+
       &nbsp;
       <div class="padding">
         <mat-form-field>
