@@ -55,3 +55,26 @@
 .accent-form-field {
   /*color: yellow;*/
 }
+
+
+.id-box {
+  margin-top: 40px;
+  float: right;
+  padding: 10px 25px;
+  background: #bcbcbc;
+}
+
+.float-right-corner {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+.float-right-bottom {
+  position: absolute;
+  right: 0;
+}
+
+.margin-top-seperator{
+  margin-top: 50px;
+}
+
