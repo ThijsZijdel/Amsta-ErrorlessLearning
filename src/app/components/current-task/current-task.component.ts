@@ -180,6 +180,7 @@ export class CurrentTaskComponent implements OnInit {
     this.endedTime = now.getHours()+":"+now.getMinutes();
     this.completed = true;
 
+    /*
     this.resident.activities.push(
       new Activity(
         "9",
@@ -197,7 +198,10 @@ export class CurrentTaskComponent implements OnInit {
         "Automatisch..."));
 
 
+
     this.residentService.updateResident(this.resident);
+
+    */
   }
 
 
