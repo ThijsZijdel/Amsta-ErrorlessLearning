@@ -10,7 +10,7 @@ import {AdminDashboardComponent} from "../admin-dashboard/admin-dashboard.compon
 })
 export class AdminSidebarComponent implements OnInit {
 
-  constructor(private status: StatusService, private dashboard: AdminDashboardComponent) { }
+  constructor(private status: StatusService) { }
 
   ngOnInit() {
   }
@@ -21,17 +21,9 @@ export class AdminSidebarComponent implements OnInit {
    *
    * @author: Thijs Zijdel
    */
-  logout(): void {
+  protected logout(): void {
     this.status.changeLoggedInStatus(false);
   }
 
-  /**
-   * This method will be for showing the right panel OR changed to a router outlet.
-   * //TODO admin panel / router outlet.
-   * @param name
-   */
-  showPanel(name) {
-    this.dashboard.setPanel(name);
-  }
 
 }

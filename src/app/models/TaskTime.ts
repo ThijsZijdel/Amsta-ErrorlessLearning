@@ -1,4 +1,5 @@
 export class TaskTime {
+  id: number;
   startTime: string;
   endTime: string;
 

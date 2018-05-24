@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
@@ -18,7 +20,7 @@ const httpOptions = {
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'api/tasks';  // URL to web api
+  private tasksUrl = 'https://team5.amsta-hva.tk/api/task.php';  // URL to web api
 
   public editTask: Task;
 
@@ -32,11 +34,12 @@ export class TaskService {
    * get tasks from the server
    * @author Thijs Zijdel
    */
-  getTasks (): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksUrl)
+  getTasks(): Observable<Task[]> {
+    const url = `${this.tasksUrl}?action=getAll`;
+    return this.http.get<Task[]>(url)
       .pipe(
-        tap(tasks => this.log(`fetched tasks`)),
-        catchError(this.handleError('getTask', []))
+      tap(tasks => this.log(`fetched tasks`)),
+      catchError(this.handleError('getTask', []))
       );
   }
 
@@ -45,7 +48,7 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTask(id: number): Observable<Task> {
-    const url = `${this.tasksUrl}/${id}`;
+    const url = `${this.tasksUrl}?action=get&id=${id}`;
 
     return this.http.get<Task>(url).pipe(
       tap(_ => this.log(`fetched Task id=${id}`)),
@@ -70,7 +73,7 @@ export class TaskService {
    * @param result - optional value to return as the observable result
    * @author Thijs Zijdel
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       console.error(error); // log to console
@@ -88,8 +91,12 @@ export class TaskService {
    * note: PUT
    * @author Thijs Zijdel
    */
-  updateTask (task: Task): Observable<any> {
-    return this.http.put(this.tasksUrl, task, httpOptions).pipe(
+  updateTask(task: Task): Observable<any> {
+    const url = `${this.tasksUrl}?action=edit`;
+
+    console.log("JAAAAAA");
+
+    return this.http.put(url, task, httpOptions).pipe(
       tap(_ => this.log(`updated task id=${task.id}`)),
       catchError(this.handleError<any>('updateTask'))
     );
@@ -99,8 +106,10 @@ export class TaskService {
    * add a new task to the server
    * note: POST
    */
-  addTask (task: Task): Observable<Task> {
-    return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
+  addTask(task: Task): Observable<Task> {
+    const url = `${this.tasksUrl}?action=add`;
+
+    return this.http.post<Task>(url, task, httpOptions).pipe(
       tap((task: Task) => this.log(`added task w/ id=${task.id}`)),
       catchError(this.handleError<Task>('addTask'))
     );
@@ -111,9 +120,9 @@ export class TaskService {
    * note: DELETE
    * @author Thijs Zijdel
    */
-  deleteTask (task: Task | number): Observable<Task> {
+  deleteTask(task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
-    const url = `${this.tasksUrl}/${id}`;
+    const url = `${this.tasksUrl}?action=delete&id=${id}`;
 
     return this.http.delete<Task>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted task id=${id}`)),
@@ -137,15 +146,49 @@ export class TaskService {
     );
   }
 
-  setEditTask(task: Task): void{
+  /**
+   * set an task that is requested for editing
+   * @param {Task} task
+   * @author Thijs Zijdel
+   */
+  public setEditTask(task: Task): void{
     this.editTask = task;
   }
 
+  /**
+   * uploads a new image to the server
+   * note: POST
+   * @author René Kok
+   */
 
-  getCurrentTaskTime(): TaskTime {
+  uploadImage(file, imgType: string) {
+    const url = `${this.tasksUrl}?action=uploadImage`;
+
+    const formData: FormData = new FormData();
+    formData.append('fileToUpload', file, file.name);
+
+    this.http.post(url, formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event => {
+        console.log(event); // handle event here
+      });
+
+  }
+
+  /**
+   * Method for getting the current task time
+   * @returns {TaskTime}
+   */
+  public getCurrentTaskTime(): TaskTime {
     return this.currentTaskTime;
   }
-  setCurrentTaskTime(taskTime: TaskTime): void{
+  /**
+   * Method for setting the current task time
+   * @returns {TaskTime}
+   */
+  public setCurrentTaskTime(taskTime: TaskTime): void{
     this.currentTaskTime = taskTime;
   }
 }

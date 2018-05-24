@@ -58,11 +58,12 @@
                 </div>
 
                 <div class="float-right fix-pos">
-                  <button class="btn btn-1 btn-1c purple" (click)="clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
-                  <button class="btn btn-1 btn-1c yellow" (click)="editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
+                  <button class="btn btn-1 btn-1c purple" (click)="this.clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
+                  <button class="btn btn-1 btn-1c yellow" (click)="this.editableResident()" routerLink="/resident/{{resident.id}}"> Bewerken </button>
                 </div>
 
               </li>
+
             </ul>
 
 

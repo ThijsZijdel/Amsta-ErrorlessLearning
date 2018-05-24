@@ -53,7 +53,7 @@
 
         <mat-tab label="Activiteiten" (click)="setTabIndex(0); clearInfoActivity();" [disabled]="infoDisplay || !enableTab">
           <mat-list>
-            <h3 mat-subheader>Today</h3> <h3 class="done-label">Voltooid</h3>
+            <h3 mat-subheader>Vandaag</h3> <h3 class="done-label">Voltooid</h3>
 
             <mat-selection-list>
               <div *ngFor="let todayTask of resident.activities" >
@@ -93,7 +93,7 @@
 
 
             <mat-divider></mat-divider>
-            <h3 mat-subheader>Todo</h3> <h3 class="done-label">Voltooid</h3>
+            <h3 mat-subheader>Nog te doen</h3> <h3 class="done-label">Voltooid</h3>
 
 
             <mat-selection-list #todoTasks>
@@ -102,8 +102,13 @@
                   <h4 mat-line>{{todoTask.name}}</h4>
                   <span class="activity-id">{{todoTask.id}}</span>
                   <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
-                  <button mat-button class="button-right"  *ngIf="editable"
-                          routerLink="/current/{{todoTask.taskId}}">Start taak</button>
+
+                    <button (click)="residentService.login(resident); this.taskService.setCurrentTaskTime(null);"
+                            routerLink="/current/{{todoTask.id}}"
+                            mat-raised-button class="startBtn start-tasks-btn info-button" style="  right: 150px;">
+                      start
+                    </button>
+
 
                   <button mat-button class="info-button" color="primary"  *ngIf="editable"
                           (click)="getInfo(todoTask); setTabIndex(1); reload();">Informatie</button>
@@ -120,7 +125,7 @@
 
 
             <mat-divider></mat-divider>
-            <h3 mat-subheader>Done</h3> <h3 class="done-label">Voltooid</h3>
+            <h3 mat-subheader>Al gedaan</h3> <h3 class="done-label">Voltooid</h3>
 
             <mat-selection-list #doneTasks class="scrolable">
               <div *ngFor="let doneTask of resident.activities">

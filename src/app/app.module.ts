@@ -52,7 +52,6 @@ import { ManageTaskComponent } from './admin/manage-task/manage-task.component';
 
 
 import { LoginComponent } from './admin/login/login.component';
-import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 
@@ -83,7 +82,6 @@ import { LoginResidentComponent } from './admin/login-resident/login-resident.co
     TaskSearchComponent,
     ManageTaskComponent,
     LoginComponent,
-    SelectUserComponent,
     AdminDashboardComponent,
     AdminSidebarComponent,
     ResidentComponent,
@@ -98,9 +96,9 @@ import { LoginResidentComponent } from './admin/login-resident/login-resident.co
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    //HttpClientInMemoryWebApiModule.forRoot(
+    //  InMemoryDataService, { dataEncapsulation: false }
+    //),
     BrowserAnimationsModule,
     MatStepperModule,
     MatCardModule,

@@ -36,6 +36,27 @@ export class CurrentTaskComponent implements OnInit {
   @Input() task: Task;
 
   steps: Step[];
+
+
+
+  /**
+   * Variables for task monitoring
+   */
+  private resident: Resident;
+
+  private startDate: Date = null;
+
+  private taskTime: TaskTime;
+  private currentTime: string;
+  private currentHour: number;
+  private currentMinute: number;
+
+  private completed: boolean = false;
+
+  private endedTime: string;
+
+
+
   /**
    * Constructor for:
    *
@@ -141,67 +162,71 @@ export class CurrentTaskComponent implements OnInit {
 
 
   /**
-   * Variables for task monitoring
-   */
-  private resident: Resident;
-
-  private startDate: Date = null;
-
-  private taskTime: TaskTime;
-  private currentTime: string;
-  private currentHour: number;
-  private currentMinute: number;
-
-  private completed: boolean = false;
-
-  private endedTime: string;
-
-
-
-  /**
    * Start monitoring task events for the user (resident)
+   * For the activity log of that user
+   *
+   * @author Thijs Zijdel
    */
   private startMonitoring() {
     this.resident = this.residentService.loggedInResident;
-    this.startDate = new Date();
 
-    this.initializeTime();
+    if (this.resident != null) {
+      this.startDate = new Date();
+
+      this.initializeTime();
 
 
-    this.taskTime = this.taskService.getCurrentTaskTime();
+      this.taskTime = this.taskService.getCurrentTaskTime();
 
+      if (this.taskTime == null)
+        this.taskTime = new TaskTime("09:00", "10:00");
+
+    } else {
+      console.log("monitoring not started")
+    }
 
   }
 
+  /**
+   * Stop monitoring the activities of this task
+   * Calculate the right times and asign this to the user activities
+   *
+   * @author Thijs Zijdel
+   */
   private stopMonitoring() {
-    console.log("monitoring stopped");
+    if (this.resident != null) {
+      console.log("monitoring stopped");
 
-    var now = new Date();
-    this.endedTime = now.getHours()+":"+now.getMinutes();
-    this.completed = true;
+      var now = new Date();
+      this.endedTime = now.getHours() + ":" + now.getMinutes();
+      this.completed = true;
 
-    /*
-    this.resident.activities.push(
-      new Activity(
-        "9",
-        this.task.name,
-        this.startDate,
+      console.log(this.resident.activities.length + " voor");
 
-        this.taskTime.startTime,
-        this.taskTime.endTime,
-        this.currentTime,
-        this.endedTime,
-        (this.getMinute(this.endedTime)-this.getMinute(this.currentTime)).toString(),
-        this.completed,
-        this.resident.id,
-        this.task.id,
-        "Automatisch..."));
+      //add it to the users activities
+      this.resident.activities.push(
+        new Activity(
+          "9",
+          this.task.name,
+          this.startDate,
+
+          this.taskTime.startTime,
+          this.taskTime.endTime,
+          this.currentTime,
+          this.endedTime,
+          (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
+          this.completed,
+          this.resident.id,
+          this.task.id,
+          "Automatisch..."));
 
 
+      console.log(this.resident.activities.length + " na");
+      this.residentService.updateResident(this.resident);
 
-    this.residentService.updateResident(this.resident);
-
-    */
+    } else {
+      console.log("monitoring not ended")
+    }
   }
 
 

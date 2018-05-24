@@ -29,11 +29,18 @@ export class EmployeeService {
    * @author Thijs Zijdel
    */
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.employeesUrl)
-      .pipe(
-        tap(employees => this.log(`loaded Employese`)),
-        catchError(this.handleError('getEmployee', []))
-      );
+    // Faking one employee since we don't need multiple employees
+    let employee: Employee = new Employee("1","admin","root","root");
+
+    let observable=Observable.create(observer => {
+      setTimeout(() => {
+        let employees = [employee]
+        observer.next(employees);
+        observer.complete();//to show we are done with our processing
+      }, 2000);
+
+    })
+    return observable;
   }
 
   /**
@@ -80,6 +87,7 @@ export class EmployeeService {
 
   /**
    * Set the current logged in employee
+   *
    * @param {Employee} employee
    * @author Thijs Zijdel
    */

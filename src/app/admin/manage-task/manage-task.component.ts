@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TaskService} from '../../services/task.service';
-import {Task} from '../../models/Task';
-import {Step} from '../../models/Step';
-import {StatusService} from "../login/status.service";
-import {TaskTime} from "../../models/TaskTime";
+import { Component, Input, OnInit } from '@angular/core';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/Task';
+import { Step } from '../../models/Step';
+import { StatusService } from "../login/status.service";
+import { TaskTime } from "../../models/TaskTime";
 
 @Component({
   selector: 'app-manage-task',
@@ -21,9 +21,9 @@ export class ManageTaskComponent implements OnInit {
   /**
    * Tasks attributes
    */
-  taskNameValue: string;
-  imgLink: string;
-  mainDescription: string;
+  protected taskNameValue: string;
+  protected imgLink: string;
+  protected mainDescription: string;
 
 
   //Step variables
@@ -33,7 +33,7 @@ export class ManageTaskComponent implements OnInit {
   protected showReordering: boolean = false;
 
   //Task times
-  taskTimes: TaskTime[] = [];
+  protected taskTimes: TaskTime[] = [];
 
 
   /**
@@ -45,7 +45,7 @@ export class ManageTaskComponent implements OnInit {
   protected AdminDoingMessage: string = "Een extra stappenplan toevoegen.";
 
   constructor(private tasksService: TaskService,
-              private status: StatusService) {
+    private status: StatusService) {
   }
 
   /**
@@ -64,7 +64,7 @@ export class ManageTaskComponent implements OnInit {
    * Close this view and remove the editing task
    * @author: Thijs Zijdel
    */
-  close(): void {
+  protected close(): void {
     this.tasksService.setEditTask(null);
   }
 
@@ -95,13 +95,13 @@ export class ManageTaskComponent implements OnInit {
 
 
     this.tasksService.addTask
-    ({
-      name: name,
-      imgLink: imgLink,
-      mainDescription: mainDescription,
-      steps: this.stepsCreated,
-      taskTimes: this.taskTimes
-    } as Task)
+      ({
+        name: name,
+        imgLink: imgLink,
+        mainDescription: mainDescription,
+        steps: this.stepsCreated,
+        taskTimes: this.taskTimes
+      } as Task)
       .subscribe(task => {
         this.tasks.push(task);
       });
@@ -139,6 +139,11 @@ export class ManageTaskComponent implements OnInit {
     for (let step of this.stepsCreated) {
       step.id = index;
       index++;
+    }
+    var taskTimesIndex = 1;
+    for (let time of this.taskTimes) {
+      time.id = taskTimesIndex;
+      taskTimesIndex++;
     }
     this.setAddStepMessage();
   }
@@ -210,11 +215,21 @@ export class ManageTaskComponent implements OnInit {
     }
   }
 
-  addTime() {
+  /**
+   * Method for adding a new task time
+   * Note: standard values 10:00 - 11:00
+   * @author Thijs Zijdel
+   */
+  protected addTime():void {
     this.taskTimes.push(new TaskTime("10:00", "11:00"));
   }
 
-  removeTime(time: TaskTime) {
+  /**
+   * Remove an task time from the task
+   * @param {TaskTime} time that needs to be removed
+   * @author Thijs Zijdel
+   */
+  protected removeTime(time: TaskTime):void {
     this.taskTimes.splice(this.taskTimes.indexOf(time), 1);
   }
 
@@ -224,7 +239,7 @@ export class ManageTaskComponent implements OnInit {
    * If this is true, setup all the fields
    * @author Thijs Zijdel
    */
-  private checkForEdit() {
+  private checkForEdit():void {
     //get an potential edit task.
     this.editTask = this.tasksService.editTask;
 
@@ -258,7 +273,11 @@ export class ManageTaskComponent implements OnInit {
     this.editTask.taskTimes = this.taskTimes;
     this.editTask.steps = this.stepsCreated;
 
+    this.assignIds();
+
     this.tasksService.updateTask(this.editTask).subscribe();
+
+    console.log("Saved to DB")
   }
 
   private getUpdatedFields() {
@@ -278,24 +297,11 @@ export class ManageTaskComponent implements OnInit {
     this.tasksService.deleteTask(task).subscribe();
   }
 
-  updateThisTime(isStartTime: boolean, index: number, value: string) {
-
-
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
-
-
+  protected updateThisTime(isStartTime: boolean, index: number, value: string):void  {
     if (isStartTime)
       this.taskTimes[index].startTime = value;
     else
       this.taskTimes[index].endTime = value;
-
-    console.log("----------------------------------------------")
-    console.log("is an start:"+isStartTime+"  -> index:"+index+"  -> value"+value)
-    console.log("taskTimes[index].startTime   =>  "+this.taskTimes[index].startTime)
-    console.log("taskTimes[index].endTime   =>  "+this.taskTimes[index].endTime)
-
 
   }
 }

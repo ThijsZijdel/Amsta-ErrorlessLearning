@@ -1,12 +1,47 @@
-<div *ngIf="this.residentService.residentLoggedIn">
-  <p>Logged in resident: {{this.residentService.loggedInResident.name}}</p>
+
+<div class="container">
+  <div class="row">
+
+
+    <div *ngFor="let resident of residents"  class="col-md-3 card-task-contianer">
+      <mat-card (click)="setResident(resident)" routerLink="/dashboard">
+
+        <img class="card-img-top" src="./../assets/images{{resident.imgPath}}" alt="Card image cap">
+        <div class="card-block">
+          <h6 class="card-title">{{resident.name}} {{resident.surname}}</h6>
+
+
+          <button mat-raised-button class="float-right" (click)="setResident(resident)" routerLink="/dashboard">login</button>
+        </div>
+
+
+      </mat-card>
+      <br>
+    </div>
+
+    <div *ngIf="this.residentService.residentLoggedIn" class="col-md-3 card-task-contianer">
+      <mat-card (click)="logout()">
+
+        <img class="card-img-top" src="./../assets/images/bye.jpg" alt="Card image cap">
+        <div class="card-block">
+          <h6 class="card-title">{{this.residentService.loggedInResident.name}} <b>is ingelogd</b></h6>
+
+
+          <button mat-raised-button color="warn" class="float-right" (click)="logout()">log uit</button>
+        </div>
+
+
+      </mat-card>
+      <br>
+    </div>
+
+
+  </div>
 </div>
 
-<div *ngFor="let resident of residents">
-    <button class="btn btn-1 btn-1a" (click)="setResident(resident)">{{resident.name}} {{resident.surname}}</button>
-  <br>
-</div>
 
-<div>
-  <button mat-raised-button (click)="logout()">Log uit</button>
-</div>
+
+
+
+
+
