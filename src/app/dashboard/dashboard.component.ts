@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../models/task';
 import {TaskService} from '../services/task.service';
+import {ResidentService} from "../services/resident.service";
+import {Resident} from "../models/Resident";
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +25,10 @@ export class DashboardComponent implements OnInit {
   protected amountOfUpcomingTasksDisplayIndex: number = 4;
   protected showAllUpcomingTasksButtonText: string= "Laat zien";
 
-  constructor(private taskService: TaskService) { }
+  protected resident: Resident = null;
+
+  constructor(private taskService: TaskService,
+              private residentService: ResidentService) { }
 
   /**
    * On initialize get those tasks.
@@ -32,6 +37,9 @@ export class DashboardComponent implements OnInit {
     this.initializeTime();
     //this.getTasks();
     this.getFilteredTasks();
+
+    this.getResident();
+
   }
 
   /**
@@ -187,4 +195,7 @@ export class DashboardComponent implements OnInit {
     return parseInt(time.substring(0, time.indexOf(":")));
   }
 
+  private getResident() {
+    this.resident = this.residentService.loggedInResident;
+  }
 }

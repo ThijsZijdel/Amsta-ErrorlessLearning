@@ -101,3 +101,13 @@ mat-card.mat-card {
   background: #795094;
   color: #fff;
 }
+
+.resident-task-contianer{
+  background: #fff;
+
+
+}
+.remove-top {
+  margin-top: -30px;
+  padding-top: 25px;
+}
