@@ -151,11 +151,11 @@ export class TaskService {
    * @author René Kok
    */
 
-  uploadImage(file, imgType: string) {
+  uploadImage(file, fileName: string) {
     const url = `${this.tasksUrl}?action=uploadImage`;
 
     const formData: FormData = new FormData();
-    formData.append('fileToUpload', file, file.name);
+    formData.append('fileToUpload', file, fileName);
 
     this.http.post(url, formData, {
       reportProgress: true,
@@ -164,8 +164,5 @@ export class TaskService {
       .subscribe(event => {
         console.log(event); // handle event here
       });
-
   }
-
 }
-
