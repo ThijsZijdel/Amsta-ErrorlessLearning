@@ -1,3 +1,52 @@
+<div class="current-tasks-container remove-top" *ngIf="resident != null">
+  <div class="container resident-task-contianer">
+
+    <h3>{{ resident.name }} {{ resident.surname }} moet de volgende persoonlijke taken nog uitvoeren.</h3> <br>
+
+    <div class="row">
+
+
+
+
+      <div *ngFor="let task of resident.activities" class="col-md-4 card-task-contianer">
+        <mat-card *ngIf="!task.completed">
+
+          <img class="card-img-top" src="./../assets/images//tasks-todo.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h2 class="card-title">{{task.name}}</h2>
+            <p class="card-text">{{ resident.name }} {{ resident.surname }} moet deze taak nog uitvoeren.</p>
+            <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
+
+            <br>
+
+            <div class="time-indicator-box-container">
+
+                <div *ngIf="isPast(task.timeEnd)" class="time-indicator">{{task.timeStart}} - {{task.timeEnd}}</div>
+
+            </div>
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+    </div>
+
+
+    <div class="indicator">
+      <span>algemene dag taken</span><br>
+      <img src="./../assets/icons/arrows/down.svg">
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
 <div class="body" id="bovenkant">
 <div class="container" *ngIf="pastTasks.length !== 0" >
 
@@ -9,7 +58,7 @@
 
         <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
         <div class="card-block">
-          <h6 class="card-title">{{task.name}}</h6>
+          <h4 class="card-title">{{task.name}}</h4>
           <p class="card-text">{{ task.mainDescription }}</p>
           <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
 
@@ -135,7 +184,7 @@
 
           <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
           <div class="card-block">
-            <h6 class="card-title">{{task.name}}</h6>
+            <h4 class="card-title">{{task.name}}</h4>
             <p class="card-text">{{ task.mainDescription }}</p>
             <button routerLink="/current/{{task.id}}" mat-raised-button class="btn-sm start-tasks-btn">start</button>
 

@@ -33,7 +33,7 @@ export class ResidentComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public residentService: ResidentService,
-              protected taskService: TaskService) { }
+              public taskService: TaskService) { }
 
   editable: boolean = true;
 
