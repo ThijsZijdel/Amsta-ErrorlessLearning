@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
@@ -9,7 +8,7 @@ import { Task } from '../models/Task';
 
 import { MessageService } from './message.service';
 
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {TaskTime} from "../models/TaskTime";
 
@@ -93,8 +92,6 @@ export class TaskService {
    */
   updateTask(task: Task): Observable<any> {
     const url = `${this.tasksUrl}?action=edit`;
-
-    console.log("JAAAAAA");
 
     return this.http.put(url, task, httpOptions).pipe(
       tap(_ => this.log(`updated task id=${task.id}`)),
