@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/Task';
 import { TaskService } from '../../services/task.service';
+import {forEach} from "@angular/router/src/utils/collection";
 
 /**
  * Tasks component

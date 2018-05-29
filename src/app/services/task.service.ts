@@ -10,6 +10,8 @@ import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {TaskTime} from "../models/TaskTime";
+import {Step} from "../models/Step";
+import {Timer} from "../models/Timer";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,12 +35,30 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTasks (): Observable<Task[]> {
+    /*
     const url = `${this.tasksUrl}?action=getAll`;
     return this.http.get<Task[]>(url)
       .pipe(
         tap(tasks => this.log(`fetched tasks`)),
         catchError(this.handleError('getTask', []))
-      );
+      ); */
+    // Faking one employee since we don't need multiple employees
+    let timedStep = new Step(3,"fra","fra");
+    timedStep.timer = new Timer(10000);
+    timedStep.hasTimer = true;
+
+    let times: TaskTime[] = [new TaskTime("12:00","15:00")];
+    let steps: Step[] = [new Step(1,"bla","bla"), new Step(2,"dra","dra"),timedStep];
+    let task: Task = new Task(1,"testTimer","bla","Dit is om de timer te testen op stap 3",steps,times);
+
+    let observable=Observable.create(observer => {
+      setTimeout(() => {
+        let tasks = [task]
+        observer.next(tasks);
+        observer.complete();//to show we are done with our processing
+      }, 2000);
+    });
+    return observable;
   }
 
   /**
@@ -46,12 +66,28 @@ export class TaskService {
    * @author Thijs Zijdel
    */
   getTask(id: number): Observable<Task> {
+    let timedStep = new Step(3,"fra","fra");
+    timedStep.timer = new Timer(20000);
+    timedStep.hasTimer = true;
+
+    let times: TaskTime[] = [new TaskTime("12:00","15:00")];
+    let steps: Step[] = [new Step(1,"bla","bla"), new Step(2,"dra","dra"),timedStep];
+    let task: Task = new Task(1,"testTimer","bla","Dit is om de timer te testen op stap 3",steps,times);
+
+    let observable=Observable.create(observer => {
+      setTimeout(() => {
+        observer.next(task);
+        observer.complete();//to show we are done with our processing
+      }, 2000);
+    });
+    return observable;
+    /*
     const url = `${this.tasksUrl}?action=get&id=${id}`;
 
     return this.http.get<Task>(url).pipe(
       tap(_ => this.log(`fetched Task id=${id}`)),
       catchError(this.handleError<Task>(`getTask id=${id}`))
-    );
+    ); */
   }
 
   /**

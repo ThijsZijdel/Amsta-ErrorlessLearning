@@ -123,3 +123,34 @@ button.control {
   text-transform: uppercase;
   font-size: 95%;
 }
+
+svg {
+  display: block;
+  margin: 50px auto;
+}
+
+.timer {
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+#timer-loader
+{ fill: #c92835 }
+
+#timer-border
+{ fill: #000000 }
+
+#timer-background-loader
+{
+  fill: #c92835;
+  opacity: 0.2;
+}
+
+#timer-background-border
+{
+  fill: #000000;
+  opacity: 0.2;
+}
