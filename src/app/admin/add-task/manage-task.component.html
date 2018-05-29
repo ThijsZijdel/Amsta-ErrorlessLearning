@@ -99,7 +99,7 @@
   type="file" (change)="onFileChanged($event)" 
   #fileInput>
 <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
-<button (click)="onUploadImgLink(1)">Upload!</button>
+<button (click)="onUploadImgLink(0)">Upload Foto</button>
 
 
       &nbsp;
@@ -165,7 +165,12 @@
                 <img *ngIf="editTask == null" class="step-img-container" src="http://placehold.it/400x250" alt="image" />
 
                 <br><br>
-                <input type='file' id="stepImgInputw"/>
+                <input 
+                style="display: none" 
+                type="file" (change)="onFileChanged($event)" 
+                #fileInput>
+              <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
+              <button (click)="onUploadImgLink(step.id)">Upload Foto</button>
               </div>
 
 

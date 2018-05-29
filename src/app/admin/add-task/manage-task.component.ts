@@ -310,18 +310,41 @@ export class ManageTaskComponent implements OnInit {
 
   selectedFile: File;
 
+  /**
+ * Delete the current edit task
+ * @author René Kok
+ */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0]
   }
 
-  onUploadImgLink(ImgType: string) {
-    this.tasksService.uploadImage(this.selectedFile, ImgType);
-    
-    this.imgLink = "/tasks/" + this.selectedFile;
-    this.editTask.imgLink = this.imgLink;
+  /**
+ * Delete the current edit task
+ * @author René Kok
+ */
+  onUploadImgLink(stepNumber: number) {
 
+    var fileLocation = "/tasks/"
+    var fileName = this.setFileName(stepNumber);
+    this.tasksService.uploadImage(this.selectedFile, fileName);
 
-    console.log("Set fileurl to " + this.editTask.imgLink)
+    if (stepNumber != 0) {
+      this.editTask.steps[stepNumber].stepImgLink = fileLocation + fileName;
+      this.stepsCreated[stepNumber].stepImgLink = "bla"
+      console.log("Set fileurl to " + this.editTask.steps[stepNumber].stepImgLink + "(Step)")
+    } else {
+      this.imgLink = fileLocation + fileName;
+      this.editTask.imgLink = this.imgLink;
+      console.log("Set fileurl to " + this.editTask.imgLink)
+    }
   }
 
+  /**
+ * Delete the current edit task
+ * @author René Kok
+ */
+  private setFileName(stepNumber: number): string {
+    var string = this.editTask.name + "_" + stepNumber + ".jpg"
+    return string
+  }
 }
