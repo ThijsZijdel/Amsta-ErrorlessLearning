@@ -99,7 +99,7 @@
   type="file" (change)="onFileChanged($event)" 
   #fileInput>
 <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
-<button (click)="onUploadImgLink(0)">Upload Foto</button>
+<button (click)="onUploadImgLink(0, true)">Upload Foto</button>
 
 
       &nbsp;
@@ -170,7 +170,7 @@
                 type="file" (change)="onFileChanged($event)" 
                 #fileInput>
               <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
-              <button (click)="onUploadImgLink(step.id)">Upload Foto</button>
+              <button (click)="onUploadImgLink((step.id - 1), false)">Upload Foto</button>
               </div>
 
 

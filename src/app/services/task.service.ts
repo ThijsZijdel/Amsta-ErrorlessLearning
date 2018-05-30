@@ -6,9 +6,10 @@ import { of } from 'rxjs/observable/of';
 import { Task } from '../models/Task';
 
 import { MessageService } from './message.service';
+import { ManageTaskComponent } from '../admin/add-task/manage-task.component';
 
 import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +24,8 @@ export class TaskService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+  }
 
   /**
    * get tasks from the server
@@ -89,8 +91,6 @@ export class TaskService {
   updateTask(task: Task): Observable<any> {
     const url = `${this.tasksUrl}?action=edit`;
 
-    console.log("JAAAAAA");
-
     return this.http.put(url, task, httpOptions).pipe(
       tap(_ => this.log(`updated task id=${task.id}`)),
       catchError(this.handleError<any>('updateTask'))
@@ -151,18 +151,26 @@ export class TaskService {
    * @author René Kok
    */
 
-  uploadImage(file, fileName: string) {
-    const url = `${this.tasksUrl}?action=uploadImage`;
+  uploadImage(file, fileName: string, stepNumber: number, isTaskImg: boolean) {
+    let promise = new Promise((resolve, reject) => {
+      const url = `${this.tasksUrl}?action=uploadImage`;
 
-    const formData: FormData = new FormData();
-    formData.append('fileToUpload', file, fileName);
+      const formData: FormData = new FormData();
+      formData.append('fileToUpload', file, fileName);
 
-    this.http.post(url, formData, {
-      reportProgress: true,
-      observe: 'events'
-    })
-      .subscribe(event => {
-        console.log(event); // handle event here
-      });
+      this.http.post(url, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).toPromise()
+        .then(
+        res => { // Success
+          console.log("Succes uploading " + fileName);
+          resolve();
+        }
+        );
+    });
+    return promise;
   }
+
 }
+
