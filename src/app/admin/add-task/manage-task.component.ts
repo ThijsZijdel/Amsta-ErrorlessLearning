@@ -17,14 +17,12 @@ export class ManageTaskComponent implements OnInit {
    */
   protected tasks: Task[];
 
-
   /**
    * Tasks attributes
    */
   taskNameValue: string;
   imgLink: string;
   mainDescription: string;
-
 
   //Step variables
   @Input() step: Step;
@@ -35,6 +33,9 @@ export class ManageTaskComponent implements OnInit {
   //Task times
   taskTimes: TaskTime[] = [];
 
+  //Uploading Image
+  selectedFile: File;
+  uploading = false;
 
   /**
    * Potential editable task
@@ -92,7 +93,6 @@ export class ManageTaskComponent implements OnInit {
     if (!name || !imgLink || !mainDescription) {
       return;
     }
-
 
     this.tasksService.addTask
       ({
@@ -289,11 +289,9 @@ export class ManageTaskComponent implements OnInit {
 
   updateThisTime(isStartTime: boolean, index: number, value: string) {
 
-
     console.log("is an start:" + isStartTime + "  -> index:" + index + "  -> value" + value)
     console.log("taskTimes[index].startTime   =>  " + this.taskTimes[index].startTime)
     console.log("taskTimes[index].endTime   =>  " + this.taskTimes[index].endTime)
-
 
     if (isStartTime)
       this.taskTimes[index].startTime = value;
@@ -304,33 +302,46 @@ export class ManageTaskComponent implements OnInit {
     console.log("is an start:" + isStartTime + "  -> index:" + index + "  -> value" + value)
     console.log("taskTimes[index].startTime   =>  " + this.taskTimes[index].startTime)
     console.log("taskTimes[index].endTime   =>  " + this.taskTimes[index].endTime)
-
-
   }
 
-  selectedFile: File;
+
 
   /**
- * Checks if there's any file pending to upload
- * @author René Kok
- */
+   * Checks if there's any file pending to upload
+   * @author René Kok
+   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0]
   }
 
   /**
- * Upload image to server and set names to right path
- * @author René Kok
- */
+   * Upload image to server and set names to right path
+   * @author René Kok
+   */
   onUploadImgLink(stepNumber: number, isTaskImg: boolean) {
+    this.uploading = true;
     var fileName = this.setFileName(stepNumber, isTaskImg);
-    this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg).then( () => this.updateImgPath(isTaskImg, fileName, stepNumber))
+
+    if (isTaskImg) {
+      this.imgLink = "bezig met uploaden"
+      this.editTask.imgLink = "bezig met uploaden";
+      console.log("Set fileurl to " + this.editTask.imgLink)
+    } else {
+      this.editTask.steps[stepNumber].stepImgLink = "bezig met uploading";
+      this.stepsCreated[stepNumber].stepImgLink = "bezig met uploading";
+    }
+
+    this.imgLink = "uploading"
+    this.editTask.imgLink = "uploading";
+
+    this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg)
+      .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber)).then(() => this.uploading = false);
   }
 
   /**
- * Generates a new filename based
- * @author René Kok
- */
+   * Generates a new filename based
+   * @author René Kok
+   */
   private setFileName(stepNumber: number, isTaskImg: boolean): string {
     if (isTaskImg) {
       return this.editTask.name + "_" + stepNumber + ".jpg"
@@ -339,10 +350,15 @@ export class ManageTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Updates the path for the images
+   * @author René Kok
+   */
   updateImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
     var fileLocation = "/tasks/"
 
     if (isTaskImg) {
+      console.log("Set fileurl to " + this.editTask.imgLink)
       this.imgLink = fileLocation + fileName;
       this.editTask.imgLink = this.imgLink;
       console.log("Set fileurl to " + this.editTask.imgLink)
