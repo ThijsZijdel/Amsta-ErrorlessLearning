@@ -39,7 +39,7 @@ export class ResidentService {
    */
   getResidents (): Observable<Resident[]> {
     const url = `${this.tasksUrl}?action=getAll`;
-    return this.http.get<Resident[]>(this.tasksUrl)
+    return this.http.get<Resident[]>(url)
       .pipe(
         tap(tasks => this.log(`fetched Resident`)),
         catchError(this.handleError('getResidents', []))
@@ -108,7 +108,7 @@ export class ResidentService {
   updateResident (resident: Resident): Observable<any> {
     const url = `${this.tasksUrl}?action=edit`;
 
-    return this.http.put(this.tasksUrl, resident, httpOptions).pipe(
+    return this.http.put(url, resident, httpOptions).pipe(
       tap(_ => this.log(`updated Resident id=${resident.id}`)),
       catchError(this.handleError<any>('updateResident'))
     );
@@ -122,7 +122,7 @@ export class ResidentService {
   addResident (resident: Resident): Observable<Resident> {
     const url = `${this.tasksUrl}?action=add`;
 
-    return this.http.post<Resident>(this.tasksUrl, resident, httpOptions).pipe(
+    return this.http.post<Resident>(url, resident, httpOptions).pipe(
       tap((resident: Resident) => this.log(`added Resident w/ id=${resident.id}`)),
       catchError(this.handleError<Resident>('addResident'))
     );
@@ -136,7 +136,7 @@ export class ResidentService {
    */
   deleteResident (resident: Resident | number): Observable<Resident> {
     const id = typeof resident === 'number' ? resident : resident.id;
-    const url = `${this.tasksUrl}?action=delete&id=${id}`;
+    const url = `${this.tasksUrl}?action=remove&id=${id}`;
 
     return this.http.delete<Resident>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted Resident id=${id}`)),
