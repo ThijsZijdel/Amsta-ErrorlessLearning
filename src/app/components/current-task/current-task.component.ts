@@ -234,7 +234,7 @@ export class CurrentTaskComponent implements OnInit {
           this.endedTime,
           (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
           this.completed,
-          "" + this.resident.id,
+          this.resident.id,
           this.task.id,
           "Automatisch..."));
 
