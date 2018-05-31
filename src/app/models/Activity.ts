@@ -2,7 +2,7 @@ import {Resident} from "./Resident";
 import {Task} from "./Task";
 
 export class Activity {
-  id: string;
+  id: number;
   name: string;
   date: Date;
 
@@ -19,7 +19,7 @@ export class Activity {
 
   notes: string;
 
-  constructor(id: string, name: string, date: Date,
+  constructor(id: number, name: string, date: Date,
               timeStart: string, timeEnd: string,
 
               timeStarted: string, timeEnded: string,
