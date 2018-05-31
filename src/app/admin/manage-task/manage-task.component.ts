@@ -221,7 +221,7 @@ export class ManageTaskComponent implements OnInit {
    * Note: standard values 10:00 - 11:00
    * @author Thijs Zijdel
    */
-  protected addTime():void {
+  protected addTime(): void {
     this.taskTimes.push(new TaskTime("10:00", "11:00"));
   }
 
@@ -230,7 +230,7 @@ export class ManageTaskComponent implements OnInit {
    * @param {TaskTime} time that needs to be removed
    * @author Thijs Zijdel
    */
-  protected removeTime(time: TaskTime):void {
+  protected removeTime(time: TaskTime): void {
     this.taskTimes.splice(this.taskTimes.indexOf(time), 1);
   }
 
@@ -240,7 +240,7 @@ export class ManageTaskComponent implements OnInit {
    * If this is true, setup all the fields
    * @author Thijs Zijdel
    */
-  private checkForEdit():void {
+  private checkForEdit(): void {
     //get an potential edit task.
     this.editTask = this.tasksService.editTask;
 
@@ -298,7 +298,7 @@ export class ManageTaskComponent implements OnInit {
     this.tasksService.deleteTask(task).subscribe();
   }
 
-  protected updateThisTime(isStartTime: boolean, index: number, value: string):void  {
+  protected updateThisTime(isStartTime: boolean, index: number, value: string): void {
     if (isStartTime)
       this.taskTimes[index].startTime = value;
     else
@@ -306,10 +306,10 @@ export class ManageTaskComponent implements OnInit {
 
   }
 
-/**
-   * Checks if there's any file pending to upload
-   * @author René Kok
-   */
+  /**
+     * Checks if there's any file pending to upload
+     * @author René Kok
+     */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0]
   }
@@ -323,16 +323,19 @@ export class ManageTaskComponent implements OnInit {
     var fileName = this.setFileName(stepNumber, isTaskImg);
 
     if (isTaskImg) {
-      this.imgLink = "bezig met uploaden"
-      this.editTask.imgLink = "bezig met uploaden";
-      console.log("Set fileurl to " + this.editTask.imgLink)
-    } else {
-      this.editTask.steps[stepNumber].stepImgLink = "bezig met uploading";
-      this.stepsCreated[stepNumber].stepImgLink = "bezig met uploading";
-    }
+      this.imgLink = "bezig met uploaden";
 
-    this.imgLink = "uploading"
-    this.editTask.imgLink = "uploading";
+      if (this.editTask != null) {
+        this.editTask.imgLink = "bezig met uploaden"
+      }
+      console.log("Set fileurl to " + this.imgLink)
+    } else {
+      this.stepsCreated[stepNumber].stepImgLink = "bezig met uploading";
+
+      if (this.editTask != null) {
+        this.editTask.steps[stepNumber].stepImgLink = "bezig met uploading";
+      }
+    }
 
     this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg)
       .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber)).then(() => this.uploading = false);
@@ -344,9 +347,9 @@ export class ManageTaskComponent implements OnInit {
    */
   private setFileName(stepNumber: number, isTaskImg: boolean): string {
     if (isTaskImg) {
-      return this.editTask.name + "_" + stepNumber + ".jpg"
+      return this.taskNameValue + "_" + stepNumber + ".jpg"
     } else {
-      return this.editTask.name + "_" + (stepNumber + 1) + ".jpg"
+      return this.taskNameValue + "_" + (stepNumber + 1) + ".jpg"
     }
   }
 
@@ -358,14 +361,17 @@ export class ManageTaskComponent implements OnInit {
     var fileLocation = "/tasks/"
 
     if (isTaskImg) {
-      console.log("Set fileurl to " + this.editTask.imgLink)
       this.imgLink = fileLocation + fileName;
-      this.editTask.imgLink = this.imgLink;
-      console.log("Set fileurl to " + this.editTask.imgLink)
+      if (this.editTask != null) {
+        this.editTask.imgLink = this.imgLink;
+      }
+      console.log("Set fileurl to " + this.imgLink)
     } else {
-      this.editTask.steps[stepNumber].stepImgLink = fileLocation + fileName;
       this.stepsCreated[stepNumber].stepImgLink = fileLocation + fileName;
-      console.log("Set fileurl to " + this.editTask.steps[stepNumber].stepImgLink + "(Step)")
+      if (this.editTask != null) {
+        this.editTask.steps[stepNumber].stepImgLink = this.stepsCreated[stepNumber].stepImgLink;
+      }
+      console.log("Set fileurl to " + this.stepsCreated[stepNumber].stepImgLink + "(Step)")
     }
   }
 }

@@ -39,7 +39,7 @@
 
           <div class="padding">
             <mat-form-field>
-              <input matInput #taskName placeholder="Naam van de takenlijst" value="{{taskNameValue}}">
+              <input matInput #taskName placeholder="Naam van de takenlijst" [(ngModel)]="taskNameValue">
             </mat-form-field>
           </div>
 
