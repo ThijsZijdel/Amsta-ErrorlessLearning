@@ -278,6 +278,7 @@ export class ManageTaskComponent implements OnInit {
 
     this.tasksService.updateTask(this.editTask).subscribe();
 
+    alert("De aanpassingen zijn opgeslagen.")
     console.log("Saved to DB")
   }
 
@@ -293,9 +294,16 @@ export class ManageTaskComponent implements OnInit {
   protected deleteEditingTask(task: Task): void {
     // this.heroes = this.heroes.filter(h => h !== hero);
     // this.heroService.deleteHero(hero).subscribe();
-    this.editTask = null;
-    this.tasksService.editTask = null;
-    this.tasksService.deleteTask(task).subscribe();
+
+
+    if (confirm("Wilt u deze taak echt verwijderen?")) {
+      alert("Taak: "+this.editTask.name+" is verwijderd.")
+      this.editTask = null;
+      this.tasksService.editTask = null;
+      this.tasksService.deleteTask(task).subscribe();
+    } else {
+      alert("De taak is niet verwijderd. Scherm wordt nu afgesloten..");
+    }
   }
 
   protected updateThisTime(isStartTime: boolean, index: number, value: string):void  {
