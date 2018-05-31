@@ -3,13 +3,11 @@ import { Injectable } from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+
 
 import { Task } from '../models/Task';
 
 import { MessageService } from './message.service';
-import { ManageTaskComponent } from '../admin/add-task/manage-task.component';
 
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
