@@ -62,7 +62,7 @@ if (isset($_REQUEST['action'])) {
             $actEnd = $Activity->timeEnd;
             $actStartedTime = $Activity->timeStarted;
             $actEndedTime = $Activity->timeEnded;
-            $actCompletedTime = $Activity->completedTime;\
+            $actCompletedTime = $Activity->completedTime;
             $actCompleted = $Activity->completed;
             $actNotes = $Activity->notes;
 
