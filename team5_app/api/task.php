@@ -52,20 +52,31 @@ if (isset($_REQUEST['action'])) {
           'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
         );
 
-        foreach($taskSteps as $step)
-        {
+        foreach ($taskSteps as $step) {
           $stepDescription = $step->stepDescription;
           $stepImageLink = $step->stepImgLink;
 
+          $timerId = -1;
 
-          $sql = "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')";
+          if ($step->hasTimer) {
+            $timerTime = $step->timer->time;
+
+            $sql = "INSERT INTO  team5_app.Timer(time) VALUES('" . $timerTime . "')";
+
+            if (!$conn->query($sql) === TRUE) {
+              $success = false;
+            } else {
+              $timerId = $conn->insert_id;
+            }
+          }
+
+          $sql = $timerId == -1 ? "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')" : "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId,Timer_timerId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "', '" . $timerId . "')";
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
           }
         }
-        foreach($taskTimes as $taskTime)
-        {
+        foreach ($taskTimes as $taskTime) {
           $taskStartTime = $taskTime->startTime;
           $taskEndTime = $taskTime->endTime;
 
@@ -79,8 +90,7 @@ if (isset($_REQUEST['action'])) {
         $success = false;
       }
 
-      if($success)
-      {
+      if ($success) {
         $response['status'] = array(
           'message' => 'Task and steps successfully added!',
           'success' => true
@@ -160,15 +170,14 @@ if (isset($_REQUEST['action'])) {
         $stepAmount = 0;
 
         // Loop through data of database
-        if ($result->num_rows > 0)
-        {
+        if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
           $stepAmount = intval($row['steps']);
         }
 
         // Stepamount is current amount of steps inside database
         // count($taskSteps) is current amount of steps inside task retrieved from application.
-        if($stepAmount < count($taskSteps)) // There is a/are step(s) added
+        if ($stepAmount < count($taskSteps)) // There is a/are step(s) added
         {
           $amountStepsAdded = count($taskSteps) - $stepAmount;
 
@@ -181,8 +190,7 @@ if (isset($_REQUEST['action'])) {
               $errorMessage = $conn->error;
             }
           }
-        }
-        else if($stepAmount > count($taskSteps)) // There is a/are step(s) removed
+        } else if ($stepAmount > count($taskSteps)) // There is a/are step(s) removed
         {
           $amountStepsRemoved = $stepAmount - count($taskSteps);
           $startRemoveIndex = $stepAmount - $amountStepsRemoved;
@@ -205,27 +213,25 @@ if (isset($_REQUEST['action'])) {
         $timesAmount = 0;
 
         // Loop through data of database
-        if ($result->num_rows > 0)
-        {
+        if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
           $timesAmount = intval($row['taskTimes']);
         }
 
-        if($timesAmount < count($taskTimes)) // There is a/are step(s) added
+        if ($timesAmount < count($taskTimes)) // There is a/are step(s) added
         {
           $amountTimesAdded = count($taskTimes) - $timesAmount;
 
           for ($i = 0; $i < $amountTimesAdded; $i++) {
             $newTaskTimeId = $timesAmount + 1 + $i;
-            $sql = "INSERT INTO  team5_app.TaskTime(id,startTime, endTime, Task_taskId) VALUES(". $newTaskTimeId . ",'null','null'," . $taskId . ")";
+            $sql = "INSERT INTO  team5_app.TaskTime(id,startTime, endTime, Task_taskId) VALUES(" . $newTaskTimeId . ",'null','null'," . $taskId . ")";
             if (!$conn->query($sql) === TRUE) {
               $success = false;
               $errorcode = 'INSERT_TASKTIME';
               $errorMessage = $conn->error;
             }
           }
-        }
-        else if($timesAmount > count($taskTimes)) // There is a/are step(s) removed
+        } else if ($timesAmount > count($taskTimes)) // There is a/are step(s) removed
         {
           $amountTimesRemoved = $timesAmount - count($taskTimes);
           $startRemoveIndex = $timesAmount - $amountTimesRemoved;
@@ -244,7 +250,17 @@ if (isset($_REQUEST['action'])) {
           $stepDescription = $step->stepDescription;
           $stepImageLink = $step->stepImgLink;
 
-          $sql = "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
+          if ($step->hasTimer) {
+            $sql = $step->timer->id == null ? "INSERT INTO team5_app.Timer(time) VALUES(" . $step->timer->time . ")" : "UPDATE team5_app.Timer SET team5_app.Timer.time='" . $step->timer->time . "'WHERE team5_app.Timer.id=" . $step->timer->id;
+
+            if (!$conn->query($sql) === TRUE) {
+              $success = false;
+              $errorcode = 'UPDATE_STEPTIMER';
+              $errorMessage = $conn->error;
+            }
+          }
+
+          $sql = $step->hasTimer ? "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "', team5_app.Step.Timer_timerId='" . $step->timer->id . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId : "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
@@ -253,8 +269,7 @@ if (isset($_REQUEST['action'])) {
           }
         }
 
-        foreach($taskTimes as $taskTime)
-        {
+        foreach ($taskTimes as $taskTime) {
           $taskStartTime = $taskTime->startTime;
           $taskEndTime = $taskTime->endTime;
           $taskTimeId = $taskTime->id;
@@ -269,8 +284,7 @@ if (isset($_REQUEST['action'])) {
         }
       }
 
-      if($success)
-      {
+      if ($success) {
         $response = array(
           'message' => 'Task and steps successfully updated!',
           'success' => true
@@ -295,9 +309,7 @@ if (isset($_REQUEST['action'])) {
         $response = array(
           'message' => 'Database connection error',
         );
-      }
-      else
-      {
+      } else {
         $sql = "SELECT team5_app.Task.name AS taskName,team5_app.Task.description AS taskDescription, team5_app.Task.imgLink as taskImageLink FROM
           team5_app.Task WHERE team5_app.Task.idTask=" . $id;
 
@@ -305,8 +317,7 @@ if (isset($_REQUEST['action'])) {
         $result = $conn->query($sql);
 
         // Loop through data of database
-        if ($result->num_rows > 0)
-        {
+        if ($result->num_rows > 0) {
           $steps = array();
           $taskTimes = array();
 
@@ -325,8 +336,7 @@ if (isset($_REQUEST['action'])) {
           $result = $conn->query($sql);
 
           // Loop through data of database
-          if ($result->num_rows > 0)
-          { // output data of each row
+          if ($result->num_rows > 0) { // output data of each row
             while ($row = $result->fetch_assoc()) {
               // Fill task with steps
               $step = array(
@@ -334,7 +344,7 @@ if (isset($_REQUEST['action'])) {
                 'stepImgLink' => $row['imgLink'],
                 'stepDescription' => $row['description']
               );
-              array_push($steps,$step);
+              array_push($steps, $step);
             }
           }
 
@@ -345,8 +355,7 @@ if (isset($_REQUEST['action'])) {
           $result = $conn->query($sql);
 
           // Loop through data of database
-          if ($result->num_rows > 0)
-          {
+          if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
               // Fill task with steps
@@ -355,7 +364,7 @@ if (isset($_REQUEST['action'])) {
                 'startTime' => $row['startTime'],
                 'endTime' => $row['endTime']
               );
-              array_push($taskTimes,$taskTime);
+              array_push($taskTimes, $taskTime);
             }
 
           }
@@ -373,7 +382,7 @@ if (isset($_REQUEST['action'])) {
         }
       }
     }
-  } else if($action === "getAll") {
+  } else if ($action === "getAll") {
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
 
@@ -381,9 +390,7 @@ if (isset($_REQUEST['action'])) {
       $response = array(
         'message' => 'Database connection error',
       );
-    }
-    else
-    {
+    } else {
       $response = array();
       $sql = "SELECT team5_app.Task.idTask as taskId,team5_app.Task.name AS taskName,team5_app.Task.description AS taskDescription, team5_app.Task.imgLink as taskImageLink FROM
                 team5_app.Task";
@@ -391,8 +398,7 @@ if (isset($_REQUEST['action'])) {
       $result = $conn->query($sql);
 
       // Loop through data of database
-      if ($result->num_rows > 0)
-      {
+      if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
           $steps = array();
@@ -410,8 +416,7 @@ if (isset($_REQUEST['action'])) {
           $secondResult = $conn->query($sql);
 
           // Loop through data of database
-          if ($secondResult->num_rows > 0)
-          { // output data of each row
+          if ($secondResult->num_rows > 0) { // output data of each row
             while ($secondRow = $secondResult->fetch_assoc()) {
               // Fill task with steps
               $step = array(
@@ -419,7 +424,7 @@ if (isset($_REQUEST['action'])) {
                 'stepImgLink' => $secondRow['imgLink'],
                 'stepDescription' => $secondRow['description']
               );
-              array_push($steps,$step);
+              array_push($steps, $step);
             }
           }
 
@@ -428,8 +433,7 @@ if (isset($_REQUEST['action'])) {
           // Query database
           $thirdResult = $conn->query($sql);
           // Loop through data of database
-          if ($thirdResult->num_rows > 0)
-          {
+          if ($thirdResult->num_rows > 0) {
             // output data of each row
             while ($thirdRow = $thirdResult->fetch_assoc()) {
               // Fill task with steps
@@ -438,7 +442,7 @@ if (isset($_REQUEST['action'])) {
                 'startTime' => $thirdRow['startTime'],
                 'endTime' => $thirdRow['endTime']
               );
-              array_push($taskTimes,$taskTime);
+              array_push($taskTimes, $taskTime);
             }
           }
 
@@ -456,6 +460,48 @@ if (isset($_REQUEST['action'])) {
 
         // Close connection
         $conn->close();
+      }
+    }
+  } else if ($action === "uploadImage") {
+    $target_dir = "/srv/www/team5/public/assets/images/tasks/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+    if (isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if ($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+      } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+      }
+    }
+// Check if file already exists
+    if (file_exists($target_file)) {
+      //echo "File already exists, overwriting";
+    }
+
+// Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif") {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+    }
+// Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+      echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+    } else {
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        $response = array(
+          'success' => true,
+          'message' => 'Successfully uploaded image',
+        );
+      } else {
+        echo "Sorry, there was an error uploading your file.";
       }
     }
   }
