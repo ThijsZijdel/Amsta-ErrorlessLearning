@@ -122,7 +122,7 @@ export class TaskService {
    */
   deleteTask(task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
-    const url = `${this.tasksUrl}?action=delete&id=${id}`;
+    const url = `${this.tasksUrl}?action=remove&id=${id}`;
 
     return this.http.delete<Task>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted task id=${id}`)),

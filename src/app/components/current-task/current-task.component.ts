@@ -15,6 +15,7 @@ import {Resident} from "../../models/Resident";
 import {TaskTime} from "../../models/TaskTime";
 import {Activity} from "../../models/Activity";
 import {Timer} from "../../models/Timer";
+import {TimerController} from '../timer/TimerController';
 
 /**
  * Current task component
@@ -132,7 +133,7 @@ export class CurrentTaskComponent implements OnInit {
         this.goBack();
 
     // If there is a timer and it has not been completed do not go forward!
-    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer && !this.task.steps[stepper.selectedIndex-1].timer.isCompleted) {
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null && !this.task.steps[stepper.selectedIndex-1].timer.isCompleted) {
       return;
     }
 
@@ -144,8 +145,9 @@ export class CurrentTaskComponent implements OnInit {
 
   private stepperChanged(stepper: MatStepper): void {
     // If there is a timer and it has not been completed do not go forward!
-    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer) {
-      this.task.steps[stepper.selectedIndex-1].startTimer();
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null) {
+      let timerController: TimerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
+      timerController.startTimer();
       return;
     }
   }
@@ -232,7 +234,7 @@ export class CurrentTaskComponent implements OnInit {
           this.endedTime,
           (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
           this.completed,
-          this.resident.id,
+          "" + this.resident.id,
           this.task.id,
           "Automatisch..."));
 

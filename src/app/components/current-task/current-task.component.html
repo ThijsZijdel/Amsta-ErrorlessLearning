@@ -47,13 +47,13 @@
 
                 <div class="container-fluid step-container">
                   <div class="row step-row">
-                    <div *ngIf="!step.hasTimer" class="imgContainer">
+                    <div *ngIf="!step.timer" class="imgContainer">
                       <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto">
                       <br>
                       <br>
                     </div>
 
-                    <div *ngIf="step.hasTimer" class="timer">
+                    <div *ngIf="step.timer" class="timer">
                       <svg width="250" height="250" viewbox="0 0 250 250">
                         <path id="timer-border" transform="translate(125, 125)"/>
                         <path id="timer-loader" transform="translate(125, 125) scale(.84)"/>
