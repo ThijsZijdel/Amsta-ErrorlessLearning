@@ -222,7 +222,7 @@ export class CurrentTaskComponent implements OnInit {
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          "9",
+          9,
           this.task.name,
           this.startDate,
 
