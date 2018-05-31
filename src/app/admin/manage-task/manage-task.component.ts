@@ -305,4 +305,67 @@ export class ManageTaskComponent implements OnInit {
       this.taskTimes[index].endTime = value;
 
   }
+
+/**
+   * Checks if there's any file pending to upload
+   * @author René Kok
+   */
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0]
+  }
+
+  /**
+   * Upload image to server and set names to right path
+   * @author René Kok
+   */
+  onUploadImgLink(stepNumber: number, isTaskImg: boolean) {
+    this.uploading = true;
+    var fileName = this.setFileName(stepNumber, isTaskImg);
+
+    if (isTaskImg) {
+      this.imgLink = "bezig met uploaden"
+      this.editTask.imgLink = "bezig met uploaden";
+      console.log("Set fileurl to " + this.editTask.imgLink)
+    } else {
+      this.editTask.steps[stepNumber].stepImgLink = "bezig met uploading";
+      this.stepsCreated[stepNumber].stepImgLink = "bezig met uploading";
+    }
+
+    this.imgLink = "uploading"
+    this.editTask.imgLink = "uploading";
+
+    this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg)
+      .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber)).then(() => this.uploading = false);
+  }
+
+  /**
+   * Generates a new filename based
+   * @author René Kok
+   */
+  private setFileName(stepNumber: number, isTaskImg: boolean): string {
+    if (isTaskImg) {
+      return this.editTask.name + "_" + stepNumber + ".jpg"
+    } else {
+      return this.editTask.name + "_" + (stepNumber + 1) + ".jpg"
+    }
+  }
+
+  /**
+   * Updates the path for the images
+   * @author René Kok
+   */
+  updateImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
+    var fileLocation = "/tasks/"
+
+    if (isTaskImg) {
+      console.log("Set fileurl to " + this.editTask.imgLink)
+      this.imgLink = fileLocation + fileName;
+      this.editTask.imgLink = this.imgLink;
+      console.log("Set fileurl to " + this.editTask.imgLink)
+    } else {
+      this.editTask.steps[stepNumber].stepImgLink = fileLocation + fileName;
+      this.stepsCreated[stepNumber].stepImgLink = fileLocation + fileName;
+      console.log("Set fileurl to " + this.editTask.steps[stepNumber].stepImgLink + "(Step)")
+    }
+  }
 }
