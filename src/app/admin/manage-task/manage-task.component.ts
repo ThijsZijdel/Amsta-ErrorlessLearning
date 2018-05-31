@@ -25,7 +25,6 @@ export class ManageTaskComponent implements OnInit {
   protected imgLink: string;
   protected mainDescription: string;
 
-
   //Step variables
   @Input() step: Step;
   protected stepsCreated: Step[] = [];
@@ -35,6 +34,9 @@ export class ManageTaskComponent implements OnInit {
   //Task times
   protected taskTimes: TaskTime[] = [];
 
+  //Uploading Image
+  selectedFile: File;
+  uploading = false;
 
   /**
    * Potential editable task
@@ -92,7 +94,6 @@ export class ManageTaskComponent implements OnInit {
     if (!name || !imgLink || !mainDescription) {
       return;
     }
-
 
     this.tasksService.addTask
       ({

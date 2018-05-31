@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { Task } from '../models/Task';
 
 import { MessageService } from './message.service';
+import { ManageTaskComponent } from '../admin/add-task/manage-task.component';
 
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,7 +31,8 @@ export class TaskService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+  }
 
   /**
    * get tasks from the server
@@ -159,20 +163,25 @@ export class TaskService {
    * @author René Kok
    */
 
-  uploadImage(file, imgType: string) {
-    const url = `${this.tasksUrl}?action=uploadImage`;
+  uploadImage(file, fileName: string, stepNumber: number, isTaskImg: boolean) {
+    let promise = new Promise((resolve, reject) => {
+      const url = `${this.tasksUrl}?action=uploadImage`;
 
-    const formData: FormData = new FormData();
-    formData.append('fileToUpload', file, file.name);
+      const formData: FormData = new FormData();
+      formData.append('fileToUpload', file, fileName);
 
-    this.http.post(url, formData, {
-      reportProgress: true,
-      observe: 'events'
-    })
-      .subscribe(event => {
-        console.log(event); // handle event here
-      });
-
+      this.http.post(url, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).toPromise()
+        .then(
+        res => { // Success
+          console.log("Succes uploading " + fileName);
+          resolve();
+        }
+        );
+    });
+    return promise;
   }
 
   /**
