@@ -1,4 +1,5 @@
 export class Timer {
+  id: number;
   loader: HTMLElement;
   border: HTMLElement;
   backgroundLoader: HTMLElement;
@@ -6,7 +7,7 @@ export class Timer {
   htmlText: HTMLElement;
   a: number = 0;
   p: number = Math.PI;
-  t: number = 12000;
+  time: number = 12000;
   normalise: number = 360;
   isCompleted: boolean = false;
   currentTime: number;
@@ -14,7 +15,7 @@ export class Timer {
 
   constructor(timeInMilliseconds: number) {
     this.isCompleted = false;
-    this.t = timeInMilliseconds;
+    this.time = timeInMilliseconds;
     this.currentTime = timeInMilliseconds;
   }
 
@@ -29,7 +30,7 @@ export class Timer {
     this.backgroundBorder = document.getElementById('timer-background-border');
     this.htmlText = document.getElementById('timer-text');
 
-    this.currentTime = this.t;
+    this.currentTime = this.time;
     this.htmlText.innerText = this.millisToMinutesAndSeconds(this.currentTime);
 
     this.draw(this);
@@ -43,7 +44,7 @@ export class Timer {
     timer.htmlText.innerText = this.millisToMinutesAndSeconds(timer.currentTime);
 
     if(!timer.isCompleted) {
-      timer.timeouts.push(setTimeout(()=>{
+      timer.timeouts.push(setTimeout(() => {
         timer.changeTimedText(timer);
         }, second));
     } else {
@@ -83,7 +84,7 @@ export class Timer {
     } else {
       timer.timeouts.push(setTimeout(() => {
         timer.draw(timer);
-      }, timer.t / 360));
+      }, timer.time / 360));
     }
   }
 
