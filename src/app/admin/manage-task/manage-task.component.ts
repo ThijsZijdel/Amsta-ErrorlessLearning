@@ -92,6 +92,18 @@ export class ManageTaskComponent implements OnInit {
   protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
     if (!name || !imgLink || !mainDescription) {
+      if(!name)
+      {
+        alert("Naam van taak niet ingevuld!");
+      }
+      if(!imgLink)
+      {
+        alert("Geen plaatje toegevoegd aan de taak!");
+      }
+      if(!mainDescription)
+      {
+        alert("Geen hoofd beschrijving ingevuld!")
+      }
       return;
     }
 
@@ -264,6 +276,21 @@ export class ManageTaskComponent implements OnInit {
    * @author Thijs Zijdel
    */
   protected saveEditingTask(name: string, imgLink: string, mainDescription: string): void {
+    if (!name || !imgLink || !mainDescription) {
+      if(!name)
+      {
+        alert("Naam van taak niet ingevuld!");
+      }
+      if(!imgLink)
+      {
+        alert("Geen plaatje toegevoegd aan de taak!");
+      }
+      if(!mainDescription)
+      {
+        alert("Geen hoofd beschrijving ingevuld!")
+      }
+      return;
+    }
 
     this.getUpdatedFields();
 

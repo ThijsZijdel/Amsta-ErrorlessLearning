@@ -45,6 +45,7 @@ if (isset($_REQUEST['action'])) {
       $sql = "INSERT INTO team5_app.Task(name, Description, imgLink) VALUES('" . $taskName . "', '" . $taskDescription . "', '" . $taskImageLink . "')";
       //Connection with success and error messages.
       if ($conn->query($sql) === TRUE) {
+        $errorcode = '';
         $taskId = $conn->insert_id;
         $response['status'] = array(
           'success' => true,
@@ -58,35 +59,41 @@ if (isset($_REQUEST['action'])) {
 
           $timerId = -1;
 
-          if ($step->hasTimer) {
+          if ($step->timer && !is_null($step->timer)) {
             $timerTime = $step->timer->time;
 
             $sql = "INSERT INTO  team5_app.Timer(time) VALUES('" . $timerTime . "')";
 
             if (!$conn->query($sql) === TRUE) {
+              $errorcode = "TIMER_INSERT";
               $success = false;
             } else {
               $timerId = $conn->insert_id;
             }
           }
 
-          $sql = $timerId == -1 ? "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')" : "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId,Timer_timerId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "', '" . $timerId . "')";
+          $sql = ($step->timer && !is_null($step->timer)) ? "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')" : "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId,Timer_timerId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "', '" . $timerId . "')";
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
+            $errorcode = "STEP_INSERT";
           }
         }
+        $taskTimeId = 0;
         foreach ($taskTimes as $taskTime) {
+          $taskTimeId++;
           $taskStartTime = $taskTime->startTime;
           $taskEndTime = $taskTime->endTime;
 
-          $sql = "INSERT INTO  team5_app.TaskTime(startTime, endTime, Task_taskId) VALUES('" . $taskStartTime . "', '" . $taskEndTime . "', '" . $taskId . "')";
+          $sql = "INSERT INTO  team5_app.TaskTime(id,startTime, endTime, Task_taskId) VALUES(". $taskTimeId . ",'" . $taskStartTime . "', '" . $taskEndTime . "', '" . $taskId . "')";
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
+            $errorcode = "TASKTIMES_INSERT";
           }
         }
       } else {
+        $errorcode = "TASK_INSERT";
         $success = false;
       }
 
@@ -99,6 +106,7 @@ if (isset($_REQUEST['action'])) {
         $response['status'] = array(
           'message' => 'Error something went wrong while trying to add the task',
           'success' => false,
+          'errorCode' => $errorcode,
           'errorMessage' => $conn->error
         );
       }

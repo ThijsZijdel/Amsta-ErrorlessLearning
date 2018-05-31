@@ -10,5 +10,6 @@ export class Step {
     this.id = id;
     this.stepImgLink = stepImgLink;
     this.stepDescription = stepDescription;
+    this.timer = null;
   }
 }
