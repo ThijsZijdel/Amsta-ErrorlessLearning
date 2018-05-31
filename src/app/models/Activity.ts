@@ -14,7 +14,7 @@ export class Activity {
   completedTime: string;
   completed: boolean;
 
-  residentId: string;
+  residentId: number;
   taskId: number;
 
   notes: string;
@@ -25,7 +25,7 @@ export class Activity {
               timeStarted: string, timeEnded: string,
               completedTime: string, completed: boolean,
 
-              residentId: string,taskId: number,
+              residentId: number,taskId: number,
               notes: string) {
     this.id = id;
     this.name = name;
