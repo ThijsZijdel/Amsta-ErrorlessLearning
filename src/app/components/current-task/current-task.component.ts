@@ -14,6 +14,7 @@ import {ResidentService} from "../../services/resident.service";
 import {Resident} from "../../models/Resident";
 import {TaskTime} from "../../models/TaskTime";
 import {Activity} from "../../models/Activity";
+import {Timer} from "../../models/Timer";
 
 /**
  * Current task component
@@ -78,7 +79,7 @@ export class CurrentTaskComponent implements OnInit {
     this.getTask();
     this.getSteps();
 
-    this.startMonitoring();
+    //this.startMonitoring();
   }
 
   /**
@@ -130,8 +131,23 @@ export class CurrentTaskComponent implements OnInit {
       if(this.openClosingMessage())
         this.goBack();
 
+    // If there is a timer and it has not been completed do not go forward!
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer && !this.task.steps[stepper.selectedIndex-1].timer.isCompleted) {
+      return;
+    }
+
     stepper.selected.completed = true;
     stepper.next();
+
+    setTimeout(this.stepperChanged(stepper), 250);
+  }
+
+  private stepperChanged(stepper: MatStepper): void {
+    // If there is a timer and it has not been completed do not go forward!
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer) {
+      this.task.steps[stepper.selectedIndex-1].startTimer();
+      return;
+    }
   }
 
   /**

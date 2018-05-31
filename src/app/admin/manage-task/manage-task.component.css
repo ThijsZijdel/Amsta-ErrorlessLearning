@@ -44,8 +44,6 @@ a.right.arrow {
   margin: 0px 0;
 }
 
-
-
 .step-img-container{
   max-width: 400px;
   width: 400px;
@@ -61,4 +59,28 @@ a.right.arrow {
 
   max-height: 300px;
   height: 300px;
+}
+
+/*********TIMER**********/
+svg {
+  display: block;
+  margin: 50px auto;
+}
+
+#timer-loader
+{ fill: #c92835 }
+
+#timer-border
+{ fill: #000000 }
+
+#timer-background-loader
+{
+  fill: #c92835;
+  opacity: 0.2;
+}
+
+#timer-background-border
+{
+  fill: #000000;
+  opacity: 0.2;
 }
