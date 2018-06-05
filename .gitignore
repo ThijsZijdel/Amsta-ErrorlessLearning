@@ -1,6 +1,7 @@
 node_modules
 src/assets/images/tasks/.DS_Store
 DS_Store
+dist
 .DS_Store
 .idea
 .idea
