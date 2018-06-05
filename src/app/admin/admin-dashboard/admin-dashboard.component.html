@@ -50,7 +50,7 @@
                 <div class="task-description">Extra info over bewoner</div>
 
                 <div class="tagRow">
-                  <div class="tag">
+                  <div class="tag" *ngIf="resident.activities!=null || resident.activities.length!=0">
                     <div class="tagColor"></div>
                     Laatste activiteit: om {{resident.activities[resident.activities.length-1].timeStarted}}
                     op {{resident.activities[resident.activities.length-1].date.toString().substring(0, 10)}}
