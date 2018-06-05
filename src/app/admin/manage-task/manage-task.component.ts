@@ -4,6 +4,7 @@ import { Task } from '../../models/Task';
 import { Step } from '../../models/Step';
 import { StatusService } from "../login/status.service";
 import { TaskTime } from "../../models/TaskTime";
+import {Timer} from "../../models/Timer";
 
 @Component({
   selector: 'app-manage-task',
@@ -258,6 +259,13 @@ export class ManageTaskComponent implements OnInit {
 
 
     if (this.editTask != null) {
+      for(let i:number = 0; i < this.editTask.steps.length;i++) {
+        if(this.editTask.steps[i].timer != null)
+        {
+          this.editTask.steps[i].timer.timeInSeconds = this.editTask.steps[i].timer.time / 1000;
+        }
+      }
+
       this.taskNameValue = this.editTask.name;
       this.imgLink = this.editTask.imgLink;
       this.mainDescription = this.editTask.mainDescription;
@@ -408,5 +416,27 @@ export class ManageTaskComponent implements OnInit {
       }
       console.log("Set fileurl to " + this.stepsCreated[stepNumber].stepImgLink + "(Step)")
     }
+  }
+
+  setTimer(step: Step, timerValue: number) {
+    if (step.timer == null) // Something went wrong here...
+    {
+      alert("Timer was not instantiated something went wrong toggeling the switch...");
+      return;
+    }
+
+    let timeInMiliseconds = timerValue * 1000;
+    step.timer.time = timeInMiliseconds;
+  }
+
+  toggleTimer(step: Step): boolean {
+    if (step.timer == null) {
+      step.timer = new Timer();
+      step.timer.time = 0;
+      return true;
+    }
+
+    step.timer = null;
+    return false;
   }
 }

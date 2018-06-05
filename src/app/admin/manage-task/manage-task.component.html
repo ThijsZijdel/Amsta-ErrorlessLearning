@@ -159,6 +159,20 @@
                     </mat-form-field>
 
                     <br>
+
+                    <mat-slide-toggle #toggleTimer [checked]="(step.timer != null)" (change)="toggleTimer(step)">
+                      Timer gebruiken.
+                    </mat-slide-toggle>
+
+                    <br>
+                    <br>
+
+                    <mat-form-field *ngIf="(step.timer != null)">
+                      <input matInput #timerTime class="endTime" type="number" (change)="step.timer.timeInSeconds < 0 ? step.timer.timeInSeconds = 0 : setTimer(step, timerTime.value)" placeholder="Timer tijd in secondes"
+                             value="{{step.timer.timeInSeconds}}">
+
+                    </mat-form-field>
+
                     <br>
                   </div>
                   <div class="col-md-7" style="right: 50px;">

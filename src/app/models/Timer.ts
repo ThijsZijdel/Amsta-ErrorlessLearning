@@ -1,5 +1,6 @@
 export class Timer {
   id: number;
-  time: number = 12000;
+  time: number = 0;
   isCompleted: boolean = false;
+  timeInSeconds: number = 0;
 }
