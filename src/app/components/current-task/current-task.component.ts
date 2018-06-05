@@ -80,7 +80,7 @@ export class CurrentTaskComponent implements OnInit {
     this.getTask();
     this.getSteps();
 
-    //this.startMonitoring();
+    this.startMonitoring();
   }
 
   /**
@@ -200,7 +200,14 @@ export class CurrentTaskComponent implements OnInit {
         this.taskTime = new TaskTime("09:00", "10:00");
 
     } else {
-      console.log("monitoring not started")
+      if (!confirm("Er is geen bewoner ingelogd. Deze activiteit wordt dus niet opgeslagen. Wilt u alsnog verder gaan?")){
+        //stop
+        this.goBack();
+
+      } else {
+        //continue
+        alert("U kunt doorgaan met het uitvoeren van deze taak.")
+      }
     }
 
   }
@@ -224,7 +231,7 @@ export class CurrentTaskComponent implements OnInit {
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          9,
+          this.resident.id+this.resident.activities.length+1,
           this.task.name,
           this.startDate,
 
