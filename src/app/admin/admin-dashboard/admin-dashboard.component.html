@@ -49,13 +49,17 @@
                 <div class="task-name">{{resident.name}} {{resident.surname}}</div>
                 <div class="task-description">Extra info over bewoner</div>
 
-                <div class="tagRow">
+                <!--
+
+                <div class="tagRow" *ngIf="resident.activities!=null || resident.activities.length!=0">
                   <div class="tag">
                     <div class="tagColor"></div>
                     Laatste activiteit: om {{resident.activities[resident.activities.length-1].timeStarted}}
                     op {{resident.activities[resident.activities.length-1].date.toString().substring(0, 10)}}
                   </div>
                 </div>
+
+                -->
 
                 <div class="float-right fix-pos">
                   <button class="btn btn-1 btn-1c purple" (click)="this.clearEditSetting()" routerLink="/resident/{{resident.id}}"> Bekijken </button>
