@@ -260,7 +260,7 @@ if (isset($_REQUEST['action'])) {
           $stepImageLink = $step->stepImgLink;
 
           if (!is_null($step->timer)) {
-            $sql = $step->timer->id == null ? "INSERT INTO team5_app.Timer(time) VALUES(" . $step->timer->time . ")" : "UPDATE team5_app.Timer SET team5_app.Timer.time='" . $step->timer->time . "'WHERE team5_app.Timer.id=" . $step->timer->id;
+            $sql = is_null($step->timer->id) ? "INSERT INTO team5_app.Timer(time) VALUES(" . $step->timer->time . ")" : "UPDATE team5_app.Timer SET team5_app.Timer.time='" . $step->timer->time . "'WHERE team5_app.Timer.id=" . $step->timer->id;
 
             if (!$conn->query($sql) === TRUE) {
               $success = false;
