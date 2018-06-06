@@ -114,6 +114,8 @@ export class ResidentService {
     );
   }
 
+
+
   /**
    * add a new Resident to the server
    * note: POST
@@ -144,21 +146,6 @@ export class ResidentService {
     );
   }
 
-  // /**
-  //  * get tasks whose name contains search term
-  //  * note: GET
-  //  * @author Thijs Zijdel
-  //  */
-  // searchTasks(term: string): Observable<Resident[]> {
-  //   if (!term.trim()) {
-  //     // if not search term, return empty hero array.
-  //     return of([]);
-  //   }
-  //   return this.http.get<Resident[]>(`api/tasks/?name=${term}`).pipe(
-  //     tap(_ => this.log(`found tasks matching "${term}"`)),
-  //     catchError(this.handleError<Resident[]>('searchTasks', []))
-  //   );
-  // }
 
 
   /**

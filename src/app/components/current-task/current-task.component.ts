@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { Task } from '../../models/Task';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TaskService } from '../../services/task.service';
-import { MatStepper } from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatStepper} from '@angular/material';
 
 
 // Steps:
@@ -70,7 +70,8 @@ export class CurrentTaskComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private taskService: TaskService,
     private location: Location,
-    private residentService: ResidentService) {
+    private residentService: ResidentService,
+              public dialog: MatDialog) {
   }
 
   /**
@@ -226,27 +227,27 @@ export class CurrentTaskComponent implements OnInit {
       this.endedTime = now.getHours() + ":" + now.getMinutes();
       this.completed = true;
 
-      console.log(this.resident.activities.length + " voor");
+
 
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
           this.resident.id+this.resident.activities.length+1,
-          this.task.name,
-          this.startDate,
+        this.task.name,
+        this.startDate,
 
-          this.taskTime.startTime,
-          this.taskTime.endTime,
-          this.currentTime,
-          this.endedTime,
-          (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
-          this.completed,
-          this.resident.id,
-          this.task.id,
-          "Automatisch..."));
+        this.taskTime.startTime,
+        this.taskTime.endTime,
+        this.currentTime,
+        this.endedTime,
+        (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
+        this.completed,
+        this.resident.id,
+        this.task.id,
+        "Automatisch..."));
 
 
-      console.log(this.resident.activities.length + " na");
+
       this.residentService.updateResident(this.resident);
 
     } else {
@@ -307,3 +308,5 @@ export class CurrentTaskComponent implements OnInit {
   }
 
 }
+
+
