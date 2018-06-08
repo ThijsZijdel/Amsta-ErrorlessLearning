@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class ResidentService {
 
-  private tasksUrl = 'https://team5.amsta-hva.tk/api/resident.php';  // URL to web api
+  private residentUrl = 'https://team5.amsta-hva.tk/api/resident.php';  // URL to web api
 
   public infoActivity: Activity;
 
@@ -38,7 +38,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
   getResidents (): Observable<Resident[]> {
-    const url = `${this.tasksUrl}?action=getAll`;
+    const url = `${this.residentUrl}?action=getAll`;
     return this.http.get<Resident[]>(url)
       .pipe(
         tap(tasks => this.log(`fetched Resident`)),
@@ -51,7 +51,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
   getResident(id: number): Observable<Resident> {
-    const url = `${this.tasksUrl}?action=get&id=${id}`;
+    const url = `${this.residentUrl}?action=get&id=${id}`;
 
     return this.http.get<Resident>(url).pipe(
       tap(_ => this.log(`fetched Resident id=${id}`)),
@@ -106,7 +106,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
   updateResident (resident: Resident): Observable<any> {
-    const url = `${this.tasksUrl}?action=edit`;
+    const url = `${this.residentUrl}?action=edit`;
 
     return this.http.put(url, resident, httpOptions).pipe(
       tap(_ => this.log(`updated Resident id=${resident.id}`)),
@@ -122,7 +122,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
   addResident (resident: Resident): Observable<Resident> {
-    const url = `${this.tasksUrl}?action=add`;
+    const url = `${this.residentUrl}?action=add`;
 
     return this.http.post<Resident>(url, resident, httpOptions).pipe(
       tap((resident: Resident) => this.log(`added Resident w/ id=${resident.id}`)),
@@ -138,7 +138,7 @@ export class ResidentService {
    */
   deleteResident (resident: Resident | number): Observable<Resident> {
     const id = typeof resident === 'number' ? resident : resident.id;
-    const url = `${this.tasksUrl}?action=remove&id=${id}`;
+    const url = `${this.residentUrl}?action=remove&id=${id}`;
 
     return this.http.delete<Resident>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted Resident id=${id}`)),

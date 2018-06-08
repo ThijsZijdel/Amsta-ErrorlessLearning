@@ -227,7 +227,7 @@ export class CurrentTaskComponent implements OnInit {
       this.endedTime = now.getHours() + ":" + now.getMinutes();
       this.completed = true;
 
-
+      console.log("update: "+this.resident.name+" num:"+this.resident.activities.length)
 
       //add it to the users activities
       this.resident.activities.push(
@@ -249,7 +249,7 @@ export class CurrentTaskComponent implements OnInit {
 
 
       this.residentService.updateResident(this.resident);
-
+      console.log("update done: "+this.resident.name+" num:"+this.resident.activities.length)
     } else {
       console.log("monitoring not ended")
     }
