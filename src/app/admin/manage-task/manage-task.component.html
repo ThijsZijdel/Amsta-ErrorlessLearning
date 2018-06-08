@@ -39,7 +39,7 @@
 
           <div class="padding">
             <mat-form-field>
-              <input matInput #taskName placeholder="Naam van de takenlijst" value="{{taskNameValue}}">
+              <input matInput #taskName placeholder="Naam van de takenlijst" [(ngModel)]="taskNameValue">
             </mat-form-field>
           </div>
 
@@ -48,8 +48,8 @@
 
           <div class="padding">
             <mat-form-field>
-              <textarea matInput #mainDesc class="mainDesc" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" placeholder="Beschrijving van de taak">
-                {{mainDescription}} </textarea>
+              <textarea matInput #mainDesc class="mainDesc" matTextareaAutosize matAutosizeMinRows="2"
+                        matAutosizeMaxRows="5" placeholder="Beschrijving van de taak">{{mainDescription}}</textarea>
             </mat-form-field>
           </div>
 
@@ -85,23 +85,23 @@
         </div>
 
         <div class="col-md-6">
+          <div>
+            <div *ngIf="this.uploading" class="main-image-container">
+              <mat-spinner style="position: absolute; z-index: 99;" mode="indeterminate"></mat-spinner>
+            </div>
 
-          <div *ngIf="this.uploading" class="main-image-container">
-            <mat-spinner mode="indeterminate"></mat-spinner>
+            <img *ngIf="editTask != null && this.uploading == false" class="main-image-container" src="./../assets/images{{imgLink}}"
+              alt="image" />
+            <div class="imgBG"></div>
           </div>
-
-          <img *ngIf="editTask != null && this.uploading == false" class="main-image-container" src="./../assets/images{{imgLink}}"
-            alt="image" />
-          <img *ngIf="editTask == null && this.uploading == false" class="main-image-container" src="http://placehold.it/500x300" alt="image"
-          />
 
 
           <br>
           <br>
 
           <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-          <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
-          <button (click)="onUploadImgLink(0, true)">Upload Foto</button>
+          <button mat-raised-button color="primary" (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
+          <button mat-raised-button color="primary" (click)="onUploadImgLink(0, true)">Upload Foto</button>
 
 
           &nbsp;
@@ -159,17 +159,32 @@
                     </mat-form-field>
 
                     <br>
+
+                    <mat-slide-toggle #toggleTimer [checked]="(step.timer != null)" (change)="toggleTimer(step)">
+                      Timer gebruiken.
+                    </mat-slide-toggle>
+
+                    <br>
+                    <br>
+
+                    <mat-form-field *ngIf="(step.timer != null)">
+                      <input matInput #timerTime class="endTime" type="number" (change)="step.timer.timeInSeconds < 0 ? step.timer.timeInSeconds = 0 : setTimer(step, timerTime.value)" placeholder="Timer tijd in secondes"
+                             value="{{step.timer.timeInSeconds}}">
+
+                    </mat-form-field>
+
                     <br>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-7" style="right: 50px;">
                     <img *ngIf="editTask != null" class="step-img-container" src="./../assets/images{{step.stepImgLink}}" alt="image" />
                     <img *ngIf="editTask == null" class="step-img-container" src="http://placehold.it/400x250" alt="image" />
+                    <div class="imgBG"></div>
 
                     <br>
                     <br>
                     <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-                    <button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
-                    <button (click)="onUploadImgLink((step.id - 1), false)">Upload Foto</button>
+                    <button mat-raised-button (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
+                    <button mat-raised-button (click)="onUploadImgLink((step.id - 1), false)">Upload Foto</button>
                   </div>
 
 

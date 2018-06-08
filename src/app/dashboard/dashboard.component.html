@@ -20,8 +20,8 @@
             <br>
 
             <div class="time-indicator-box-container">
-
-                <div *ngIf="isPast(task.timeEnd)" class="time-indicator">{{task.timeStart}} - {{task.timeEnd}}</div>
+              <!--*ngIf="isPast(task.timeEnd)"-->
+              <div class="time-indicator">{{task.timeStart}} - {{task.timeEnd}}</div>
 
             </div>
 
@@ -116,7 +116,7 @@
 
   <!-- current tasks -->
   <div class="current-tasks-container" id="current">
-    <div class="indicator" *ngIf="pastTasks.length !== 0">
+    <div class="indicator" *ngIf="pastTasks.length != 0 || pastTasks != null">
       <img src="./../assets/icons/arrows/up.svg"><br>
       <span>eerder geplande taken van vandaag</span>
     </div>

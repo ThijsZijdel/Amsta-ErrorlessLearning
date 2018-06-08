@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { Task } from '../../models/Task';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TaskService } from '../../services/task.service';
-import { MatStepper } from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatStepper} from '@angular/material';
 
 
 // Steps:
@@ -15,6 +15,7 @@ import {Resident} from "../../models/Resident";
 import {TaskTime} from "../../models/TaskTime";
 import {Activity} from "../../models/Activity";
 import {Timer} from "../../models/Timer";
+import {TimerController} from '../timer/TimerController';
 
 /**
  * Current task component
@@ -69,7 +70,8 @@ export class CurrentTaskComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private taskService: TaskService,
     private location: Location,
-    private residentService: ResidentService) {
+    private residentService: ResidentService,
+              public dialog: MatDialog) {
   }
 
   /**
@@ -79,7 +81,7 @@ export class CurrentTaskComponent implements OnInit {
     this.getTask();
     this.getSteps();
 
-    //this.startMonitoring();
+    this.startMonitoring();
   }
 
   /**
@@ -132,7 +134,7 @@ export class CurrentTaskComponent implements OnInit {
         this.goBack();
 
     // If there is a timer and it has not been completed do not go forward!
-    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer && !this.task.steps[stepper.selectedIndex-1].timer.isCompleted) {
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null && !this.task.steps[stepper.selectedIndex-1].timer.isCompleted) {
       return;
     }
 
@@ -144,8 +146,9 @@ export class CurrentTaskComponent implements OnInit {
 
   private stepperChanged(stepper: MatStepper): void {
     // If there is a timer and it has not been completed do not go forward!
-    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].hasTimer) {
-      this.task.steps[stepper.selectedIndex-1].startTimer();
+    if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null) {
+      let timerController: TimerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
+      timerController.startTimer();
       return;
     }
   }
@@ -198,7 +201,14 @@ export class CurrentTaskComponent implements OnInit {
         this.taskTime = new TaskTime("09:00", "10:00");
 
     } else {
-      console.log("monitoring not started")
+      if (!confirm("Er is geen bewoner ingelogd. Deze activiteit wordt dus niet opgeslagen. Wilt u alsnog verder gaan?")){
+        //stop
+        this.goBack();
+
+      } else {
+        //continue
+        alert("U kunt doorgaan met het uitvoeren van deze taak.")
+      }
     }
 
   }
@@ -217,27 +227,27 @@ export class CurrentTaskComponent implements OnInit {
       this.endedTime = now.getHours() + ":" + now.getMinutes();
       this.completed = true;
 
-      console.log(this.resident.activities.length + " voor");
+
 
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          "9",
-          this.task.name,
-          this.startDate,
+          this.resident.id+this.resident.activities.length+1,
+        this.task.name,
+        this.startDate,
 
-          this.taskTime.startTime,
-          this.taskTime.endTime,
-          this.currentTime,
-          this.endedTime,
-          (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
-          this.completed,
-          this.resident.id,
-          this.task.id,
-          "Automatisch..."));
+        this.taskTime.startTime,
+        this.taskTime.endTime,
+        this.currentTime,
+        this.endedTime,
+        (this.getMinute(this.endedTime) - this.getMinute(this.currentTime)).toString(),
+        this.completed,
+        this.resident.id,
+        this.task.id,
+        "Automatisch..."));
 
 
-      console.log(this.resident.activities.length + " na");
+
       this.residentService.updateResident(this.resident);
 
     } else {
@@ -298,3 +308,5 @@ export class CurrentTaskComponent implements OnInit {
   }
 
 }
+
+

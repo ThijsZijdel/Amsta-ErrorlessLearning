@@ -4,6 +4,7 @@ import { Task } from '../../models/Task';
 import { Step } from '../../models/Step';
 import { StatusService } from "../login/status.service";
 import { TaskTime } from "../../models/TaskTime";
+import {Timer} from "../../models/Timer";
 
 @Component({
   selector: 'app-manage-task',
@@ -92,6 +93,18 @@ export class ManageTaskComponent implements OnInit {
   protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
     if (!name || !imgLink || !mainDescription) {
+      if(!name)
+      {
+        alert("Naam van taak niet ingevuld!");
+      }
+      if(!imgLink)
+      {
+        alert("Geen plaatje toegevoegd aan de taak!");
+      }
+      if(!mainDescription)
+      {
+        alert("Geen hoofd beschrijving ingevuld!")
+      }
       return;
     }
 
@@ -221,7 +234,7 @@ export class ManageTaskComponent implements OnInit {
    * Note: standard values 10:00 - 11:00
    * @author Thijs Zijdel
    */
-  protected addTime():void {
+  protected addTime(): void {
     this.taskTimes.push(new TaskTime("10:00", "11:00"));
   }
 
@@ -230,7 +243,7 @@ export class ManageTaskComponent implements OnInit {
    * @param {TaskTime} time that needs to be removed
    * @author Thijs Zijdel
    */
-  protected removeTime(time: TaskTime):void {
+  protected removeTime(time: TaskTime): void {
     this.taskTimes.splice(this.taskTimes.indexOf(time), 1);
   }
 
@@ -240,12 +253,19 @@ export class ManageTaskComponent implements OnInit {
    * If this is true, setup all the fields
    * @author Thijs Zijdel
    */
-  private checkForEdit():void {
+  private checkForEdit(): void {
     //get an potential edit task.
     this.editTask = this.tasksService.editTask;
 
 
     if (this.editTask != null) {
+      for(let i:number = 0; i < this.editTask.steps.length;i++) {
+        if(this.editTask.steps[i].timer != null)
+        {
+          this.editTask.steps[i].timer.timeInSeconds = this.editTask.steps[i].timer.time / 1000;
+        }
+      }
+
       this.taskNameValue = this.editTask.name;
       this.imgLink = this.editTask.imgLink;
       this.mainDescription = this.editTask.mainDescription;
@@ -264,6 +284,21 @@ export class ManageTaskComponent implements OnInit {
    * @author Thijs Zijdel
    */
   protected saveEditingTask(name: string, imgLink: string, mainDescription: string): void {
+    if (!name || !imgLink || !mainDescription) {
+      if(!name)
+      {
+        alert("Naam van taak niet ingevuld!");
+      }
+      if(!imgLink)
+      {
+        alert("Geen plaatje toegevoegd aan de taak!");
+      }
+      if(!mainDescription)
+      {
+        alert("Geen hoofd beschrijving ingevuld!")
+      }
+      return;
+    }
 
     this.getUpdatedFields();
 
@@ -278,6 +313,7 @@ export class ManageTaskComponent implements OnInit {
 
     this.tasksService.updateTask(this.editTask).subscribe();
 
+    alert("De aanpassingen zijn opgeslagen.")
     console.log("Saved to DB")
   }
 
@@ -293,16 +329,114 @@ export class ManageTaskComponent implements OnInit {
   protected deleteEditingTask(task: Task): void {
     // this.heroes = this.heroes.filter(h => h !== hero);
     // this.heroService.deleteHero(hero).subscribe();
-    this.editTask = null;
-    this.tasksService.editTask = null;
-    this.tasksService.deleteTask(task).subscribe();
+
+
+    if (confirm("Wilt u deze taak echt verwijderen?")) {
+      alert("Taak: "+this.editTask.name+" is verwijderd.")
+      this.editTask = null;
+      this.tasksService.editTask = null;
+      this.tasksService.deleteTask(task).subscribe();
+    } else {
+      alert("De taak is niet verwijderd. Scherm wordt nu afgesloten..");
+    }
   }
 
-  protected updateThisTime(isStartTime: boolean, index: number, value: string):void  {
+  protected updateThisTime(isStartTime: boolean, index: number, value: string): void {
     if (isStartTime)
       this.taskTimes[index].startTime = value;
     else
       this.taskTimes[index].endTime = value;
 
+  }
+
+  /**
+     * Checks if there's any file pending to upload
+     * @author René Kok
+     */
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0]
+  }
+
+  /**
+   * Upload image to server and set names to right path
+   * @author René Kok
+   */
+  onUploadImgLink(stepNumber: number, isTaskImg: boolean) {
+    this.uploading = true;
+    var fileName = this.setFileName(stepNumber, isTaskImg);
+
+    if (isTaskImg) {
+      this.imgLink = "bezig met uploaden";
+
+      if (this.editTask != null) {
+        this.editTask.imgLink = "bezig met uploaden"
+      }
+      console.log("Set fileurl to " + this.imgLink)
+    } else {
+      this.stepsCreated[stepNumber].stepImgLink = "bezig met uploading";
+
+      if (this.editTask != null) {
+        this.editTask.steps[stepNumber].stepImgLink = "bezig met uploading";
+      }
+    }
+
+    this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg)
+      .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber)).then(() => this.uploading = false);
+  }
+
+  /**
+   * Generates a new filename based
+   * @author René Kok
+   */
+  private setFileName(stepNumber: number, isTaskImg: boolean): string {
+    if (isTaskImg) {
+      return this.taskNameValue + "_" + stepNumber + ".jpg"
+    } else {
+      return this.taskNameValue + "_" + (stepNumber + 1) + ".jpg"
+    }
+  }
+
+  /**
+   * Updates the path for the images
+   * @author René Kok
+   */
+  updateImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
+    var fileLocation = "/tasks/"
+
+    if (isTaskImg) {
+      this.imgLink = fileLocation + fileName;
+      if (this.editTask != null) {
+        this.editTask.imgLink = this.imgLink;
+      }
+      console.log("Set fileurl to " + this.imgLink)
+    } else {
+      this.stepsCreated[stepNumber].stepImgLink = fileLocation + fileName;
+      if (this.editTask != null) {
+        this.editTask.steps[stepNumber].stepImgLink = this.stepsCreated[stepNumber].stepImgLink;
+      }
+      console.log("Set fileurl to " + this.stepsCreated[stepNumber].stepImgLink + "(Step)")
+    }
+  }
+
+  setTimer(step: Step, timerValue: number) {
+    if (step.timer == null) // Something went wrong here...
+    {
+      alert("Timer was not instantiated something went wrong toggeling the switch...");
+      return;
+    }
+
+    let timeInMiliseconds = timerValue * 1000;
+    step.timer.time = timeInMiliseconds;
+  }
+
+  toggleTimer(step: Step): boolean {
+    if (step.timer == null) {
+      step.timer = new Timer();
+      step.timer.time = 0;
+      return true;
+    }
+
+    step.timer = null;
+    return false;
   }
 }

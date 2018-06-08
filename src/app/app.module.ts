@@ -57,6 +57,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 
 import {
+  MatDialogModule,
   MatFormFieldModule, MatInputModule, MatListModule, MatSlideToggleModule, MatSpinner,
   MatTooltipModule
 } from "@angular/material";
@@ -113,7 +114,8 @@ import { LoginResidentComponent } from './admin/login-resident/login-resident.co
     MatIconModule,
     MatDividerModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [
     TaskService,
