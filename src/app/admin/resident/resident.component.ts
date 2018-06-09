@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Resident} from "../../models/Resident";
-import {ResidentService} from "../../services/resident.service";
-import {ActivatedRoute} from "@angular/router";
-import {Activity} from "../../models/Activity";
-import {Observable} from "rxjs/Observable";
-import {TaskService} from "../../services/task.service";
-import {Task} from '../../models/Task';
+import { Component, Input, OnInit } from '@angular/core';
+import { Resident } from "../../models/Resident";
+import { ResidentService } from "../../services/resident.service";
+import { ActivatedRoute } from "@angular/router";
+import { Activity } from "../../models/Activity";
+import { Observable } from "rxjs/Observable";
+import { TaskService } from "../../services/task.service";
+import { Task } from '../../models/Task';
 
 
 @Component({
@@ -38,11 +38,16 @@ export class ResidentComponent implements OnInit {
 
   protected infoActiv: Activity = null;
 
+  //Uploading Image
+  selectedFile: File;
+  uploading = false;
+  imgLink: string;
+
   @Input() activityTask: Task;
 
   constructor(private route: ActivatedRoute,
-              public residentService: ResidentService,
-              public taskService: TaskService) { }
+    public residentService: ResidentService,
+    public taskService: TaskService) { }
 
   ngOnInit() {
     this.getResident();
@@ -56,12 +61,12 @@ export class ResidentComponent implements OnInit {
    * Get all the residents
    * @author Thijs Zijdel
    */
-  protected getResident():void {
+  protected getResident(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-      this.residentService.getResident(id)
-       .subscribe(resident => this.resident = resident);
+    this.residentService.getResident(id)
+      .subscribe(resident => this.resident = resident);
 
-   // this.resident = this.residentService.getResident(id);
+    // this.resident = this.residentService.getResident(id);
   }
 
 
@@ -87,7 +92,7 @@ export class ResidentComponent implements OnInit {
     if (activity.completed) {
       //this.completedActivities.push(activity);
       return true;
-    }else {
+    } else {
       return false;
     }
 
@@ -98,7 +103,7 @@ export class ResidentComponent implements OnInit {
    * @param {Activity} activity
    * @author Thijs Zijdel
    */
-  protected getInfo(activity: Activity):void {
+  protected getInfo(activity: Activity): void {
     if (activity === null)
       this.clearInfoActivity();
     else
@@ -112,8 +117,8 @@ export class ResidentComponent implements OnInit {
    * Clear/ exit the more info activity
    * @author Thijs Zijdel
    */
-  protected clearInfoActivity():void {
-    if (this.residentService.infoActivity!=null)
+  protected clearInfoActivity(): void {
+    if (this.residentService.infoActivity != null)
       this.residentService.infoActivity = null;
 
     if (this.infoDisplay == true)
@@ -126,7 +131,7 @@ export class ResidentComponent implements OnInit {
    * @param {Activity} activity
    * @author Thijs Zijdel
    */
-  protected editActivity(activity: Activity):void {
+  protected editActivity(activity: Activity): void {
     if (activity === null)
       this.clearInfoActivity();
     else
@@ -144,7 +149,7 @@ export class ResidentComponent implements OnInit {
    * This ensures that the variables are setup right.
    * @author Thijs Zijdel
    */
-  protected exitEditTab():void {
+  protected exitEditTab(): void {
     this.editDisplay = false;
     this.enableTab = true;
   }
@@ -152,7 +157,7 @@ export class ResidentComponent implements OnInit {
   /**
    * Reload the info activity
    */
-  protected reload(): void{
+  protected reload(): void {
     this.getInfoActivity();
   }
 
@@ -162,7 +167,7 @@ export class ResidentComponent implements OnInit {
    * Asign this to the local variables
    * @author Thijs Zijdel
    */
-  private getInfoActivity():void {
+  private getInfoActivity(): void {
     this.infoActiv = this.residentService.infoActivity;
 
     if (this.infoActiv != null)
@@ -175,7 +180,7 @@ export class ResidentComponent implements OnInit {
    * @param {number} index (of the tab)
    * @author Thijs Zijdel
    */
-  protected setTabIndex(index: number): void{
+  protected setTabIndex(index: number): void {
     if (this.tabsIndex == index) {
       this.tabsIndex = null;
     }
@@ -187,8 +192,8 @@ export class ResidentComponent implements OnInit {
    * Check if there is an editable resident setup in the service layer
    * @author Thijs Zijdel
    */
-  private checkForEditResident():void {
-    if(this.residentService.editResident) {
+  private checkForEditResident(): void {
+    if (this.residentService.editResident) {
       this.editable = false;
       this.editResident = true;
     }
@@ -199,7 +204,7 @@ export class ResidentComponent implements OnInit {
    * Clearing the edit functionality
    * @author Thijs Zijdel
    */
-  protected clearEditSetting():void {
+  protected clearEditSetting(): void {
     this.residentService.editResident = false;
     this.editResident = false;
   }
@@ -212,15 +217,54 @@ export class ResidentComponent implements OnInit {
    * @param {string} surname
    * @author Thijs Zijdel
    */
-  saveResident(bio: string, name: string, surname: string):void {
-    console.log(bio+" -- bio --  "+name+" namee "+surname)
+  saveResident(bio: string, name: string, surname: string): void {
+    console.log(bio + " -- bio --  " + name + " namee " + surname)
     this.resident.name = name;
     this.resident.surname = surname;
     this.resident.bio = bio;
+    this.resident.imgPath = this.imgLink;
 
     this.residentService.updateResident(this.resident);
     alert("Aanpassingen zijn opgeslagen.")
   }
+
+  /**
+     * Checks if there's any file pending to upload
+     * @author René Kok
+     */
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0]
+  }
+
+  /**
+   * Upload image to server and set names to right path
+   * @author René Kok
+   */
+  onUploadImgLink() {
+    this.uploading = true;
+    var fileName = this.resident.name + " " + this.resident.surname + ".jpg";
+
+    this.imgLink = "bezig met uploaden";
+    this.resident.imgPath = "bezig met uploaden";
+    console.log("Set fileurl to " + this.resident.imgPath)
+
+    this.residentService.uploadImage(this.selectedFile, fileName)
+      .then(() => this.updateImgPath(fileName));
+  }
+
+  /**
+   * Updates the path for the images
+   * @author René Kok
+   */
+  updateImgPath(fileName: string) {
+    setTimeout(() => {
+      var fileLocation = "/residents/";
+      this.resident.imgPath = fileLocation + fileName;
+      console.log("Set fileurl to " + this.resident.imgPath)
+      this.uploading = false;
+    }, 1000);
+  }
+
 }
 
 
