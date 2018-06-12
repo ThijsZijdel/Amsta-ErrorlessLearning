@@ -10,6 +10,7 @@ import { Resident } from '../../models/Resident'
 export class LoginResidentComponent implements OnInit {
 
   protected residents: Resident[];
+  random = new Date().getTime();
 
   constructor(private residentService: ResidentService) {  }
 

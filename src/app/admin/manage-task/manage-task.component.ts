@@ -38,6 +38,7 @@ export class ManageTaskComponent implements OnInit {
   //Uploading Image
   selectedFile: File;
   uploading = false;
+  random = new Date().getTime();
 
   /**
    * Potential editable task
@@ -419,6 +420,7 @@ export class ManageTaskComponent implements OnInit {
     setTimeout(() => {
       this.setImgPath(isTaskImg, fileName, stepNumber);
       this.uploading = false;
+      this.random = new Date().getTime();
     }, 1000);
   }
 

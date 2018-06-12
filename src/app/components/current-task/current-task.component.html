@@ -29,7 +29,7 @@
               <div class="container-fluid step-container">
                 <div class="row step-row">
                   <div class="imgContainer">
-                    <img class="stepImg" src="./../assets/images{{task.imgLink}}" width="100%" height="auto">
+                    <img class="stepImg" src="./../assets/images{{task.imgLink}}?{{random}}" width="100%" height="auto">
                     <br>
                     <br>
                   </div>
@@ -48,7 +48,7 @@
                 <div class="container-fluid step-container">
                   <div class="row step-row">
                     <div *ngIf="!step.timer" class="imgContainer">
-                      <img class="stepImg" src="./../assets/images{{step.stepImgLink}}" width="100%" height="auto">
+                      <img class="stepImg" src="./../assets/images{{step.stepImgLink}}?{{random}}" width="100%" height="auto">
                       <br>
                       <br>
                     </div>
