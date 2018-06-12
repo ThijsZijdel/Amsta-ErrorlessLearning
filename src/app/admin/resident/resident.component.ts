@@ -219,7 +219,7 @@ export class ResidentComponent implements OnInit {
    * @author Thijs Zijdel
    */
   saveResident(bio: string, name: string, surname: string): void {
-    console.log(bio + " -- bio --  " + name + " namee " + surname)
+    console.log(bio + " -- bio --  " + name + " naam " + surname)
     this.resident.name = name;
     this.resident.surname = surname;
     this.resident.bio = bio;

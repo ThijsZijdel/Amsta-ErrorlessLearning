@@ -233,7 +233,7 @@ export class CurrentTaskComponent implements OnInit {
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          this.resident.id+this.resident.activities.length+1,
+        this.resident.id+this.resident.activities.length+1,
         this.task.name,
         this.startDate,
 
@@ -249,7 +249,7 @@ export class CurrentTaskComponent implements OnInit {
 
 
 
-      this.residentService.updateResident(this.resident);
+      this.residentService.updateResident(this.resident).subscribe();
       console.log("update done: "+this.resident.name+" num:"+this.resident.activities.length)
     } else {
       console.log("monitoring not ended")
