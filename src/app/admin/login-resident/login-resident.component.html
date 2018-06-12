@@ -6,7 +6,7 @@
     <div *ngFor="let resident of residents"  class="col-md-3 card-task-contianer">
       <mat-card (click)="setResident(resident)" routerLink="/dashboard">
 
-        <img class="card-img-top" src="./../assets/images{{resident.imgPath}}" alt="Card image cap">
+        <img class="card-img-top" src="./../assets/images{{resident.imgPath}}?{{random}}" alt="Card image cap">
         <div class="card-block">
           <h6 class="card-title">{{resident.name}} {{resident.surname}}</h6>
 

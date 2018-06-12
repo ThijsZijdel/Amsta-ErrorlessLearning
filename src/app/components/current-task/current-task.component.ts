@@ -31,6 +31,7 @@ import {TimerController} from '../timer/TimerController';
  */
 export class CurrentTaskComponent implements OnInit {
   isCompleted = false;
+  random = new Date().getTime();
   /**
    * Set current task based on the routers constructor
    * *ngIf="task"

@@ -420,6 +420,7 @@ export class ManageTaskComponent implements OnInit {
     setTimeout(() => {
       this.setImgPath(isTaskImg, fileName, stepNumber);
       this.uploading = false;
+      this.random = new Date().getTime();
     }, 1000);
   }
 

@@ -261,6 +261,7 @@ export class ResidentComponent implements OnInit {
     setTimeout(() => {
       var fileLocation = "/residents/";
       this.resident.imgPath = fileLocation + fileName;
+      this.random = new Date().getTime();
       console.log("Set fileurl to " + this.resident.imgPath)
       this.uploading = false;
     }, 1000);
