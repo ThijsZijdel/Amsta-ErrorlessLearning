@@ -1,9 +1,27 @@
 <div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6" style="align-content:right;text-align:right;">
+      <button mat-raised-button color="primary" color="accent" *ngIf="!editable" (click)="saveResident(bioResident.value, nameResident.value, surnameResident.value)">Bewoner opslaan</button>
+
+      <button mat-button color="warn" title="delete task" (click)="deleteResident()" routerLink="/admin">
+        Deze bewoner verwijderen
+      </button>
+
+      <button mat-raised-button (click)="close()" routerLink="/admin"> Sluiten </button>
+
+      <br><br>
+    </div>
+  </div>
   <div class="row">
 
 
     <div class="col-md-3">
-      <div *ngIf="!editResident">
+
+      <div *ngIf="editable">
         <h3>{{resident.name}} {{resident.surname}}</h3>
         <h4 style="float:right;">
           <b>{{resident.id}}</b>
@@ -13,10 +31,10 @@
         </p>
       </div>
 
-      <img class="main-image-container" src="./../assets/images{{resident.imgPath}}"
+      <img *ngIf="editable" class="main-image-container" src="./../assets/images{{resident.imgPath}}"
            alt="image" />
 
-      <form class="resident" *ngIf="editResident">
+      <form class="resident" *ngIf="!editable">
         <mat-form-field class="accent-form-field" color="accent">
           <input matInput #nameResident placeholder="Bewoners voornaam" value="{{resident.name}}">
         </mat-form-field>
@@ -40,6 +58,9 @@
           <button mat-raised-button color="primary" (click)="fileInput.click()" name="fileToUpload" id="fileToUpload">Selecteer Foto</button>
           <button mat-raised-button color="primary" (click)="onUploadImgLink()">Upload Foto</button>
 
+          <br>
+          <br>
+
           <div class="padding">
             <mat-form-field>
               <input matInput #taskImgLink placeholder="Bewoner afbeelding link" value="{{resident.imgPath}}">
@@ -55,9 +76,6 @@
         </mat-form-field>
       </form>
 
-      <button mat-raised-button color="accent" *ngIf="editResident" (click)="saveResident(bioResident.value, nameResident.value, surnameResident.value)">
-        Opslaan
-      </button>
 
       <br>
     </div>
@@ -74,76 +92,83 @@
 
 
         <mat-tab label="Activiteiten" (click)="setTabIndex(0); clearInfoActivity();" [disabled]="infoDisplay || !enableTab">
+
+
+
+
+
           <mat-list>
-            <h3 mat-subheader>Vandaag</h3>
-            <h3 class="done-label">Voltooid</h3>
 
-            <mat-selection-list>
-              <div *ngFor="let todayTask of resident.activities">
+            <!--
+           <h3 mat-subheader>Vandaag</h3>
+           <h3 class="done-label">Voltooid</h3>
 
-                <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)" selected="true" disabled="true">
-                  <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line>{{todayTask.name}}</h4>
-                  <span class="activity-id">{{todayTask.id}}</span>
-                  <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+           <mat-selection-list>
+             <div *ngFor="let todayTask of resident.activities">
 
-                  <button mat-button class="info-button" color="primary" (click)="getInfo(todayTask); setTabIndex(1); reload();" *ngIf="editable">Informatie</button>
+               <mat-list-option *ngIf="isToday(todayTask.date) && isCompleted(todayTask)" selected="true" disabled="true">
+                 <mat-icon mat-list-icon>folder</mat-icon>
+                 <h4 mat-line>{{todayTask.name}}</h4>
+                 <span class="activity-id">{{todayTask.id}}</span>
+                 <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
 
-                  <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todayTask); setTabIndex(3); reload();"
-                    *ngIf="!editable">Bewerken</button>
-                </mat-list-option>
+                 <button mat-button class="info-button" color="primary" (click)="getInfo(todayTask); setTabIndex(1); reload();" *ngIf="editable">Informatie</button>
 
-                <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)" selected="false" disabled="true">
-                  <mat-icon mat-list-icon>folder</mat-icon>
-                  <h4 mat-line>{{todayTask.name}}</h4>
-                  <span class="activity-id">{{todayTask.id}}</span>
-                  <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
+                 <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todayTask); setTabIndex(3); reload();"
+                   *ngIf="!editable">Bewerken</button>
+               </mat-list-option>
 
-                  <button mat-button class="info-button" color="primary" (click)="getInfo(todayTask); setTabIndex(1); reload();" *ngIf="editable">Informatie</button>
+               <mat-list-option *ngIf="isToday(todayTask.date) && !isCompleted(todayTask)" selected="false" disabled="true">
+                 <mat-icon mat-list-icon>folder</mat-icon>
+                 <h4 mat-line>{{todayTask.name}}</h4>
+                 <span class="activity-id">{{todayTask.id}}</span>
+                 <p mat-line> {{todayTask.timeStart}} - {{todayTask.timeEnd}} </p>
 
-                  <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todayTask); setTabIndex(3); reload();"
-                    *ngIf="!editable">Bewerken</button>
-                </mat-list-option>
+                 <button mat-button class="info-button" color="primary" (click)="getInfo(todayTask); setTabIndex(1); reload();" *ngIf="editable">Informatie</button>
 
-              </div>
-            </mat-selection-list>
+                 <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todayTask); setTabIndex(3); reload();"
+                   *ngIf="!editable">Bewerken</button>
+               </mat-list-option>
+
+             </div>
+           </mat-selection-list>
 
 
+
+
+           <mat-divider></mat-divider>
+           <h3 mat-subheader>Nog te doen</h3>
+           <h3 class="done-label">Voltooid</h3>
+
+
+           <mat-selection-list #todoTasks>
+             <div *ngFor="let todoTask of resident.activities; let indexTodo = index">
+               <mat-list-option *ngIf="!todoTask.completed" disabled="true">
+                 <h4 mat-line>{{todoTask.name}}</h4>
+                 <span class="activity-id">{{todoTask.id}}</span>
+                 <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
+
+                 <button (click)="residentService.login(resident); this.taskService.setCurrentTaskTime(null);" routerLink="/current/{{todoTask.id}}"
+                   mat-raised-button class="startBtn start-tasks-btn info-button" style="  right: 150px;">
+                   start
+                 </button>
+
+
+                 <button mat-button class="info-button" color="primary" *ngIf="editable" (click)="getInfo(todoTask); setTabIndex(1); reload();">Informatie</button>
+
+
+                 <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todoTask); setTabIndex(3); reload();"
+                   *ngIf="!editable">Bewerken</button>
+
+               </mat-list-option>
+             </div>
+           </mat-selection-list>
+
+           -->
 
 
             <mat-divider></mat-divider>
-            <h3 mat-subheader>Nog te doen</h3>
-            <h3 class="done-label">Voltooid</h3>
-
-
-            <mat-selection-list #todoTasks>
-              <div *ngFor="let todoTask of resident.activities; let indexTodo = index">
-                <mat-list-option *ngIf="!todoTask.completed" disabled="true">
-                  <h4 mat-line>{{todoTask.name}}</h4>
-                  <span class="activity-id">{{todoTask.id}}</span>
-                  <p mat-line> {{todoTask.timeStart}} - {{todoTask.timeEnd}} </p>
-
-                  <button (click)="residentService.login(resident); this.taskService.setCurrentTaskTime(null);" routerLink="/current/{{todoTask.id}}"
-                    mat-raised-button class="startBtn start-tasks-btn info-button" style="  right: 150px;">
-                    start
-                  </button>
-
-
-                  <button mat-button class="info-button" color="primary" *ngIf="editable" (click)="getInfo(todoTask); setTabIndex(1); reload();">Informatie</button>
-
-
-                  <button mat-raised-button class="info-button" color="accent" (click)="editActivity(todoTask); setTabIndex(3); reload();"
-                    *ngIf="!editable">Bewerken</button>
-
-                </mat-list-option>
-              </div>
-            </mat-selection-list>
-
-
-
-
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Al gedaan</h3>
+            <h3 mat-subheader><!--Al gedaan--> Activiteiten</h3>
             <h3 class="done-label">Voltooid</h3>
 
             <mat-selection-list #doneTasks class="scrolable">
@@ -151,7 +176,7 @@
                 <mat-list-option *ngIf="isCompleted(doneTask)" selected="true" disabled="true">
                   <h4 mat-line>{{doneTask.name}}</h4>
                   <span class="activity-id">{{doneTask.id}}</span>
-                  <p mat-line> {{doneTask.completedTime}} min. bezig geweest</p>
+                  <p mat-line> {{doneTask.completedTime}} min. bezig geweest op: {{doneTask.date}}</p>
 
                   <button mat-button class="info-button" color="primary" (click)="getInfo(doneTask); setTabIndex(1); reload();" *ngIf="editable">Informatie</button>
 
