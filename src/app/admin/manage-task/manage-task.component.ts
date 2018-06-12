@@ -38,6 +38,7 @@ export class ManageTaskComponent implements OnInit {
   //Uploading Image
   selectedFile: File;
   uploading = false;
+  random = new Date().getTime();
 
   /**
    * Potential editable task

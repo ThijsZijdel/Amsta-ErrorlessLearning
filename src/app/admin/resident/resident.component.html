@@ -28,7 +28,7 @@
             <mat-spinner style="position: absolute; z-index: 99;" mode="indeterminate"></mat-spinner>
           </div>
 
-          <img *ngIf="!this.uploading" class="main-image-container" src="./../assets/images{{resident.imgPath}}"
+          <img *ngIf="!this.uploading" class="main-image-container" src="./../assets/images{{resident.imgPath}}?{{random}}"
             alt="image" />
           <div class="imgBG"></div>
 

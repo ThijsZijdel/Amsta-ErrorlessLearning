@@ -42,6 +42,7 @@ export class ResidentComponent implements OnInit {
   selectedFile: File;
   uploading = false;
   imgLink: string;
+  random = new Date().getTime();
 
   @Input() activityTask: Task;
 
