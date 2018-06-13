@@ -4,7 +4,7 @@ import { Task } from '../../models/Task';
 import { Step } from '../../models/Step';
 import { StatusService } from "../login/status.service";
 import { TaskTime } from "../../models/TaskTime";
-import {Timer} from "../../models/Timer";
+import { Timer } from "../../models/Timer";
 
 @Component({
   selector: 'app-manage-task',
@@ -38,6 +38,7 @@ export class ManageTaskComponent implements OnInit {
   //Uploading Image
   selectedFile: File;
   uploading = false;
+  random = new Date().getTime();
 
   /**
    * Potential editable task
@@ -93,16 +94,13 @@ export class ManageTaskComponent implements OnInit {
   protected add(name: string, imgLink: string, mainDescription: string): void {
     name = name.trim();
     if (!name || !imgLink || !mainDescription) {
-      if(!name)
-      {
+      if (!name) {
         alert("Naam van taak niet ingevuld!");
       }
-      if(!imgLink)
-      {
+      if (!imgLink) {
         alert("Geen plaatje toegevoegd aan de taak!");
       }
-      if(!mainDescription)
-      {
+      if (!mainDescription) {
         alert("Geen hoofd beschrijving ingevuld!")
       }
       return;
@@ -259,9 +257,8 @@ export class ManageTaskComponent implements OnInit {
 
 
     if (this.editTask != null) {
-      for(let i:number = 0; i < this.editTask.steps.length;i++) {
-        if(this.editTask.steps[i].timer != null)
-        {
+      for (let i: number = 0; i < this.editTask.steps.length; i++) {
+        if (this.editTask.steps[i].timer != null) {
           this.editTask.steps[i].timer.timeInSeconds = this.editTask.steps[i].timer.time / 1000;
         }
       }
@@ -285,16 +282,13 @@ export class ManageTaskComponent implements OnInit {
    */
   protected saveEditingTask(name: string, imgLink: string, mainDescription: string): void {
     if (!name || !imgLink || !mainDescription) {
-      if(!name)
-      {
+      if (!name) {
         alert("Naam van taak niet ingevuld!");
       }
-      if(!imgLink)
-      {
+      if (!imgLink) {
         alert("Geen plaatje toegevoegd aan de taak!");
       }
-      if(!mainDescription)
-      {
+      if (!mainDescription) {
         alert("Geen hoofd beschrijving ingevuld!")
       }
       return;
@@ -332,7 +326,7 @@ export class ManageTaskComponent implements OnInit {
 
 
     if (confirm("Wilt u deze taak echt verwijderen?")) {
-      alert("Taak: "+this.editTask.name+" is verwijderd.")
+      alert("Taak: " + this.editTask.name + " is verwijderd.")
       this.editTask = null;
       this.tasksService.editTask = null;
       this.tasksService.deleteTask(task).subscribe();
@@ -380,8 +374,8 @@ export class ManageTaskComponent implements OnInit {
       }
     }
 
-    this.tasksService.uploadImage(this.selectedFile, fileName, stepNumber, isTaskImg)
-      .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber)).then(() => this.uploading = false);
+    this.tasksService.uploadImage(this.selectedFile, fileName)
+      .then(() => this.updateImgPath(isTaskImg, fileName, stepNumber));
   }
 
   /**
@@ -400,7 +394,7 @@ export class ManageTaskComponent implements OnInit {
    * Updates the path for the images
    * @author René Kok
    */
-  updateImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
+  setImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
     var fileLocation = "/tasks/"
 
     if (isTaskImg) {
@@ -416,6 +410,18 @@ export class ManageTaskComponent implements OnInit {
       }
       console.log("Set fileurl to " + this.stepsCreated[stepNumber].stepImgLink + "(Step)")
     }
+  }
+
+  /**
+   * Updates the path for the images
+   * @author René Kok
+   */
+  updateImgPath(isTaskImg: boolean, fileName: string, stepNumber: number) {
+    setTimeout(() => {
+      this.setImgPath(isTaskImg, fileName, stepNumber);
+      this.uploading = false;
+      this.random = new Date().getTime();
+    }, 1000);
   }
 
   setTimer(step: Step, timerValue: number) {

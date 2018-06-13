@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Resident} from "../models/Resident";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MessageService} from "./message.service";
-import {Observable} from "rxjs/Observable";
-import {catchError, tap} from "rxjs/operators";
-import {of} from "rxjs/observable/of";
-import {Activity} from "../models/Activity";
-import {observable} from "rxjs/symbol/observable";
+import { Resident } from "../models/Resident";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { MessageService } from "./message.service";
+import { Observable } from "rxjs/Observable";
+import { catchError, tap } from "rxjs/operators";
+import { of } from "rxjs/observable/of";
+import { Activity } from "../models/Activity";
+import { observable } from "rxjs/symbol/observable";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class ResidentService {
 
-  private tasksUrl = 'https://team5.amsta-hva.tk/api/resident.php';  // URL to web api
+  private residentUrl = 'https://team5.amsta-hva.tk/api/resident.php';  // URL to web api
 
   public infoActivity: Activity;
 
@@ -37,12 +37,12 @@ export class ResidentService {
    * get Residents from the server
    * @author Thijs Zijdel
    */
-  getResidents (): Observable<Resident[]> {
-    const url = `${this.tasksUrl}?action=getAll`;
+  getResidents(): Observable<Resident[]> {
+    const url = `${this.residentUrl}?action=getAll`;
     return this.http.get<Resident[]>(url)
       .pipe(
-        tap(tasks => this.log(`fetched Resident`)),
-        catchError(this.handleError('getResidents', []))
+      tap(tasks => this.log(`fetched Resident`)),
+      catchError(this.handleError('getResidents', []))
       );
   }
 
@@ -51,7 +51,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
   getResident(id: number): Observable<Resident> {
-    const url = `${this.tasksUrl}?action=get&id=${id}`;
+    const url = `${this.residentUrl}?action=get&id=${id}`;
 
     return this.http.get<Resident>(url).pipe(
       tap(_ => this.log(`fetched Resident id=${id}`)),
@@ -87,7 +87,7 @@ export class ResidentService {
    * @author Thijs Zijdel
    */
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       console.error(error); // log to console
@@ -105,8 +105,8 @@ export class ResidentService {
    * note: PUT
    * @author Thijs Zijdel
    */
-  updateResident (resident: Resident): Observable<any> {
-    const url = `${this.tasksUrl}?action=edit`;
+  updateResident(resident: Resident): Observable<any> {
+    const url = `${this.residentUrl}?action=edit`;
 
     return this.http.put(url, resident, httpOptions).pipe(
       tap(_ => this.log(`updated Resident id=${resident.id}`)),
@@ -121,8 +121,8 @@ export class ResidentService {
    * note: POST
    * @author Thijs Zijdel
    */
-  addResident (resident: Resident): Observable<Resident> {
-    const url = `${this.tasksUrl}?action=add`;
+  addResident(resident: Resident): Observable<Resident> {
+    const url = `${this.residentUrl}?action=add`;
 
     return this.http.post<Resident>(url, resident, httpOptions).pipe(
       tap((resident: Resident) => this.log(`added Resident w/ id=${resident.id}`)),
@@ -136,9 +136,9 @@ export class ResidentService {
    * note: DELETE
    * @author Thijs Zijdel
    */
-  deleteResident (resident: Resident | number): Observable<Resident> {
+  deleteResident(resident: Resident | number): Observable<Resident> {
     const id = typeof resident === 'number' ? resident : resident.id;
-    const url = `${this.tasksUrl}?action=remove&id=${id}`;
+    const url = `${this.residentUrl}?action=remove&id=${id}`;
 
     return this.http.delete<Resident>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted Resident id=${id}`)),
@@ -152,11 +152,11 @@ export class ResidentService {
    * Set an info activity
    * @param {Activity} activity
    */
-  public setInfoActivity(activity: Activity):void{
+  public setInfoActivity(activity: Activity): void {
     this.infoActivity = activity;
   }
 
-  public infoActivityIsSet(): boolean{
+  public infoActivityIsSet(): boolean {
     return this.infoActivity.name.length !== 0 || this.infoActivity.name.length !== null;
   }
 
@@ -185,6 +185,34 @@ export class ResidentService {
   logout(): void {
     this.residentLoggedIn = false;
     this.loggedInResident = null;
+  }
+
+  /**
+  * uploads a new image to the server
+  * note: POST
+  * @author René Kok
+  */
+
+  uploadImage(file, fileName: string) {
+    console.log("Beginnen met uploaden van " + fileName)
+    let promise = new Promise((resolve, reject) => {
+      const url = `${this.residentUrl}?action=uploadImage`;
+
+      const formData: FormData = new FormData();
+      formData.append('fileToUpload', file, fileName);
+
+      this.http.post(url, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).toPromise()
+        .then(
+        res => { // Success
+          console.log("Succes uploading " + fileName);
+          resolve();
+        }
+        );
+    });
+    return promise;
   }
 
 }

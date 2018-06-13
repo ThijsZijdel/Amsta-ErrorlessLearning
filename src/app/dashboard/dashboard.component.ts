@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   protected showAllUpcomingTasksButtonText: string= "Laat zien";
 
   protected resident: Resident = null;
+  random = new Date().getTime();
 
   constructor(private taskService: TaskService,
               private residentService: ResidentService) { }

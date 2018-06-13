@@ -1,14 +1,17 @@
 <div>
 
-  <button routerLink="/admin/manage-task" mat-raised-button color="primary" style="width: 100%; margin-top: 30px; margin-bottom: 30px; text-transform: uppercase">Taak Toevoegen</button>
+  <button routerLink="/admin/manage-task" mat-raised-button color="primary"
+          style="width: 100%; margin-top: 30px; margin-bottom: 5px; text-transform: uppercase">Taak Toevoegen</button>
+  <button routerLink="/admin/manage-task" mat-raised-button color=""
+          style="width: 100%; margin-top: 10px; margin-bottom: 30px; text-transform: uppercase">Bewoner Toevoegen</button>
+
   <div style="margin-left: 20px;">
     <h3 style="margin-bottom: 10px">Links</h3>
-    <a routerLink="/admin">Thuis Pagina</a>
+    <a routerLink="/admin">Beheer Pagina</a>
     <br>
     <a routerLink="/console">Berichten (console)</a>
     <br>
     <a routerLink="/dashboard" (click)="logout()" class="indicator-red">Uitloggen</a>
   </div>
-
 </div>
 

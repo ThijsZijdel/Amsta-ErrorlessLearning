@@ -31,6 +31,7 @@ import {TimerController} from '../timer/TimerController';
  */
 export class CurrentTaskComponent implements OnInit {
   isCompleted = false;
+  random = new Date().getTime();
   /**
    * Set current task based on the routers constructor
    * *ngIf="task"
@@ -227,12 +228,12 @@ export class CurrentTaskComponent implements OnInit {
       this.endedTime = now.getHours() + ":" + now.getMinutes();
       this.completed = true;
 
-
+      console.log("update: "+this.resident.name+" num:"+this.resident.activities.length)
 
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          this.resident.id+this.resident.activities.length+1,
+        this.resident.id+this.resident.activities.length+1,
         this.task.name,
         this.startDate,
 
@@ -248,8 +249,8 @@ export class CurrentTaskComponent implements OnInit {
 
 
 
-      this.residentService.updateResident(this.resident);
-
+      this.residentService.updateResident(this.resident).subscribe();
+      console.log("update done: "+this.resident.name+" num:"+this.resident.activities.length)
     } else {
       console.log("monitoring not ended")
     }

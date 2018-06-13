@@ -28,12 +28,11 @@ if (isset($_REQUEST['action'])) {
     $json = file_get_contents('php://input');
     $obj = json_decode($json);
 
-    $resId = $obj->id;
     $resName = $obj->name;
     $resSurname = $obj->surname;
     $resBio = $obj->bio;
-    $resImgPath = $obj->$imgPath;
-    $activities = $obj->Activity;
+    $resImgPath = $obj->imgPath;
+    $resActivities = $obj->activities;
 
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
@@ -47,27 +46,27 @@ if (isset($_REQUEST['action'])) {
         
        //Connection with success and error messages.
       if ($conn->query($sql) === TRUE) {
-        $taskId = $conn->insert_id;
+        $resId = $conn->insert_id;
         $response['status'] = array(
           'success' => true,
-          'message' => 'Only the task has successfully been added.',
+          'message' => 'Only the activity has successfully been added.',
           'dev_message' => 'Zorg er dus voor dat dit ook een duidelijke melding word in de applicatie'
         );
 
-        foreach($activities as $Activity)
+        foreach($resActivities as $activities)
         {
-            $actName = $Activity->activityName;
-            $actDate = $Activity->activityDate;
-            $actStart = $Activity->timeStart;
-            $actEnd = $Activity->timeEnd;
-            $actStartedTime = $Activity->timeStarted;
-            $actEndedTime = $Activity->timeEnded;
-            $actCompletedTime = $Activity->completedTime;
-            $actCompleted = $Activity->completed;
-            $actNotes = $Activity->notes;
+          $actName = $activities->name;
+          $actDate = $activities->date;
+          $actStart = $activities->startTime;
+          $actEnd = $activities->endTime;
+          $actStartedTime = $activities->timeStarted;
+          $actEndedTime = $activities->timeEnded;
+          $actCompletedTime = $activities->timeCompleted;
+          $actCompleted = $activities->Completed;
+          $actNotes = $activities->Notes;
 
-            $sql = "INSERT INTO  team5_app.Activity(name, date, timeStart, timeEnd, timeStarted, timeEnded, completedTime, completed, notes, Resident_resId, Task_idTask) 
-            VALUES(" . $actName . ", " . $actDate . ", " . $actStart . ", " . $actEnd . ", " . $actStartedTime . ", " . $actEndedTime . ", " . $actCompletedTime . ", " . $actCompleted . ", " . $actNotes . ", " . $resId . ", " . $taskId . ")";
+            $sql = "INSERT INTO  team5_app.Activity(name, date, timeStart, timeEnd, timeStarted, timeEnded, completedTime, completed, notes, resId) 
+            VALUES('" . $actName . "', '" . $actDate . "', '" . $actStart . "', '" . $actEnd . "', '" . $actStartedTime . "', '" . $actEndedTime . "', '" . $actCompletedTime . "', '" . $actCompleted . "', '" . $actNotes . "', '" . $resId . "')";
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
@@ -91,7 +90,51 @@ if (isset($_REQUEST['action'])) {
         );
       }
     }
-  }else if ($action === "remove") {
+
+  } else if ($action === "uploadImage") {
+    $target_dir = "/srv/www/team5/public/assets/images/residents/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+  // Check if image file is a actual image or fake image
+    if (isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if ($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+      } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+      }
+    }
+  // Check if file already exists
+    if (file_exists($target_file)) {
+      //echo "File already exists, overwriting";
+    }
+  
+  // Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif") {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+    }
+  // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+      echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+    } else {
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        $response = array(
+          'success' => true,
+          'message' => 'Successfully uploaded image',
+        );
+      } else {
+        echo "Sorry, there was an error uploading your file.";
+      }
+    }
+  } else if ($action === "remove") {
     if (isset($_REQUEST["id"])) {
       $id = $_REQUEST["id"];
 
@@ -104,7 +147,7 @@ if (isset($_REQUEST['action'])) {
         );
       } else {
         // sql to delete a record
-        $sql = "DELETE FROM team5_app.Resident WHERE id=" + $id;
+        $sql = "DELETE FROM team5_app.Resident WHERE resId=" . $id;
 
         // Connection with success and error messages.
         if ($conn->query($sql) === TRUE) {
@@ -129,8 +172,8 @@ if (isset($_REQUEST['action'])) {
     $resName = $obj->name;
     $resSurname = $obj->surname;
     $resBio = $obj->bio;
-    $resImgPath = $obj->$imgPath;
-    $activities = $obj->Activity;
+    $resImgPath = $obj->imgPath;
+    $activities = $obj->activities;
 
     // Create connection
     $conn = new mysqli(constant("SERVER_NAME"), constant("USERNAME"), constant("PASSWORD"));
@@ -143,7 +186,7 @@ if (isset($_REQUEST['action'])) {
       $errorMessage = $conn->error;
     } else {
       $sql = "UPDATE team5_app.Resident 
-      SET team5_app.Resident.name='" . $resName . "', team5_app.Resident.surname='" . $resSurname . "',team5_app.Resident.Bio='" . $resBio . "',team5_app.Resident.imgPath='" . $resImgPath . "' WHERE team5_app.Resident.idRes=" . $resId;
+      SET team5_app.Resident.name='" . $resName . "', team5_app.Resident.surname='" . $resSurname . "',team5_app.Resident.Bio='" . $resBio . "',team5_app.Resident.imgPath='" . $resImgPath . "' WHERE team5_app.Resident.resId=" . $resId;
       // Connection with success and error messages.
       if ($conn->query($sql) === TRUE) {
         $response = array(
@@ -155,7 +198,7 @@ if (isset($_REQUEST['action'])) {
         $sql = "SELECT COUNT(team5_app.Activity.idActivity) 
         AS activities 
         FROM team5_app.Activity 
-        WHERE team5_app.Activity.Resident_idRes=" . $resId;
+        WHERE team5_app.Activity.resId=" . $resId;
 
         // Query database
         $result = $conn->query($sql);
@@ -165,7 +208,7 @@ if (isset($_REQUEST['action'])) {
         if ($result->num_rows > 0)
         {
           $row = $result->fetch_assoc();
-          $actAmount = intval($row['activity']);
+          $actAmount = intval($row['activities']);
         }
 
         // actAmount is current amount of activities inside database
@@ -175,9 +218,9 @@ if (isset($_REQUEST['action'])) {
           $activitiesAdded = count($activities) - $actAmount;
 
           for ($i = 0; $i < $activitiesAdded; $i++) {
-            $newActId = $activities + 1 + $i;
-            $sql = "INSERT INTO  team5_app.Activity(id, name, date, timeStart, timeEnd, timeStarted, timeEnded, completedTime, completed, notes, Resident_resId, Task_idTask) 
-                    VALUES(" . $newActId . ", " . $actName . ", " . $actDate . ", " . $actStart . ", " . $actEnd . ", " . $actStartedTime . ", " . $actEndedTime . ", " . $actCompletedTime . ", " . $actCompleted . ", " . $actNotes . ", " . $resId . ", " . $taskId . ")";
+            $newActId = $actAmount + 1 + $i;
+            $sql = "INSERT INTO  team5_app.Activity(id, name, date, timeStart, timeEnd, timeStarted, timeEnded, completedTime, completed, notes, resId) 
+                    VALUES(" . $newActId . ",  'null' ,'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', " . $resId . ")";
             if (!$conn->query($sql) === TRUE) {
               $success = false;
               $errorcode = 'INSERT_ACTIVITY';
@@ -203,21 +246,26 @@ if (isset($_REQUEST['action'])) {
         ///////////////END ADD OR REMOVE EXISTING ACTIVITIES////////////////
 
         foreach ($activities as $Activity) {
-            $idActivity = $Activity->id;
-            $actName = $Activity->activityName;
-            $actDate = $Activity->activityDate;
-            $actStart = $Activity->timeStart;
-            $actEnd = $Activity->timeEnd;
+            $idAct = $Activity->id;
+            $actName = $Activity->name;
+            $actDate = $Activity->date;
+            $actStart = $Activity->startTime;
+            $actEnd = $Activity->endTime;
             $actStartedTime = $Activity->timeStarted;
             $actEndedTime = $Activity->timeEnded;
-            $actCompletedTime = $Activity->completedTime;
-            $actCompleted = $Activity->completed;
-            $actNotes = $Activity->notes;
+            $actCompletedTime = $Activity->timeCompleted;
+            $actCompleted = $Activity->Completed;
+            $actNotes = $Activity->Notes;
 
-          $sql = "SELECT COUNT(team5_app.Activity.id) 
+/*          $sql = "SELECT COUNT(team5_app.Activity.idActivity) 
                   AS Activities  
                   FROM team5_app.Activity 
-                  WHERE team5_app.Activity.Resident_resId=" . resId;
+                  WHERE team5_app.Activity.resId=" . $resId;
+*/
+            $sql = "UPDATE team5_app.Activity
+                    SET team5_app.Activity.name='" . $actName . "', team5_app.Activity.date='" . $actDate . "', team5_app.Activity.timeStart='" . $actStart . "', team5_app.Activity.timeEnd='" . $actEnd . "', team5_app.Activity.timeStarted='" . $actStartedTime . "', team5_app.Activity.timeEnded='" . $actEndedTime . "', team5_app.Activity.completedTime='" . $actCompletedTime . "', team5_app.Activity.completed='" . $actCompleted . "', team5_app.Activity.notes='" . $actNotes . "'
+                    WHERE team5_app.Activity.resId=" . $resId;
+
           if (!$conn->query($sql) === TRUE) {
             $success = false;
             $errorcode = 'UPDATE_ACTIVITY';
@@ -276,10 +324,9 @@ if (isset($_REQUEST['action'])) {
           $resBio = $row["resBio"];
           $resImgPath = $row["resImgPath"];
 
-
           $sql = "SELECT team5_app.Activity.* 
           FROM team5_app.Activity 
-          WHERE team5_app.Activity.Resident_resId=" . $id;
+          WHERE team5_app.Activity.resId=" . $id;
 
           // Query database
           $result = $conn->query($sql);
@@ -311,7 +358,7 @@ if (isset($_REQUEST['action'])) {
             'surname' => $resSurname,
             'bio' => $resBio,
             'imgPath' => $resImgPath,
-            'Activity' => $Activity
+            'activities' => $activities
           );
 
         }
@@ -341,15 +388,15 @@ if (isset($_REQUEST['action'])) {
         while ($row = $result->fetch_assoc()) {
           $Activities = array();
 
-          $resName = $row["resName"];
-          $resSurname = $row["resSurname"];
-          $resBio = $row["resBio"];
-          $resImgPath = $row["resImgPath"];
-          $id = $row["resId"];
+          $resName = $row["residentName"];
+          $resSurname = $row["residentSurname"];
+          $resBio = $row["ResidentBio"];
+          $resImgPath = $row["ResidentImgPath"];
+          $id = $row["ResidentId"];
 
           $sql = "SELECT team5_app.Activity.* 
           FROM team5_app.Activity 
-          WHERE team5_app.Activity.Resident_resId=" . $id;
+          WHERE team5_app.Activity.resId=" . $id;
 
           // Query database
           $secondResult = $conn->query($sql);
@@ -360,16 +407,16 @@ if (isset($_REQUEST['action'])) {
             while ($secondRow = $secondResult->fetch_assoc()) {
               // Fill res with their activities
               $Activity = array(
-                'id' => $row['idActivity'],
-                'name' => $row['name'],
-                'date' => $row['date'],
-                'startTime' => $row['timeStart'],
-                'endTime' => $row['timeEnd'],
-                'timeStarted' => $row['timeStarted'],
-                'timeEnded' => $row['timeEnded'],
-                'timeCompleted' => $row['completedTime'],
-                'Completed' => $row['completed'],
-                'Notes' => $row['notes']
+                'id' => $secondRow['idActivity'],
+                'name' => $secondRow['name'],
+                'date' => $secondRow['date'],
+                'startTime' => $secondRow['timeStart'],
+                'endTime' => $secondRow['timeEnd'],
+                'timeStarted' => $secondRow['timeStarted'],
+                'timeEnded' => $secondRow['timeEnded'],
+                'timeCompleted' => $secondRow['completedTime'],
+                'Completed' => $secondRow['completed'],
+                'Notes' => $secondRow['notes']
               );
               array_push($Activities,$Activity);
             }
@@ -381,7 +428,7 @@ if (isset($_REQUEST['action'])) {
           'surname' => $resSurname,
           'bio' => $resBio,
           'imgPath' => $resImgPath,
-          'Activity' => $Activities
+          'activities' => $Activities
           );
 
           array_push($response, $Resident);
@@ -393,6 +440,7 @@ if (isset($_REQUEST['action'])) {
     }
   }
 }
+
 else {
   $response = array(
     'success' => false,
