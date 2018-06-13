@@ -57,6 +57,7 @@ export class CurrentTaskComponent implements OnInit {
   private completed: boolean = false;
 
   private endedTime: string;
+  private timerController: TimerController;
 
 
 
@@ -148,8 +149,13 @@ export class CurrentTaskComponent implements OnInit {
   private stepperChanged(stepper: MatStepper): void {
     // If there is a timer and it has not been completed do not go forward!
     if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null) {
-      let timerController: TimerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
-      timerController.startTimer();
+      if(this.timerController != null)
+      {
+        this.timerController.stopTimer();
+      }
+
+      this.timerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
+      this.timerController.startTimer();
       return;
     }
   }
