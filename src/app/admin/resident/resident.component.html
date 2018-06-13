@@ -31,9 +31,6 @@
         </p>
       </div>
 
-      <img *ngIf="editable" class="main-image-container" src="./../assets/images{{resident.imgPath}}"
-           alt="image" />
-
       <form class="resident" *ngIf="!editable">
         <mat-form-field class="accent-form-field" color="accent">
           <input matInput #nameResident placeholder="Bewoners voornaam" value="{{resident.name}}">
