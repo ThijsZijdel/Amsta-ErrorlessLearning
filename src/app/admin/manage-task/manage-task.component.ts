@@ -5,6 +5,7 @@ import { Step } from '../../models/Step';
 import { StatusService } from "../login/status.service";
 import { TaskTime } from "../../models/TaskTime";
 import { Timer } from "../../models/Timer";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-task',
@@ -49,7 +50,7 @@ export class ManageTaskComponent implements OnInit {
   protected AdminDoingMessage: string = "Een extra stappenplan toevoegen.";
 
   constructor(private tasksService: TaskService,
-    private status: StatusService) {
+    private status: StatusService, public router: Router) {
   }
 
   /**
@@ -117,6 +118,11 @@ export class ManageTaskComponent implements OnInit {
       .subscribe(task => {
         this.tasks.push(task);
       });
+
+    alert("Taak Toegevoegd!");
+    this.router.navigate(['/admin']);
+    close();
+
   }
 
   /**
