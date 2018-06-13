@@ -120,9 +120,8 @@ export class ManageTaskComponent implements OnInit {
       });
 
     alert("Taak Toegevoegd!");
-    this.router.navigate(['/admin']);
     close();
-
+    this.router.navigate(['/admin']);
   }
 
   /**
@@ -143,7 +142,7 @@ export class ManageTaskComponent implements OnInit {
    * @author Thijs Zijdel
    */
   protected addStep(): void {
-    this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "/path/to/img.jpg", ""));
+    this.stepsCreated.push(new Step(this.stepsCreated.length + 1, "", ""));
     this.setAddStepMessage();
   }
 
