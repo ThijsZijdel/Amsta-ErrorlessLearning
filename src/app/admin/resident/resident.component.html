@@ -69,7 +69,7 @@
         <br>
 
         <mat-form-field class="accent-form-field" color="accent">
-          <textarea matInput #bioResident placeholder="Bewoners beschrijving" value="{{resident.bio}}"></textarea>
+          <input matInput #bioResident placeholder="Bewoners beschrijving" value="{{resident.bio}}">
         </mat-form-field>
       </form>
 
@@ -141,7 +141,7 @@
              </div>
            </mat-selection-list>
 
-
+    -->
 
 
            <mat-divider></mat-divider>
@@ -172,7 +172,7 @@
              </div>
            </mat-selection-list>
 
-           -->
+
 
 
             <mat-divider></mat-divider>
@@ -330,6 +330,11 @@
             <br> Voltooid:
             <span *ngIf="infoActiv.completed"> Ja </span>
             <span *ngIf="!infoActiv.completed"> Nee </span>
+
+
+            <mat-slide-toggle (change)="infoActiv.completed = !infoActiv.completed;" [checked]="infoActiv.completed">
+
+            </mat-slide-toggle>
 
             <br>
 
