@@ -1,37 +1,38 @@
 # Amsta
-HvA Project PAD - AMS5 - Group 5
+Angular Web Application for the company Amsta Amsterdam.
 
-Web Application for the company Amsta Amsterdam.
+
 
 ![alt text](hero.png)
+
+
 
 ## Getting Started
 
 To see the application there are some things that needs to be configured before running it.
-So please follow to following document or read /doc/manual.pdf
-
-Note: we didn't received a requirement from Corendon to make it a runable jar and add a config file.
+So please follow to following document. If you want to further develop the application, see: development.
 
 
 ### Prerequisites
 
-Install a Java IDE to build and run the application
+A way to host the database and web application itself.
 
 ```
-We used Netbeans to build it. See [Built with] for the link
+A phpmyadmin environment was used to host the database during testing and release.
+We connected this with an PHP api to the application running angular. 
 ```
 
-Install and configure an SQL host.
+Install and configure the SQL host.
 
 ```
-We used SQL Workbench's local host to run our database
+See: for the settings for the host.
 ```
 
 
 
 
 ### Installing
-When you have an SQL Host and IDE installed (prefered Netbeans) u can follow these steps:
+When you have an SQL Host.
 
 Step 1) Creating the database.
 
@@ -42,11 +43,9 @@ Run the CreateDB.sql file in your sql host.
 Step 2) Configuring the connection.
 
 ```
-Go to the MainApp.java (in /app/..) and edit line: 50
-
-Keep the first  parameter the same. 
-Change the second parameter to your SQL userName.
-Change the third  parameter to your SQL userPassword.
+See:  src/app/services/xxxx  and change line:18 of the services.ts files 
+                                  (\/ the dots below)
+      private xxxxUrl = 'https://..../api/xxxx.php';  // URL to web api
 ```
 
 
@@ -61,7 +60,7 @@ For getting the user passwords see: /doc/manual.pdf
 ### More information
 
 See: /doc/manual.pdf 
-For the entire installation and configuring process and a full manual of the application.
+For the entire installation and configuring process and a (almost)full manual of the application.
 
 
 
@@ -110,12 +109,12 @@ Currently the application isn't public available.
 * [JavaScript](https://www.javascript.com) - For getting some interaction on the web app
 * [TypeScript](https://www.typescriptlang.org/index.html) - For bringing the OOP principals to javascript 
 * [Angular](https://angular.io) - JavaScript Framework to let our web app really rock! 
+* [PHP](http://www.php.net) - So we can get data trough a API from our database in Json format.
 * [MySQL / PHPmyAdmin](https://www.mysql.com/) - For the database 
 * [IntelliJ Idea](https://www.jetbrains.com/idea/) - In what we developed the (start) application.
 
 # Dependencies/ Libraries 
-* [JFoenix](http://www.jfoenix.com/) - For the material design in the application
-* [SQL Connector](http://www.jfoenix.com/) - For the connection to the database (MYJbdc)
+
 
 
 
@@ -125,7 +124,7 @@ Currently the application isn't public available.
 
 
 ## Project Files
-- app/LostLuggage			(folder for application)
+- app/Amsta			(folder for application)
 	- /paths/ 				(for info, send me a message)				
 
 - data 						(folder for db dummy data)
@@ -134,8 +133,6 @@ Currently the application isn't public available.
 
 - doc 						(folder for documentation)
 	- Manual.pdf 			(full manual, inc. installation)
-  	- Poster.png  			(for giving an impression of the app)
-   	- Responsibilities.pdf 	(responsibilities for each author)
 		
 
 
