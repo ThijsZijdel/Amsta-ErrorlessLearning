@@ -31,6 +31,7 @@ import {TimerController} from '../timer/TimerController';
  */
 export class CurrentTaskComponent implements OnInit {
   isCompleted = false;
+  random = new Date().getTime();
   /**
    * Set current task based on the routers constructor
    * *ngIf="task"
@@ -56,6 +57,7 @@ export class CurrentTaskComponent implements OnInit {
   private completed: boolean = false;
 
   private endedTime: string;
+  private timerController: TimerController;
 
 
 
@@ -147,8 +149,13 @@ export class CurrentTaskComponent implements OnInit {
   private stepperChanged(stepper: MatStepper): void {
     // If there is a timer and it has not been completed do not go forward!
     if (this.task.steps[stepper.selectedIndex-1] != null && this.task.steps[stepper.selectedIndex-1].timer != null) {
-      let timerController: TimerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
-      timerController.startTimer();
+      if(this.timerController != null)
+      {
+        this.timerController.stopTimer();
+      }
+
+      this.timerController = new TimerController(this.task.steps[stepper.selectedIndex-1].timer);
+      this.timerController.startTimer();
       return;
     }
   }
@@ -227,12 +234,12 @@ export class CurrentTaskComponent implements OnInit {
       this.endedTime = now.getHours() + ":" + now.getMinutes();
       this.completed = true;
 
-
+      console.log("update: "+this.resident.name+" num:"+this.resident.activities.length)
 
       //add it to the users activities
       this.resident.activities.push(
         new Activity(
-          this.resident.id+this.resident.activities.length+1,
+        this.resident.id+this.resident.activities.length+1,
         this.task.name,
         this.startDate,
 
@@ -248,8 +255,8 @@ export class CurrentTaskComponent implements OnInit {
 
 
 
-      this.residentService.updateResident(this.resident);
-
+      this.residentService.updateResident(this.resident).subscribe();
+      console.log("update done: "+this.resident.name+" num:"+this.resident.activities.length)
     } else {
       console.log("monitoring not ended")
     }

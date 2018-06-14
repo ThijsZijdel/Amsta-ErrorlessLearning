@@ -78,3 +78,21 @@
   margin-top: 50px;
 }
 
+/* Image uploaden */
+.main-image-container{
+  max-width: 200px;
+  width: 200px;
+  max-height: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 99;
+  object-fit: cover;
+}
+
+.imgBG {
+  max-width: 200px;
+  width: 200px;
+  max-height: 200px;
+  height: 200px;
+  background-color: grey;
+}

@@ -23,6 +23,12 @@ export class TimerController
     this.currentTime = this.time;
   }
 
+  public stopTimer(): void {
+    this.clearTimeouts();
+    this.a = 0;
+    this.isCompleted = false;
+  }
+
   public startTimer(): void {
     this.clearTimeouts();
     this.a = 0;

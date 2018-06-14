@@ -19,7 +19,7 @@
 
 
         <mat-card-header>
-          <img class="card-img-top-left" src="./../assets/images{{task.imgLink}}" >
+          <img class="card-img-top-left" src="./../assets/images{{task.imgLink}}?{{random}}" >
           <mat-card-title>{{ task.id }} - {{ task.name }}</mat-card-title>
           <mat-card-subtitle>{{ task.mainDescription | slice:0:25 }}</mat-card-subtitle>
           <br>

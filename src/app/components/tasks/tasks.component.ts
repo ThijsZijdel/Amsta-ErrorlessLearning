@@ -20,6 +20,8 @@ export class TasksComponent implements OnInit {
    * Array of tasks
    */
   tasks: Task[];
+  
+  random = new Date().getTime();
 
   /**
    * Constructor that gets the

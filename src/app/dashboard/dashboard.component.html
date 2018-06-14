@@ -56,7 +56,7 @@
     <div *ngFor="let task of pastTasks.slice(pastTasks.length-amountOfPastTasksDisplayIndex,pastTasks.length-1).reverse()" class="col-md-3 card-task-contianer">
       <mat-card>
 
-        <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+        <img class="card-img-top" src="./../assets/images{{task.imgLink}}?{{random}}" alt="Card image cap">
         <div class="card-block">
           <h4 class="card-title">{{task.name}}</h4>
           <p class="card-text">{{ task.mainDescription }}</p>
@@ -129,7 +129,7 @@
       <div *ngFor="let task of currentTasks" class="col-md-4 card-task-contianer">
         <mat-card>
 
-          <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+          <img class="card-img-top" src="./../assets/images{{task.imgLink}}?{{random}}" alt="Card image cap">
           <div class="card-block">
             <h4 class="card-title">{{task.name}}</h4>
             <p class="card-text">{{ task.mainDescription }}</p>
@@ -192,7 +192,7 @@
       <div *ngFor="let task of upcommingTasks.slice(0,amountOfUpcomingTasksDisplayIndex-1)" class="col-md-3 card-task-contianer">
         <mat-card>
 
-          <img class="card-img-top" src="./../assets/images{{task.imgLink}}" alt="Card image cap">
+          <img class="card-img-top" src="./../assets/images{{task.imgLink}}?{{random}}" alt="Card image cap">
           <div class="card-block">
             <h4 class="card-title">{{task.name}}</h4>
             <p class="card-text">{{ task.mainDescription }}</p>

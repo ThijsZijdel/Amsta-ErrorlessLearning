@@ -161,7 +161,7 @@ export class TaskService {
    * @author René Kok
    */
 
-  uploadImage(file, fileName: string, stepNumber: number, isTaskImg: boolean) {
+  uploadImage(file, fileName: string) {
     let promise = new Promise((resolve, reject) => {
       const url = `${this.tasksUrl}?action=uploadImage`;
 

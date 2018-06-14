@@ -56,6 +56,7 @@ if (isset($_REQUEST['action'])) {
         foreach ($taskSteps as $step) {
           $stepDescription = $step->stepDescription;
           $stepImageLink = $step->stepImgLink;
+          $stepId = $step->id;
 
           $timerId = -1;
 
@@ -67,16 +68,20 @@ if (isset($_REQUEST['action'])) {
             if (!$conn->query($sql) === TRUE) {
               $errorcode = "TIMER_INSERT";
               $success = false;
+              $errorMessage = $conn->error;
             } else {
               $timerId = $conn->insert_id;
             }
           }
 
-          $sql = ($step->timer && !is_null($step->timer)) ? "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')" : "INSERT INTO  team5_app.Step(imgLink, description, Task_taskId,Timer_timerId) VALUES('" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "', '" . $timerId . "')";
+          $sql = ($timerId == -1) ? "INSERT INTO  team5_app.Step(idStep,imgLink, description, Task_idTask) VALUES(" . $stepId . ",'" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "')" : "INSERT INTO  team5_app.Step(idStep,imgLink, description, Task_idTask,Timer_idTimer) VALUES(" . $stepId . ",'" . $stepImageLink . "', '" . $stepDescription . "', '" . $taskId . "', '" . $timerId . "')";
+
+          echo $sql;
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
             $errorcode = "STEP_INSERT";
+            $errorMessage = $conn->error;
           }
         }
         $taskTimeId = 0;
@@ -90,11 +95,13 @@ if (isset($_REQUEST['action'])) {
           if (!$conn->query($sql) === TRUE) {
             $success = false;
             $errorcode = "TASKTIMES_INSERT";
+            $errorMessage = $conn->error;
           }
         }
       } else {
         $errorcode = "TASK_INSERT";
         $success = false;
+        $errorMessage = $conn->error;
       }
 
       if ($success) {
@@ -107,7 +114,7 @@ if (isset($_REQUEST['action'])) {
           'message' => 'Error something went wrong while trying to add the task',
           'success' => false,
           'errorCode' => $errorcode,
-          'errorMessage' => $conn->error
+          'errorMessage' => $errorMessage
         );
       }
     }
@@ -258,18 +265,23 @@ if (isset($_REQUEST['action'])) {
           $stepId = $step->id;
           $stepDescription = $step->stepDescription;
           $stepImageLink = $step->stepImgLink;
+          $timerId = -1;
 
           if (!is_null($step->timer)) {
-            $sql = is_null($step->timer->id) ? "INSERT INTO team5_app.Timer(time) VALUES(" . $step->timer->time . ")" : "UPDATE team5_app.Timer SET team5_app.Timer.time='" . $step->timer->time . "'WHERE team5_app.Timer.id=" . $step->timer->id;
+            $sql = !isset($step->timer->id) ? "INSERT INTO team5_app.Timer(time) VALUES(" . $step->timer->time . ")"
+              : "UPDATE team5_app.Timer SET team5_app.Timer.time='" . $step->timer->time . "'WHERE team5_app.Timer.id=" . $step->timer->id;
 
             if (!$conn->query($sql) === TRUE) {
               $success = false;
               $errorcode = 'UPDATE_STEPTIMER';
               $errorMessage = $conn->error;
+            } else {
+              $timerId = $conn->insert_id;
             }
           }
 
-          $sql = !is_null($step->timer) ? "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "', team5_app.Step.Timer_idTimer='" . $step->timer->id . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId : "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "' WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
+          $sql = !is_null($step->timer) ? "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "', team5_app.Step.Timer_idTimer=" . (isset($step->timer->id) ? $step->timer->id : $timerId) . " WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId
+            : "UPDATE team5_app.Step SET team5_app.Step.description='" . $stepDescription . "',team5_app.Step.imgLink='" . $stepImageLink . "', team5_app.Step.Timer_idTimer=NULL WHERE team5_app.Step.Task_idTask=" . $taskId . " AND team5_app.Step.idStep=" . $stepId;
 
           if (!$conn->query($sql) === TRUE) {
             $success = false;
@@ -292,24 +304,27 @@ if (isset($_REQUEST['action'])) {
           }
         }
       }
-
-      if ($success) {
-        $response = array(
-          'message' => 'Task and steps successfully updated!',
-          'success' => true,
-          'error_code' => $conn->error,
-          'second_error_code' => $errorcode
-        );
-      } else {
-        $response = array(
-          'message' => 'Error something went wrong while trying to update task',
-          'success' => false,
-          'errorMessage' => $errorMessage,
-          'error_code' => $errorcode
-        );
-      }
     }
-  } else if ($action === "get") {
+
+    if ($success) {
+      $response = array(
+        'message' => 'Task and steps successfully updated!',
+        'success' => true,
+        'error_code' => $conn->error,
+        'second_error_code' => $errorcode,
+        'timerId' => $timerId
+      );
+    } else {
+      $response = array(
+        'message' => 'Error something went wrong while trying to update task',
+        'success' => false,
+        'errorMessage' => $errorMessage,
+        'error_code' => $errorcode,
+        'timerId' => $timerId
+      );
+    }
+  }
+  else if ($action === "get") {
     if (isset($_REQUEST["id"])) {
       $id = $_REQUEST["id"];
 
@@ -340,8 +355,7 @@ if (isset($_REQUEST['action'])) {
           $taskDescription = $row["taskDescription"];
           $taskImageLink = $row["taskImageLink"];
 
-          $sql = "SELECT * FROM team5_app.Step 
-                  INNER JOIN team5_app.Timer WHERE team5_app.Step.Task_idTask=" . $id;
+          $sql = "SELECT * FROM team5_app.Step WHERE team5_app.Step.Task_idTask=" . $id;
 
           // Query database
           $result = $conn->query($sql);
@@ -350,12 +364,18 @@ if (isset($_REQUEST['action'])) {
           if ($result->num_rows > 0) { // output data of each row
             while ($row = $result->fetch_assoc()) {
               $timer = null;
-              if(!is_null($row['Timer_idTimer']))
-              {
-                $timer = array(
-                  'id' => $row['Timer_idTimer'],
-                  'time' => $row['time']
-                );
+              if(!is_null($row['Timer_idTimer'])) {
+                $timerId = $row['Timer_idTimer'];
+                $sql = "SELECT * FROM team5_app.Timer WHERE team5_app.Timer.id=" . $timerId;
+
+                // Query database
+                $fourthResult = $conn->query($sql);
+                if (!is_null($fourthRow = $fourthResult->fetch_assoc())) {
+                  $timer = array(
+                    'id' => $fourthRow['id'],
+                    'time' => $fourthRow['time']
+                  );
+                }
               }
               // Fill task with steps
               $step = array(
@@ -429,8 +449,7 @@ if (isset($_REQUEST['action'])) {
           $taskImageLink = $row["taskImageLink"];
           $id = $row["taskId"];
 
-          $sql = "SELECT * FROM team5_app.Step 
-                  INNER JOIN team5_app.Timer WHERE team5_app.Step.Task_idTask=" . $id;
+          $sql = "SELECT * FROM team5_app.Step WHERE team5_app.Step.Task_idTask=" . $id;
 
           // Query database
           $secondResult = $conn->query($sql);
@@ -441,10 +460,17 @@ if (isset($_REQUEST['action'])) {
               $timer = null;
               if(!is_null($secondRow['Timer_idTimer']))
               {
-                $timer = array(
-                  'id' => $secondRow['Timer_idTimer'],
-                  'time' => $secondRow['time']
-                );
+                $timerId = $secondRow['Timer_idTimer'];
+                $sql = "SELECT * FROM team5_app.Timer WHERE team5_app.Timer.id=" . $timerId;
+
+                // Query database
+                $fourthResult = $conn->query($sql);
+                if(!is_null($fourthRow = $fourthResult->fetch_assoc())) {
+                  $timer = array(
+                    'id' => $fourthRow['id'],
+                    'time' => $fourthRow['time']
+                  );
+                }
               }
               // Fill task with steps
               $step = array(
