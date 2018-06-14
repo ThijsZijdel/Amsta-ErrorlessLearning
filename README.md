@@ -3,7 +3,7 @@ HvA Project PAD - AMS5 - Group 5
 
 Web Application for the company Amsta Amsterdam.
 
-![alt text](hero.jpg)
+![alt text](hero.png)
 
 ## Getting Started
 
