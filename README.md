@@ -96,7 +96,7 @@ Now the application is running and you can start developing.
 
 
 ### Usage
-Currently the application isn't public available.
+Currently the application is in private use by Amsta Amsterdam.
 
 
 
